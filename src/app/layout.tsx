@@ -8,6 +8,8 @@ import { SEOHead } from "@/components/SEOHead";
 import ClientOnly from "@/components/ClientOnly";
 import { NextIntlClientProvider } from 'next-intl';
 import { getMessages } from 'next-intl/server';
+import { SpeedInsights } from '@vercel/speed-insights/next';
+import { Analytics } from '@vercel/analytics/react';
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -74,6 +76,8 @@ export default async function RootLayout({
             </PageErrorBoundary>
           </ToastProvider>
         </NextIntlClientProvider>
+        <SpeedInsights />
+        <Analytics />
       </body>
     </html>
   );

@@ -246,3 +246,7 @@ Error: MISSING_MESSAGE: Could not resolve `authStatus` in messages for locale `z
   syscall: 'open',
   path: '/Users/macbookpro/Documents/claude编码/claude练手/lighting-app/.next/server/pages/_app/build-manifest.json'
 }
+ ✓ Compiled in 137ms
+ ✓ Compiled in 729ms
+ ✓ Compiled in 137ms
+ ✓ Compiled in 436ms
