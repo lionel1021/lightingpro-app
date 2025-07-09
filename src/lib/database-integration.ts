@@ -5,11 +5,12 @@
 
 import { createClient } from '@supabase/supabase-js'
 import { LightingProduct } from './types'
+import { getSupabaseConfig, isDemoMode } from './demo-mode'
 
-const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL!
-const supabaseServiceKey = process.env.SUPABASE_SERVICE_ROLE_KEY!
+const config = getSupabaseConfig()
+const supabaseServiceKey = process.env.SUPABASE_SERVICE_ROLE_KEY || 'demo_service_key'
 
-export const supabase = createClient(supabaseUrl, supabaseServiceKey)
+export const supabase = isDemoMode() ? null : createClient(config.url, supabaseServiceKey)
 
 // 🏗️ 架构智能体：优化的数据库接口
 export interface DatabaseProduct {
@@ -99,6 +100,20 @@ export class SmartProductDatabase {
     } = filters
 
     // 🧠 SuperClaude：构建智能查询 - 优化版本避免N+1问题
+    if (isDemoMode() || !supabase) {
+      // 演示模式：返回空结果
+      return {
+        products: [],
+        total: 0,
+        facets: {
+          brands: [],
+          categories: [],
+          priceRanges: [],
+          avgRating: 0
+        }
+      }
+    }
+    
     let query = supabase
       .from('lighting_products')
       .select(`
@@ -184,6 +199,11 @@ export class SmartProductDatabase {
     excludeIds?: string[]
     limit?: number
   }): Promise<DatabaseProduct[]> {
+    
+    // 演示模式：返回空结果
+    if (isDemoMode() || !supabase) {
+      return []
+    }
     
     const {
       userId,
@@ -290,6 +310,16 @@ export class SmartProductDatabase {
   // 🔧 MCP：用户偏好分析
   private static async getUserPreferences(userId: string) {
     try {
+      // 演示模式：返回空用户偏好
+      if (isDemoMode() || !supabase) {
+        return {
+          favoriteBrands: [],
+          favoriteCategories: [],
+          avgBudget: 500,
+          preferredRooms: ['客厅']
+        }
+      }
+      
       // 获取用户收藏的品牌和分类
       const { data: favorites } = await supabase
         .from('user_favorites')
@@ -317,6 +347,16 @@ export class SmartProductDatabase {
   // 🤖 MCP：分面数据生成
   private static async generateFacets(baseFilters: any) {
     try {
+      // 演示模式：返回空分面数据
+      if (isDemoMode() || !supabase) {
+        return {
+          brands: [],
+          categories: [],
+          priceRanges: [],
+          avgRating: 0
+        }
+      }
+      
       // 并行查询分面数据
       const [brandsData, categoriesData] = await Promise.all([
         supabase
@@ -375,6 +415,11 @@ export class SmartProductDatabase {
     metadata?: Record<string, any>
   }) {
     try {
+      // 演示模式：跳过记录
+      if (isDemoMode() || !supabase) {
+        return { success: true }
+      }
+      
       await supabase.from('user_interactions').insert({
         user_id: data.userId || null,
         session_id: data.sessionId,
