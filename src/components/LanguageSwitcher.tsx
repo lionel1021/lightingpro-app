@@ -17,7 +17,18 @@ export function LanguageSwitcher() {
   
   useEffect(() => {
     setMounted(true);
-    // 从cookie获取当前语言
+    
+    // 首先从URL获取当前语言
+    const path = window.location.pathname;
+    const urlLocale = path.match(/^\/(en|zh|fr|es|de|it)/)?.[1];
+    
+    if (urlLocale) {
+      setCurrentLocale(urlLocale);
+      console.log('Current locale from URL:', urlLocale);
+      return;
+    }
+    
+    // 如果URL中没有语言前缀，从cookie获取
     const getCookie = (name: string) => {
       const value = `; ${document.cookie}`;
       const parts = value.split(`; ${name}=`);
@@ -25,7 +36,7 @@ export function LanguageSwitcher() {
       return null;
     };
     
-    const cookieLocale = getCookie('NEXT_LOCALE') || 'zh';
+    const cookieLocale = getCookie('NEXT_LOCALE') || 'en';
     setCurrentLocale(cookieLocale);
     
     console.log('Current locale from cookie:', cookieLocale);
@@ -44,10 +55,24 @@ export function LanguageSwitcher() {
     try {
       // 设置cookie
       document.cookie = `NEXT_LOCALE=${newLocale}; path=/; max-age=31536000; SameSite=Strict`;
-      console.log('Cookie set, reloading page...');
+      console.log('Cookie set, navigating to locale...');
       
-      // 立即刷新页面
-      window.location.reload();
+      // 获取当前路径
+      const currentPath = window.location.pathname;
+      let newPath = '';
+      
+      // 如果当前路径已经包含语言前缀，替换它
+      if (currentPath.match(/^\/(en|zh|fr|es|de|it)(\/|$)/)) {
+        newPath = currentPath.replace(/^\/(en|zh|fr|es|de|it)/, `/${newLocale}`);
+      } else {
+        // 如果没有语言前缀，添加新的语言前缀
+        newPath = `/${newLocale}${currentPath === '/' ? '' : currentPath}`;
+      }
+      
+      console.log('Navigating from', currentPath, 'to', newPath);
+      
+      // 导航到新的语言路径
+      window.location.href = newPath;
     } catch (error) {
       console.error('Language switch failed:', error);
       setIsChanging(false);
