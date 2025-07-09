@@ -19,19 +19,31 @@ export function LanguageSwitcherSimple() {
 
   useEffect(() => {
     setMounted(true);
-    // 延迟获取cookie，确保组件先正确挂载
-    setTimeout(() => {
-      const getCookie = (name: string) => {
-        if (typeof document === 'undefined') return null;
-        const value = `; ${document.cookie}`;
-        const parts = value.split(`; ${name}=`);
-        if (parts.length === 2) return parts.pop()?.split(';').shift();
-        return null;
-      };
-      
-      const savedLocale = getCookie('NEXT_LOCALE') || 'en';
-      setCurrentLocale(savedLocale);
-    }, 0);
+    
+    // 首先从URL检测当前语言
+    const path = window.location.pathname;
+    const urlLocale = path.match(/^\/(en|zh|fr|es|de|it)/)?.[1];
+    
+    if (urlLocale) {
+      console.log('从URL检测到语言:', urlLocale);
+      setCurrentLocale(urlLocale);
+      // 同步到cookie
+      document.cookie = `NEXT_LOCALE=${urlLocale}; path=/; max-age=31536000; SameSite=Strict`;
+      return;
+    }
+    
+    // 如果URL中没有语言，从cookie获取
+    const getCookie = (name: string) => {
+      if (typeof document === 'undefined') return null;
+      const value = `; ${document.cookie}`;
+      const parts = value.split(`; ${name}=`);
+      if (parts.length === 2) return parts.pop()?.split(';').shift();
+      return null;
+    };
+    
+    const savedLocale = getCookie('NEXT_LOCALE') || 'en';
+    console.log('从Cookie检测到语言:', savedLocale);
+    setCurrentLocale(savedLocale);
   }, []);
 
   const handleLanguageChange = (newLocale: string) => {
@@ -39,11 +51,37 @@ export function LanguageSwitcherSimple() {
     
     console.log(`切换语言：${currentLocale} -> ${newLocale}`);
     
-    // 设置cookie
+    // 清除所有相关的cookie
+    document.cookie = 'NEXT_LOCALE=; path=/; expires=Thu, 01 Jan 1970 00:00:00 GMT';
+    
+    // 设置新的cookie
     document.cookie = `NEXT_LOCALE=${newLocale}; path=/; max-age=31536000; SameSite=Strict`;
     
-    // 立即重新加载页面
-    window.location.reload();
+    // 获取当前路径并构建新的语言路径
+    const currentPath = window.location.pathname;
+    let newPath = '';
+    
+    // 如果当前路径包含语言前缀，替换它
+    if (currentPath.match(/^\/(en|zh|fr|es|de|it)(\/|$)/)) {
+      newPath = currentPath.replace(/^\/(en|zh|fr|es|de|it)/, `/${newLocale}`);
+    } else {
+      // 如果没有语言前缀，添加新的语言前缀
+      newPath = `/${newLocale}${currentPath === '/' ? '' : currentPath}`;
+    }
+    
+    // 如果路径没有变化，强制添加时间戳
+    if (newPath === currentPath) {
+      newPath = `/${newLocale}`;
+    }
+    
+    console.log(`导航：${currentPath} -> ${newPath}`);
+    
+    // 添加缓存破坏参数并强制跳转
+    const timestamp = Date.now();
+    const finalUrl = `${newPath}?_lang=${newLocale}&_t=${timestamp}`;
+    
+    // 强制跳转，破坏缓存
+    window.location.replace(finalUrl);
   };
 
   if (!mounted) {
