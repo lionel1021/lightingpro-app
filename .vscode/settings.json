@@ -1,0 +1,80 @@
+{
+  "editor.formatOnSave": true,
+  "editor.defaultFormatter": "esbenp.prettier-vscode",
+  "editor.codeActionsOnSave": {
+    "source.fixAll.eslint": "explicit",
+    "source.organizeImports": "explicit"
+  },
+  "typescript.preferences.quoteStyle": "single",
+  "emmet.includeLanguages": {
+    "javascript": "javascriptreact",
+    "typescript": "typescriptreact"
+  },
+  "tailwindCSS.includeLanguages": {
+    "plaintext": "html"
+  },
+  "files.associations": {
+    "*.css": "tailwindcss"
+  },
+  "editor.quickSuggestions": {
+    "strings": true
+  },
+  "css.validate": false,
+  "scss.validate": false,
+  "less.validate": false,
+  
+  // MCP增强代码生成器配置
+  "mcp.servers": {
+    "lighting-enhanced-codegen": {
+      "command": "node",
+      "args": ["./mcp/enhanced-codegen-pro.js"],
+      "env": {
+        "NODE_ENV": "development"
+      }
+    }
+  },
+  
+  // AI代码助手配置
+  "ai.codeGeneration": {
+    "enabled": true,
+    "provider": "mcp",
+    "autoSuggest": true,
+    "qualityCheck": true
+  },
+  
+  // 代码质量配置
+  "editor.rulers": [80, 120],
+  "editor.wordWrap": "bounded",
+  "editor.wordWrapColumn": 120,
+  
+  // TypeScript配置
+  "typescript.updateImportsOnFileMove.enabled": "always",
+  "typescript.suggest.autoImports": true,
+  "typescript.preferences.importModuleSpecifier": "relative",
+  
+  // Tailwind CSS配置
+  "tailwindCSS.experimental.classRegex": [
+    ["cva\\(([^)]*)\\)", "[\"'`]([^\"'`]*).*?[\"'`]"],
+    ["cx\\(([^)]*)\\)", "(?:'|\"|`)([^']*)(?:'|\"|`)"]
+  ],
+  
+  // 智能提示配置
+  "editor.suggest.insertMode": "replace",
+  "editor.acceptSuggestionOnCommitCharacter": false,
+  "editor.acceptSuggestionOnEnter": "on",
+  
+  // 文件监控配置
+  "files.watcherExclude": {
+    "**/node_modules/**": true,
+    "**/.git/**": true,
+    "**/dist/**": true,
+    "**/.next/**": true
+  },
+  
+  // 工作区信任配置
+  "security.workspace.trust.untrustedFiles": "open",
+  
+  // 扩展推荐自动安装
+  "extensions.autoUpdate": true,
+  "extensions.autoCheckUpdates": true
+}

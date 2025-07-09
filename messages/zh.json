@@ -1,0 +1,17 @@
+{
+  "common": {
+    "loading": "加载中...",
+    "error": "错误",
+    "success": "成功",
+    "search": "搜索"
+  },
+  "nav": {
+    "home": "首页",
+    "products": "产品",
+    "recommendations": "推荐"
+  },
+  "home": {
+    "title": "智能照明专家",
+    "subtitle": "AI驱动的照明解决方案"
+  }
+}

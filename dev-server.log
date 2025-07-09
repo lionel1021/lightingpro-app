@@ -1,0 +1,26 @@
+
+> lighting-app@0.1.0 dev
+> next dev --turbopack
+
+(node:67014) [MODULE_TYPELESS_PACKAGE_JSON] Warning: Module type of file:///Users/macbookpro/Documents/claude%E7%BC%96%E7%A0%81/claude%E7%BB%83%E6%89%8B/lighting-app/next.config.js is not specified and it doesn't parse as CommonJS.
+Reparsing as ES module because module syntax was detected. This incurs a performance overhead.
+To eliminate this warning, add "type": "module" to /Users/macbookpro/Documents/claude编码/claude练手/lighting-app/package.json.
+(Use `node --trace-warnings ...` to show where the warning was created)
+   ▲ Next.js 15.3.5 (Turbopack)
+   - Local:        http://localhost:3000
+   - Network:      http://192.168.31.98:3000
+   - Environments: .env.local
+
+ ✓ Starting...
+(node:67017) [MODULE_TYPELESS_PACKAGE_JSON] Warning: Module type of file:///Users/macbookpro/Documents/claude%E7%BC%96%E7%A0%81/claude%E7%BB%83%E6%89%8B/lighting-app/next.config.js is not specified and it doesn't parse as CommonJS.
+Reparsing as ES module because module syntax was detected. This incurs a performance overhead.
+To eliminate this warning, add "type": "module" to /Users/macbookpro/Documents/claude编码/claude练手/lighting-app/package.json.
+(Use `node --trace-warnings ...` to show where the warning was created)
+ ✓ Compiled middleware in 198ms
+ ✓ Ready in 1584ms
+ ○ Compiling /[locale] ...
+ ✓ Compiled /[locale] in 3.4s
+ HEAD /en 200 in 4583ms
+ GET /en 200 in 130ms
+ GET /en 200 in 108ms
+[?25h

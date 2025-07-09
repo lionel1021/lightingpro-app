@@ -1,0 +1,24 @@
+{
+  "recommendations": [
+    "esbenp.prettier-vscode",
+    "dbaeumer.vscode-eslint",
+    "bradlc.vscode-tailwindcss",
+    "ms-vscode.vscode-typescript-next",
+    "eamodio.gitlens",
+    "ms-vscode.vscode-docker",
+    "cweijan.vscode-postgresql-client2",
+    "usernamehw.errorlens",
+    "formulahendry.auto-rename-tag",
+    "christian-kohler.path-intellisense",
+    "ms-vscode.vscode-json",
+    "ms-vscode.vscode-node-debug2",
+    "ms-vscode.js-debug",
+    "ms-playwright.playwright",
+    "ms-vscode.vscode-markdown",
+    "ms-vscode.thunder-client",
+    "ms-vscode.vscode-theme-github"
+  ],
+  "unwantedRecommendations": [
+    "ms-vscode.vscode-typescript-deprecated"
+  ]
+}

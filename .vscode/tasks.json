@@ -1,0 +1,139 @@
+{
+  "version": "2.0.0",
+  "tasks": [
+    {
+      "label": "🚀 启动MCP AI代码生成器",
+      "type": "shell",
+      "command": "node",
+      "args": ["mcp/enhanced-codegen-pro.js"],
+      "group": "build",
+      "presentation": {
+        "echo": true,
+        "reveal": "always",
+        "focus": false,
+        "panel": "new",
+        "showReuseMessage": true,
+        "clear": false
+      },
+      "problemMatcher": [],
+      "detail": "启动AI增强代码生成器服务器",
+      "icon": {
+        "id": "robot",
+        "color": "terminal.ansiMagenta"
+      }
+    },
+    {
+      "label": "🧪 测试AI代码生成",
+      "type": "shell",
+      "command": "node",
+      "args": ["mcp/mcp-test-client.js"],
+      "group": "test",
+      "presentation": {
+        "echo": true,
+        "reveal": "always",
+        "focus": true,
+        "panel": "new"
+      },
+      "problemMatcher": [],
+      "detail": "运行AI代码生成功能测试",
+      "icon": {
+        "id": "beaker",
+        "color": "terminal.ansiCyan"
+      }
+    },
+    {
+      "label": "🎮 AI交互式演示",
+      "type": "shell",
+      "command": "node",
+      "args": ["mcp/demo-intelligent-codegen.js"],
+      "group": "test",
+      "presentation": {
+        "echo": true,
+        "reveal": "always",
+        "focus": true,
+        "panel": "new"
+      },
+      "problemMatcher": [],
+      "detail": "启动AI代码生成器交互式演示",
+      "icon": {
+        "id": "game",
+        "color": "terminal.ansiGreen"
+      }
+    },
+    {
+      "label": "📊 检查MCP状态",
+      "type": "shell",
+      "command": "./mcp/mcp-status.sh",
+      "group": "build",
+      "presentation": {
+        "echo": true,
+        "reveal": "always",
+        "focus": false,
+        "panel": "shared"
+      },
+      "problemMatcher": [],
+      "detail": "检查MCP服务器和AI功能状态",
+      "icon": {
+        "id": "pulse",
+        "color": "terminal.ansiBlue"
+      }
+    },
+    {
+      "label": "🔧 启动开发服务器",
+      "type": "npm",
+      "script": "dev",
+      "group": "build",
+      "presentation": {
+        "echo": true,
+        "reveal": "always",
+        "focus": false,
+        "panel": "shared"
+      },
+      "problemMatcher": [],
+      "detail": "启动Next.js开发服务器",
+      "icon": {
+        "id": "server-process",
+        "color": "terminal.ansiYellow"
+      }
+    },
+    {
+      "label": "🏗️ 构建项目",
+      "type": "npm",
+      "script": "build",
+      "group": "build",
+      "presentation": {
+        "echo": true,
+        "reveal": "always",
+        "focus": true,
+        "panel": "new"
+      },
+      "problemMatcher": ["$tsc"],
+      "detail": "构建生产版本",
+      "icon": {
+        "id": "tools",
+        "color": "terminal.ansiRed"
+      }
+    },
+    {
+      "label": "🎯 AI智能开发流程",
+      "dependsOrder": "sequence",
+      "dependsOn": [
+        "📊 检查MCP状态",
+        "🚀 启动MCP AI代码生成器",
+        "🔧 启动开发服务器"
+      ],
+      "group": "build",
+      "presentation": {
+        "echo": true,
+        "reveal": "always",
+        "focus": true,
+        "panel": "new"
+      },
+      "detail": "一键启动完整AI辅助开发环境",
+      "icon": {
+        "id": "rocket",
+        "color": "terminal.ansiMagenta"
+      }
+    }
+  ]
+}

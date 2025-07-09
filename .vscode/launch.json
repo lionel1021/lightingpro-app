@@ -1,0 +1,83 @@
+{
+  "version": "0.2.0",
+  "configurations": [
+    {
+      "name": "🚀 启动Next.js开发服务器",
+      "type": "node",
+      "request": "launch",
+      "cwd": "${workspaceFolder}",
+      "runtimeExecutable": "npm",
+      "runtimeArgs": ["run", "dev"],
+      "console": "integratedTerminal",
+      "internalConsoleOptions": "neverOpen",
+      "port": 3000,
+      "serverReadyAction": {
+        "pattern": "ready - started server on .+, url: (https?://\\S+)",
+        "uriFormat": "%s",
+        "action": "openExternally"
+      }
+    },
+    {
+      "name": "🧠 调试MCP AI代码生成器",
+      "type": "node",
+      "request": "launch",
+      "program": "${workspaceFolder}/mcp/enhanced-codegen-pro.js",
+      "cwd": "${workspaceFolder}",
+      "console": "integratedTerminal",
+      "internalConsoleOptions": "neverOpen",
+      "env": {
+        "NODE_ENV": "development",
+        "AI_ENHANCED": "true",
+        "DEBUG": "mcp:*"
+      }
+    },
+    {
+      "name": "🧪 调试AI功能测试",
+      "type": "node",
+      "request": "launch",
+      "program": "${workspaceFolder}/mcp/mcp-test-client.js",
+      "cwd": "${workspaceFolder}",
+      "console": "integratedTerminal",
+      "internalConsoleOptions": "neverOpen",
+      "env": {
+        "NODE_ENV": "development"
+      }
+    },
+    {
+      "name": "🎮 调试交互式演示",
+      "type": "node",
+      "request": "launch",
+      "program": "${workspaceFolder}/mcp/demo-intelligent-codegen.js",
+      "cwd": "${workspaceFolder}",
+      "console": "integratedTerminal",
+      "internalConsoleOptions": "neverOpen"
+    },
+    {
+      "name": "Next.js: debug client-side",
+      "type": "chrome",
+      "request": "launch",
+      "url": "http://localhost:3000"
+    },
+    {
+      "name": "🔧 附加到MCP进程",
+      "type": "node",
+      "request": "attach",
+      "port": 9229,
+      "skipFiles": ["<node_internals>/**"],
+      "localRoot": "${workspaceFolder}",
+      "remoteRoot": "${workspaceFolder}",
+      "trace": "verbose"
+    }
+  ],
+  "compounds": [
+    {
+      "name": "🎯 完整AI开发环境",
+      "configurations": [
+        "🧠 调试MCP AI代码生成器",
+        "🚀 启动Next.js开发服务器"
+      ],
+      "stopAll": true,
+      "preLaunchTask": "📊 检查MCP状态"
+    }
+  ]
+}

@@ -1,0 +1,43 @@
+[
+  {
+    "key": "ctrl+alt+g",
+    "command": "workbench.action.tasks.runTask",
+    "args": "🚀 启动MCP AI代码生成器",
+    "when": "editorTextFocus"
+  },
+  {
+    "key": "ctrl+alt+t",
+    "command": "workbench.action.tasks.runTask", 
+    "args": "🧪 测试AI代码生成",
+    "when": "editorTextFocus"
+  },
+  {
+    "key": "ctrl+alt+d",
+    "command": "workbench.action.tasks.runTask",
+    "args": "🎮 AI交互式演示",
+    "when": "editorTextFocus"
+  },
+  {
+    "key": "ctrl+alt+s",
+    "command": "workbench.action.tasks.runTask",
+    "args": "📊 检查MCP状态",
+    "when": "editorTextFocus"
+  },
+  {
+    "key": "ctrl+alt+i",
+    "command": "workbench.action.tasks.runTask",
+    "args": "🎯 AI智能开发流程",
+    "when": "editorTextFocus"
+  },
+  {
+    "key": "ctrl+shift+a",
+    "command": "workbench.action.showCommands",
+    "when": "editorTextFocus"
+  },
+  {
+    "key": "f12",
+    "command": "workbench.action.tasks.runTask",
+    "args": "🔧 启动开发服务器",
+    "when": "!terminalFocus"
+  }
+]

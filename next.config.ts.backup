@@ -1,0 +1,32 @@
+import type { NextConfig } from "next";
+
+const nextConfig: NextConfig = {
+  eslint: {
+    ignoreDuringBuilds: true,
+  },
+  typescript: {
+    ignoreBuildErrors: true,
+  },
+  
+  images: {
+    unoptimized: true, // 简化图片处理
+    remotePatterns: [
+      {
+        protocol: 'https',
+        hostname: 'images.unsplash.com',
+        port: '',
+        pathname: '/**',
+      }
+    ]
+  },
+  
+  // 基础配置
+  compress: true,
+  poweredByHeader: false,
+  
+  experimental: {
+    optimizePackageImports: ['lucide-react']
+  }
+};
+
+export default nextConfig;

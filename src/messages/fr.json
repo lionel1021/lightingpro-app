@@ -1,0 +1,259 @@
+{
+  "common": {
+    "loading": "Chargement...",
+    "error": "Erreur",
+    "success": "Succès",
+    "save": "Enregistrer",
+    "cancel": "Annuler",
+    "delete": "Supprimer",
+    "edit": "Modifier",
+    "view": "Voir",
+    "search": "Rechercher",
+    "filter": "Filtrer",
+    "sort": "Trier",
+    "price": "Prix",
+    "rating": "Note",
+    "brand": "Marque",
+    "category": "Catégorie",
+    "features": "Caractéristiques",
+    "description": "Description"
+  },
+  
+  "navigation": {
+    "home": "Accueil",
+    "products": "Produits",
+    "recommendations": "Recommandations",
+    "questionnaire": "Questionnaire",
+    "profile": "Profil",
+    "cart": "Panier",
+    "favorites": "Favoris",
+    "admin": "Admin"
+  },
+  
+  "home": {
+    "title": "LightingPro - Expert en Recommandations d'Éclairage IA",
+    "subtitle": "Expert en Éclairage IA",
+    "heroTitle": "LightingPro - Expert en Éclairage IA",
+    "heroSubtitle": "Obtenez des recommandations de produits d'éclairage personnalisées basées sur votre type de pièce, vos préférences de style et votre budget",
+    "startQuestionnaire": "Commencer les Recommandations Intelligentes",
+    "browsProducts": "Parcourir Tous les Produits",
+    "featuredProducts": "Produits en Vedette",
+    "whyChooseUs": "Pourquoi Nous Choisir",
+    "features": {
+      "ai": {
+        "title": "Recommandations IA Intelligentes",
+        "description": "Des algorithmes avancés recommandent les produits d'éclairage les plus adaptés pour vous"
+      },
+      "personalized": {
+        "title": "Solutions Personnalisées",
+        "description": "Solutions d'éclairage personnalisées basées sur les caractéristiques de votre espace et vos préférences personnelles"
+      },
+      "quality": {
+        "title": "Produits de Qualité",
+        "description": "Soigneusement sélectionnés parmi des marques renommées pour garantir la qualité des produits et l'expérience utilisateur"
+      },
+      "expert": {
+        "title": "Conseils Professionnels",
+        "description": "Des consultants en éclairage professionnels fournissent des services de consultation individuels"
+      }
+    }
+  },
+  
+  "products": {
+    "title": "Centre de Produits",
+    "searchPlaceholder": "Rechercher des produits d'éclairage...",
+    "noResults": "Aucun produit trouvé",
+    "loadMore": "Charger Plus",
+    "sortBy": {
+      "relevance": "Pertinence",
+      "price_asc": "Prix: Bas à Élevé",
+      "price_desc": "Prix: Élevé à Bas",
+      "rating": "Note",
+      "newest": "Plus Récent"
+    },
+    "filters": {
+      "priceRange": "Gamme de Prix",
+      "brands": "Marques",
+      "categories": "Catégories",
+      "rating": "Note",
+      "features": "Caractéristiques"
+    },
+    "details": {
+      "specifications": "Spécifications",
+      "features": "Caractéristiques",
+      "reviews": "Avis",
+      "similar": "Produits Similaires",
+      "addToCart": "Ajouter au Panier",
+      "addToFavorites": "Ajouter aux Favoris",
+      "share": "Partager",
+      "compareProducts": "Comparer les Produits"
+    }
+  },
+  
+  "questionnaire": {
+    "title": "Questionnaire d'Éclairage Personnalisé",
+    "subtitle": "Dites-nous vos besoins pour des recommandations exclusives",
+    "progress": "Progrès",
+    "next": "Suivant",
+    "previous": "Précédent",
+    "finish": "Terminer",
+    "questions": {
+      "roomType": {
+        "title": "Quel type de pièce a besoin d'éclairage?",
+        "options": {
+          "living": "Salon",
+          "bedroom": "Chambre",
+          "kitchen": "Cuisine",
+          "bathroom": "Salle de Bain",
+          "study": "Bureau",
+          "dining": "Salle à Manger",
+          "outdoor": "Extérieur"
+        }
+      },
+      "roomSize": {
+        "title": "Quelle est la taille de la pièce?",
+        "options": {
+          "small": "Petite (< 20 m²)",
+          "medium": "Moyenne (20-40 m²)",
+          "large": "Grande (> 40 m²)"
+        }
+      },
+      "style": {
+        "title": "Quel est votre style de décoration préféré?",
+        "options": {
+          "modern": "Moderne Minimaliste",
+          "classical": "Européen Classique",
+          "industrial": "Industriel",
+          "nordic": "Nordique",
+          "chinese": "Style Chinois",
+          "american": "Campagne Américaine"
+        }
+      },
+      "budget": {
+        "title": "Quelle est votre gamme de budget?",
+        "min": "Budget Minimum",
+        "max": "Budget Maximum"
+      },
+      "features": {
+        "title": "Quelles fonctionnalités spéciales avez-vous besoin?",
+        "options": {
+          "dimming": "Fonction de Gradation",
+          "colorChanging": "Changement de Couleur",
+          "smartControl": "Contrôle Intelligent",
+          "voiceControl": "Contrôle Vocal",
+          "scheduling": "Programmation",
+          "energySaving": "Économie d'Énergie"
+        }
+      }
+    }
+  },
+  
+  "recommendations": {
+    "title": "Recommandations pour Vous",
+    "subtitle": "Soigneusement sélectionnées selon vos besoins",
+    "noRecommendations": "Aucune recommandation disponible, veuillez d'abord compléter le questionnaire",
+    "retakeQuestionnaire": "Refaire le Questionnaire",
+    "matchScore": "Score de Correspondance",
+    "whyRecommended": "Pourquoi Recommandé",
+    "viewDetails": "Voir les Détails",
+    "addToCart": "Ajouter au Panier",
+    "reasons": {
+      "styleMatch": "Correspondance de Style",
+      "budgetFit": "Budget Adapté",
+      "featureMatch": "Correspondance de Fonctionnalité",
+      "roomSizeMatch": "Correspondance de Taille de Pièce",
+      "highRating": "Note Élevée",
+      "popularChoice": "Choix Populaire"
+    }
+  },
+  
+  "profile": {
+    "title": "Profil",
+    "personalInfo": "Informations Personnelles",
+    "preferences": "Préférences",
+    "orderHistory": "Historique des Commandes",
+    "favorites": "Mes Favoris",
+    "recommendations": "Historique des Recommandations",
+    "settings": "Paramètres",
+    "language": "Paramètres de Langue",
+    "notifications": "Paramètres de Notification",
+    "privacy": "Paramètres de Confidentialité",
+    "logout": "Déconnexion"
+  },
+  
+  "cart": {
+    "title": "Panier d'Achat",
+    "empty": "Votre panier est vide",
+    "continueShopping": "Continuer les Achats",
+    "checkout": "Passer à la Caisse",
+    "total": "Total",
+    "subtotal": "Sous-total",
+    "shipping": "Livraison",
+    "tax": "Taxe",
+    "quantity": "Quantité",
+    "remove": "Retirer"
+  },
+  
+  "admin": {
+    "dashboard": "Tableau de Bord",
+    "products": "Gestion des Produits",
+    "users": "Gestion des Utilisateurs",
+    "orders": "Gestion des Commandes",
+    "analytics": "Analytique",
+    "abTesting": "Tests A/B",
+    "settings": "Paramètres Système",
+    "reports": "Centre de Rapports"
+  },
+  
+  "abTesting": {
+    "title": "Gestion des Tests A/B",
+    "subtitle": "Décisions d'optimisation de produit basées sur les données",
+    "createExperiment": "Créer une Nouvelle Expérience",
+    "experiments": "Liste des Expériences",
+    "running": "En Cours",
+    "paused": "En Pause",
+    "completed": "Terminé",
+    "draft": "Brouillon",
+    "startTest": "Démarrer le Test",
+    "pauseTest": "Pause le Test",
+    "stopTest": "Arrêter le Test",
+    "viewResults": "Voir les Résultats",
+    "statisticalSignificance": "Signification Statistique",
+    "conversionRate": "Taux de Conversion",
+    "sampleSize": "Taille de l'Échantillon",
+    "confidence": "Confiance",
+    "recommendation": "Recommandation"
+  },
+  
+  "errors": {
+    "pageNotFound": "Page Non Trouvée",
+    "serverError": "Erreur du Serveur",
+    "networkError": "Erreur Réseau",
+    "unauthorized": "Non Autorisé",
+    "forbidden": "Interdit",
+    "validationError": "Erreur de Validation",
+    "tryAgain": "Réessayer",
+    "goHome": "Retour à l'Accueil"
+  },
+  
+  "validation": {
+    "required": "Ce champ est requis",
+    "emailInvalid": "Veuillez entrer un email valide",
+    "passwordTooShort": "Le mot de passe doit contenir au moins 8 caractères",
+    "passwordMismatch": "Les mots de passe ne correspondent pas",
+    "priceInvalid": "Veuillez entrer un prix valide",
+    "numberTooSmall": "Le nombre est trop petit",
+    "numberTooLarge": "Le nombre est trop grand"
+  },
+  
+  "notifications": {
+    "productAdded": "Produit ajouté au panier",
+    "favoriteAdded": "Ajouté aux favoris",
+    "favoriteRemoved": "Retiré des favoris",
+    "profileUpdated": "Profil mis à jour",
+    "orderPlaced": "Commande passée",
+    "experimentCreated": "Expérience créée",
+    "experimentStarted": "Expérience démarrée",
+    "experimentStopped": "Expérience arrêtée"
+  }
+}

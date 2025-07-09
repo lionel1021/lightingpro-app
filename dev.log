@@ -1,0 +1,120 @@
+
+> lighting-app@0.1.0 dev
+> next dev --turbopack
+
+(node:72809) [MODULE_TYPELESS_PACKAGE_JSON] Warning: Module type of file:///Users/macbookpro/Documents/claude%E7%BC%96%E7%A0%81/claude%E7%BB%83%E6%89%8B/lighting-app/next.config.js is not specified and it doesn't parse as CommonJS.
+Reparsing as ES module because module syntax was detected. This incurs a performance overhead.
+To eliminate this warning, add "type": "module" to /Users/macbookpro/Documents/claude编码/claude练手/lighting-app/package.json.
+(Use `node --trace-warnings ...` to show where the warning was created)
+   ▲ Next.js 15.3.5 (Turbopack)
+   - Local:        http://localhost:3000
+   - Network:      http://192.168.31.98:3000
+   - Environments: .env.local
+
+ ✓ Starting...
+(node:72810) [MODULE_TYPELESS_PACKAGE_JSON] Warning: Module type of file:///Users/macbookpro/Documents/claude%E7%BC%96%E7%A0%81/claude%E7%BB%83%E6%89%8B/lighting-app/next.config.js is not specified and it doesn't parse as CommonJS.
+Reparsing as ES module because module syntax was detected. This incurs a performance overhead.
+To eliminate this warning, add "type": "module" to /Users/macbookpro/Documents/claude编码/claude练手/lighting-app/package.json.
+(Use `node --trace-warnings ...` to show where the warning was created)
+ ✓ Compiled middleware in 209ms
+ ✓ Ready in 1647ms
+ ○ Compiling /[locale] ...
+ ✓ Compiled /[locale] in 3.2s
+ HEAD /en 200 in 4339ms
+ GET /en 200 in 147ms
+ GET /en 200 in 125ms
+ GET /en 200 in 113ms
+ GET /en 200 in 134ms
+ GET /en 200 in 118ms
+ GET /en 200 in 124ms
+ GET /en 200 in 109ms
+ HEAD /en 200 in 104ms
+ GET /en 200 in 128ms
+ GET /en 200 in 109ms
+ GET /en 200 in 232ms
+ ⚠ Cross origin request detected from 192.168.31.98 to /_next/* resource. In a future major version of Next.js, you will need to explicitly configure "allowedDevOrigins" in next.config to allow this.
+Read more: https://nextjs.org/docs/app/api-reference/config/next-config-js/allowedDevOrigins
+ ✓ Compiled /favicon.ico in 421ms
+ GET /favicon.ico?favicon.45db1c09.ico 200 in 695ms
+ GET /favicon.ico 200 in 696ms
+ GET /en 200 in 108ms
+ GET /en 200 in 120ms
+ GET /en 200 in 112ms
+ GET /en 200 in 130ms
+ ⚠ Cross origin request detected from 127.0.0.1 to /_next/* resource. In a future major version of Next.js, you will need to explicitly configure "allowedDevOrigins" in next.config to allow this.
+Read more: https://nextjs.org/docs/app/api-reference/config/next-config-js/allowedDevOrigins
+ GET /favicon.ico?favicon.45db1c09.ico 200 in 318ms
+ GET /favicon.ico 200 in 325ms
+ GET /en 200 in 246ms
+ GET /favicon.ico 200 in 324ms
+ ○ Compiling /[locale]/questionnaire ...
+ ✓ Compiled /[locale]/questionnaire in 1378ms
+ GET /en/questionnaire 200 in 2092ms
+ GET /en/search 200 in 2092ms
+Error: MISSING_MESSAGE: Could not resolve `authStatus` in messages for locale `zh`.
+    at AuthStatus (src/components/AuthStatus.tsx:32:28)
+  30 | export function AuthStatus() {
+  31 |   const { user, isAuthenticated, isGuest, loading, signOut } = useAuth()
+> 32 |   const t = useTranslations('authStatus')
+     |                            ^
+  33 |   const [isSigningOut, setIsSigningOut] = useState(false)
+  34 |   const [mounted, setMounted] = useState(false)
+  35 | {
+  code: 'MISSING_MESSAGE',
+  originalMessage: 'Could not resolve `authStatus` in messages for locale `zh`.'
+}
+ GET /en 200 in 465ms
+ GET /en 200 in 133ms
+ GET /en 200 in 195ms
+ GET /en 200 in 183ms
+ GET /en 200 in 141ms
+ GET /en 200 in 119ms
+ GET /en 200 in 124ms
+ GET /en 200 in 160ms
+ GET /en 200 in 113ms
+ GET /en 200 in 128ms
+ GET /favicon.ico?favicon.45db1c09.ico 200 in 148ms
+ GET /favicon.ico 200 in 149ms
+ GET /favicon.ico?favicon.45db1c09.ico 200 in 249ms
+ GET /favicon.ico 200 in 245ms
+ GET /favicon.ico?favicon.45db1c09.ico 200 in 242ms
+ GET /favicon.ico 200 in 241ms
+ GET /favicon.ico?favicon.45db1c09.ico 200 in 239ms
+ GET /favicon.ico 200 in 241ms
+ GET /favicon.ico?favicon.45db1c09.ico 200 in 243ms
+ GET /favicon.ico 200 in 245ms
+ GET /favicon.ico 200 in 238ms
+ GET /favicon.ico?favicon.45db1c09.ico 200 in 241ms
+ ✓ Compiled in 191ms
+ ⨯ [Error: ENOENT: no such file or directory, open '/Users/macbookpro/Documents/claude编码/claude练手/lighting-app/.next/server/app/[locale]/page/app-build-manifest.json'] {
+  errno: -2,
+  code: 'ENOENT',
+  syscall: 'open',
+  path: '/Users/macbookpro/Documents/claude编码/claude练手/lighting-app/.next/server/app/[locale]/page/app-build-manifest.json'
+}
+ ○ Compiling /_error ...
+ ✓ Compiled /_error in 1796ms
+ ⨯ [Error: ENOENT: no such file or directory, open '/Users/macbookpro/Documents/claude编码/claude练手/lighting-app/.next/static/development/_buildManifest.js.tmp.qi9ysj1op9h'] {
+  errno: -2,
+  code: 'ENOENT',
+  syscall: 'open',
+  path: '/Users/macbookpro/Documents/claude编码/claude练手/lighting-app/.next/static/development/_buildManifest.js.tmp.qi9ysj1op9h'
+}
+[Error: ENOENT: no such file or directory, open '/Users/macbookpro/Documents/claude编码/claude练手/lighting-app/.next/server/app/[locale]/page/app-build-manifest.json'] {
+  errno: -2,
+  code: 'ENOENT',
+  syscall: 'open',
+  path: '/Users/macbookpro/Documents/claude编码/claude练手/lighting-app/.next/server/app/[locale]/page/app-build-manifest.json'
+}
+ ⨯ [Error: ENOENT: no such file or directory, open '/Users/macbookpro/Documents/claude编码/claude练手/lighting-app/.next/static/development/_buildManifest.js.tmp.64ps2t176n'] {
+  errno: -2,
+  code: 'ENOENT',
+  syscall: 'open',
+  path: '/Users/macbookpro/Documents/claude编码/claude练手/lighting-app/.next/static/development/_buildManifest.js.tmp.64ps2t176n'
+}
+[Error: ENOENT: no such file or directory, open '/Users/macbookpro/Documents/claude编码/claude练手/lighting-app/.next/static/development/_buildManifest.js.tmp.i4yjlkcpva'] {
+  errno: -2,
+  code: 'ENOENT',
+  syscall: 'open',
+  path: '/Users/macbookpro/Documents/claude编码/claude练手/lighting-app/.next/static/development/_buildManifest.js.tmp.i4yjlkcpva'
+}

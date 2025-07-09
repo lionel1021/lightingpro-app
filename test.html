@@ -1,0 +1,28 @@
+<\!DOCTYPE html>
+<html>
+<head>
+    <title>网络测试</title>
+    <meta charset="utf-8">
+</head>
+<body>
+    <h1>网络连接测试</h1>
+    <p>如果你能看到这个页面，说明基本网络没有问题。</p>
+    <p id="status">正在测试连接到 localhost:3000...</p>
+    
+    <script>
+        setTimeout(() => {
+            fetch('http://localhost:3000/en')
+                .then(response => {
+                    if (response.ok) {
+                        document.getElementById('status').innerHTML = '✅ localhost:3000 连接正常！<br><a href="http://localhost:3000/en">点击这里访问应用</a>';
+                    } else {
+                        document.getElementById('status').innerHTML = '❌ 服务器响应异常: ' + response.status;
+                    }
+                })
+                .catch(error => {
+                    document.getElementById('status').innerHTML = '❌ 连接失败: ' + error.message;
+                });
+        }, 1000);
+    </script>
+</body>
+</html>

@@ -1,0 +1,259 @@
+{
+  "common": {
+    "loading": "加载中...",
+    "error": "出错了",
+    "success": "成功",
+    "save": "保存",
+    "cancel": "取消",
+    "delete": "删除",
+    "edit": "编辑",
+    "view": "查看",
+    "search": "搜索",
+    "filter": "筛选",
+    "sort": "排序",
+    "price": "价格",
+    "rating": "评分",
+    "brand": "品牌",
+    "category": "分类",
+    "features": "特性",
+    "description": "描述"
+  },
+  
+  "navigation": {
+    "home": "首页",
+    "products": "产品",
+    "recommendations": "推荐",
+    "questionnaire": "问卷调查",
+    "profile": "个人中心",
+    "cart": "购物车",
+    "favorites": "收藏夹",
+    "admin": "管理后台"
+  },
+  
+  "home": {
+    "title": "LightingPro - 智能照明推荐专家",
+    "subtitle": "AI智能照明专家",
+    "heroTitle": "LightingPro - AI智能照明专家",
+    "heroSubtitle": "基于您的房间类型、风格偏好和预算，获得个性化的照明产品推荐",
+    "startQuestionnaire": "开始智能推荐",
+    "browsProducts": "浏览所有产品",
+    "featuredProducts": "精选产品",
+    "whyChooseUs": "为什么选择我们",
+    "features": {
+      "ai": {
+        "title": "AI智能推荐",
+        "description": "基于先进算法，为您推荐最适合的照明产品"
+      },
+      "personalized": {
+        "title": "个性化方案",
+        "description": "根据您的空间特点和个人喜好定制照明方案"
+      },
+      "quality": {
+        "title": "优质产品",
+        "description": "精选知名品牌，确保产品质量和使用体验"
+      },
+      "expert": {
+        "title": "专业建议",
+        "description": "专业照明顾问为您提供一对一咨询服务"
+      }
+    }
+  },
+  
+  "products": {
+    "title": "产品中心",
+    "searchPlaceholder": "搜索照明产品...",
+    "noResults": "没有找到相关产品",
+    "loadMore": "加载更多",
+    "sortBy": {
+      "relevance": "相关性",
+      "price_asc": "价格从低到高",
+      "price_desc": "价格从高到低",
+      "rating": "评分",
+      "newest": "最新发布"
+    },
+    "filters": {
+      "priceRange": "价格区间",
+      "brands": "品牌",
+      "categories": "分类",
+      "rating": "评分",
+      "features": "特性"
+    },
+    "details": {
+      "specifications": "产品规格",
+      "features": "产品特性",
+      "reviews": "用户评价",
+      "similar": "相似产品",
+      "addToCart": "加入购物车",
+      "addToFavorites": "加入收藏",
+      "share": "分享",
+      "compareProducts": "产品对比"
+    }
+  },
+  
+  "questionnaire": {
+    "title": "个性化照明问卷",
+    "subtitle": "告诉我们您的需求，获得专属推荐",
+    "progress": "进度",
+    "next": "下一步",
+    "previous": "上一步",
+    "finish": "完成",
+    "questions": {
+      "roomType": {
+        "title": "您需要照明的房间类型？",
+        "options": {
+          "living": "客厅",
+          "bedroom": "卧室",
+          "kitchen": "厨房",
+          "bathroom": "卫生间",
+          "study": "书房",
+          "dining": "餐厅",
+          "outdoor": "户外"
+        }
+      },
+      "roomSize": {
+        "title": "房间大小是多少？",
+        "options": {
+          "small": "小型 (< 20㎡)",
+          "medium": "中型 (20-40㎡)",
+          "large": "大型 (> 40㎡)"
+        }
+      },
+      "style": {
+        "title": "您偏好的装修风格？",
+        "options": {
+          "modern": "现代简约",
+          "classical": "古典欧式",
+          "industrial": "工业风",
+          "nordic": "北欧风",
+          "chinese": "中式风格",
+          "american": "美式乡村"
+        }
+      },
+      "budget": {
+        "title": "您的预算范围？",
+        "min": "最低预算",
+        "max": "最高预算"
+      },
+      "features": {
+        "title": "您需要哪些特殊功能？",
+        "options": {
+          "dimming": "调光功能",
+          "colorChanging": "变色功能",
+          "smartControl": "智能控制",
+          "voiceControl": "语音控制",
+          "scheduling": "定时功能",
+          "energySaving": "节能环保"
+        }
+      }
+    }
+  },
+  
+  "recommendations": {
+    "title": "为您推荐",
+    "subtitle": "基于您的需求精心挑选",
+    "noRecommendations": "暂无推荐，请先完成问卷调查",
+    "retakeQuestionnaire": "重新填写问卷",
+    "matchScore": "匹配度",
+    "whyRecommended": "推荐理由",
+    "viewDetails": "查看详情",
+    "addToCart": "加入购物车",
+    "reasons": {
+      "styleMatch": "风格匹配",
+      "budgetFit": "预算适合",
+      "featureMatch": "功能匹配",
+      "roomSizeMatch": "空间大小匹配",
+      "highRating": "用户好评",
+      "popularChoice": "热门选择"
+    }
+  },
+  
+  "profile": {
+    "title": "个人中心",
+    "personalInfo": "个人信息",
+    "preferences": "偏好设置",
+    "orderHistory": "订单历史",
+    "favorites": "我的收藏",
+    "recommendations": "推荐历史",
+    "settings": "设置",
+    "language": "语言设置",
+    "notifications": "通知设置",
+    "privacy": "隐私设置",
+    "logout": "退出登录"
+  },
+  
+  "cart": {
+    "title": "购物车",
+    "empty": "您的购物车是空的",
+    "continueShopping": "继续购物",
+    "checkout": "去结算",
+    "total": "总计",
+    "subtotal": "小计",
+    "shipping": "运费",
+    "tax": "税费",
+    "quantity": "数量",
+    "remove": "移除"
+  },
+  
+  "admin": {
+    "dashboard": "管理面板",
+    "products": "产品管理",
+    "users": "用户管理",
+    "orders": "订单管理",
+    "analytics": "数据分析",
+    "abTesting": "A/B测试",
+    "settings": "系统设置",
+    "reports": "报告中心"
+  },
+  
+  "abTesting": {
+    "title": "A/B测试管理",
+    "subtitle": "数据驱动的产品优化决策",
+    "createExperiment": "创建新实验",
+    "experiments": "实验列表",
+    "running": "运行中",
+    "paused": "已暂停",
+    "completed": "已完成",
+    "draft": "草稿",
+    "startTest": "开始测试",
+    "pauseTest": "暂停测试",
+    "stopTest": "停止测试",
+    "viewResults": "查看结果",
+    "statisticalSignificance": "统计显著性",
+    "conversionRate": "转化率",
+    "sampleSize": "样本大小",
+    "confidence": "置信度",
+    "recommendation": "建议"
+  },
+  
+  "errors": {
+    "pageNotFound": "页面未找到",
+    "serverError": "服务器错误",
+    "networkError": "网络错误",
+    "unauthorized": "未授权访问",
+    "forbidden": "访问被禁止",
+    "validationError": "输入验证失败",
+    "tryAgain": "请重试",
+    "goHome": "返回首页"
+  },
+  
+  "validation": {
+    "required": "此字段为必填项",
+    "emailInvalid": "请输入有效的电子邮箱",
+    "passwordTooShort": "密码至少需要8个字符",
+    "passwordMismatch": "密码不匹配",
+    "priceInvalid": "请输入有效的价格",
+    "numberTooSmall": "数值太小",
+    "numberTooLarge": "数值太大"
+  },
+  
+  "notifications": {
+    "productAdded": "产品已添加到购物车",
+    "favoriteAdded": "已添加到收藏夹",
+    "favoriteRemoved": "已从收藏夹移除",
+    "profileUpdated": "个人资料已更新",
+    "orderPlaced": "订单已提交",
+    "experimentCreated": "实验已创建",
+    "experimentStarted": "实验已开始",
+    "experimentStopped": "实验已停止"
+  }
+}

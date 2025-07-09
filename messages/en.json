@@ -1,0 +1,17 @@
+{
+  "common": {
+    "loading": "Loading...",
+    "error": "Error",
+    "success": "Success",
+    "search": "Search"
+  },
+  "nav": {
+    "home": "Home",
+    "products": "Products",
+    "recommendations": "Recommendations"
+  },
+  "home": {
+    "title": "LightingPro",
+    "subtitle": "AI-Powered Lighting Recommendations"
+  }
+}

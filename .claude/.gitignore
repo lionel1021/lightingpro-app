@@ -1,0 +1,6 @@
+# SuperClaude项目数据
+projects/
+todos/
+statsig/
+*.jsonl
+*.pid

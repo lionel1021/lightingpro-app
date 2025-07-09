@@ -1,0 +1,56 @@
+{
+  "mcpServers": {
+    "lighting-enhanced-codegen": {
+      "command": "node",
+      "args": [
+        "./mcp/enhanced-codegen-pro.js"
+      ],
+      "cwd": "/Users/macbookpro/Documents/claude编码/claude练手/lighting-app",
+      "env": {
+        "NODE_ENV": "development",
+        "AI_ENHANCED": "true"
+      },
+      "capabilities": [
+        "ai_code_analysis",
+        "intelligent_generation",
+        "code_refactoring",
+        "quality_optimization",
+        "design_patterns",
+        "performance_optimization"
+      ],
+      "enabled": true,
+      "autoStart": true,
+      "timeout": 30000
+    },
+    "lighting-smart-codegen": {
+      "command": "node",
+      "args": [
+        "./mcp/smart-codegen.js"
+      ],
+      "cwd": "/Users/macbookpro/Documents/claude编码/claude练手/lighting-app",
+      "enabled": true,
+      "autoStart": false
+    }
+  },
+  "mcp": {
+    "globalSettings": {
+      "logLevel": "info",
+      "timeout": 30000,
+      "retries": 3,
+      "cacheEnabled": true
+    },
+    "features": {
+      "inlineAnalysis": true,
+      "autoSuggestions": true,
+      "qualityChecks": true,
+      "performanceHints": true,
+      "securityScan": true,
+      "accessibilityCheck": true
+    },
+    "ui": {
+      "showInStatusBar": true,
+      "enableNotifications": true,
+      "autoOpenOutput": false
+    }
+  }
+}
