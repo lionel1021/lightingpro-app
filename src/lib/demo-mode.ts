@@ -5,7 +5,8 @@ export const isDemoMode = () => {
   return (
     !process.env.NEXT_PUBLIC_SUPABASE_URL ||
     process.env.NEXT_PUBLIC_SUPABASE_URL.includes('demo') ||
-    process.env.NEXT_PUBLIC_SUPABASE_URL.includes('localhost')
+    process.env.NEXT_PUBLIC_SUPABASE_URL.includes('localhost') ||
+    process.env.ENABLE_DEMO_MODE === 'true'
   );
 };
 
