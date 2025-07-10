@@ -1,7 +1,9 @@
 import { NextRequest, NextResponse } from 'next/server'
 import { mockProducts } from '@/lib/mock-data'
+import { withRateLimit, searchRateLimiter } from '@/lib/rate-limiter'
 
 export async function GET(request: NextRequest) {
+  return withRateLimit(request, searchRateLimiter, async () => {
   try {
     const { searchParams } = new URL(request.url)
     
@@ -145,9 +147,11 @@ export async function GET(request: NextRequest) {
       { status: 500 }
     )
   }
+  })
 }
 
 export async function POST(request: NextRequest) {
+  return withRateLimit(request, searchRateLimiter, async () => {
   try {
     const body = await request.json()
     const { 
@@ -263,4 +267,5 @@ export async function POST(request: NextRequest) {
       { status: 500 }
     )
   }
+  })
 }

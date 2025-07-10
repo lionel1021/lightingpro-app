@@ -46,6 +46,11 @@ export interface LightingProduct {
   review_count: number
   features?: string[]
   created_at: string
+  // 扩展属性用于推荐
+  image?: string // 兼容属性，等同于 image_urls[0]
+  reviews?: number // 兼容属性，等同于 review_count
+  matchScore?: number // 推荐匹配分数
+  affiliateLinks?: Record<string, unknown> // 兼容属性，等同于 affiliate_links
 }
 
 // ================================

@@ -1,4 +1,6 @@
 // 智能缓存管理系统
+import React from 'react'
+
 interface CacheConfig {
   ttl: number // 存活时间（毫秒）
   maxSize: number // 最大条目数

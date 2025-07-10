@@ -5,8 +5,10 @@ import { recommendationService, getSmartRecommendations, QuestionnaireData } fro
 import { SmartProductDatabase } from '@/lib/database-integration'
 import { QuestionnaireSchema, validateRequest, sanitizeInput } from '@/lib/validation'
 import { createServerSupabaseClient } from '@/lib/supabase-server'
+import { withRateLimit, recommendationsRateLimiter } from '@/lib/rate-limiter'
 
 export async function GET(request: NextRequest) {
+  return withRateLimit(request, recommendationsRateLimiter, async () => {
   try {
     const { searchParams } = new URL(request.url)
     
@@ -106,6 +108,7 @@ export async function GET(request: NextRequest) {
       details: error.message
     }, { status: 500 })
   }
+  })
 }
 
 function parseBudgetRange(range: string | null): { min: number; max: number } {

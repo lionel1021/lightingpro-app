@@ -3,7 +3,7 @@
 import React, { useState, useEffect } from 'react';
 import { Card, CardContent } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
-import { Star, Heart, ArrowLeft, ShoppingCart, Eye } from 'lucide-react';
+import { Star, Heart, ArrowLeft } from 'lucide-react';
 import Link from 'next/link';
 import { LightingProduct } from '@/lib/types';
 import { mockProducts } from '@/lib/mock-data';

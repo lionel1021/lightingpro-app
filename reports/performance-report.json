@@ -1,0 +1,17 @@
+{
+  "timestamp": "2025-07-10T04:32:40.610Z",
+  "build": {
+    "buildTime": "2025-07-10T04:32:40.611Z",
+    "nodeVersion": "v24.3.0",
+    "nextVersion": "15.3.5",
+    "totalSize": "253.73 MB"
+  },
+  "recommendations": [
+    {
+      "type": "warning",
+      "category": "bundle-size",
+      "message": "Build size is large. Consider code splitting and removing unused dependencies.",
+      "priority": "high"
+    }
+  ]
+}

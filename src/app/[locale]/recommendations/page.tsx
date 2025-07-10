@@ -9,17 +9,17 @@ import { Lightbulb, Star, Heart, ExternalLink, Filter } from 'lucide-react'
 import Link from 'next/link'
 import { formatPrice } from '@/lib/utils'
 
-interface RecommendationData {
-  products: LightingProduct[]
-  totalScore: number
-  confidence: number
-  explanation: string
-  filters: {
-    categories: string[]
-    brands: string[]
-    priceRange: { min: number; max: number }
-  }
-}
+// interface RecommendationData {
+//   products: LightingProduct[]
+//   totalScore: number
+//   confidence: number
+//   explanation: string
+//   filters: {
+//     categories: string[]
+//     brands: string[]
+//     priceRange: { min: number; max: number }
+//   }
+// }
 
 // Mock product data - in real app, this would come from API
 const mockProducts: LightingProduct[] = [

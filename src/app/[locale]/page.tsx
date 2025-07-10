@@ -2,10 +2,11 @@ import { getTranslations } from 'next-intl/server';
 import { HomePageClient } from '@/components/HomePageClient';
 
 type Props = {
-  params: { locale: string }
+  params: Promise<{ locale: string }>
 }
 
-export default async function Home({ params: { locale } }: Props) {
+export default async function Home({ params }: Props) {
+  const { locale } = await params;
   const t = await getTranslations();
   // Pass translations to client component
   const translations = {

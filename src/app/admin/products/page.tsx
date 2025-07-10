@@ -6,11 +6,6 @@ import {
   Search, 
   Edit, 
   Trash2, 
-  Eye, 
-  Upload,
-  Download,
-  Filter,
-  MoreVertical,
   AlertCircle
 } from 'lucide-react';
 import { LightingProduct } from '@/lib/supabase';
@@ -25,7 +20,7 @@ interface ProductFormData {
   description: string;
   image_urls: string[];
   features: string[];
-  specifications: Record<string, any>;
+  specifications: Record<string, string | number | boolean>;
   rating?: number;
   review_count?: number;
 }

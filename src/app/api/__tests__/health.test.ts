@@ -19,7 +19,7 @@ jest.mock('../../../lib/supabase-server', () => ({
 
 describe('/api/health', () => {
   it('returns health check status', async () => {
-    const request = new NextRequest('http://localhost:3000/api/health')
+    const request = new NextRequest('http://localhost:3000/api/health', { method: 'GET' })
     const response = await GET(request)
     const data = await response.json()
 
@@ -31,7 +31,7 @@ describe('/api/health', () => {
   })
 
   it('includes service checks', async () => {
-    const request = new NextRequest('http://localhost:3000/api/health')
+    const request = new NextRequest('http://localhost:3000/api/health', { method: 'GET' })
     const response = await GET(request)
     const data = await response.json()
 
@@ -55,7 +55,7 @@ describe('/api/health', () => {
       }))
     }))
 
-    const request = new NextRequest('http://localhost:3000/api/health')
+    const request = new NextRequest('http://localhost:3000/api/health', { method: 'GET' })
     const response = await GET(request)
     const data = await response.json()
 

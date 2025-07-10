@@ -40,7 +40,7 @@ export async function GET(request: NextRequest) {
     const ipAddress = forwardedFor?.split(',')[0] || realIp || 'unknown'
 
     // 记录点击事件
-    const { data: clickEvent, error } = await supabase
+    const { error } = await supabase
       .from('affiliate_clicks')
       .insert({
         affiliate_link_id: affiliateLinkId,
@@ -101,7 +101,6 @@ export async function POST(request: NextRequest) {
     const { 
       affiliate_link_id, 
       session_id, 
-      user_id,
       conversion_value,
       order_id,
       products 
