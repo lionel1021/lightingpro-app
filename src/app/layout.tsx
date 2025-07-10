@@ -6,8 +6,6 @@ import { ToastProvider } from "@/components/Toast";
 import { PWAManager } from "@/components/PWAManager";
 import { SEOHead } from "@/components/SEOHead";
 import ClientOnly from "@/components/ClientOnly";
-import { NextIntlClientProvider } from 'next-intl';
-import { getMessages } from 'next-intl/server';
 import { SpeedInsights } from '@vercel/speed-insights/next';
 import { Analytics } from '@vercel/analytics/react';
 
@@ -53,8 +51,6 @@ export default async function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
-  const messages = await getMessages();
-  
   return (
     <html lang="en">
       <head>
@@ -66,16 +62,14 @@ export default async function RootLayout({
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
-        <NextIntlClientProvider messages={messages}>
-          <ToastProvider>
-            <PageErrorBoundary title="LightingPro">
-              {children}
-              <ClientOnly>
-                <PWAManager />
-              </ClientOnly>
-            </PageErrorBoundary>
-          </ToastProvider>
-        </NextIntlClientProvider>
+        <ToastProvider>
+          <PageErrorBoundary title="LightingPro">
+            {children}
+            <ClientOnly>
+              <PWAManager />
+            </ClientOnly>
+          </PageErrorBoundary>
+        </ToastProvider>
         <SpeedInsights />
         <Analytics />
       </body>
