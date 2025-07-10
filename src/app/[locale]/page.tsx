@@ -43,6 +43,17 @@ export default async function Home({ params }: Props) {
     common: {
       brand: t('common.brand'),
       category: t('common.category')
+    },
+    authStatus: {
+      user: t('authStatus.user'),
+      member: t('authStatus.member'),
+      profile: t('authStatus.profile'),
+      myFavorites: t('authStatus.myFavorites'),
+      myOrders: t('authStatus.myOrders'),
+      accountSettings: t('authStatus.accountSettings'),
+      signOut: t('authStatus.signOut'),
+      signIn: t('authStatus.signIn'),
+      signUp: t('authStatus.signUp')
     }
   };
 
