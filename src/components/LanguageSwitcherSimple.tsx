@@ -51,37 +51,25 @@ export function LanguageSwitcherSimple() {
     
     console.log(`切换语言：${currentLocale} -> ${newLocale}`);
     
-    // 清除所有相关的cookie
-    document.cookie = 'NEXT_LOCALE=; path=/; expires=Thu, 01 Jan 1970 00:00:00 GMT';
-    
     // 设置新的cookie
     document.cookie = `NEXT_LOCALE=${newLocale}; path=/; max-age=31536000; SameSite=Strict`;
     
-    // 获取当前路径并构建新的语言路径
+    // 获取当前路径并替换语言部分
     const currentPath = window.location.pathname;
-    let newPath = '';
+    let targetUrl;
     
-    // 如果当前路径包含语言前缀，替换它
-    if (currentPath.match(/^\/(en|zh|fr|es|de|it)(\/|$)/)) {
-      newPath = currentPath.replace(/^\/(en|zh|fr|es|de|it)/, `/${newLocale}`);
+    if (currentPath.match(/^\/[a-z]{2}(\/|$)/)) {
+      // 如果当前路径有语言前缀，替换它
+      targetUrl = currentPath.replace(/^\/[a-z]{2}/, `/${newLocale}`);
     } else {
       // 如果没有语言前缀，添加新的语言前缀
-      newPath = `/${newLocale}${currentPath === '/' ? '' : currentPath}`;
+      targetUrl = `/${newLocale}${currentPath === '/' ? '' : currentPath}`;
     }
     
-    // 如果路径没有变化，强制添加时间戳
-    if (newPath === currentPath) {
-      newPath = `/${newLocale}`;
-    }
+    console.log(`从 ${currentPath} 跳转到：${targetUrl}`);
     
-    console.log(`导航：${currentPath} -> ${newPath}`);
-    
-    // 添加缓存破坏参数并强制跳转
-    const timestamp = Date.now();
-    const finalUrl = `${newPath}?_lang=${newLocale}&_t=${timestamp}`;
-    
-    // 强制跳转，破坏缓存
-    window.location.replace(finalUrl);
+    // 强制跳转并刷新页面
+    window.location.href = targetUrl;
   };
 
   if (!mounted) {

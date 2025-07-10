@@ -1,14 +1,25 @@
 import { getRequestConfig } from 'next-intl/server'
-import { cookies } from 'next/headers'
+import { cookies, headers } from 'next/headers'
 
 export default getRequestConfig(async () => {
-  // 从cookies获取locale，默认为英文（北美市场）
-  const cookieStore = await cookies()
-  let locale = cookieStore.get('NEXT_LOCALE')?.value || 'en'
-
-  // 确保locale是支持的
-  if (!['en', 'zh', 'fr', 'es', 'de', 'it'].includes(locale)) {
-    locale = 'en'
+  const supportedLocales = ['en', 'zh', 'fr', 'es', 'de', 'it']
+  
+  // 首先从URL路径获取locale
+  const headersList = await headers()
+  const pathname = headersList.get('x-pathname') || headersList.get('x-url') || ''
+  const urlLocale = pathname.match(/^\/([a-z]{2})/)?.[1]
+  
+  let locale = 'en' // 默认英文
+  
+  if (urlLocale && supportedLocales.includes(urlLocale)) {
+    locale = urlLocale
+  } else {
+    // 如果URL中没有语言，从cookies获取
+    const cookieStore = await cookies()
+    const cookieLocale = cookieStore.get('NEXT_LOCALE')?.value
+    if (cookieLocale && supportedLocales.includes(cookieLocale)) {
+      locale = cookieLocale
+    }
   }
 
   return {
