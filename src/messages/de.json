@@ -193,6 +193,18 @@
     "quantity": "Menge",
     "remove": "Entfernen"
   },
+
+  "authStatus": {
+    "user": "Benutzer",
+    "member": "Mitglied", 
+    "profile": "Profil",
+    "myFavorites": "Meine Favoriten",
+    "myOrders": "Meine Bestellungen",
+    "accountSettings": "Kontoeinstellungen",
+    "signOut": "Abmelden",
+    "signIn": "Anmelden",
+    "signUp": "Registrieren"
+  },
   
   "admin": {
     "dashboard": "Dashboard",
