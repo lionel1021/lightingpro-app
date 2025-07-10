@@ -9,7 +9,6 @@ import { CartIcon } from "@/components/CartIcon";
 import { AuthStatus } from "@/components/AuthStatus";
 import { LanguageSwitcherSimple } from "@/components/LanguageSwitcherSimple";
 import { Suspense, useState, useEffect } from "react";
-import { Button } from "@/components/ui/button";
 import { 
   DropdownMenu, 
   DropdownMenuContent, 

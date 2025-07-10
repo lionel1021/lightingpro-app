@@ -193,6 +193,18 @@
     "quantity": "数量",
     "remove": "移除"
   },
+
+  "authStatus": {
+    "user": "用户",
+    "member": "会员", 
+    "profile": "个人资料",
+    "myFavorites": "我的收藏",
+    "myOrders": "我的订单",
+    "accountSettings": "账户设置",
+    "signOut": "退出登录",
+    "signIn": "登录",
+    "signUp": "注册"
+  },
   
   "admin": {
     "dashboard": "管理面板",
