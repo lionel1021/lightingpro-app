@@ -52,11 +52,11 @@ export function middleware(request: NextRequest) {
     return NextResponse.redirect(url)
   }
 
-  // 如果访问根路径，重定向到默认语言
+  // 如果访问根路径，重定向到英文页面（北美市场优先）
   if (pathname === '/') {
     const url = request.nextUrl.clone()
-    url.pathname = `/${targetLocale}`
-    console.log(`根路径重定向: / -> /${targetLocale}`)
+    url.pathname = '/en'  // 强制设置为英文
+    console.log(`根路径重定向: / -> /en`)
     return NextResponse.redirect(url)
   }
 
