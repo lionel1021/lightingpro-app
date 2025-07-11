@@ -1,7 +1,11 @@
-DEPLOY TEST - 821b508
-This file was created to test if Netlify deployment is working.
+🔥 LATEST DEPLOY TEST - 5edc751 🔥
+This file was UPDATED to test if Netlify deployment is working.
 If you can access this file at https://lightingpro.netlify.app/DEPLOY_TEST.txt
 then the deployment is working correctly.
 
-Timestamp: 2025-01-11
-Commit: 821b508
+🕒 NEW Timestamp: 2025-01-11 (UPDATED VERSION)
+📋 NEW Commit: 5edc751
+⚡ Cache Busting: ENABLED
+🚀 Status: TESTING LATEST DEPLOYMENT
+
+If you still see the old version (821b508), there's a deployment delay.

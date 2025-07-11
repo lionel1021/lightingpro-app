@@ -4,7 +4,7 @@ import { HomePageClient } from '@/components/HomePageClient';
 const translations = {
   home: {
     subtitle: "AI Smart Lighting Expert",
-    heroTitle: "🔥 NETLIFY DEPLOY TEST - LightingPro 2025 [COMMIT: 821b508]",
+    heroTitle: "🚀 LATEST NETLIFY TEST - LightingPro 2025 [COMMIT: 5edc751] 🚀",
     heroSubtitle: "🕒 BUILD TIME: " + new Date().toISOString() + " | Experience the future of lighting with neural network-powered recommendations and cutting-edge user interface",
     startQuestionnaire: "🧠 Start AI Recommendations",
     browsProducts: "⚡ Browse Smart Products",
