@@ -7,7 +7,6 @@ import { Lightbulb, Zap, Target, Star, TrendingUp, Users, Award } from "lucide-r
 import { FeaturedProducts } from "@/components/FeaturedProducts";
 import { CartIcon } from "@/components/CartIcon";
 import { AuthStatus } from "@/components/AuthStatus";
-import { LanguageSwitcherSimple } from "@/components/LanguageSwitcherSimple";
 import { Suspense, useState, useEffect } from "react";
 import { 
   DropdownMenu, 
@@ -83,7 +82,7 @@ export function HomePageClient({ translations: t, locale }: Props) {
       <header className="bg-white shadow-sm sticky top-0 z-50 backdrop-blur-md bg-white/95">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex justify-between items-center h-16">
-            <Link href={`/${locale}`} className="flex items-center gap-2 group">
+            <Link href="/" className="flex items-center gap-2 group">
               <div className="relative">
                 <Lightbulb className="h-8 w-8 text-blue-600 group-hover:text-blue-700 transition-colors" />
                 <div className="absolute -top-1 -right-1 w-3 h-3 bg-green-500 rounded-full animate-pulse"></div>
@@ -95,19 +94,18 @@ export function HomePageClient({ translations: t, locale }: Props) {
             </Link>
             
             <nav className="hidden md:flex items-center gap-6">
-              <Link href={`/${locale}/questionnaire`} className="text-gray-600 hover:text-blue-600 font-medium transition-colors">
+              <Link href="/questionnaire" className="text-gray-600 hover:text-blue-600 font-medium transition-colors">
                 {t.navigation.recommendations}
               </Link>
-              <Link href={`/${locale}/search`} className="text-gray-600 hover:text-blue-600 font-medium transition-colors">
-                {t.products.searchPlaceholder.replace('...', '')}
+              <Link href="/search" className="text-gray-600 hover:text-blue-600 font-medium transition-colors">
+                Search Products
               </Link>
-              <Link href={`/${locale}/favorites`} className="text-gray-600 hover:text-blue-600 font-medium transition-colors">
+              <Link href="/favorites" className="text-gray-600 hover:text-blue-600 font-medium transition-colors">
                 {t.navigation.favorites}
               </Link>
             </nav>
 
             <div className="flex items-center gap-3">
-              <LanguageSwitcherSimple />
               <CartIcon />
               <AuthStatusWithTranslations translations={t.authStatus} />
             </div>
@@ -146,13 +144,13 @@ export function HomePageClient({ translations: t, locale }: Props) {
             </div>
           </div>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Link href={`/${locale}/questionnaire`}>
+            <Link href="/questionnaire">
               <Button size="lg" className="bg-blue-600 hover:bg-blue-700">
                 <Zap className="mr-2 h-5 w-5" />
                 {t.home.startQuestionnaire}
               </Button>
             </Link>
-            <Link href={`/${locale}/products`}>
+            <Link href="/products">
               <Button size="lg" variant="outline" className="border-blue-600 text-blue-600 hover:bg-blue-50">
                 <Target className="mr-2 h-5 w-5" />
                 {t.home.browsProducts}
@@ -183,7 +181,7 @@ export function HomePageClient({ translations: t, locale }: Props) {
             <FeaturedProducts />
           </Suspense>
           <div className="text-center mt-8">
-            <Link href={`/${locale}/products`}>
+            <Link href="/products">
               <Button variant="outline" className="border-blue-600 text-blue-600 hover:bg-blue-50">
                 {t.home.browsProducts}
               </Button>
@@ -299,13 +297,13 @@ export function HomePageClient({ translations: t, locale }: Props) {
           </p>
           
           <div className="flex flex-col sm:flex-row gap-4 justify-center mb-8">
-            <Link href={`/${locale}/questionnaire`}>
+            <Link href="/questionnaire">
               <Button size="lg" className="bg-white text-blue-600 hover:bg-gray-100 shadow-lg">
                 <Zap className="mr-2 h-5 w-5" />
                 Get Started
               </Button>
             </Link>
-            <Link href={`/${locale}/products`}>
+            <Link href="/products">
               <Button size="lg" variant="outline" className="border-white text-white hover:bg-white hover:text-blue-600">
                 <Target className="mr-2 h-5 w-5" />
                 Browse Products

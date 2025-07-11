@@ -25,25 +25,9 @@ import {
   Crown
 } from 'lucide-react'
 import { useAuth } from '@/hooks/useAuth'
-import { useState, useEffect } from 'react'
-import { useClientTranslations, type Locale } from '@/lib/i18n-simple'
 
 export function AuthStatus() {
   const { user, isAuthenticated, isGuest, loading, signOut } = useAuth()
-  const [locale, setLocale] = useState<Locale>('en')
-  
-  useEffect(() => {
-    const pathLocale = window.location.pathname.split('/')[1] as Locale
-    if (pathLocale) {
-      setLocale(pathLocale)
-    }
-  }, [])
-  
-  const t = (key: string) => {
-    const fullKey = `authStatus.${key}`
-    const msgs = useClientTranslations(locale)
-    return msgs(fullKey)
-  }
   const [isSigningOut, setIsSigningOut] = useState(false)
   const [mounted, setMounted] = useState(false)
 
@@ -93,11 +77,11 @@ export function AuthStatus() {
             <div className="flex flex-col space-y-2">
               <div className="flex items-center gap-2">
                 <p className="text-sm font-medium leading-none">
-                  {user.full_name || t('user')}
+                  {user.full_name || 'User'}
                 </p>
                 <Badge variant="secondary" className="text-xs">
                   <Crown className="w-3 h-3 mr-1" />
-                  {t('member')}
+                  {'Member'}
                 </Badge>
               </div>
               <p className="text-xs leading-none text-muted-foreground">
@@ -110,28 +94,28 @@ export function AuthStatus() {
           <DropdownMenuItem asChild>
             <Link href="/profile" className="cursor-pointer">
               <User className="mr-2 h-4 w-4" />
-              <span>{t('profile')}</span>
+              <span>Profile</span>
             </Link>
           </DropdownMenuItem>
           
           <DropdownMenuItem asChild>
             <Link href="/favorites" className="cursor-pointer">
               <Heart className="mr-2 h-4 w-4" />
-              <span>{t('myFavorites')}</span>
+              <span>My Favorites</span>
             </Link>
           </DropdownMenuItem>
           
           <DropdownMenuItem asChild>
             <Link href="/orders" className="cursor-pointer">
               <ShoppingBag className="mr-2 h-4 w-4" />
-              <span>{t('myOrders')}</span>
+              <span>My Orders</span>
             </Link>
           </DropdownMenuItem>
           
           <DropdownMenuItem asChild>
             <Link href="/settings" className="cursor-pointer">
               <Settings className="mr-2 h-4 w-4" />
-              <span>{t('accountSettings')}</span>
+              <span>Account Settings</span>
             </Link>
           </DropdownMenuItem>
           
@@ -147,7 +131,7 @@ export function AuthStatus() {
             ) : (
               <LogOut className="mr-2 h-4 w-4" />
             )}
-            <span>{t('signOut')}</span>
+            <span>Sign Out</span>
           </DropdownMenuItem>
         </DropdownMenuContent>
       </DropdownMenu>
@@ -160,13 +144,13 @@ export function AuthStatus() {
       <Link href="/auth/signin">
         <Button variant="ghost" size="sm">
           <LogIn className="w-4 h-4 mr-2" />
-          {t('signIn')}
+          {'Sign In'}
         </Button>
       </Link>
       <Link href="/auth/signup">
         <Button size="sm" className="bg-blue-600 hover:bg-blue-700">
           <UserPlus className="w-4 h-4 mr-2" />
-          {t('signUp')}
+          {'Sign Up'}
         </Button>
       </Link>
     </div>
@@ -176,20 +160,6 @@ export function AuthStatus() {
 // 简化版本，只显示登录状态
 export function AuthStatusCompact() {
   const { user, isAuthenticated, loading } = useAuth()
-  const [locale, setLocale] = useState<Locale>('en')
-  
-  useEffect(() => {
-    const pathLocale = window.location.pathname.split('/')[1] as Locale
-    if (pathLocale) {
-      setLocale(pathLocale)
-    }
-  }, [])
-  
-  const t = (key: string) => {
-    const fullKey = `authStatus.${key}`
-    const msgs = useClientTranslations(locale)
-    return msgs(fullKey)
-  }
   const [mounted, setMounted] = useState(false)
 
   useEffect(() => {
@@ -219,7 +189,7 @@ export function AuthStatusCompact() {
     <div className="flex items-center gap-1">
       <Link href="/auth/signin">
         <Button variant="ghost" size="sm" className="h-8 px-2 text-xs">
-          {t('signIn')}
+          {'Sign In'}
         </Button>
       </Link>
     </div>
