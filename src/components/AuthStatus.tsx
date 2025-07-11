@@ -25,11 +25,25 @@ import {
   Crown
 } from 'lucide-react'
 import { useAuth } from '@/hooks/useAuth'
-import { useTranslations } from 'next-intl'
+import { useState, useEffect } from 'react'
+import { useClientTranslations, type Locale } from '@/lib/i18n-simple'
 
 export function AuthStatus() {
   const { user, isAuthenticated, isGuest, loading, signOut } = useAuth()
-  const t = useTranslations('authStatus')
+  const [locale, setLocale] = useState<Locale>('en')
+  
+  useEffect(() => {
+    const pathLocale = window.location.pathname.split('/')[1] as Locale
+    if (pathLocale) {
+      setLocale(pathLocale)
+    }
+  }, [])
+  
+  const t = (key: string) => {
+    const fullKey = `authStatus.${key}`
+    const msgs = useClientTranslations(locale)
+    return msgs(fullKey)
+  }
   const [isSigningOut, setIsSigningOut] = useState(false)
   const [mounted, setMounted] = useState(false)
 
@@ -162,7 +176,20 @@ export function AuthStatus() {
 // 简化版本，只显示登录状态
 export function AuthStatusCompact() {
   const { user, isAuthenticated, loading } = useAuth()
-  const t = useTranslations('authStatus')
+  const [locale, setLocale] = useState<Locale>('en')
+  
+  useEffect(() => {
+    const pathLocale = window.location.pathname.split('/')[1] as Locale
+    if (pathLocale) {
+      setLocale(pathLocale)
+    }
+  }, [])
+  
+  const t = (key: string) => {
+    const fullKey = `authStatus.${key}`
+    const msgs = useClientTranslations(locale)
+    return msgs(fullKey)
+  }
   const [mounted, setMounted] = useState(false)
 
   useEffect(() => {

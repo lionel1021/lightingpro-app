@@ -1,7 +1,5 @@
 import { NextRequest, NextResponse } from 'next/server';
-
-const locales = ['en', 'zh', 'fr', 'es', 'de', 'it'];
-const defaultLocale = 'en';
+import { locales, defaultLocale } from './src/lib/i18n-simple';
 
 export function middleware(request: NextRequest) {
   const pathname = request.nextUrl.pathname;
@@ -18,14 +16,20 @@ export function middleware(request: NextRequest) {
     );
   }
 
-  // Extract locale from pathname
+  // Extract locale from pathname and validate it
   const locale = pathname.split('/')[1];
   
-  // Create response and set the correct locale cookie
+  if (!locales.includes(locale as any)) {
+    return NextResponse.redirect(
+      new URL(`/${defaultLocale}${pathname}`, request.url)
+    );
+  }
+  
+  // Create response and set the CORRECT locale cookie
   const response = NextResponse.next();
-  response.cookies.set('NEXT_LOCALE', locale, {
+  response.cookies.set('LOCALE', locale, {
     path: '/',
-    maxAge: 31536000, // 1 year
+    maxAge: 31536000,
     sameSite: 'strict'
   });
   

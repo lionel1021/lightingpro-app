@@ -1,6 +1,4 @@
-import createNextIntlPlugin from 'next-intl/plugin';
-
-const withNextIntl = createNextIntlPlugin('./src/i18n.ts');
+// Removed next-intl plugin - using simple i18n implementation
 
 /** @type {import('next').NextConfig} */
 const nextConfig = {
@@ -41,4 +39,4 @@ const nextConfig = {
   compress: true,
 }
 
-export default withNextIntl(nextConfig);
+export default nextConfig;

@@ -1,11 +1,21 @@
 'use client';
 
-import { useTranslations } from 'next-intl';
+import { useState, useEffect } from 'react';
+import { useClientTranslations, type Locale } from '@/lib/i18n-simple';
 import { LanguageSwitcher } from '@/components/LanguageSwitcher';
 import ClientOnly from '@/components/ClientOnly';
 
 export default function LanguageTestPage() {
-  const t = useTranslations();
+  const [locale, setLocale] = useState<Locale>('en');
+  const t = useClientTranslations(locale);
+
+  useEffect(() => {
+    // Get locale from URL path
+    const pathLocale = window.location.pathname.split('/')[1] as Locale;
+    if (pathLocale) {
+      setLocale(pathLocale);
+    }
+  }, []);
 
   return (
     <div className="min-h-screen bg-gray-50 py-12">

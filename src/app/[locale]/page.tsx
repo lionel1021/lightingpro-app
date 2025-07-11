@@ -1,5 +1,5 @@
-import { getTranslations } from 'next-intl/server';
 import { HomePageClient } from '@/components/HomePageClient';
+import { t, type Locale } from '@/lib/i18n-simple';
 
 type Props = {
   params: Promise<{ locale: string }>
@@ -7,54 +7,54 @@ type Props = {
 
 export default async function Home({ params }: Props) {
   const { locale } = await params;
-  const t = await getTranslations();
+  const currentLocale = locale as Locale;
   
   // Pass translations to client component
   const translations = {
     home: {
-      subtitle: t('home.subtitle'),
-      heroTitle: t('home.heroTitle'),
-      heroSubtitle: t('home.heroSubtitle'),
-      startQuestionnaire: t('home.startQuestionnaire'),
-      browsProducts: t('home.browsProducts'),
-      featuredProducts: t('home.featuredProducts'),
-      whyChooseUs: t('home.whyChooseUs'),
+      subtitle: t('home.subtitle', currentLocale),
+      heroTitle: t('home.heroTitle', currentLocale),
+      heroSubtitle: t('home.heroSubtitle', currentLocale),
+      startQuestionnaire: t('home.startQuestionnaire', currentLocale),
+      browsProducts: t('home.browsProducts', currentLocale),
+      featuredProducts: t('home.featuredProducts', currentLocale),
+      whyChooseUs: t('home.whyChooseUs', currentLocale),
       features: {
         ai: {
-          title: t('home.features.ai.title'),
-          description: t('home.features.ai.description')
+          title: t('home.features.ai.title', currentLocale),
+          description: t('home.features.ai.description', currentLocale)
         },
         quality: {
-          title: t('home.features.quality.title'),
-          description: t('home.features.quality.description')
+          title: t('home.features.quality.title', currentLocale),
+          description: t('home.features.quality.description', currentLocale)
         },
         expert: {
-          title: t('home.features.expert.title'),
-          description: t('home.features.expert.description')
+          title: t('home.features.expert.title', currentLocale),
+          description: t('home.features.expert.description', currentLocale)
         }
       }
     },
     navigation: {
-      recommendations: t('navigation.recommendations'),
-      favorites: t('navigation.favorites')
+      recommendations: t('navigation.recommendations', currentLocale),
+      favorites: t('navigation.favorites', currentLocale)
     },
     products: {
-      searchPlaceholder: t('products.searchPlaceholder')
+      searchPlaceholder: t('products.searchPlaceholder', currentLocale)
     },
     common: {
-      brand: t('common.brand'),
-      category: t('common.category')
+      brand: t('common.brand', currentLocale),
+      category: t('common.category', currentLocale)
     },
     authStatus: {
-      user: t('authStatus.user'),
-      member: t('authStatus.member'),
-      profile: t('authStatus.profile'),
-      myFavorites: t('authStatus.myFavorites'),
-      myOrders: t('authStatus.myOrders'),
-      accountSettings: t('authStatus.accountSettings'),
-      signOut: t('authStatus.signOut'),
-      signIn: t('authStatus.signIn'),
-      signUp: t('authStatus.signUp')
+      user: t('authStatus.user', currentLocale),
+      member: t('authStatus.member', currentLocale),
+      profile: t('authStatus.profile', currentLocale),
+      myFavorites: t('authStatus.myFavorites', currentLocale),
+      myOrders: t('authStatus.myOrders', currentLocale),
+      accountSettings: t('authStatus.accountSettings', currentLocale),
+      signOut: t('authStatus.signOut', currentLocale),
+      signIn: t('authStatus.signIn', currentLocale),
+      signUp: t('authStatus.signUp', currentLocale)
     }
   };
 
