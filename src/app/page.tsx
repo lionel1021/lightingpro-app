@@ -4,7 +4,7 @@ import { HomePageClient } from '@/components/HomePageClient';
 const translations = {
   home: {
     subtitle: "AI Smart Lighting Expert",
-    heroTitle: "🚀 LightingPro 2025 - Revolutionary AI Lighting Design",
+    heroTitle: "🚀 LightingPro 2025 - Revolutionary AI Lighting Design [UPDATED]",
     heroSubtitle: "Experience the future of lighting with neural network-powered recommendations and cutting-edge user interface",
     startQuestionnaire: "🧠 Start AI Recommendations",
     browsProducts: "⚡ Browse Smart Products",
