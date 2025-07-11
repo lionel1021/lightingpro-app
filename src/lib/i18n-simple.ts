@@ -1,23 +1,9 @@
 // Simple internationalization implementation
-import enMessages from '../messages/en.json';
-import zhMessages from '../messages/zh.json';
-import frMessages from '../messages/fr.json';
-import esMessages from '../messages/es.json';
-import deMessages from '../messages/de.json';
-import itMessages from '../messages/it.json';
+import { messages } from './i18n-messages';
 
 export const locales = ['en', 'zh', 'fr', 'es', 'de', 'it'] as const;
 export type Locale = typeof locales[number];
 export const defaultLocale: Locale = 'en';
-
-const messages = {
-  en: enMessages,
-  zh: zhMessages,
-  fr: frMessages,
-  es: esMessages,
-  de: deMessages,
-  it: itMessages,
-};
 
 export function getMessages(locale: Locale) {
   return messages[locale] || messages[defaultLocale];
