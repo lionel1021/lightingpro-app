@@ -2,6 +2,8 @@
 
 import { useState, useEffect } from 'react';
 import dynamic from 'next/dynamic';
+import { CriticalCSSInline, NonCriticalCSSLoader } from '@/components/CriticalCSS';
+import PerformanceMonitor from '@/components/PerformanceMonitor';
 
 // 🚀 动态导入优化组件
 const OptimizedRevolutionary2025Design = dynamic(() => import('@/components/OptimizedRevolutionary2025Design'), {
@@ -46,34 +48,43 @@ export default function Home() {
 
   if (isLoading) {
     return (
-      <div className="min-h-screen bg-gradient-to-br from-slate-900 via-purple-900 to-slate-900 text-white flex items-center justify-center">
-        <div className="text-center">
-          <div className="animate-spin rounded-full h-16 w-16 border-b-2 border-blue-400 mx-auto mb-6"></div>
-          <h1 className="text-4xl font-bold mb-4 bg-gradient-to-r from-blue-400 via-purple-400 to-pink-400 bg-clip-text text-transparent">
-            LightingPro 2025
-          </h1>
-          <p className="text-lg text-gray-300 mb-6">
-            AI-Powered Lighting Recommendation System
-          </p>
-          <div className="space-y-3">
-            <div className="bg-white/10 backdrop-blur-sm rounded-lg p-3">
-              <h3 className="text-sm font-semibold text-green-400">✅ Performance Optimized</h3>
-              <p className="text-xs text-gray-400">Bundle size reduced by 91%, PWA enabled</p>
-            </div>
-            <div className="bg-white/10 backdrop-blur-sm rounded-lg p-3">
-              <h3 className="text-sm font-semibold text-blue-400">🚀 Revolutionary Design Loading</h3>
-              <p className="text-xs text-gray-400">Neural particles and 3D effects ready</p>
-            </div>
-            <div className="bg-white/10 backdrop-blur-sm rounded-lg p-3">
-              <h3 className="text-sm font-semibold text-purple-400">🌐 Deployed on Netlify</h3>
-              <p className="text-xs text-gray-400">https://lightingpro.netlify.app</p>
+      <>
+        <CriticalCSSInline />
+        <NonCriticalCSSLoader />
+        <div className="min-h-screen bg-gradient-to-br from-slate-900 via-purple-900 to-slate-900 text-white flex items-center justify-center">
+          <div className="text-center">
+            <div className="animate-spin rounded-full h-16 w-16 border-b-2 border-blue-400 mx-auto mb-6"></div>
+            <h1 className="text-4xl font-bold mb-4 bg-gradient-to-r from-blue-400 via-purple-400 to-pink-400 bg-clip-text text-transparent">
+              LightingPro 2025
+            </h1>
+            <p className="text-lg text-gray-300 mb-6">
+              AI-Powered Lighting Recommendation System
+            </p>
+            <div className="space-y-3">
+              <div className="bg-white/10 backdrop-blur-sm rounded-lg p-4">
+                <h3 className="text-sm font-semibold text-green-400">⚡ Render Optimized</h3>
+                <p className="text-xs text-gray-400">Critical CSS inline, non-blocking resources</p>
+              </div>
+              <div className="bg-white/10 backdrop-blur-sm rounded-lg p-4">
+                <h3 className="text-sm font-semibold text-blue-400">🚀 Revolutionary Design Loading</h3>
+                <p className="text-xs text-gray-400">Neural particles and 3D effects ready</p>
+              </div>
+              <div className="bg-white/10 backdrop-blur-sm rounded-lg p-4">
+                <h3 className="text-sm font-semibold text-purple-400">🌐 Performance Enhanced</h3>
+                <p className="text-xs text-gray-400">Optimized for Core Web Vitals</p>
+              </div>
             </div>
           </div>
         </div>
-      </div>
+      </>
     );
   }
 
   // 🎯 根据设备类型返回优化的组件
-  return isMobile ? <MobileOptimizedRevolutionary2025Design /> : <OptimizedRevolutionary2025Design />;
+  return (
+    <>
+      <PerformanceMonitor />
+      {isMobile ? <MobileOptimizedRevolutionary2025Design /> : <OptimizedRevolutionary2025Design />}
+    </>
+  );
 }
