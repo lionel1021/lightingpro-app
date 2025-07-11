@@ -1,0 +1,7 @@
+DEPLOY TEST - 821b508
+This file was created to test if Netlify deployment is working.
+If you can access this file at https://lightingpro.netlify.app/DEPLOY_TEST.txt
+then the deployment is working correctly.
+
+Timestamp: 2025-01-11
+Commit: 821b508
