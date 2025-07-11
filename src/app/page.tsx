@@ -1,22 +1,54 @@
+import { HomePageClient } from '@/components/HomePageClient';
+
+// Static English translations
+const translations = {
+  home: {
+    subtitle: "AI Smart Lighting Expert",
+    heroTitle: "LightingPro - AI Smart Lighting Expert",
+    heroSubtitle: "Get personalized lighting product recommendations based on your room type, style preferences, and budget",
+    startQuestionnaire: "Start Smart Recommendations",
+    browsProducts: "Browse All Products",
+    featuredProducts: "Featured Products",
+    whyChooseUs: "Why Choose Us",
+    features: {
+      ai: {
+        title: "AI Smart Recommendations",
+        description: "Advanced algorithms recommend the most suitable lighting products for you"
+      },
+      quality: {
+        title: "Quality Products",
+        description: "Carefully selected from renowned brands to ensure product quality and user experience"
+      },
+      expert: {
+        title: "Professional Advice",
+        description: "Professional lighting consultants provide one-on-one consultation services"
+      }
+    }
+  },
+  navigation: {
+    recommendations: "Recommendations",
+    favorites: "Favorites"
+  },
+  products: {
+    searchPlaceholder: "Search lighting products..."
+  },
+  common: {
+    brand: "Brand",
+    category: "Category"
+  },
+  authStatus: {
+    user: "User",
+    member: "Member",
+    profile: "Profile",
+    myFavorites: "My Favorites",
+    myOrders: "My Orders",
+    accountSettings: "Account Settings",
+    signOut: "Sign Out",
+    signIn: "Sign In",
+    signUp: "Sign Up"
+  }
+};
+
 export default function Home() {
-  return (
-    <div className="min-h-screen bg-white">
-      <div className="container mx-auto px-4 py-8">
-        <h1 className="text-4xl font-bold text-center text-blue-600 mb-8">
-          LightingPro - AI Smart Lighting Expert
-        </h1>
-        <p className="text-xl text-center text-gray-600 mb-8">
-          Get personalized lighting product recommendations based on your room type, style preferences, and budget
-        </p>
-        <div className="text-center">
-          <a 
-            href="/questionnaire" 
-            className="inline-block bg-blue-600 text-white px-6 py-3 rounded-lg hover:bg-blue-700 transition-colors"
-          >
-            Start Smart Recommendations
-          </a>
-        </div>
-      </div>
-    </div>
-  )
+  return <HomePageClient translations={translations} locale="en" />;
 }
