@@ -1,21 +1,24 @@
 import createNextIntlPlugin from 'next-intl/plugin';
-import withBundleAnalyzer from '@next/bundle-analyzer';
 
-const withNextIntl = createNextIntlPlugin('./src/i18n/request.ts');
-
-const bundleAnalyzer = withBundleAnalyzer({
-  enabled: process.env.ANALYZE === 'true',
-});
+const withNextIntl = createNextIntlPlugin('./src/i18n.ts');
 
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  // Gradual migration: Enable checks but allow some flexibility
+  experimental: {
+    turbo: {
+      rules: {
+        '*.svg': {
+          loaders: ['@svgr/webpack'],
+          as: '*.js',
+        },
+      },
+    },
+  },
   eslint: {
     ignoreDuringBuilds: false,
-    dirs: ['src'], // Only check src directory
+    dirs: ['src'],
   },
   typescript: {
-    // TODO: Set to false after fixing all type errors
     ignoreBuildErrors: true,
     tsconfigPath: './tsconfig.json',
   },
@@ -38,4 +41,4 @@ const nextConfig = {
   compress: true,
 }
 
-export default bundleAnalyzer(withNextIntl(nextConfig))
+export default withNextIntl(nextConfig);
