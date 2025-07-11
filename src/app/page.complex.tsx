@@ -62,11 +62,7 @@ export default function Home() {
             </div>
             <div className="bg-white/10 backdrop-blur-sm rounded-lg p-3">
               <h3 className="text-sm font-semibold text-blue-400">🚀 Revolutionary Design Loading</h3>
-              <p className="text-xs text-gray-400">Neural particles and 3D effects ready</p>
-            </div>
-            <div className="bg-white/10 backdrop-blur-sm rounded-lg p-3">
-              <h3 className="text-sm font-semibold text-purple-400">🌐 Deployed on Netlify</h3>
-              <p className="text-xs text-gray-400">https://lightingpro.netlify.app</p>
+              <p className="text-xs text-gray-400">Optimized components ready</p>
             </div>
           </div>
         </div>

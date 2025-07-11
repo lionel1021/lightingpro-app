@@ -625,7 +625,7 @@ export default function NewDesignPreview() {
                   <div className="grid grid-cols-2 gap-4 text-sm">
                     <div>
                       <span className="text-gray-400">Response Time:</span>
-                      <span className="text-green-400 ml-2">< 100ms</span>
+                      <span className="text-green-400 ml-2">&lt; 100ms</span>
                     </div>
                     <div>
                       <span className="text-gray-400">Accuracy:</span>

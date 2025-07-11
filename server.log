@@ -1,0 +1,13 @@
+
+> lighting-app@0.1.0 start
+> next start --hostname 0.0.0.0 --port 9090
+
+ ⨯ Failed to start server
+Error: listen EADDRINUSE: address already in use 0.0.0.0:9090
+    at <unknown> (Error: listen EADDRINUSE: address already in use 0.0.0.0:9090) {
+  code: 'EADDRINUSE',
+  errno: -48,
+  syscall: 'listen',
+  address: '0.0.0.0',
+  port: 9090
+}
