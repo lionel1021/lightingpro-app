@@ -9,6 +9,9 @@ export default async function Home({ params }: Props) {
   const { locale } = await params;
   const currentLocale = locale as Locale;
   
+  // Debug: log the current locale
+  console.log('🌍 Current locale in [locale]/page.tsx:', currentLocale);
+  
   // Pass translations to client component
   const translations = {
     home: {

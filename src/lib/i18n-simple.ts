@@ -18,6 +18,11 @@ export function t(key: string, locale: Locale) {
     value = value?.[k];
   }
   
+  // Debug: log translation attempts
+  if (locale !== 'en' && locale !== 'zh') {
+    console.log(`🔤 Translation: ${key} -> ${value || key} (locale: ${locale})`);
+  }
+  
   return value || key;
 }
 
