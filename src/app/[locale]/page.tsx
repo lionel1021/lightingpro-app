@@ -8,6 +8,7 @@ type Props = {
 export default async function Home({ params }: Props) {
   const { locale } = await params;
   const t = await getTranslations();
+  
   // Pass translations to client component
   const translations = {
     home: {
