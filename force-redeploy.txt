@@ -1,0 +1,10 @@
+Force redeploy timestamp: 2025-01-11 17:45:00
+
+This file is created to force Vercel to completely redeploy the application
+and clear all caches. The language switcher and multilingual support have
+been completely removed from the codebase.
+
+Expected result: The website should display only in English without any
+language switcher in the navigation bar.
+
+Timestamp: 2025-01-11T17:45:00Z

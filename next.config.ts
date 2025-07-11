@@ -35,6 +35,10 @@ const nextConfig = {
     ],
   },
   compress: true,
+  // Force complete rebuild - no multilingual support
+  generateBuildId: async () => {
+    return 'english-only-' + Date.now();
+  },
 }
 
 export default nextConfig;
