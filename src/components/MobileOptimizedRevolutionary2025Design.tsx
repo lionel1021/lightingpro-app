@@ -161,7 +161,7 @@ export default function MobileOptimizedRevolutionary2025Design() {
       </div>
 
       {/* 🎯 移动端主要内容区域 */}
-      <div className="relative z-10 px-4">
+      <div className="relative z-10 px-3 sm:px-4">
         {/* 🚀 移动端英雄区域 */}
         <section className="min-h-screen flex items-center justify-center pt-16">
           <div className="w-full text-center">
@@ -171,17 +171,16 @@ export default function MobileOptimizedRevolutionary2025Design() {
                 <span className="text-xs">Revolutionary 2025 Design</span>
               </div>
               
-              <h1 className="text-4xl md:text-5xl font-bold mb-4 leading-tight">
-                <span className="bg-gradient-to-r from-blue-400 via-purple-400 to-pink-400 bg-clip-text text-transparent">
+              <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-6 leading-snug px-2">
+                <span className="block mb-2 bg-gradient-to-r from-blue-400 via-purple-400 to-pink-400 bg-clip-text text-transparent">
                   Redefining
                 </span>
-                <br />
-                <span className="bg-gradient-to-r from-yellow-300 via-orange-300 to-amber-300 bg-clip-text text-transparent">
+                <span className="block bg-gradient-to-r from-yellow-300 via-orange-300 to-amber-300 bg-clip-text text-transparent">
                   Lighting Experience
                 </span>
               </h1>
               
-              <p className="text-base md:text-lg text-gray-300 mb-6 max-w-sm mx-auto leading-relaxed">
+              <p className="text-sm sm:text-base md:text-lg text-gray-300 mb-8 max-w-xs sm:max-w-sm mx-auto leading-relaxed px-4">
                 Neural network-powered intelligent lighting recommendation system
               </p>
               
@@ -209,7 +208,7 @@ export default function MobileOptimizedRevolutionary2025Design() {
                       className="bg-gradient-to-br from-blue-500/20 to-purple-500/20 rounded-xl p-3 border border-white/10 hover:scale-105 transition-transform duration-300"
                     >
                       <MobileAIVisualElement type={['neural', 'quantum', 'matrix'][i]} className="w-8 h-8 mx-auto mb-2" />
-                      <h3 className="text-sm font-semibold mb-1 text-white">
+                      <h3 className="text-xs sm:text-sm font-semibold mb-1 text-white leading-tight">
                         {feature.title}
                       </h3>
                       <p className="text-xs text-gray-400 leading-tight">
@@ -241,11 +240,11 @@ export default function MobileOptimizedRevolutionary2025Design() {
         {/* 🌟 移动端功能特性区域 */}
         <section className="py-16">
           <div className="w-full">
-            <div className="text-center mb-12">
-              <h2 className="text-3xl md:text-4xl font-bold mb-4 leading-tight bg-gradient-to-r from-cyan-300 via-blue-300 to-indigo-300 bg-clip-text text-transparent">
-                Next-Gen Lighting Technology
+            <div className="text-center mb-12 px-4">
+              <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold mb-6 leading-snug bg-gradient-to-r from-cyan-300 via-blue-300 to-indigo-300 bg-clip-text text-transparent">
+                Next-Gen Lighting<br className="sm:hidden" /> Technology
               </h2>
-              <p className="text-sm text-gray-400 max-w-xs mx-auto leading-relaxed">
+              <p className="text-sm sm:text-base text-gray-400 max-w-xs sm:max-w-sm mx-auto leading-relaxed">
                 Revolutionary lighting solutions integrating AI, AR, and IoT
               </p>
             </div>
@@ -282,8 +281,8 @@ export default function MobileOptimizedRevolutionary2025Design() {
                     <div className={`w-12 h-12 rounded-xl bg-gradient-to-br ${feature.color} flex items-center justify-center mb-3`}>
                       {feature.icon}
                     </div>
-                    <h3 className="text-lg font-semibold mb-2 text-white">{feature.title}</h3>
-                    <p className="text-gray-300 text-sm mb-3 leading-relaxed">{feature.description}</p>
+                    <h3 className="text-base sm:text-lg font-semibold mb-2 text-white leading-snug">{feature.title}</h3>
+                    <p className="text-gray-300 text-xs sm:text-sm mb-3 leading-relaxed">{feature.description}</p>
                     <div className="bg-black/20 rounded-full px-3 py-1 text-xs text-green-400 font-medium">
                       {feature.stats}
                     </div>
@@ -298,10 +297,10 @@ export default function MobileOptimizedRevolutionary2025Design() {
         <section className="py-16 pb-24">
           <div className="w-full text-center">
             <div>
-              <h2 className="text-3xl md:text-4xl font-bold mb-4 leading-tight bg-gradient-to-r from-green-300 via-emerald-300 to-teal-300 bg-clip-text text-transparent">
+              <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold mb-6 leading-snug bg-gradient-to-r from-green-300 via-emerald-300 to-teal-300 bg-clip-text text-transparent px-4">
                 Ready to Begin?
               </h2>
-              <p className="text-sm text-gray-400 mb-6 leading-relaxed">
+              <p className="text-sm sm:text-base text-gray-400 mb-8 leading-relaxed max-w-xs sm:max-w-sm mx-auto px-4">
                 Join the lighting revolution and experience unprecedented smart living
               </p>
               

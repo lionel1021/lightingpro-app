@@ -54,18 +54,30 @@ export const CriticalCSSInline = () => (
     
     /* Essential spacing */
     .mx-auto { margin-left: auto; margin-right: auto; }
+    .mb-2 { margin-bottom: 0.5rem; }
     .mb-4 { margin-bottom: 1rem; }
     .mb-6 { margin-bottom: 1.5rem; }
+    .mb-8 { margin-bottom: 2rem; }
     .p-4 { padding: 1rem; }
+    .px-2 { padding-left: 0.5rem; padding-right: 0.5rem; }
+    .px-3 { padding-left: 0.75rem; padding-right: 0.75rem; }
+    .px-4 { padding-left: 1rem; padding-right: 1rem; }
     
     /* Essential typography */
     .text-4xl { font-size: 2.25rem; line-height: 2.5rem; }
+    .text-3xl { font-size: 1.875rem; line-height: 2.25rem; }
+    .text-2xl { font-size: 1.5rem; line-height: 2rem; }
+    .text-xl { font-size: 1.25rem; line-height: 1.75rem; }
     .text-lg { font-size: 1.125rem; line-height: 1.75rem; }
+    .text-base { font-size: 1rem; line-height: 1.5rem; }
     .text-sm { font-size: 0.875rem; line-height: 1.25rem; }
     .text-xs { font-size: 0.75rem; line-height: 1rem; }
     .font-bold { font-weight: 700; }
     .font-medium { font-weight: 500; }
     .font-semibold { font-weight: 600; }
+    .leading-tight { line-height: 1.25; }
+    .leading-snug { line-height: 1.375; }
+    .leading-relaxed { line-height: 1.625; }
     
     /* Essential borders */
     .rounded-full { border-radius: 9999px; }
@@ -83,8 +95,12 @@ export const CriticalCSSInline = () => (
     .via-purple-900 { --tw-gradient-to: rgb(88 28 135 / 0); --tw-gradient-stops: var(--tw-gradient-from), #581c87, var(--tw-gradient-to); }
     .to-slate-900 { --tw-gradient-to: #0f172a; }
     
-    /* Text effects */
-    .bg-clip-text { background-clip: text; -webkit-background-clip: text; }
+    /* Text effects - Critical for gradient text */
+    .bg-clip-text { 
+      background-clip: text; 
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
     .text-transparent { color: transparent; }
     
     /* Essential colors */
@@ -105,8 +121,22 @@ export const CriticalCSSInline = () => (
       margin-bottom: calc(0.75rem * var(--tw-space-y-reverse));
     }
     
+    .max-w-xs { max-width: 20rem; }
     .max-w-sm { max-width: 24rem; }
     .max-w-2xl { max-width: 42rem; }
+    .block { display: block; }
+    
+    /* Mobile-first responsive design */
+    @media (min-width: 640px) {
+      .sm\:text-4xl { font-size: 2.25rem; line-height: 2.5rem; }
+      .sm\:text-3xl { font-size: 1.875rem; line-height: 2.25rem; }
+      .sm\:text-base { font-size: 1rem; line-height: 1.5rem; }
+      .sm\:text-lg { font-size: 1.125rem; line-height: 1.75rem; }
+      .sm\:text-sm { font-size: 0.875rem; line-height: 1.25rem; }
+      .sm\:max-w-sm { max-width: 24rem; }
+      .sm\:px-4 { padding-left: 1rem; padding-right: 1rem; }
+      .sm\:hidden { display: none; }
+    }
   `}</style>
 );
 
