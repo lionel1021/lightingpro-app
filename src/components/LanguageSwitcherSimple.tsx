@@ -28,7 +28,7 @@ export function LanguageSwitcherSimple() {
       console.log('从URL检测到语言:', urlLocale);
       setCurrentLocale(urlLocale);
       // 同步到cookie
-      document.cookie = `NEXT_LOCALE=${urlLocale}; path=/; max-age=31536000; SameSite=Strict`;
+      document.cookie = `LOCALE=${urlLocale}; path=/; max-age=31536000; SameSite=Strict`;
       return;
     }
     
@@ -41,7 +41,7 @@ export function LanguageSwitcherSimple() {
       return null;
     };
     
-    const savedLocale = getCookie('NEXT_LOCALE') || 'en';
+    const savedLocale = getCookie('LOCALE') || 'en';
     console.log('从Cookie检测到语言:', savedLocale);
     setCurrentLocale(savedLocale);
   }, []);
@@ -52,7 +52,7 @@ export function LanguageSwitcherSimple() {
     console.log(`切换语言：${currentLocale} -> ${newLocale}`);
     
     // 设置新的cookie
-    document.cookie = `NEXT_LOCALE=${newLocale}; path=/; max-age=31536000; SameSite=Strict`;
+    document.cookie = `LOCALE=${newLocale}; path=/; max-age=31536000; SameSite=Strict`;
     
     // 获取当前路径并替换语言部分
     const currentPath = window.location.pathname;
