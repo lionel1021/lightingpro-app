@@ -167,7 +167,7 @@ export default function OptimizedRevolutionary2025Design() {
       icon: (
         <div className="w-8 h-8 text-white flex items-center justify-center">
           <svg viewBox="0 0 24 24" fill="currentColor" className="w-6 h-6">
-            <path d="M12 2L15.5 8.5L22 9L17 14L18.5 21L12 17.5L5.5 21L7 14L2 9L8.5 8.5L12 2Z"/>
+            <path d="M12 8C13.1 8 14 8.9 14 10S13.1 12 12 12 10 11.1 10 10 10.9 8 12 8M12 6C9.8 6 8 7.8 8 10S9.8 14 12 14 16 12.2 16 10 14.2 6 12 6M6 10C6 13.3 8.7 16 12 16S18 13.3 18 10 15.3 4 12 4 6 6.7 6 10M4 10C4 5.6 7.6 2 12 2S20 5.6 20 10 16.4 18 12 18 4 14.4 4 10M12 18V22H8V20H16V22H12Z"/>
           </svg>
         </div>
       ),
