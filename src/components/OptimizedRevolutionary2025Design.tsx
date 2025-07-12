@@ -103,32 +103,19 @@ const AIVisualElement = ({ type, className = "" }: { type: string; className?: s
       <div className={`w-full h-full ${className} relative`}>
         <div className="w-full h-full rounded-full" style={{
           background: 'linear-gradient(45deg, #ff0080, #00ff80, #8000ff)',
-          boxShadow: '0 0 35px #ff0080, 0 0 70px #00ff80',
-          filter: 'brightness(1.6) contrast(1.4)'
+          boxShadow: '0 0 25px #ff0080, 0 0 50px #00ff80',
+          filter: 'brightness(1.4) contrast(1.2)'
         }} />
-        <div className="absolute inset-1 rounded-full animate-pulse" style={{
-          background: 'linear-gradient(45deg, #ffffff, #ff0080, #00ff80)',
-          boxShadow: '0 0 25px #ffffff'
+        <div className="absolute inset-2 rounded-full animate-pulse" style={{
+          background: 'linear-gradient(45deg, #ffffff, #ff0080)',
+          boxShadow: '0 0 15px #ffffff'
         }} />
-        <div className="absolute inset-2 rounded-full animate-spin" style={{
-          background: 'linear-gradient(45deg, #8000ff, #ff4000, #00ff40)',
-          animationDuration: '4s',
-          boxShadow: '0 0 20px #8000ff'
+        <div className="absolute inset-4 bg-white rounded-full animate-pulse" style={{
+          boxShadow: '0 0 10px #ffffff'
         }} />
-        <div className="absolute inset-0 border-4 border-white rounded-full animate-spin shadow-2xl" style={{ 
+        <div className="absolute inset-1 border-2 border-white/50 rounded-full animate-spin" style={{ 
           animationDuration: '3s',
-          boxShadow: '0 0 30px #ffffff'
-        }} />
-        <div className="absolute inset-3 border-2 border-pink-300 rounded-full animate-spin" style={{ 
-          animationDuration: '5s', 
-          animationDirection: 'reverse',
-          boxShadow: '0 0 18px #ff0080'
-        }} />
-        <div className="absolute inset-6 bg-white rounded-full animate-pulse" style={{
-          boxShadow: '0 0 12px #ffffff'
-        }} />
-        <div className="absolute inset-4 border border-green-300 rounded-full animate-pulse" style={{
-          boxShadow: '0 0 15px #00ff80'
+          borderStyle: 'dashed'
         }} />
       </div>
     ),
