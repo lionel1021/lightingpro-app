@@ -44,17 +44,17 @@ const MobileNeuralParticles = () => {
 
   return (
     <div className="absolute inset-0 overflow-hidden pointer-events-none">
-      {particles.map(particle => (
+      {particles.map((particle, index) => (
         <div
           key={particle.id}
-          className="absolute bg-blue-400 rounded-full animate-pulse"
+          className="absolute bg-blue-400 rounded-full animate-float"
           style={{
             width: particle.size,
             height: particle.size,
             left: `${particle.x}%`,
             top: `${particle.y}%`,
             opacity: particle.opacity,
-            animation: `float ${3 + Math.random() * 2}s ease-in-out infinite`
+            animationDelay: `${index * 0.15}s`
           }}
         />
       ))}
@@ -440,35 +440,6 @@ export default function MobileOptimizedRevolutionary2025Design() {
           </div>
         </section>
       </div>
-
-      <style jsx global>{`
-        @keyframes fade-in {
-          from { opacity: 0; }
-          to { opacity: 1; }
-        }
-        @keyframes fade-in-up {
-          from { opacity: 0; transform: translateY(20px); }
-          to { opacity: 1; transform: translateY(0); }
-        }
-        @keyframes float {
-          0%, 100% { transform: translateY(0px); }
-          50% { transform: translateY(-15px); }
-        }
-        @keyframes gradient {
-          0%, 100% { background-position: 0% 50%; }
-          50% { background-position: 100% 50%; }
-        }
-        .animate-fade-in {
-          animation: fade-in 1s ease-out;
-        }
-        .animate-fade-in-up {
-          animation: fade-in-up 1s ease-out;
-        }
-        .animate-gradient {
-          background-size: 200% 200%;
-          animation: gradient 8s ease-in-out infinite;
-        }
-      `}</style>
     </div>
   );
 }

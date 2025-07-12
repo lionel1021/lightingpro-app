@@ -1,7 +1,6 @@
 'use client';
 
-import { useState, useEffect, Suspense } from 'react';
-import dynamic from 'next/dynamic';
+import { useState, useEffect } from 'react';
 import { 
   Lightbulb, 
   Sparkles, 
@@ -11,88 +10,58 @@ import {
   Download
 } from 'lucide-react';
 
-// 🚀 动态导入优化 - 只在需要时加载
-const FramerMotion = dynamic(() => import('framer-motion').then(mod => ({ motion: mod.motion })), {
-  loading: () => <div className="animate-pulse bg-gray-800 rounded-lg h-32" />,
-  ssr: false
-});
-
-// 🎯 直接导入图标 - 确保可靠显示
-
-// 🌟 优化的神经网络粒子系统
-const OptimizedNeuralParticles = dynamic(() => {
-  const NeuralParticles = () => {
-    const [particles, setParticles] = useState<Array<{
-      id: number;
-      x: number;
-      y: number;
-      size: number;
-      opacity: number;
-    }>>([]);
+// 🌟 简化的神经网络粒子系统
+const NeuralParticles = () => {
+  const [particles, setParticles] = useState<Array<{
+    id: number;
+    x: number;
+    y: number;
+    size: number;
+    opacity: number;
+  }>>([]);
+  
+  useEffect(() => {
+    // 🎯 根据设备性能调整粒子数量
+    const isMobile = typeof window !== 'undefined' && window.innerWidth < 768;
+    const isLowEnd = typeof window !== 'undefined' && 
+      (window.navigator as any).hardwareConcurrency < 4;
     
-    useEffect(() => {
-      // 🎯 根据设备性能调整粒子数量
-      const isMobile = typeof window !== 'undefined' && window.innerWidth < 768;
-      const isLowEnd = typeof window !== 'undefined' && 
-        (window.navigator as any).hardwareConcurrency < 4;
-      
-      const particleCount = isMobile ? 15 : isLowEnd ? 25 : 50;
-      
-      const newParticles = Array.from({ length: particleCount }, (_, i) => ({
-        id: i,
-        x: Math.random() * 100,
-        y: Math.random() * 100,
-        size: Math.random() * 3 + 1,
-        opacity: Math.random() * 0.5 + 0.3
-      }));
-      setParticles(newParticles);
-    }, []);
+    const particleCount = isMobile ? 15 : isLowEnd ? 25 : 50;
+    
+    const newParticles = Array.from({ length: particleCount }, (_, i) => ({
+      id: i,
+      x: Math.random() * 100,
+      y: Math.random() * 100,
+      size: Math.random() * 3 + 1,
+      opacity: Math.random() * 0.5 + 0.3
+    }));
+    setParticles(newParticles);
+  }, []);
 
-    return (
-      <div className="absolute inset-0 overflow-hidden pointer-events-none">
-        {particles.map(particle => (
-          <div
-            key={particle.id}
-            className="absolute bg-blue-400 rounded-full animate-pulse"
-            style={{
-              width: particle.size,
-              height: particle.size,
-              left: `${particle.x}%`,
-              top: `${particle.y}%`,
-              opacity: particle.opacity,
-              animation: `float ${3 + Math.random() * 2}s ease-in-out infinite`
-            }}
-          />
-        ))}
-        <style jsx>{`
-          @keyframes float {
-            0%, 100% { transform: translateY(0px); }
-            50% { transform: translateY(-20px); }
-          }
-        `}</style>
-      </div>
-    );
-  };
-  return Promise.resolve({ default: NeuralParticles });
-}, {
-  loading: () => null,
-  ssr: false
-});
+  return (
+    <div className="absolute inset-0 overflow-hidden pointer-events-none">
+      {particles.map((particle, index) => (
+        <div
+          key={particle.id}
+          className="absolute bg-blue-400 rounded-full animate-float"
+          style={{
+            width: particle.size,
+            height: particle.size,
+            left: `${particle.x}%`,
+            top: `${particle.y}%`,
+            opacity: particle.opacity,
+            animationDelay: `${index * 0.1}s`
+          }}
+        />
+      ))}
+    </div>
+  );
+};
 
 // 🌊 轻量化流体背景
 const FluidBackground = () => (
   <div className="absolute inset-0 overflow-hidden">
     <div className="absolute inset-0 bg-gradient-to-br from-blue-50 via-purple-50 to-pink-50 animate-gradient" />
-    <style jsx>{`
-      @keyframes gradient {
-        0%, 100% { background-position: 0% 50%; }
-        50% { background-position: 100% 50%; }
-      }
-      .animate-gradient {
-        background-size: 200% 200%;
-        animation: gradient 8s ease-in-out infinite;
-      }
-    `}</style>
   </div>
 );
 
@@ -264,11 +233,7 @@ export default function OptimizedRevolutionary2025Design() {
       <FluidBackground />
       
       {/* 🌟 条件加载粒子系统 */}
-      {showAdvancedAnimations && (
-        <Suspense fallback={null}>
-          <OptimizedNeuralParticles />
-        </Suspense>
-      )}
+      {showAdvancedAnimations && <NeuralParticles />}
 
       {/* 🎮 顶部控制栏 */}
       <div className="fixed top-4 left-1/2 transform -translate-x-1/2 z-50 animate-fade-in">
@@ -471,23 +436,6 @@ export default function OptimizedRevolutionary2025Design() {
           </div>
         </section>
       </div>
-
-      <style jsx>{`
-        @keyframes fade-in {
-          from { opacity: 0; }
-          to { opacity: 1; }
-        }
-        @keyframes fade-in-up {
-          from { opacity: 0; transform: translateY(30px); }
-          to { opacity: 1; transform: translateY(0); }
-        }
-        .animate-fade-in {
-          animation: fade-in 1s ease-out;
-        }
-        .animate-fade-in-up {
-          animation: fade-in-up 1s ease-out;
-        }
-      `}</style>
     </div>
   );
 }
