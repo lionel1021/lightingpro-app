@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>🔄 Netlify缓存绕过解决方案</title>
+    <style>
+        body {
+            background: black;
+            color: white;
+            font-family: Arial, sans-serif;
+            padding: 40px;
+            text-align: center;
+        }
+        .button {
+            background: linear-gradient(45deg, #60a5fa, #a855f7);
+            color: white;
+            padding: 15px 30px;
+            border: none;
+            border-radius: 10px;
+            font-size: 16px;
+            cursor: pointer;
+            margin: 10px;
+            display: inline-block;
+            text-decoration: none;
+        }
+        .button:hover {
+            transform: scale(1.05);
+        }
+        .info {
+            background: rgba(255,255,255,0.1);
+            padding: 20px;
+            border-radius: 10px;
+            margin: 20px 0;
+        }
+        .urgent {
+            background: rgba(239, 68, 68, 0.2);
+            border: 2px solid #ef4444;
+        }
+        .solution {
+            background: rgba(34, 197, 94, 0.2);
+            border: 2px solid #22c55e;
+        }
+    </style>
+</head>
+<body>
+    <h1>🚨 Netlify Edge CDN 缓存问题诊断</h1>
+    
+    <div class="info urgent">
+        <h2>🔍 问题确认</h2>
+        <p><strong>缓存状态</strong>: "Netlify Edge"; fwd=stale</p>
+        <p><strong>原因</strong>: Netlify Edge CDN 仍在提供旧版本缓存</p>
+        <p><strong>部署状态</strong>: ✅ 代码已更新，CDN缓存未刷新</p>
+    </div>
+    
+    <div class="info solution">
+        <h2>💡 立即解决方案</h2>
+        <p>使用以下链接强制绕过CDN缓存，查看最新版本：</p>
+    </div>
+    
+    <div style="margin: 40px 0;">
+        <h3>🚀 强制刷新链接 (点击任一个)</h3>
+        
+        <a href="https://lightingpro.netlify.app/?nocache=2025071215" class="button" target="_blank">
+            🔥 主页 + 缓存破坏参数
+        </a>
+        <br><br>
+        
+        <a href="https://lightingpro.netlify.app/?t=1720798800" class="button" target="_blank">
+            ⚡ 主页 + 时间戳参数
+        </a>
+        <br><br>
+        
+        <a href="https://lightingpro.netlify.app/?force=refresh&v=latest" class="button" target="_blank">
+            🌟 主页 + 强制刷新
+        </a>
+        <br><br>
+        
+        <a href="https://lightingpro.netlify.app/test-new-icons" class="button" target="_blank">
+            🧪 测试页面 (确认更新)
+        </a>
+    </div>
+    
+    <div class="info">
+        <h3>✅ 预期看到的修复效果</h3>
+        <p><strong>Quantum Computing 卡片</strong>: 超明亮的多层动画图标</p>
+        <ul style="text-align: left; max-width: 500px; margin: 0 auto;">
+            <li>外层: 明亮青色渐变 (#ecfeff → #67e8f9)</li>
+            <li>中层: 明亮紫色渐变 (#faf5ff → #d8b4fe)</li>
+            <li>内层: 明亮黄色渐变 (#fefce8 → #fde047)</li>
+            <li>白色旋转边框 + 发光效果</li>
+            <li>中心白色脉冲点</li>
+        </ul>
+    </div>
+    
+    <div class="info">
+        <h3>🔧 技术说明</h3>
+        <p>Netlify Edge CDN 有时需要额外时间来清除缓存</p>
+        <p>URL参数会强制CDN绕过缓存，获取最新构建版本</p>
+        <p>如果以上链接显示正确，说明修复已生效，只是缓存问题</p>
+    </div>
+
+    <script>
+        // 2秒后自动打开第一个绕过缓存的链接
+        setTimeout(() => {
+            window.open('https://lightingpro.netlify.app/?nocache=2025071215', '_blank');
+        }, 2000);
+        
+        // 显示倒计时
+        let countdown = 2;
+        const countdownEl = document.createElement('div');
+        countdownEl.style.cssText = 'position: fixed; top: 20px; right: 20px; background: rgba(0,0,0,0.8); padding: 10px; border-radius: 5px; font-size: 14px;';
+        document.body.appendChild(countdownEl);
+        
+        const timer = setInterval(() => {
+            countdownEl.textContent = `🚀 ${countdown}秒后自动打开绕过缓存链接...`;
+            countdown--;
+            if (countdown < 0) {
+                countdownEl.textContent = '✅ 已打开新窗口！';
+                clearInterval(timer);
+            }
+        }, 1000);
+    </script>
+</body>
+</html>
