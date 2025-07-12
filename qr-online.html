@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>📱 LightingPro Mobile QR Code</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        body {
+            background: linear-gradient(135deg, #0f172a, #1e293b, #7c3aed);
+            color: #fff;
+            font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Display', sans-serif;
+            text-align: center;
+            padding: 1rem;
+            min-height: 100vh;
+            margin: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .container {
+            max-width: 450px;
+            width: 100%;
+            background: rgba(30, 41, 59, 0.9);
+            padding: 2rem;
+            border-radius: 1.5rem;
+            border: 1px solid rgba(96, 165, 250, 0.3);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.4), 0 0 0 1px rgba(255,255,255,0.1);
+            backdrop-filter: blur(20px);
+        }
+        .title {
+            background: linear-gradient(135deg, #60a5fa 0%, #a855f7 50%, #ec4899 100%);
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+            font-size: clamp(1.5rem, 6vw, 2rem);
+            font-weight: 700;
+            margin-bottom: 1rem;
+            line-height: 1.1;
+        }
+        .subtitle {
+            color: #94a3b8;
+            font-size: 0.9rem;
+            margin-bottom: 2rem;
+        }
+        .qr-container {
+            background: #fff;
+            padding: 1.5rem;
+            border-radius: 1rem;
+            margin: 2rem 0;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+        }
+        .qr-image {
+            width: 200px;
+            height: 200px;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+        }
+        .status-badge {
+            background: linear-gradient(135deg, #10b981, #059669);
+            color: white;
+            padding: 0.75rem 1.5rem;
+            border-radius: 2rem;
+            margin: 1.5rem 0;
+            font-weight: 600;
+            font-size: 0.9rem;
+            display: inline-block;
+            box-shadow: 0 4px 15px rgba(16, 185, 129, 0.3);
+        }
+        .url-section {
+            background: linear-gradient(135deg, #374151, #4b5563);
+            padding: 1rem;
+            border-radius: 0.75rem;
+            margin: 1.5rem 0;
+            border: 1px solid #6b7280;
+        }
+        .url-label {
+            color: #9ca3af;
+            font-size: 0.75rem;
+            margin-bottom: 0.5rem;
+        }
+        .url {
+            color: #60a5fa;
+            font-family: 'SF Mono', Monaco, 'Cascadia Code', monospace;
+            font-size: 0.9rem;
+            word-break: break-all;
+            font-weight: 600;
+            background: rgba(96, 165, 250, 0.1);
+            padding: 0.5rem;
+            border-radius: 0.5rem;
+        }
+        .test-points {
+            background: linear-gradient(135deg, #7c3aed, #a855f7);
+            padding: 1.5rem;
+            border-radius: 0.75rem;
+            margin: 1.5rem 0;
+            text-align: left;
+        }
+        .test-title {
+            color: #fff;
+            font-weight: 600;
+            margin-bottom: 1rem;
+            font-size: 1rem;
+        }
+        .test-item {
+            margin: 0.75rem 0;
+            font-size: 0.85rem;
+            color: #e2e8f0;
+            display: flex;
+            align-items: flex-start;
+            line-height: 1.4;
+        }
+        .test-emoji {
+            margin-right: 0.5rem;
+            margin-top: 0.1rem;
+        }
+        .version-info {
+            background: rgba(15, 23, 42, 0.6);
+            padding: 1rem;
+            border-radius: 0.75rem;
+            margin-top: 1.5rem;
+            border: 1px solid rgba(148, 163, 184, 0.2);
+        }
+        .version-title {
+            color: #f59e0b;
+            font-weight: 600;
+            font-size: 0.9rem;
+            margin-bottom: 0.5rem;
+        }
+        .version-detail {
+            color: #cbd5e1;
+            font-size: 0.8rem;
+            line-height: 1.4;
+        }
+        .highlight {
+            background: linear-gradient(135deg, #fbbf24, #f59e0b);
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+            font-weight: 600;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1 class="title">📱 Mobile Font Fix Test</h1>
+        <div class="subtitle">LightingPro V3.0 统一解决方案</div>
+        
+        <div class="status-badge">
+            ✅ 已部署移动端修复
+        </div>
+        
+        <div class="url-section">
+            <div class="url-label">测试地址：</div>
+            <div class="url">http://192.168.31.98:8888</div>
+        </div>
+        
+        <div class="qr-container">
+            <!-- 使用在线QR码生成服务 -->
+            <img src="https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=http://192.168.31.98:8888&color=000000&bgcolor=ffffff&margin=10" 
+                 alt="QR Code for Mobile Test" 
+                 class="qr-image"
+                 onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+            <div style="display: none; color: #ef4444; padding: 2rem;">
+                ❌ QR码加载失败<br>
+                <small>请手动输入地址访问</small>
+            </div>
+        </div>
+        
+        <div class="test-points">
+            <div class="test-title">🎯 重点测试项目：</div>
+            <div class="test-item">
+                <span class="test-emoji">📏</span>
+                <div>主标题 <span class="highlight">"Redefining"</span> 是否在手机上完整显示</div>
+            </div>
+            <div class="test-item">
+                <span class="test-emoji">🌈</span>
+                <div>蓝紫粉渐变文字效果是否正确渲染</div>
+            </div>
+            <div class="test-item">
+                <span class="test-emoji">📐</span>
+                <div>字体大小在不同手机屏幕上的响应表现</div>
+            </div>
+            <div class="test-item">
+                <span class="test-emoji">⚡</span>
+                <div>页面加载速度和交互流畅度</div>
+            </div>
+        </div>
+        
+        <div class="version-info">
+            <div class="version-title">🔧 V3.0 核心修复：</div>
+            <div class="version-detail">
+                • clamp(2rem, 12vw, 4rem) 激进字体修复<br>
+                • 移除设备检测，统一组件架构<br>
+                • 强制webkit渐变背景剪切<br>
+                • 消除条件渲染不一致性问题
+            </div>
+        </div>
+    </div>
+</body>
+</html>

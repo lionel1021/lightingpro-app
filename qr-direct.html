@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>📱 Mobile Test QR Code</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        body {
+            background: linear-gradient(135deg, #0f172a, #1e293b);
+            color: #fff;
+            font-family: -apple-system, BlinkMacSystemFont, sans-serif;
+            text-align: center;
+            padding: 2rem;
+            min-height: 100vh;
+            margin: 0;
+        }
+        .container {
+            max-width: 500px;
+            margin: 0 auto;
+            background: rgba(30, 41, 59, 0.8);
+            padding: 2rem;
+            border-radius: 1rem;
+            border: 2px solid rgba(96, 165, 250, 0.3);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+        }
+        .title {
+            background: linear-gradient(135deg, #60a5fa, #a855f7, #ec4899);
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+            font-size: clamp(1.5rem, 6vw, 2.5rem);
+            font-weight: bold;
+            margin-bottom: 1.5rem;
+            line-height: 1.1;
+        }
+        .qr-section {
+            background: #fff;
+            padding: 1.5rem;
+            border-radius: 1rem;
+            margin: 2rem 0;
+            box-shadow: 0 8px 25px rgba(0,0,0,0.3);
+        }
+        .qr-placeholder {
+            width: 200px;
+            height: 200px;
+            margin: 0 auto;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200"><rect width="200" height="200" fill="%23000"/><rect x="10" y="10" width="30" height="30" fill="%23fff"/><rect x="160" y="10" width="30" height="30" fill="%23fff"/><rect x="10" y="160" width="30" height="30" fill="%23fff"/><rect x="50" y="50" width="10" height="10" fill="%23fff"/><rect x="70" y="50" width="10" height="10" fill="%23fff"/><rect x="90" y="50" width="10" height="10" fill="%23fff"/><rect x="110" y="50" width="10" height="10" fill="%23fff"/><rect x="130" y="50" width="10" height="10" fill="%23fff"/><rect x="150" y="50" width="10" height="10" fill="%23fff"/><rect x="50" y="70" width="10" height="10" fill="%23fff"/><rect x="90" y="70" width="10" height="10" fill="%23fff"/><rect x="130" y="70" width="10" height="10" fill="%23fff"/><rect x="50" y="90" width="10" height="10" fill="%23fff"/><rect x="70" y="90" width="10" height="10" fill="%23fff"/><rect x="110" y="90" width="10" height="10" fill="%23fff"/><rect x="150" y="90" width="10" height="10" fill="%23fff"/><rect x="50" y="110" width="10" height="10" fill="%23fff"/><rect x="90" y="110" width="10" height="10" fill="%23fff"/><rect x="130" y="110" width="10" height="10" fill="%23fff"/><rect x="50" y="130" width="10" height="10" fill="%23fff"/><rect x="70" y="130" width="10" height="10" fill="%23fff"/><rect x="90" y="130" width="10" height="10" fill="%23fff"/><rect x="110" y="130" width="10" height="10" fill="%23fff"/><rect x="130" y="130" width="10" height="10" fill="%23fff"/><rect x="150" y="130" width="10" height="10" fill="%23fff"/></svg>') center/contain no-repeat;
+            border-radius: 0.5rem;
+            position: relative;
+        }
+        .qr-overlay {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background: rgba(0,0,0,0.8);
+            color: white;
+            padding: 0.5rem;
+            border-radius: 0.25rem;
+            font-size: 0.8rem;
+        }
+        .status {
+            background: linear-gradient(135deg, #10b981, #059669);
+            color: white;
+            padding: 1rem;
+            border-radius: 0.75rem;
+            margin: 1.5rem 0;
+            font-weight: bold;
+            font-size: 1.1rem;
+            box-shadow: 0 4px 15px rgba(16, 185, 129, 0.3);
+        }
+        .url-box {
+            background: #374151;
+            padding: 1rem;
+            border-radius: 0.75rem;
+            margin: 1rem 0;
+            border: 1px solid #4b5563;
+        }
+        .url {
+            color: #60a5fa;
+            font-family: 'SF Mono', Monaco, 'Cascadia Code', 'Roboto Mono', Consolas, 'Courier New', monospace;
+            font-size: 1rem;
+            word-break: break-all;
+            font-weight: bold;
+        }
+        .instructions {
+            background: linear-gradient(135deg, #7c3aed, #a855f7);
+            padding: 1.5rem;
+            border-radius: 0.75rem;
+            margin: 1.5rem 0;
+            text-align: left;
+        }
+        .step {
+            margin: 0.75rem 0;
+            display: flex;
+            align-items: center;
+            font-size: 0.95rem;
+        }
+        .step-number {
+            background: rgba(255,255,255,0.2);
+            width: 24px;
+            height: 24px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: 0.75rem;
+            font-weight: bold;
+            font-size: 0.8rem;
+        }
+        .note {
+            color: #d1d5db;
+            font-size: 0.85rem;
+            line-height: 1.5;
+            margin-top: 1.5rem;
+            opacity: 0.8;
+        }
+        .highlight {
+            background: linear-gradient(135deg, #fbbf24, #f59e0b);
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1 class="title">📱 LightingPro Mobile Test</h1>
+        
+        <div class="status">
+            ✅ V3.0 统一移动端字体修复已部署
+        </div>
+        
+        <div class="url-box">
+            <div style="color: #9ca3af; font-size: 0.8rem; margin-bottom: 0.5rem;">测试地址：</div>
+            <div class="url">http://192.168.31.98:8888</div>
+        </div>
+        
+        <div class="qr-section">
+            <div class="qr-placeholder">
+                <div class="qr-overlay">QR码区域</div>
+            </div>
+            <div style="color: #6b7280; font-size: 0.8rem; margin-top: 1rem;">
+                请使用手机浏览器或QR码扫描器
+            </div>
+        </div>
+        
+        <div class="instructions">
+            <h3 style="margin: 0 0 1rem 0; color: #fff;">🎯 测试步骤：</h3>
+            <div class="step">
+                <div class="step-number">1</div>
+                <div>使用手机扫描QR码或直接访问上述地址</div>
+            </div>
+            <div class="step">
+                <div class="step-number">2</div>
+                <div>重点检查主标题 <span class="highlight">"Redefining"</span> 是否完整显示</div>
+            </div>
+            <div class="step">
+                <div class="step-number">3</div>
+                <div>确认渐变文字效果是否正确渲染</div>
+            </div>
+            <div class="step">
+                <div class="step-number">4</div>
+                <div>测试响应式字体在不同屏幕尺寸下的表现</div>
+            </div>
+        </div>
+        
+        <div class="note">
+            💡 <strong>关键修复点：</strong><br>
+            • 使用 clamp(2rem, 12vw, 4rem) 激进字体修复<br>
+            • 移除设备检测，采用统一组件架构<br>
+            • 强制webkit渐变文字渲染<br>
+            • 消除所有条件渲染导致的不一致性
+        </div>
+    </div>
+</body>
+</html>

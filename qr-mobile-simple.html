@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>📱 LightingPro Mobile Test</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        body {
+            background: #000;
+            color: #fff;
+            font-family: -apple-system, BlinkMacSystemFont, sans-serif;
+            text-align: center;
+            padding: 1rem;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+        .container {
+            max-width: 400px;
+            margin: 0 auto;
+            background: linear-gradient(135deg, #1e293b, #334155);
+            padding: 2rem;
+            border-radius: 1rem;
+            border: 1px solid #60a5fa;
+            box-shadow: 0 0 20px rgba(96, 165, 250, 0.3);
+        }
+        .title {
+            background: linear-gradient(135deg, #60a5fa, #a855f7, #ec4899);
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+            font-size: clamp(1.5rem, 8vw, 2rem);
+            font-weight: bold;
+            margin-bottom: 1rem;
+            line-height: 1.2;
+        }
+        .qr-container {
+            background: #fff;
+            padding: 1rem;
+            border-radius: 0.75rem;
+            margin: 1.5rem 0;
+            display: inline-block;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+        }
+        .status {
+            background: linear-gradient(135deg, #10b981, #059669);
+            color: white;
+            padding: 1rem;
+            border-radius: 0.75rem;
+            margin: 1rem 0;
+            font-weight: bold;
+            font-size: 1.1rem;
+        }
+        .url-section {
+            background: #374151;
+            padding: 1rem;
+            border-radius: 0.75rem;
+            margin: 1rem 0;
+            border: 1px solid #4b5563;
+        }
+        .url {
+            color: #60a5fa;
+            font-family: 'Courier New', monospace;
+            font-size: 1rem;
+            word-break: break-all;
+            margin: 0.5rem 0;
+        }
+        .note {
+            color: #9ca3af;
+            font-size: 0.9rem;
+            line-height: 1.5;
+            margin-top: 1.5rem;
+        }
+        .feature-list {
+            background: #1f2937;
+            padding: 1rem;
+            border-radius: 0.75rem;
+            margin: 1rem 0;
+            text-align: left;
+            border: 1px solid #374151;
+        }
+        .feature-item {
+            margin: 0.5rem 0;
+            font-size: 0.9rem;
+            color: #d1d5db;
+        }
+        .emoji {
+            margin-right: 0.5rem;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1 class="title">🔧 Mobile Font Fix Test v3.0</h1>
+        
+        <div class="status">
+            ✅ 统一移动端修复已部署
+        </div>
+        
+        <div class="url-section">
+            <div style="color: #9ca3af; font-size: 0.8rem; margin-bottom: 0.5rem;">扫描访问：</div>
+            <div class="url">http://192.168.31.98:8888</div>
+        </div>
+        
+        <div class="qr-container">
+            <div id="qr-code"></div>
+        </div>
+        
+        <div class="feature-list">
+            <div style="color: #60a5fa; font-weight: bold; margin-bottom: 0.5rem;">🎯 测试重点：</div>
+            <div class="feature-item"><span class="emoji">📏</span>主标题 "Redefining" 是否完整显示</div>
+            <div class="feature-item"><span class="emoji">🌈</span>渐变文字效果是否正确渲染</div>
+            <div class="feature-item"><span class="emoji">📱</span>响应式字体在手机上的表现</div>
+            <div class="feature-item"><span class="emoji">⚡</span>clamp(2rem, 12vw, 4rem) 修复效果</div>
+        </div>
+        
+        <div class="note">
+            📱 使用手机扫描QR码测试移动端字体修复效果<br>
+            🎨 V3.0版本采用统一组件架构，无设备检测冲突<br>
+            🚀 如果字体显示正常，说明修复成功！
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/qrcode-generator@1.4.4/qrcode.js"></script>
+    <script>
+        // 生成QR码
+        const url = 'http://192.168.31.98:8888';
+        
+        try {
+            const qr = qrcode(0, 'M');
+            qr.addData(url);
+            qr.make();
+            
+            // 创建QR码图像
+            const qrDiv = document.getElementById('qr-code');
+            qrDiv.innerHTML = qr.createImgTag(4, 8); // 4像素大小，8像素边距
+            
+            // 设置样式
+            const img = qrDiv.querySelector('img');
+            if (img) {
+                img.style.borderRadius = '8px';
+                img.style.width = '200px';
+                img.style.height = '200px';
+            }
+            
+            console.log('QR Code generated successfully for:', url);
+        } catch (error) {
+            console.error('QR Code generation failed:', error);
+            document.getElementById('qr-code').innerHTML = '<p style="color: #ef4444;">❌ QR码生成失败</p>';
+        }
+    </script>
+</body>
+</html>
