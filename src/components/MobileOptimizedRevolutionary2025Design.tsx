@@ -284,21 +284,39 @@ export default function MobileOptimizedRevolutionary2025Design() {
             <div className="grid grid-cols-1 gap-4">
               {[
                 {
-                  icon: <div className="w-6 h-6 text-xl flex items-center justify-center">🧠</div>,
+                  icon: (
+                    <div className="w-6 h-6 text-white flex items-center justify-center">
+                      <svg viewBox="0 0 24 24" fill="currentColor" className="w-5 h-5">
+                        <path d="M12 2C17.5 2 22 6.5 22 12S17.5 22 12 22 2 17.5 2 12 6.5 2 12 2M12 4C7.6 4 4 7.6 4 12S7.6 20 12 20 20 16.4 20 12 16.4 4 12 4M12 6C15.3 6 18 8.7 18 12S15.3 18 12 18 6 15.3 6 12 8.7 6 12 6Z"/>
+                      </svg>
+                    </div>
+                  ),
                   title: 'Neural Network Recommendations',
                   description: 'Deep learning algorithms analyze your lifestyle',
                   stats: '99.2% Accuracy',
                   color: 'from-blue-500 to-cyan-500'
                 },
                 {
-                  icon: <div className="w-6 h-6 text-xl flex items-center justify-center">⚛️</div>,
+                  icon: (
+                    <div className="w-6 h-6 text-white flex items-center justify-center">
+                      <svg viewBox="0 0 24 24" fill="currentColor" className="w-5 h-5">
+                        <path d="M12 2L15.5 8.5L22 9L17 14L18.5 21L12 17.5L5.5 21L7 14L2 9L8.5 8.5L12 2Z"/>
+                      </svg>
+                    </div>
+                  ),
                   title: 'Quantum Rendering Engine', 
                   description: 'Real-time 3D lighting effects preview',
                   stats: '60fps Smooth',
                   color: 'from-purple-500 to-pink-500'
                 },
                 {
-                  icon: <div className="w-6 h-6 text-xl flex items-center justify-center">📊</div>,
+                  icon: (
+                    <div className="w-6 h-6 text-white flex items-center justify-center">
+                      <svg viewBox="0 0 24 24" fill="currentColor" className="w-5 h-5">
+                        <path d="M22 21H2V3H4V19H6V17H10V19H12V16H16V19H18V17H22V21M16 8H18V14H16V8M12 2H14V15H12V2M8 11H10V14H8V11M4 15H6V19H4V15Z"/>
+                      </svg>
+                    </div>
+                  ),
                   title: 'Multi-Dimensional Analysis',
                   description: 'Comprehensive optimization of lighting and energy',
                   stats: '7 Dimensions', 

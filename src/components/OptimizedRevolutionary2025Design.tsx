@@ -152,8 +152,10 @@ export default function OptimizedRevolutionary2025Design() {
   const features = [
     {
       icon: (
-        <div className="w-8 h-8 text-white text-2xl flex items-center justify-center">
-          🧠
+        <div className="w-8 h-8 text-white flex items-center justify-center">
+          <svg viewBox="0 0 24 24" fill="currentColor" className="w-6 h-6">
+            <path d="M12 2C17.5 2 22 6.5 22 12S17.5 22 12 22 2 17.5 2 12 6.5 2 12 2M12 4C7.6 4 4 7.6 4 12S7.6 20 12 20 20 16.4 20 12 16.4 4 12 4M12 6C15.3 6 18 8.7 18 12S15.3 18 12 18 6 15.3 6 12 8.7 6 12 6Z"/>
+          </svg>
         </div>
       ),
       title: 'Neural Network Recommendations',
@@ -163,8 +165,10 @@ export default function OptimizedRevolutionary2025Design() {
     },
     {
       icon: (
-        <div className="w-8 h-8 text-white text-2xl flex items-center justify-center">
-          ⚛️
+        <div className="w-8 h-8 text-white flex items-center justify-center">
+          <svg viewBox="0 0 24 24" fill="currentColor" className="w-6 h-6">
+            <path d="M12 2L15.5 8.5L22 9L17 14L18.5 21L12 17.5L5.5 21L7 14L2 9L8.5 8.5L12 2Z"/>
+          </svg>
         </div>
       ),
       title: 'Quantum Rendering Engine', 
@@ -174,8 +178,10 @@ export default function OptimizedRevolutionary2025Design() {
     },
     {
       icon: (
-        <div className="w-8 h-8 text-white text-2xl flex items-center justify-center">
-          🔍
+        <div className="w-8 h-8 text-white flex items-center justify-center">
+          <svg viewBox="0 0 24 24" fill="currentColor" className="w-6 h-6">
+            <path d="M15.5 14H20.5L22 15.5V20.5L20.5 22H15.5L14 20.5V15.5L15.5 14M19 19V17H17V19H19M9.5 14H14.5L16 15.5V20.5L14.5 22H9.5L8 20.5V15.5L9.5 14M13 19V17H11V19H13M3.5 14H8.5L10 15.5V20.5L8.5 22H3.5L2 20.5V15.5L3.5 14M7 19V17H5V19H7M9.5 8H14.5L16 9.5V14.5L14.5 16H9.5L8 14.5V9.5L9.5 8M13 13V11H11V13H13M15.5 2H20.5L22 3.5V8.5L20.5 10H15.5L14 8.5V3.5L15.5 2M19 7V5H17V7H19Z"/>
+          </svg>
         </div>
       ),
       title: 'AR Space Scanning',
@@ -185,8 +191,10 @@ export default function OptimizedRevolutionary2025Design() {
     },
     {
       icon: (
-        <div className="w-8 h-8 text-white text-2xl flex items-center justify-center">
-          📊
+        <div className="w-8 h-8 text-white flex items-center justify-center">
+          <svg viewBox="0 0 24 24" fill="currentColor" className="w-6 h-6">
+            <path d="M22 21H2V3H4V19H6V17H10V19H12V16H16V19H18V17H22V21M16 8H18V14H16V8M12 2H14V15H12V2M8 11H10V14H8V11M4 15H6V19H4V15Z"/>
+          </svg>
         </div>
       ),
       title: 'Multi-Dimensional Analysis',
@@ -222,13 +230,25 @@ export default function OptimizedRevolutionary2025Design() {
                 onClick={() => setIsPlaying(!isPlaying)}
                 className="p-2 rounded-lg hover:bg-white/10 transition-colors"
               >
-                <span className="text-sm">{isPlaying ? '⏸️' : '▶️'}</span>
+                {isPlaying ? (
+                  <svg viewBox="0 0 24 24" fill="currentColor" className="w-4 h-4">
+                    <path d="M14,19H18V5H14M6,19H10V5H6V19Z"/>
+                  </svg>
+                ) : (
+                  <svg viewBox="0 0 24 24" fill="currentColor" className="w-4 h-4">
+                    <path d="M8,5.14V19.14L19,12.14L8,5.14Z"/>
+                  </svg>
+                )}
               </button>
               <button className="p-2 rounded-lg hover:bg-white/10 transition-colors">
-                <span className="text-sm">🔊</span>
+                <svg viewBox="0 0 24 24" fill="currentColor" className="w-4 h-4">
+                  <path d="M14,3.23V5.29C16.89,6.15 19,8.83 19,12C19,15.17 16.89,17.84 14,18.7V20.77C18,19.86 21,16.28 21,12C21,7.72 18,4.14 14,3.23M16.5,12C16.5,10.23 15.5,8.71 14,7.97V16C15.5,15.29 16.5,13.76 16.5,12M3,9V15H7L12,20V4L7,9H3Z"/>
+                </svg>
               </button>
               <button className="p-2 rounded-lg hover:bg-white/10 transition-colors">
-                <span className="text-sm">⛶</span>
+                <svg viewBox="0 0 24 24" fill="currentColor" className="w-4 h-4">
+                  <path d="M5,5H10V7H7V10H5V5M14,5H19V10H17V7H14V5M17,14H19V19H14V17H17V14M10,17V19H5V14H7V17H10Z"/>
+                </svg>
               </button>
             </div>
           </div>

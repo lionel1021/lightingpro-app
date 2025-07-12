@@ -26,3 +26,104 @@ Read more: https://nextjs.org/docs/app/api-reference/config/next-config-js/allow
  GET /favicon.ico?favicon.45db1c09.ico 200 in 655ms
  GET /favicon.ico 200 in 663ms
  GET / 200 in 87ms
+ ○ Compiling / ...
+ ⨯ [Error: ENOENT: no such file or directory, open '/Users/macbookpro/Documents/claude编码/claude练手/lighting-app/.next/server/edge/chunks/_0d3699dc._.js']
+ ⨯ [Error: ENOENT: no such file or directory, open '/Users/macbookpro/Documents/claude编码/claude练手/lighting-app/.next/static/development/_buildManifest.js.tmp.87wnp1c331a'] {
+  errno: -2,
+  code: 'ENOENT',
+  syscall: 'open',
+  path: '/Users/macbookpro/Documents/claude编码/claude练手/lighting-app/.next/static/development/_buildManifest.js.tmp.87wnp1c331a'
+}
+ ⨯ [Error: ENOENT: no such file or directory, open '/Users/macbookpro/Documents/claude编码/claude练手/lighting-app/.next/static/development/_buildManifest.js.tmp.gv2990fkvip'] {
+  errno: -2,
+  code: 'ENOENT',
+  syscall: 'open',
+  path: '/Users/macbookpro/Documents/claude编码/claude练手/lighting-app/.next/static/development/_buildManifest.js.tmp.gv2990fkvip'
+}
+[Error: ENOENT: no such file or directory, open '/Users/macbookpro/Documents/claude编码/claude练手/lighting-app/.next/static/development/_buildManifest.js.tmp.5jot1d9dvmt'] {
+  errno: -2,
+  code: 'ENOENT',
+  syscall: 'open',
+  path: '/Users/macbookpro/Documents/claude编码/claude练手/lighting-app/.next/static/development/_buildManifest.js.tmp.5jot1d9dvmt'
+}
+ ⨯ [Error: ENOENT: no such file or directory, open '/Users/macbookpro/Documents/claude编码/claude练手/lighting-app/.next/static/development/_buildManifest.js.tmp.2ax5bpjiybb'] {
+  errno: -2,
+  code: 'ENOENT',
+  syscall: 'open',
+  path: '/Users/macbookpro/Documents/claude编码/claude练手/lighting-app/.next/static/development/_buildManifest.js.tmp.2ax5bpjiybb'
+}
+[Error: ENOENT: no such file or directory, open '/Users/macbookpro/Documents/claude编码/claude练手/lighting-app/.next/static/development/_buildManifest.js.tmp.2zl3jlq83wv'] {
+  errno: -2,
+  code: 'ENOENT',
+  syscall: 'open',
+  path: '/Users/macbookpro/Documents/claude编码/claude练手/lighting-app/.next/static/development/_buildManifest.js.tmp.2zl3jlq83wv'
+}
+ ⨯ [Error: ENOENT: no such file or directory, open '/Users/macbookpro/Documents/claude编码/claude练手/lighting-app/.next/server/app/favicon.ico/[__metadata_id__]/route/app-paths-manifest.json'] {
+  errno: -2,
+  code: 'ENOENT',
+  syscall: 'open',
+  path: '/Users/macbookpro/Documents/claude编码/claude练手/lighting-app/.next/server/app/favicon.ico/[__metadata_id__]/route/app-paths-manifest.json'
+}
+ ⨯ [Error: ENOENT: no such file or directory, open '/Users/macbookpro/Documents/claude编码/claude练手/lighting-app/.next/server/edge/chunks/_0d3699dc._.js']
+ ⨯ [Error: ENOENT: no such file or directory, open '/Users/macbookpro/Documents/claude编码/claude练手/lighting-app/.next/static/development/_buildManifest.js.tmp.g6hz7531lj'] {
+  errno: -2,
+  code: 'ENOENT',
+  syscall: 'open',
+  path: '/Users/macbookpro/Documents/claude编码/claude练手/lighting-app/.next/static/development/_buildManifest.js.tmp.g6hz7531lj'
+}
+ ⨯ [Error: ENOENT: no such file or directory, open '/Users/macbookpro/Documents/claude编码/claude练手/lighting-app/.next/static/development/_buildManifest.js.tmp.6jrbk4n26js'] {
+  errno: -2,
+  code: 'ENOENT',
+  syscall: 'open',
+  path: '/Users/macbookpro/Documents/claude编码/claude练手/lighting-app/.next/static/development/_buildManifest.js.tmp.6jrbk4n26js'
+}
+[Error: ENOENT: no such file or directory, open '/Users/macbookpro/Documents/claude编码/claude练手/lighting-app/.next/static/development/_buildManifest.js.tmp.174zqmq4iu'] {
+  errno: -2,
+  code: 'ENOENT',
+  syscall: 'open',
+  path: '/Users/macbookpro/Documents/claude编码/claude练手/lighting-app/.next/static/development/_buildManifest.js.tmp.174zqmq4iu'
+}
+ ⨯ [Error: ENOENT: no such file or directory, open '/Users/macbookpro/Documents/claude编码/claude练手/lighting-app/.next/static/development/_buildManifest.js.tmp.3x60aw9qruv'] {
+  errno: -2,
+  code: 'ENOENT',
+  syscall: 'open',
+  path: '/Users/macbookpro/Documents/claude编码/claude练手/lighting-app/.next/static/development/_buildManifest.js.tmp.3x60aw9qruv'
+}
+[Error: ENOENT: no such file or directory, open '/Users/macbookpro/Documents/claude编码/claude练手/lighting-app/.next/static/development/_buildManifest.js.tmp.3hirfyf3crz'] {
+  errno: -2,
+  code: 'ENOENT',
+  syscall: 'open',
+  path: '/Users/macbookpro/Documents/claude编码/claude练手/lighting-app/.next/static/development/_buildManifest.js.tmp.3hirfyf3crz'
+}
+ ⨯ [Error: ENOENT: no such file or directory, open '/Users/macbookpro/Documents/claude编码/claude练手/lighting-app/.next/server/edge/chunks/_0d3699dc._.js']
+ ⨯ [Error: ENOENT: no such file or directory, open '/Users/macbookpro/Documents/claude编码/claude练手/lighting-app/.next/static/development/_buildManifest.js.tmp.h12qlxja38r'] {
+  errno: -2,
+  code: 'ENOENT',
+  syscall: 'open',
+  path: '/Users/macbookpro/Documents/claude编码/claude练手/lighting-app/.next/static/development/_buildManifest.js.tmp.h12qlxja38r'
+}
+ ⨯ [Error: ENOENT: no such file or directory, open '/Users/macbookpro/Documents/claude编码/claude练手/lighting-app/.next/static/development/_buildManifest.js.tmp.pddipeacl8'] {
+  errno: -2,
+  code: 'ENOENT',
+  syscall: 'open',
+  path: '/Users/macbookpro/Documents/claude编码/claude练手/lighting-app/.next/static/development/_buildManifest.js.tmp.pddipeacl8'
+}
+[Error: ENOENT: no such file or directory, open '/Users/macbookpro/Documents/claude编码/claude练手/lighting-app/.next/static/development/_buildManifest.js.tmp.v8kczlojvkj'] {
+  errno: -2,
+  code: 'ENOENT',
+  syscall: 'open',
+  path: '/Users/macbookpro/Documents/claude编码/claude练手/lighting-app/.next/static/development/_buildManifest.js.tmp.v8kczlojvkj'
+}
+ ⨯ [Error: ENOENT: no such file or directory, open '/Users/macbookpro/Documents/claude编码/claude练手/lighting-app/.next/static/development/_buildManifest.js.tmp.zrw99epfuvh'] {
+  errno: -2,
+  code: 'ENOENT',
+  syscall: 'open',
+  path: '/Users/macbookpro/Documents/claude编码/claude练手/lighting-app/.next/static/development/_buildManifest.js.tmp.zrw99epfuvh'
+}
+[Error: ENOENT: no such file or directory, open '/Users/macbookpro/Documents/claude编码/claude练手/lighting-app/.next/static/development/_buildManifest.js.tmp.n0q90nbkz2'] {
+  errno: -2,
+  code: 'ENOENT',
+  syscall: 'open',
+  path: '/Users/macbookpro/Documents/claude编码/claude练手/lighting-app/.next/static/development/_buildManifest.js.tmp.n0q90nbkz2'
+}
+[?25h

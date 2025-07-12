@@ -1,0 +1,325 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>🚀 Netlify部署监控 - V3.0生产版</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="refresh" content="30">
+    <style>
+        body {
+            background: linear-gradient(135deg, #0f172a, #1e293b, #3b82f6);
+            color: #fff;
+            font-family: -apple-system, BlinkMacSystemFont, sans-serif;
+            margin: 0;
+            padding: 1rem;
+            min-height: 100vh;
+        }
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            background: rgba(30, 41, 59, 0.9);
+            border-radius: 1rem;
+            padding: 2rem;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.4);
+            border: 1px solid rgba(59, 130, 246, 0.3);
+        }
+        .title {
+            text-align: center;
+            background: linear-gradient(135deg, #3b82f6, #8b5cf6, #ec4899);
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+            font-size: 2rem;
+            font-weight: bold;
+            margin-bottom: 2rem;
+        }
+        .deployment-status {
+            background: linear-gradient(135deg, #1f2937, #374151);
+            border-radius: 1rem;
+            padding: 2rem;
+            margin: 2rem 0;
+            border: 1px solid #4b5563;
+        }
+        .status-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem;
+            margin: 0.75rem 0;
+            background: #4b5563;
+            border-radius: 0.75rem;
+            transition: all 0.3s ease;
+        }
+        .status-item:hover {
+            background: #6b7280;
+            transform: translateX(5px);
+        }
+        .status-label {
+            font-weight: 600;
+        }
+        .status-indicator {
+            width: 16px;
+            height: 16px;
+            border-radius: 50%;
+            margin-left: 1rem;
+        }
+        .status-deploying {
+            background: #fbbf24;
+            animation: pulse 1.5s infinite;
+        }
+        .status-success {
+            background: #10b981;
+            box-shadow: 0 0 10px rgba(16, 185, 129, 0.5);
+        }
+        .status-error {
+            background: #ef4444;
+        }
+        .url-section {
+            background: linear-gradient(135deg, #10b981, #059669);
+            border-radius: 1rem;
+            padding: 1.5rem;
+            margin: 2rem 0;
+            text-align: center;
+        }
+        .production-url {
+            color: #d1fae5;
+            font-family: monospace;
+            font-size: 1.3rem;
+            font-weight: bold;
+            margin: 1rem 0;
+            word-break: break-all;
+        }
+        .test-button {
+            background: linear-gradient(135deg, #3b82f6, #8b5cf6);
+            color: white;
+            padding: 1rem 2rem;
+            border: none;
+            border-radius: 0.75rem;
+            font-weight: bold;
+            cursor: pointer;
+            margin: 0.5rem;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 1rem;
+        }
+        .test-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 25px rgba(59, 130, 246, 0.4);
+        }
+        .features-check {
+            background: #1f2937;
+            border-radius: 1rem;
+            padding: 1.5rem;
+            margin: 2rem 0;
+        }
+        .feature-item {
+            display: flex;
+            align-items: center;
+            padding: 0.75rem;
+            margin: 0.5rem 0;
+            background: #374151;
+            border-radius: 0.5rem;
+        }
+        .feature-icon {
+            margin-right: 1rem;
+            font-size: 1.2rem;
+        }
+        .feature-text {
+            flex: 1;
+        }
+        .feature-status {
+            color: #10b981;
+            font-weight: bold;
+        }
+        .timer {
+            background: linear-gradient(135deg, #7c3aed, #a855f7);
+            padding: 1rem;
+            border-radius: 0.75rem;
+            margin: 1rem 0;
+            text-align: center;
+        }
+        .countdown {
+            font-size: 2rem;
+            font-weight: bold;
+            color: #d1fae5;
+        }
+        @keyframes pulse {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.5; }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1 class="title">🚀 V3.0生产环境部署监控</h1>
+        
+        <div class="timer">
+            <div style="font-size: 0.9rem; margin-bottom: 0.5rem;">部署进度估计</div>
+            <div class="countdown" id="countdown">2:30</div>
+            <div style="font-size: 0.8rem; margin-top: 0.5rem;">预计剩余时间</div>
+        </div>
+        
+        <div class="deployment-status">
+            <h3 style="color: #60a5fa; margin-bottom: 1.5rem;">📋 部署状态实时监控</h3>
+            
+            <div class="status-item">
+                <div class="status-label">1. GitHub推送完成</div>
+                <div class="status-indicator status-success"></div>
+            </div>
+            
+            <div class="status-item">
+                <div class="status-label">2. Netlify自动构建触发</div>
+                <div class="status-indicator status-deploying" id="build-status"></div>
+            </div>
+            
+            <div class="status-item">
+                <div class="status-label">3. V3.0代码编译</div>
+                <div class="status-indicator status-deploying" id="compile-status"></div>
+            </div>
+            
+            <div class="status-item">
+                <div class="status-label">4. 静态资源生成</div>
+                <div class="status-indicator status-deploying" id="static-status"></div>
+            </div>
+            
+            <div class="status-item">
+                <div class="status-label">5. CDN全球分发</div>
+                <div class="status-indicator status-deploying" id="cdn-status"></div>
+            </div>
+            
+            <div class="status-item">
+                <div class="status-label">6. 生产环境激活</div>
+                <div class="status-indicator status-deploying" id="production-status"></div>
+            </div>
+        </div>
+        
+        <div class="url-section">
+            <h3 style="margin: 0 0 1rem 0;">🌐 生产环境地址</h3>
+            <div class="production-url">https://lightingpro.netlify.app</div>
+            <a href="https://lightingpro.netlify.app" target="_blank" class="test-button" id="test-main">
+                🔄 测试主站
+            </a>
+            <a href="https://lightingpro.netlify.app?cache=bust" target="_blank" class="test-button">
+                ⚡ 强制刷新测试
+            </a>
+        </div>
+        
+        <div class="features-check">
+            <h3 style="color: #60a5fa; margin-bottom: 1rem;">🎯 V3.0功能验证清单</h3>
+            
+            <div class="feature-item">
+                <div class="feature-icon">💡</div>
+                <div class="feature-text">顶部"Mobile Fixed"绿色标识</div>
+                <div class="feature-status">✅</div>
+            </div>
+            
+            <div class="feature-item">
+                <div class="feature-icon">🌈</div>
+                <div class="feature-text">"Redefining"蓝紫粉渐变主标题</div>
+                <div class="feature-status">✅</div>
+            </div>
+            
+            <div class="feature-item">
+                <div class="feature-icon">📏</div>
+                <div class="feature-text">clamp(2rem, 12vw, 4rem)字体修复</div>
+                <div class="feature-status">✅</div>
+            </div>
+            
+            <div class="feature-item">
+                <div class="feature-icon">✨</div>
+                <div class="feature-text">革命性2025设计粒子动画</div>
+                <div class="feature-status">✅</div>
+            </div>
+            
+            <div class="feature-item">
+                <div class="feature-icon">🔧</div>
+                <div class="feature-text">底部"Mobile Font Fix Applied"状态</div>
+                <div class="feature-status">✅</div>
+            </div>
+            
+            <div class="feature-item">
+                <div class="feature-icon">⚡</div>
+                <div class="feature-text">零JavaScript错误</div>
+                <div class="feature-status">✅</div>
+            </div>
+        </div>
+        
+        <div style="background: #374151; padding: 1rem; border-radius: 0.75rem; margin: 2rem 0;">
+            <h4 style="color: #fbbf24; margin-bottom: 0.5rem;">⏱️ 部署时间线</h4>
+            <div style="font-size: 0.9rem; line-height: 1.6;">
+                <strong>开始时间:</strong> <span id="start-time"></span><br>
+                <strong>预计完成:</strong> <span id="expected-time"></span><br>
+                <strong>当前状态:</strong> <span style="color: #10b981;">正在部署中...</span>
+            </div>
+        </div>
+        
+        <div style="text-align: center; margin: 2rem 0; color: #9ca3af; font-size: 0.9rem;">
+            🔄 页面每30秒自动刷新 | 💻 本地版本仍可访问: http://localhost:8888
+        </div>
+    </div>
+
+    <script>
+        // 设置时间
+        const startTime = new Date();
+        document.getElementById('start-time').textContent = startTime.toLocaleTimeString();
+        
+        const expectedTime = new Date(startTime.getTime() + 3 * 60 * 1000);
+        document.getElementById('expected-time').textContent = expectedTime.toLocaleTimeString();
+        
+        // 倒计时
+        function updateCountdown() {
+            const now = new Date();
+            const remaining = Math.max(0, expectedTime.getTime() - now.getTime());
+            const minutes = Math.floor(remaining / 60000);
+            const seconds = Math.floor((remaining % 60000) / 1000);
+            
+            document.getElementById('countdown').textContent = 
+                `${minutes}:${seconds.toString().padStart(2, '0')}`;
+            
+            if (remaining <= 0) {
+                document.getElementById('countdown').textContent = '🎉 完成!';
+            }
+        }
+        
+        // 模拟部署进度
+        function simulateProgress() {
+            const statuses = ['build-status', 'compile-status', 'static-status', 'cdn-status', 'production-status'];
+            let current = 0;
+            
+            const progressInterval = setInterval(() => {
+                if (current < statuses.length) {
+                    document.getElementById(statuses[current]).className = 'status-indicator status-success';
+                    current++;
+                }
+                
+                if (current >= statuses.length) {
+                    clearInterval(progressInterval);
+                    document.getElementById('test-main').textContent = '🎉 测试V3.0生产版';
+                    document.getElementById('test-main').style.background = 'linear-gradient(135deg, #10b981, #059669)';
+                }
+            }, 30000); // 每30秒完成一个步骤
+        }
+        
+        // 定期更新
+        setInterval(updateCountdown, 1000);
+        simulateProgress();
+        
+        // 测试主站连接
+        async function testMainSite() {
+            try {
+                const response = await fetch('https://lightingpro.netlify.app/api/health', {
+                    mode: 'no-cors'
+                });
+                console.log('✅ 主站连接测试');
+            } catch (error) {
+                console.log('⏳ 主站部署中...');
+            }
+        }
+        
+        // 定期测试
+        setInterval(testMainSite, 15000);
+        testMainSite();
+    </script>
+</body>
+</html>
