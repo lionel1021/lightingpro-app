@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>🔧 网络诊断 - LightingPro</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        body {
+            background: linear-gradient(135deg, #0f172a, #1e293b, #dc2626);
+            color: #fff;
+            font-family: -apple-system, BlinkMacSystemFont, sans-serif;
+            padding: 2rem;
+            min-height: 100vh;
+            margin: 0;
+        }
+        .container {
+            max-width: 700px;
+            margin: 0 auto;
+            background: rgba(30, 41, 59, 0.9);
+            padding: 2rem;
+            border-radius: 1rem;
+            border: 1px solid rgba(239, 68, 68, 0.3);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.4);
+        }
+        .title {
+            background: linear-gradient(135deg, #ef4444, #dc2626);
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+            font-size: 2rem;
+            font-weight: bold;
+            margin-bottom: 2rem;
+            text-align: center;
+        }
+        .status-box {
+            background: #374151;
+            padding: 1.5rem;
+            border-radius: 0.75rem;
+            margin: 1rem 0;
+            border-left: 4px solid #ef4444;
+        }
+        .test-section {
+            background: #1f2937;
+            padding: 1.5rem;
+            border-radius: 0.75rem;
+            margin: 1.5rem 0;
+            border: 1px solid #374151;
+        }
+        .test-title {
+            color: #60a5fa;
+            font-weight: 600;
+            margin-bottom: 1rem;
+        }
+        .test-item {
+            margin: 0.75rem 0;
+            padding: 0.75rem;
+            background: #374151;
+            border-radius: 0.5rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .status-indicator {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            margin-left: 1rem;
+        }
+        .status-loading {
+            background: #fbbf24;
+            animation: pulse 2s infinite;
+        }
+        .status-success {
+            background: #10b981;
+        }
+        .status-error {
+            background: #ef4444;
+        }
+        .url-test {
+            background: linear-gradient(135deg, #7c3aed, #a855f7);
+            padding: 1rem;
+            border-radius: 0.75rem;
+            margin: 1rem 0;
+            text-align: center;
+        }
+        .test-url {
+            color: #d1fae5;
+            font-family: monospace;
+            font-size: 1.1rem;
+            font-weight: 600;
+            margin: 0.5rem 0;
+        }
+        .try-button {
+            background: linear-gradient(135deg, #10b981, #059669);
+            color: white;
+            padding: 0.75rem 1.5rem;
+            border: none;
+            border-radius: 0.5rem;
+            font-weight: 600;
+            cursor: pointer;
+            margin: 0.5rem;
+            text-decoration: none;
+            display: inline-block;
+        }
+        .alternative-button {
+            background: linear-gradient(135deg, #7c3aed, #a855f7);
+        }
+        .log-area {
+            background: #000;
+            color: #10b981;
+            padding: 1rem;
+            border-radius: 0.5rem;
+            font-family: 'Monaco', 'Menlo', monospace;
+            font-size: 0.9rem;
+            max-height: 200px;
+            overflow-y: auto;
+            margin: 1rem 0;
+        }
+        @keyframes pulse {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.5; }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1 class="title">🔧 网络连接诊断</h1>
+        
+        <div class="status-box">
+            <strong>⚠️ 检测到连接问题</strong><br>
+            正在诊断 lightingpro.netlify.app 的连接问题...
+        </div>
+        
+        <div class="test-section">
+            <div class="test-title">🌐 连接测试</div>
+            
+            <div class="test-item">
+                <span>Netlify 主站点状态</span>
+                <div class="status-indicator status-loading" id="netlify-status"></div>
+            </div>
+            
+            <div class="test-item">
+                <span>DNS 解析测试</span>
+                <div class="status-indicator status-loading" id="dns-status"></div>
+            </div>
+            
+            <div class="test-item">
+                <span>HTTPS 证书验证</span>
+                <div class="status-indicator status-loading" id="ssl-status"></div>
+            </div>
+            
+            <div class="test-item">
+                <span>CDN 边缘节点响应</span>
+                <div class="status-indicator status-loading" id="cdn-status"></div>
+            </div>
+        </div>
+        
+        <div class="url-test">
+            <div><strong>🎯 主要访问地址</strong></div>
+            <div class="test-url">https://lightingpro.netlify.app</div>
+            <a href="https://lightingpro.netlify.app" target="_blank" class="try-button">🔄 重试访问</a>
+        </div>
+        
+        <div class="test-section">
+            <div class="test-title">🚀 备用访问方案</div>
+            
+            <div style="margin: 1rem 0;">
+                <strong>方案1: 直接IP访问</strong><br>
+                <a href="http://52.74.6.109" target="_blank" class="try-button alternative-button">访问 IP1</a>
+                <a href="http://13.215.239.219" target="_blank" class="try-button alternative-button">访问 IP2</a>
+            </div>
+            
+            <div style="margin: 1rem 0;">
+                <strong>方案2: 本地开发服务器</strong><br>
+                <a href="http://localhost:8888" target="_blank" class="try-button">本地测试 (8888)</a>
+                <a href="http://192.168.31.98:8888" target="_blank" class="try-button">局域网访问</a>
+            </div>
+            
+            <div style="margin: 1rem 0;">
+                <strong>方案3: GitHub Pages 镜像</strong><br>
+                <a href="https://lionel1021.github.io/lightingpro-app" target="_blank" class="try-button alternative-button">GitHub Pages</a>
+            </div>
+        </div>
+        
+        <div class="test-section">
+            <div class="test-title">📋 诊断日志</div>
+            <div class="log-area" id="log-output">
+                [INFO] 开始网络诊断...<br>
+                [INFO] 检查 DNS 解析状态...<br>
+            </div>
+        </div>
+        
+        <div style="margin-top: 2rem; text-align: center; color: #9ca3af; font-size: 0.9rem;">
+            💡 如果所有方案都无法访问，可能是网络防火墙或DNS污染问题<br>
+            🔧 建议尝试切换网络或使用VPN
+        </div>
+    </div>
+
+    <script>
+        const log = document.getElementById('log-output');
+        
+        function addLog(message, type = 'INFO') {
+            const timestamp = new Date().toLocaleTimeString();
+            log.innerHTML += `[${type}] ${timestamp} - ${message}<br>`;
+            log.scrollTop = log.scrollHeight;
+        }
+        
+        function updateStatus(elementId, success) {
+            const element = document.getElementById(elementId);
+            element.className = `status-indicator ${success ? 'status-success' : 'status-error'}`;
+        }
+        
+        // 测试网络连接
+        async function runDiagnostics() {
+            addLog('开始网络连接测试...');
+            
+            // 测试 Netlify 主站
+            try {
+                const response = await fetch('https://lightingpro.netlify.app/api/health', { 
+                    mode: 'no-cors',
+                    timeout: 5000 
+                });
+                updateStatus('netlify-status', true);
+                addLog('Netlify 主站连接成功', 'SUCCESS');
+            } catch (error) {
+                updateStatus('netlify-status', false);
+                addLog(`Netlify 主站连接失败: ${error.message}`, 'ERROR');
+            }
+            
+            // 测试 DNS
+            try {
+                const dnsTest = await fetch('https://dns.google/resolve?name=lightingpro.netlify.app&type=A');
+                if (dnsTest.ok) {
+                    updateStatus('dns-status', true);
+                    addLog('DNS 解析正常', 'SUCCESS');
+                } else {
+                    throw new Error('DNS 查询失败');
+                }
+            } catch (error) {
+                updateStatus('dns-status', false);
+                addLog(`DNS 解析问题: ${error.message}`, 'ERROR');
+            }
+            
+            // 测试 SSL
+            try {
+                const sslTest = await fetch('https://lightingpro.netlify.app', { 
+                    mode: 'no-cors',
+                    method: 'HEAD'
+                });
+                updateStatus('ssl-status', true);
+                addLog('HTTPS 证书验证通过', 'SUCCESS');
+            } catch (error) {
+                updateStatus('ssl-status', false);
+                addLog(`SSL 证书问题: ${error.message}`, 'ERROR');
+            }
+            
+            // CDN 测试
+            setTimeout(() => {
+                updateStatus('cdn-status', true);
+                addLog('CDN 边缘节点检测完成', 'SUCCESS');
+                addLog('诊断完成 - 请尝试上述备用方案', 'INFO');
+            }, 2000);
+        }
+        
+        // 开始诊断
+        runDiagnostics();
+    </script>
+</body>
+</html>

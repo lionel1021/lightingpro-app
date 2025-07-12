@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>🚀 Netlify部署状态检查</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        body {
+            background: linear-gradient(135deg, #0f172a, #1e293b, #7c3aed);
+            color: #fff;
+            font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Display', sans-serif;
+            text-align: center;
+            padding: 2rem;
+            min-height: 100vh;
+            margin: 0;
+        }
+        .container {
+            max-width: 600px;
+            margin: 0 auto;
+            background: rgba(30, 41, 59, 0.9);
+            padding: 2rem;
+            border-radius: 1.5rem;
+            border: 1px solid rgba(96, 165, 250, 0.3);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.4);
+            backdrop-filter: blur(20px);
+        }
+        .title {
+            background: linear-gradient(135deg, #60a5fa 0%, #a855f7 50%, #ec4899 100%);
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+            font-size: clamp(1.5rem, 6vw, 2.5rem);
+            font-weight: 700;
+            margin-bottom: 2rem;
+            line-height: 1.1;
+        }
+        .status-section {
+            background: linear-gradient(135deg, #1f2937, #374151);
+            padding: 1.5rem;
+            border-radius: 1rem;
+            margin: 1.5rem 0;
+            border: 1px solid #4b5563;
+        }
+        .status-title {
+            color: #f59e0b;
+            font-weight: 600;
+            font-size: 1.1rem;
+            margin-bottom: 1rem;
+        }
+        .url-box {
+            background: linear-gradient(135deg, #065f46, #059669);
+            padding: 1rem;
+            border-radius: 0.75rem;
+            margin: 1rem 0;
+            border: 1px solid #10b981;
+        }
+        .url {
+            color: #d1fae5;
+            font-family: 'SF Mono', Monaco, monospace;
+            font-size: 1.1rem;
+            font-weight: 600;
+        }
+        .check-item {
+            background: #374151;
+            padding: 1rem;
+            border-radius: 0.75rem;
+            margin: 0.75rem 0;
+            text-align: left;
+            border: 1px solid #4b5563;
+        }
+        .check-header {
+            color: #60a5fa;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+        }
+        .check-detail {
+            color: #d1d5db;
+            font-size: 0.9rem;
+            line-height: 1.4;
+        }
+        .version-badge {
+            background: linear-gradient(135deg, #7c3aed, #a855f7);
+            padding: 0.75rem 1.5rem;
+            border-radius: 2rem;
+            margin: 1rem 0;
+            font-weight: 600;
+            display: inline-block;
+        }
+        .test-button {
+            background: linear-gradient(135deg, #10b981, #059669);
+            color: white;
+            padding: 1rem 2rem;
+            border: none;
+            border-radius: 0.75rem;
+            font-weight: 600;
+            font-size: 1rem;
+            cursor: pointer;
+            margin: 0.5rem;
+            text-decoration: none;
+            display: inline-block;
+            transition: all 0.3s ease;
+        }
+        .test-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 25px rgba(16, 185, 129, 0.3);
+        }
+        .secondary-button {
+            background: linear-gradient(135deg, #374151, #4b5563);
+        }
+        .secondary-button:hover {
+            box-shadow: 0 10px 25px rgba(75, 85, 99, 0.3);
+        }
+        .timestamp {
+            color: #9ca3af;
+            font-size: 0.8rem;
+            margin-top: 1rem;
+        }
+        .highlight {
+            background: linear-gradient(135deg, #fbbf24, #f59e0b);
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+            font-weight: 600;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1 class="title">🚀 Netlify部署状态检查</h1>
+        
+        <div class="version-badge">
+            V3.0 统一移动端修复版
+        </div>
+        
+        <div class="url-box">
+            <div class="url">https://lightingpro.netlify.app</div>
+        </div>
+        
+        <div class="status-section">
+            <div class="status-title">📋 部署验证清单</div>
+            
+            <div class="check-item">
+                <div class="check-header">✅ 1. 主页加载测试</div>
+                <div class="check-detail">验证首页是否正常加载，显示革命性2025设计</div>
+            </div>
+            
+            <div class="check-item">
+                <div class="check-header">📱 2. 移动端字体检查</div>
+                <div class="check-detail">确认 <span class="highlight">"Redefining"</span> 文字在手机上完整显示</div>
+            </div>
+            
+            <div class="check-item">
+                <div class="check-header">🌈 3. 渐变效果验证</div>
+                <div class="check-detail">检查蓝紫粉渐变文字是否正确渲染</div>
+            </div>
+            
+            <div class="check-item">
+                <div class="check-header">⚡ 4. 性能测试</div>
+                <div class="check-detail">验证页面加载速度和Core Web Vitals表现</div>
+            </div>
+            
+            <div class="check-item">
+                <div class="check-header">🔧 5. V3.0功能验证</div>
+                <div class="check-detail">确认统一组件架构和移动端修复生效</div>
+            </div>
+        </div>
+        
+        <div style="margin: 2rem 0;">
+            <a href="https://lightingpro.netlify.app" target="_blank" class="test-button">
+                🌐 打开生产网站
+            </a>
+            <a href="https://lightingpro.netlify.app" target="_blank" class="test-button secondary-button">
+                📱 移动端测试
+            </a>
+        </div>
+        
+        <div class="status-section">
+            <div class="status-title">🎯 关键检查点</div>
+            <div style="text-align: left; color: #d1d5db; font-size: 0.9rem; line-height: 1.6;">
+                • 主标题 "Redefining" 使用 clamp(2rem, 12vw, 4rem)<br>
+                • 渐变文字透明度和webkit背景剪切正常<br>
+                • 响应式布局在320px-4K屏幕完美适配<br>
+                • 粒子动画和视觉效果流畅运行<br>
+                • 无设备检测冲突，统一用户体验
+            </div>
+        </div>
+        
+        <div class="timestamp">
+            🕒 部署时间: <span id="deployTime"></span><br>
+            📦 构建版本: V3.0 Unified Mobile Fix
+        </div>
+    </div>
+
+    <script>
+        // 显示当前时间
+        document.getElementById('deployTime').textContent = new Date().toLocaleString('zh-CN');
+        
+        // 检查网站状态
+        fetch('https://lightingpro.netlify.app/api/health')
+            .then(response => {
+                if (response.ok) {
+                    console.log('✅ 网站健康检查通过');
+                } else {
+                    console.log('⚠️ 网站响应异常');
+                }
+            })
+            .catch(error => {
+                console.log('❌ 网站连接失败:', error);
+            });
+    </script>
+</body>
+</html>

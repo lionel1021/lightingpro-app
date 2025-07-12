@@ -1,132 +1,49 @@
    ▲ Next.js 15.3.5
-   - Local:        http://localhost:3000
-   - Network:      http://192.168.31.98:3000
+   - Local:        http://localhost:8888
+   - Network:      http://192.168.31.98:8888
    - Environments: .env.local
 
  ✓ Starting...
-   Using tsconfig file: ./tsconfig.json
- ✓ Ready in 2.4s
- ✓ Compiled /middleware in 198ms (153 modules)
- ○ Compiling /[locale] ...
- ✓ Compiled /[locale] in 3.9s (1390 modules)
-Error: MISSING_MESSAGE: Could not resolve `authStatus.user` in messages for locale `zh`.
-    at Home (src/app/[locale]/page.tsx:48:12)
-  46 |     },
-  47 |     authStatus: {
-> 48 |       user: t('authStatus.user'),
-     |            ^
-  49 |       member: t('authStatus.member'),
-  50 |       profile: t('authStatus.profile'),
-  51 |       myFavorites: t('authStatus.myFavorites'), {
-  code: 'MISSING_MESSAGE',
-  originalMessage: 'Could not resolve `authStatus.user` in messages for locale `zh`.'
-}
-Error: MISSING_MESSAGE: Could not resolve `authStatus.member` in messages for locale `zh`.
-    at Home (src/app/[locale]/page.tsx:49:14)
-  47 |     authStatus: {
-  48 |       user: t('authStatus.user'),
-> 49 |       member: t('authStatus.member'),
-     |              ^
-  50 |       profile: t('authStatus.profile'),
-  51 |       myFavorites: t('authStatus.myFavorites'),
-  52 |       myOrders: t('authStatus.myOrders'), {
-  code: 'MISSING_MESSAGE',
-  originalMessage: 'Could not resolve `authStatus.member` in messages for locale `zh`.'
-}
-Error: MISSING_MESSAGE: Could not resolve `authStatus.profile` in messages for locale `zh`.
-    at Home (src/app/[locale]/page.tsx:50:15)
-  48 |       user: t('authStatus.user'),
-  49 |       member: t('authStatus.member'),
-> 50 |       profile: t('authStatus.profile'),
-     |               ^
-  51 |       myFavorites: t('authStatus.myFavorites'),
-  52 |       myOrders: t('authStatus.myOrders'),
-  53 |       accountSettings: t('authStatus.accountSettings'), {
-  code: 'MISSING_MESSAGE',
-  originalMessage: 'Could not resolve `authStatus.profile` in messages for locale `zh`.'
-}
-Error: MISSING_MESSAGE: Could not resolve `authStatus.myFavorites` in messages for locale `zh`.
-    at Home (src/app/[locale]/page.tsx:51:19)
-  49 |       member: t('authStatus.member'),
-  50 |       profile: t('authStatus.profile'),
-> 51 |       myFavorites: t('authStatus.myFavorites'),
-     |                   ^
-  52 |       myOrders: t('authStatus.myOrders'),
-  53 |       accountSettings: t('authStatus.accountSettings'),
-  54 |       signOut: t('authStatus.signOut'), {
-  code: 'MISSING_MESSAGE',
-  originalMessage: 'Could not resolve `authStatus.myFavorites` in messages for locale `zh`.'
-}
-Error: MISSING_MESSAGE: Could not resolve `authStatus.myOrders` in messages for locale `zh`.
-    at Home (src/app/[locale]/page.tsx:52:16)
-  50 |       profile: t('authStatus.profile'),
-  51 |       myFavorites: t('authStatus.myFavorites'),
-> 52 |       myOrders: t('authStatus.myOrders'),
-     |                ^
-  53 |       accountSettings: t('authStatus.accountSettings'),
-  54 |       signOut: t('authStatus.signOut'),
-  55 |       signIn: t('authStatus.signIn'), {
-  code: 'MISSING_MESSAGE',
-  originalMessage: 'Could not resolve `authStatus.myOrders` in messages for locale `zh`.'
-}
-Error: MISSING_MESSAGE: Could not resolve `authStatus.accountSettings` in messages for locale `zh`.
-    at Home (src/app/[locale]/page.tsx:53:23)
-  51 |       myFavorites: t('authStatus.myFavorites'),
-  52 |       myOrders: t('authStatus.myOrders'),
-> 53 |       accountSettings: t('authStatus.accountSettings'),
-     |                       ^
-  54 |       signOut: t('authStatus.signOut'),
-  55 |       signIn: t('authStatus.signIn'),
-  56 |       signUp: t('authStatus.signUp') {
-  code: 'MISSING_MESSAGE',
-  originalMessage: 'Could not resolve `authStatus.accountSettings` in messages for locale `zh`.'
-}
-Error: MISSING_MESSAGE: Could not resolve `authStatus.signOut` in messages for locale `zh`.
-    at Home (src/app/[locale]/page.tsx:54:15)
-  52 |       myOrders: t('authStatus.myOrders'),
-  53 |       accountSettings: t('authStatus.accountSettings'),
-> 54 |       signOut: t('authStatus.signOut'),
-     |               ^
-  55 |       signIn: t('authStatus.signIn'),
-  56 |       signUp: t('authStatus.signUp')
-  57 |     } {
-  code: 'MISSING_MESSAGE',
-  originalMessage: 'Could not resolve `authStatus.signOut` in messages for locale `zh`.'
-}
-Error: MISSING_MESSAGE: Could not resolve `authStatus.signIn` in messages for locale `zh`.
-    at Home (src/app/[locale]/page.tsx:55:14)
-  53 |       accountSettings: t('authStatus.accountSettings'),
-  54 |       signOut: t('authStatus.signOut'),
-> 55 |       signIn: t('authStatus.signIn'),
-     |              ^
-  56 |       signUp: t('authStatus.signUp')
-  57 |     }
-  58 |   }; {
-  code: 'MISSING_MESSAGE',
-  originalMessage: 'Could not resolve `authStatus.signIn` in messages for locale `zh`.'
-}
-Error: MISSING_MESSAGE: Could not resolve `authStatus.signUp` in messages for locale `zh`.
-    at Home (src/app/[locale]/page.tsx:56:14)
-  54 |       signOut: t('authStatus.signOut'),
-  55 |       signIn: t('authStatus.signIn'),
-> 56 |       signUp: t('authStatus.signUp')
-     |              ^
-  57 |     }
-  58 |   };
-  59 | {
-  code: 'MISSING_MESSAGE',
-  originalMessage: 'Could not resolve `authStatus.signUp` in messages for locale `zh`.'
-}
- GET /de 200 in 5512ms
- ✓ Compiled in 329ms (568 modules)
- ✓ Compiled /[locale] in 311ms (822 modules)
- GET /de 200 in 643ms
- GET /de 200 in 89ms
- GET /de 200 in 118ms
- ✓ Compiled in 342ms (568 modules)
- ✓ Compiled in 174ms (568 modules)
- ✓ Compiled /[locale] in 243ms (822 modules)
- GET /de 404 in 447ms
- GET /de 404 in 44ms
- ✓ Compiled in 714ms (568 modules)
-[?25h
+ ✓ Ready in 2.6s
+ ○ Compiling /middleware ...
+ ✓ Compiled /middleware in 616ms (153 modules)
+ ○ Compiling / ...
+ ✓ Compiled / in 3.4s (787 modules)
+ HEAD / 200 in 3691ms
+ GET / 200 in 60ms
+ ✓ Compiled /_not-found in 410ms (770 modules)
+ GET /fonts/font.woff2 404 in 540ms
+ ⚠ Cross origin request detected from 192.168.31.98 to /_next/* resource. In a future major version of Next.js, you will need to explicitly configure "allowedDevOrigins" in next.config to allow this.
+Read more: https://nextjs.org/docs/app/api-reference/config/next-config-js/allowedDevOrigins
+ ✓ Compiled /favicon.ico in 170ms (455 modules)
+ GET /favicon.ico 200 in 269ms
+ GET / 200 in 113ms
+ GET /fonts/font.woff2 404 in 32ms
+ GET / 200 in 43ms
+ GET /fonts/font.woff2 404 in 28ms
+ HEAD / 200 in 35ms
+ GET / 200 in 61ms
+ GET /_next/static/css/app/layout.css?v=1752280256169 404 in 59ms
+ GET /_next/static/chunks/app/page.js 404 in 168ms
+ GET /_next/static/chunks/app/error.js 404 in 171ms
+ GET /_next/static/chunks/app-pages-internals.js 404 in 172ms
+ GET /_next/static/chunks/main-app.js?v=1752280256169 404 in 174ms
+ GET /_next/static/chunks/webpack.js?v=1752280256169 404 in 175ms
+ GET /favicon.ico 200 in 19ms
+ GET /fonts/font.woff2 404 in 55ms
+ GET / 200 in 38ms
+ GET /_next/static/chunks/app/error.js 404 in 115ms
+ GET /_next/static/chunks/app-pages-internals.js 404 in 117ms
+ GET /_next/static/chunks/main-app.js?v=1752280265429 404 in 117ms
+ GET /_next/static/chunks/webpack.js?v=1752280265429 404 in 119ms
+ GET /_next/static/css/app/layout.css?v=1752280265429 404 in 120ms
+ GET /_next/static/chunks/app/page.js 404 in 124ms
+ GET /fonts/font.woff2 404 in 25ms
+ GET /favicon.ico 200 in 22ms
+ GET / 200 in 46ms
+ GET /_next/static/chunks/app/error.js 404 in 117ms
+ GET /_next/static/chunks/app-pages-internals.js 404 in 119ms
+ GET /_next/static/chunks/main-app.js?v=1752280284753 404 in 123ms
+ GET /_next/static/chunks/webpack.js?v=1752280284753 404 in 124ms
+ GET /_next/static/css/app/layout.css?v=1752280284753 404 in 126ms
+ GET /_next/static/chunks/app/page.js 404 in 131ms

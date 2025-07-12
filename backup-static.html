@@ -1,0 +1,520 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LightingPro 2025 - AI-Powered Lighting Recommendations</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            background: #000;
+            color: #fff;
+            font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Display', system-ui, sans-serif;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+            overflow-x: hidden;
+        }
+        
+        .min-h-screen {
+            min-height: 100vh;
+        }
+        
+        .relative {
+            position: relative;
+        }
+        
+        .fixed {
+            position: fixed;
+        }
+        
+        .absolute {
+            position: absolute;
+        }
+        
+        .inset-0 {
+            top: 0;
+            right: 0;
+            bottom: 0;
+            left: 0;
+        }
+        
+        .bg-gradient {
+            background: linear-gradient(135deg, 
+                rgba(30, 58, 138, 0.3) 0%, 
+                rgba(109, 40, 217, 0.2) 50%, 
+                rgba(219, 39, 119, 0.3) 100%);
+        }
+        
+        .backdrop-blur {
+            backdrop-filter: blur(20px);
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 1rem;
+        }
+        
+        .text-center {
+            text-align: center;
+        }
+        
+        .flex {
+            display: flex;
+        }
+        
+        .items-center {
+            align-items: center;
+        }
+        
+        .justify-center {
+            justify-content: center;
+        }
+        
+        .flex-col {
+            flex-direction: column;
+        }
+        
+        .gap-2 {
+            gap: 0.5rem;
+        }
+        
+        .gap-4 {
+            gap: 1rem;
+        }
+        
+        .mb-8 {
+            margin-bottom: 2rem;
+        }
+        
+        .mb-12 {
+            margin-bottom: 3rem;
+        }
+        
+        .px-4 {
+            padding-left: 1rem;
+            padding-right: 1rem;
+        }
+        
+        .py-3 {
+            padding-top: 0.75rem;
+            padding-bottom: 0.75rem;
+        }
+        
+        .rounded-xl {
+            border-radius: 0.75rem;
+        }
+        
+        .rounded-full {
+            border-radius: 9999px;
+        }
+        
+        .font-bold {
+            font-weight: 700;
+        }
+        
+        .font-semibold {
+            font-weight: 600;
+        }
+        
+        .text-sm {
+            font-size: 0.875rem;
+        }
+        
+        /* 🎯 V3.0 移动端字体修复 - 关键样式 */
+        .main-title {
+            font-size: clamp(2rem, 12vw, 4rem) !important;
+            line-height: 1.1 !important;
+            letter-spacing: -0.02em !important;
+            text-align: center !important;
+            font-weight: 700;
+            margin-bottom: 1rem;
+        }
+        
+        .gradient-text-primary {
+            background: linear-gradient(135deg, #3b82f6 0%, #8b5cf6 50%, #ec4899 100%) !important;
+            -webkit-background-clip: text !important;
+            background-clip: text !important;
+            -webkit-text-fill-color: transparent !important;
+            color: transparent !important;
+            display: block;
+            margin-bottom: 0.75rem;
+        }
+        
+        .gradient-text-secondary {
+            background: linear-gradient(135deg, #f59e0b 0%, #d97706 50%, #92400e 100%) !important;
+            -webkit-background-clip: text !important;
+            background-clip: text !important;
+            -webkit-text-fill-color: transparent !important;
+            color: transparent !important;
+            display: block;
+        }
+        
+        .subtitle {
+            font-size: clamp(1rem, 5vw, 1.25rem);
+            line-height: 1.6;
+            color: #d1d5db;
+            max-width: 600px;
+            margin: 0 auto 2rem auto;
+        }
+        
+        .top-badge {
+            position: fixed;
+            top: 1rem;
+            left: 50%;
+            transform: translateX(-50%);
+            z-index: 50;
+            background: rgba(0, 0, 0, 0.8);
+            backdrop-filter: blur(16px);
+            border-radius: 0.75rem;
+            padding: 0.5rem 1rem;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+        
+        .main-section {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 5rem 1rem 4rem 1rem;
+        }
+        
+        .feature-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            background: linear-gradient(to right, 
+                rgba(59, 130, 246, 0.2), 
+                rgba(168, 85, 247, 0.2));
+            backdrop-filter: blur(4px);
+            border-radius: 9999px;
+            padding: 0.5rem 1rem;
+            margin-bottom: 2rem;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        
+        .action-buttons {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+            max-width: 400px;
+            margin: 0 auto 3rem auto;
+        }
+        
+        .btn-primary {
+            background: linear-gradient(to right, #3b82f6, #8b5cf6);
+            color: white;
+            padding: 0.75rem 1.5rem;
+            border: none;
+            border-radius: 0.75rem;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem;
+            box-shadow: 0 10px 25px rgba(59, 130, 246, 0.3);
+            transition: all 0.3s ease;
+            cursor: pointer;
+            text-decoration: none;
+        }
+        
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 20px 40px rgba(59, 130, 246, 0.4);
+        }
+        
+        .btn-secondary {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(4px);
+            color: white;
+            padding: 0.75rem 1.5rem;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            border-radius: 0.75rem;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem;
+            transition: all 0.3s ease;
+            cursor: pointer;
+            text-decoration: none;
+        }
+        
+        .btn-secondary:hover {
+            background: rgba(255, 255, 255, 0.2);
+            transform: translateY(-2px);
+        }
+        
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1rem;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        .feature-card {
+            background: linear-gradient(135deg, 
+                rgba(255, 255, 255, 0.05), 
+                rgba(255, 255, 255, 0.1));
+            backdrop-filter: blur(16px);
+            border-radius: 1rem;
+            padding: 1.5rem;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+            transition: transform 0.3s ease;
+        }
+        
+        .feature-card:hover {
+            transform: scale(1.05);
+        }
+        
+        .feature-icon {
+            width: 2.5rem;
+            height: 2.5rem;
+            margin: 0 auto 1rem auto;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1rem;
+        }
+        
+        .feature-title {
+            font-size: clamp(0.75rem, 3vw, 1rem);
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+            color: white;
+        }
+        
+        .feature-desc {
+            font-size: clamp(0.625rem, 2.5vw, 0.875rem);
+            color: #9ca3af;
+            line-height: 1.4;
+        }
+        
+        .status-section {
+            background: linear-gradient(135deg, 
+                rgba(16, 185, 129, 0.1), 
+                rgba(5, 150, 105, 0.1));
+            border: 1px solid rgba(16, 185, 129, 0.3);
+            border-radius: 1rem;
+            padding: 1.5rem;
+            max-width: 500px;
+            margin: 3rem auto 0 auto;
+        }
+        
+        .status-title {
+            color: #10b981;
+            font-weight: 700;
+            font-size: 1.1rem;
+            margin-bottom: 1rem;
+        }
+        
+        .status-list {
+            font-size: 0.75rem;
+            color: #d1d5db;
+            line-height: 1.5;
+            text-align: left;
+        }
+        
+        .status-item {
+            margin: 0.5rem 0;
+        }
+        
+        /* 响应式优化 */
+        @media (max-width: 768px) {
+            .features-grid {
+                grid-template-columns: 1fr;
+                gap: 0.75rem;
+            }
+            
+            .action-buttons {
+                max-width: 100%;
+                padding: 0 1rem;
+            }
+            
+            .feature-card {
+                padding: 1rem;
+            }
+        }
+        
+        /* 粒子动画效果 */
+        .particle {
+            position: absolute;
+            border-radius: 50%;
+            pointer-events: none;
+            animation: float 6s ease-in-out infinite;
+        }
+        
+        .particle-1 {
+            top: 20%;
+            left: 10%;
+            width: 8px;
+            height: 8px;
+            background: #3b82f6;
+            opacity: 0.6;
+            animation-delay: 0s;
+        }
+        
+        .particle-2 {
+            top: 40%;
+            right: 20%;
+            width: 12px;
+            height: 12px;
+            background: #8b5cf6;
+            opacity: 0.4;
+            animation-delay: 2s;
+        }
+        
+        .particle-3 {
+            bottom: 40%;
+            left: 20%;
+            width: 6px;
+            height: 6px;
+            background: #ec4899;
+            opacity: 0.5;
+            animation-delay: 4s;
+        }
+        
+        @keyframes float {
+            0%, 100% {
+                transform: translateY(0px);
+            }
+            50% {
+                transform: translateY(-20px);
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="min-h-screen relative">
+        <!-- 背景效果 -->
+        <div class="fixed inset-0 bg-gradient">
+            <!-- 动态粒子 -->
+            <div class="particle particle-1"></div>
+            <div class="particle particle-2"></div>
+            <div class="particle particle-3"></div>
+        </div>
+        
+        <!-- 顶部标识 -->
+        <div class="top-badge">
+            <div class="flex items-center gap-2 text-sm">
+                <span style="color: #fbbf24;">💡</span>
+                <span class="font-semibold">LightingPro 2025</span>
+                <span style="color: #10b981; font-size: 0.75rem;">Static Backup</span>
+            </div>
+        </div>
+        
+        <!-- 主要内容 -->
+        <div class="container">
+            <section class="main-section">
+                <div class="text-center" style="max-width: 1000px; width: 100%;">
+                    
+                    <!-- 功能徽章 -->
+                    <div class="feature-badge">
+                        <span style="color: #fbbf24;">⭐</span>
+                        <span class="text-sm font-semibold">Revolutionary 2025 Design</span>
+                        <span style="color: #fbbf24;">⭐</span>
+                    </div>
+                    
+                    <!-- 🎯 主标题 - V3.0 移动端修复版本 -->
+                    <div class="mb-8">
+                        <h1 class="main-title font-bold px-4">
+                            <span class="gradient-text-primary">Redefining</span>
+                            <span class="gradient-text-secondary">Lighting Experience</span>
+                        </h1>
+                        
+                        <p class="subtitle px-4">
+                            Neural network-powered intelligent lighting recommendation system
+                        </p>
+                    </div>
+                    
+                    <!-- 行动按钮 -->
+                    <div class="action-buttons">
+                        <a href="https://lightingpro.netlify.app" class="btn-primary">
+                            <span>⚡</span>
+                            <span>Start AI Recommendations</span>
+                            <span>→</span>
+                        </a>
+                        
+                        <a href="http://localhost:8888" class="btn-secondary">
+                            <span>🏠</span>
+                            <span>Local Development Server</span>
+                        </a>
+                    </div>
+                    
+                    <!-- 功能展示 -->
+                    <div class="features-grid mb-12">
+                        <div class="feature-card">
+                            <div class="feature-icon" style="background: linear-gradient(135deg, #3b82f6, #06b6d4);">
+                                <span style="color: white;">🧠</span>
+                            </div>
+                            <h3 class="feature-title">Neural Analysis</h3>
+                            <p class="feature-desc">Deep learning preferences</p>
+                        </div>
+                        
+                        <div class="feature-card">
+                            <div class="feature-icon" style="background: linear-gradient(135deg, #8b5cf6, #ec4899);">
+                                <span style="color: white;">⚛️</span>
+                            </div>
+                            <h3 class="feature-title">Quantum Computing</h3>
+                            <p class="feature-desc">Real-time effects</p>
+                        </div>
+                        
+                        <div class="feature-card">
+                            <div class="feature-icon" style="background: linear-gradient(135deg, #10b981, #059669);">
+                                <span style="color: white;">🔢</span>
+                            </div>
+                            <h3 class="feature-title">Matrix Optimization</h3>
+                            <p class="feature-desc">Multi-dimensional data</p>
+                        </div>
+                    </div>
+                    
+                    <!-- 状态显示 */
+                    <div class="status-section">
+                        <div class="status-title">✅ V3.0 Mobile Font Fix Applied</div>
+                        <div class="status-list">
+                            <div class="status-item">🎯 clamp(2rem, 12vw, 4rem) - 主标题激进修复</div>
+                            <div class="status-item">📝 clamp(1rem, 5vw, 1.25rem) - 副标题响应式</div>
+                            <div class="status-item">🔧 强制渐变文字透明度渲染</div>
+                            <div class="status-item">📱 统一移动端适配架构</div>
+                            <div class="status-item">⚡ 无条件应用所有修复策略</div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </div>
+    
+    <script>
+        // 简单的交互效果
+        document.addEventListener('DOMContentLoaded', function() {
+            // 按钮悬停效果
+            const buttons = document.querySelectorAll('.btn-primary, .btn-secondary');
+            buttons.forEach(button => {
+                button.addEventListener('mouseenter', function() {
+                    this.style.transform = 'translateY(-2px)';
+                });
+                button.addEventListener('mouseleave', function() {
+                    this.style.transform = 'translateY(0px)';
+                });
+            });
+            
+            // 检查主站连接状态
+            fetch('https://lightingpro.netlify.app/api/health', { mode: 'no-cors' })
+                .then(() => {
+                    console.log('✅ 主站连接正常');
+                })
+                .catch(() => {
+                    console.log('⚠️ 主站连接异常，当前为备用静态版本');
+                });
+        });
+    </script>
+</body>
+</html>
