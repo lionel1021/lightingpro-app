@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Quantum Icon Test</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        @keyframes spin {
+            to { transform: rotate(360deg); }
+        }
+        @keyframes pulse {
+            0%, 100% { opacity: 1; }
+            50% { opacity: .5; }
+        }
+        @keyframes bounce {
+            0%, 100% { transform: translateY(-25%); animation-timing-function: cubic-bezier(0.8,0,1,1); }
+            50% { transform: none; animation-timing-function: cubic-bezier(0,0,0.2,1); }
+        }
+        .animate-spin { animation: spin 3s linear infinite; }
+        .animate-pulse { animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite; }
+        .animate-bounce { animation: bounce 2s infinite; }
+    </style>
+</head>
+<body class="bg-black text-white p-8">
+    <h1 class="text-3xl font-bold mb-8">Quantum Computing Icon Test</h1>
+    
+    <div class="grid grid-cols-3 gap-6 mb-8">
+        <!-- Neural Analysis -->
+        <div class="bg-gradient-to-br from-blue-500/20 to-purple-500/20 rounded-2xl p-6 border border-white/10 text-center">
+            <div class="w-16 h-16 mx-auto mb-4 relative">
+                <div class="w-full h-full bg-gradient-to-br from-blue-500 to-purple-600 rounded-full opacity-80"></div>
+                <div class="absolute inset-2 border-2 border-white rounded-full animate-spin"></div>
+            </div>
+            <h3 class="text-lg font-semibold mb-2 text-white">Neural Analysis</h3>
+            <p class="text-sm text-white/80">Deep learning user preferences</p>
+        </div>
+
+        <!-- Quantum Computing - Fixed Version -->
+        <div class="bg-gradient-to-br from-blue-500/20 to-purple-500/20 rounded-2xl p-6 border border-white/10 text-center">
+            <div class="w-16 h-16 mx-auto mb-4 relative">
+                <div class="w-full h-full bg-gradient-to-r from-cyan-400 to-blue-500 rounded-full opacity-80"></div>
+                <div class="absolute inset-2 bg-gradient-to-r from-purple-400 to-pink-500 rounded-full opacity-60 animate-pulse"></div>
+                <div class="absolute inset-4 bg-gradient-to-r from-yellow-400 to-orange-500 rounded-full opacity-80 animate-bounce"></div>
+                <div class="absolute inset-1 border-2 border-white rounded-full animate-spin"></div>
+            </div>
+            <h3 class="text-lg font-semibold mb-2 text-white">Quantum Computing</h3>
+            <p class="text-sm text-white/80">Real-time lighting effects rendering</p>
+        </div>
+
+        <!-- Matrix Optimization -->
+        <div class="bg-gradient-to-br from-blue-500/20 to-purple-500/20 rounded-2xl p-6 border border-white/10 text-center">
+            <div class="w-16 h-16 mx-auto mb-4 grid grid-cols-3 gap-1">
+                <div class="bg-green-400 rounded-sm animate-pulse" style="animation-delay: 0ms;"></div>
+                <div class="bg-green-400 rounded-sm animate-pulse" style="animation-delay: 200ms;"></div>
+                <div class="bg-green-400 rounded-sm animate-pulse" style="animation-delay: 400ms;"></div>
+                <div class="bg-green-400 rounded-sm animate-pulse" style="animation-delay: 600ms;"></div>
+                <div class="bg-green-400 rounded-sm animate-pulse" style="animation-delay: 800ms;"></div>
+                <div class="bg-green-400 rounded-sm animate-pulse" style="animation-delay: 1000ms;"></div>
+                <div class="bg-green-400 rounded-sm animate-pulse" style="animation-delay: 1200ms;"></div>
+                <div class="bg-green-400 rounded-sm animate-pulse" style="animation-delay: 1400ms;"></div>
+                <div class="bg-green-400 rounded-sm animate-pulse" style="animation-delay: 1600ms;"></div>
+            </div>
+            <h3 class="text-lg font-semibold mb-2 text-white">Matrix Optimization</h3>
+            <p class="text-sm text-white/80">Multi-dimensional data analysis</p>
+        </div>
+    </div>
+
+    <div class="text-center">
+        <p class="text-green-400 text-lg">✅ 如果你能看到中间的 Quantum Computing 卡片有一个彩色的多层圆形动画图标，那么修复成功！</p>
+        <p class="text-white/70 mt-4">图标应该包含：青蓝色外层、紫粉色中层(脉冲)、黄橙色内层(弹跳)、白色边框(旋转)</p>
+    </div>
+</body>
+</html>

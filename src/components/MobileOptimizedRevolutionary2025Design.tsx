@@ -73,10 +73,11 @@ const MobileAIVisualElement = ({ type, className = "" }: { type: string; classNa
       </div>
     ),
     quantum: (
-      <div className={`relative ${className} animate-spin`} style={{ animationDuration: '20s' }}>
-        <div className="w-full h-full bg-gradient-to-r from-cyan-400 to-blue-500 rounded-full opacity-20" />
-        <div className="absolute inset-2 bg-gradient-to-r from-purple-400 to-pink-500 rounded-full opacity-30" />
-        <div className="absolute inset-4 bg-gradient-to-r from-yellow-400 to-orange-500 rounded-full opacity-40" />
+      <div className={`relative ${className}`}>
+        <div className="w-full h-full bg-gradient-to-r from-cyan-400 to-blue-500 rounded-full opacity-80" />
+        <div className="absolute inset-2 bg-gradient-to-r from-purple-400 to-pink-500 rounded-full opacity-60 animate-pulse" />
+        <div className="absolute inset-4 bg-gradient-to-r from-yellow-400 to-orange-500 rounded-full opacity-80 animate-bounce" style={{ animationDuration: '2s' }} />
+        <div className="absolute inset-1 border-2 border-white rounded-full animate-spin" style={{ animationDuration: '3s' }} />
       </div>
     ),
     matrix: (
