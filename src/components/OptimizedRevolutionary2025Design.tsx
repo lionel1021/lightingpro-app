@@ -8,15 +8,7 @@ import {
   Zap, 
   Eye,
   ArrowRight,
-  Download,
-  Brain,
-  Atom,
-  Scan,
-  Layers,
-  Play,
-  Pause,
-  Volume2,
-  Maximize
+  Download
 } from 'lucide-react';
 
 // 🚀 动态导入优化 - 只在需要时加载
@@ -160,12 +152,8 @@ export default function OptimizedRevolutionary2025Design() {
   const features = [
     {
       icon: (
-        <div className="w-8 h-8 flex items-center justify-center">
-          {typeof Brain !== 'undefined' ? (
-            <Brain className="w-8 h-8 text-white" />
-          ) : (
-            <div className="w-8 h-8 text-white text-lg font-bold flex items-center justify-center">🧠</div>
-          )}
+        <div className="w-8 h-8 text-white text-2xl flex items-center justify-center">
+          🧠
         </div>
       ),
       title: 'Neural Network Recommendations',
@@ -175,12 +163,8 @@ export default function OptimizedRevolutionary2025Design() {
     },
     {
       icon: (
-        <div className="w-8 h-8 flex items-center justify-center">
-          {typeof Atom !== 'undefined' ? (
-            <Atom className="w-8 h-8 text-white" />
-          ) : (
-            <div className="w-8 h-8 text-white text-lg font-bold flex items-center justify-center">⚛️</div>
-          )}
+        <div className="w-8 h-8 text-white text-2xl flex items-center justify-center">
+          ⚛️
         </div>
       ),
       title: 'Quantum Rendering Engine', 
@@ -190,12 +174,8 @@ export default function OptimizedRevolutionary2025Design() {
     },
     {
       icon: (
-        <div className="w-8 h-8 flex items-center justify-center">
-          {typeof Scan !== 'undefined' ? (
-            <Scan className="w-8 h-8 text-white" />
-          ) : (
-            <div className="w-8 h-8 text-white text-lg font-bold flex items-center justify-center">🔍</div>
-          )}
+        <div className="w-8 h-8 text-white text-2xl flex items-center justify-center">
+          🔍
         </div>
       ),
       title: 'AR Space Scanning',
@@ -205,12 +185,8 @@ export default function OptimizedRevolutionary2025Design() {
     },
     {
       icon: (
-        <div className="w-8 h-8 flex items-center justify-center">
-          {typeof Layers !== 'undefined' ? (
-            <Layers className="w-8 h-8 text-white" />
-          ) : (
-            <div className="w-8 h-8 text-white text-lg font-bold flex items-center justify-center">📊</div>
-          )}
+        <div className="w-8 h-8 text-white text-2xl flex items-center justify-center">
+          📊
         </div>
       ),
       title: 'Multi-Dimensional Analysis',
@@ -246,17 +222,13 @@ export default function OptimizedRevolutionary2025Design() {
                 onClick={() => setIsPlaying(!isPlaying)}
                 className="p-2 rounded-lg hover:bg-white/10 transition-colors"
               >
-                {isPlaying ? (
-                  typeof Pause !== 'undefined' ? <Pause className="w-4 h-4" /> : <span>⏸️</span>
-                ) : (
-                  typeof Play !== 'undefined' ? <Play className="w-4 h-4" /> : <span>▶️</span>
-                )}
+                <span className="text-sm">{isPlaying ? '⏸️' : '▶️'}</span>
               </button>
               <button className="p-2 rounded-lg hover:bg-white/10 transition-colors">
-                {typeof Volume2 !== 'undefined' ? <Volume2 className="w-4 h-4" /> : <span>🔊</span>}
+                <span className="text-sm">🔊</span>
               </button>
               <button className="p-2 rounded-lg hover:bg-white/10 transition-colors">
-                {typeof Maximize !== 'undefined' ? <Maximize className="w-4 h-4" /> : <span>⛶</span>}
+                <span className="text-sm">⛶</span>
               </button>
             </div>
           </div>
