@@ -108,10 +108,11 @@ const AIVisualElement = ({ type, className = "" }: { type: string; className?: s
     ),
     quantum: (
       <div className={`relative ${className}`}>
-        <div className="w-full h-full bg-gradient-to-r from-cyan-400 to-blue-500 rounded-full opacity-80" />
-        <div className="absolute inset-2 bg-gradient-to-r from-purple-400 to-pink-500 rounded-full opacity-60 animate-pulse" />
-        <div className="absolute inset-4 bg-gradient-to-r from-yellow-400 to-orange-500 rounded-full opacity-80 animate-bounce" style={{ animationDuration: '2s' }} />
-        <div className="absolute inset-1 border-2 border-white rounded-full animate-spin" style={{ animationDuration: '3s' }} />
+        <div className="w-full h-full bg-gradient-to-r from-cyan-400 to-blue-500 rounded-full" />
+        <div className="absolute inset-1 bg-gradient-to-r from-purple-400 to-pink-500 rounded-full animate-pulse" />
+        <div className="absolute inset-2 bg-gradient-to-r from-yellow-400 to-orange-500 rounded-full animate-bounce" style={{ animationDuration: '2s' }} />
+        <div className="absolute inset-0 border-2 border-white/60 rounded-full animate-spin" style={{ animationDuration: '3s' }} />
+        <div className="absolute inset-3 border border-white/40 rounded-full animate-spin" style={{ animationDuration: '4s', animationDirection: 'reverse' }} />
       </div>
     ),
     matrix: (
@@ -321,15 +322,19 @@ export default function OptimizedRevolutionary2025Design() {
                   {[0, 1, 2].map((i) => (
                     <div 
                       key={i} 
-                      className="bg-gradient-to-br from-blue-500/20 to-purple-500/20 rounded-2xl p-6 border border-white/10 hover:scale-105 transition-transform duration-300"
+                      className="bg-gradient-to-br from-blue-500/20 to-purple-500/20 rounded-2xl p-4 border border-white/10 hover:scale-105 transition-transform duration-300 flex flex-col h-48"
                     >
-                      <AIVisualElement type={['neural', 'quantum', 'matrix'][i]} className="w-16 h-16 mx-auto mb-4" />
-                      <h3 className="text-lg font-semibold mb-2 text-white">
-                        {['Neural Analysis', 'Quantum Computing', 'Matrix Optimization'][i]}
-                      </h3>
-                      <p className="text-sm text-white/80">
-                        {['Deep learning user preferences', 'Real-time lighting effects rendering', 'Multi-dimensional data analysis'][i]}
-                      </p>
+                      <div className="flex-shrink-0 mb-3">
+                        <AIVisualElement type={['neural', 'quantum', 'matrix'][i]} className="w-16 h-16 mx-auto" />
+                      </div>
+                      <div className="flex-grow flex flex-col justify-between text-center">
+                        <h3 className="text-base font-semibold mb-2 text-white leading-tight">
+                          {['Neural Analysis', 'Quantum Computing', 'Matrix Optimization'][i]}
+                        </h3>
+                        <p className="text-xs text-white/80 leading-relaxed px-1">
+                          {['Deep learning user preferences', 'Real-time lighting effects rendering', 'Multi-dimensional data analysis'][i]}
+                        </p>
+                      </div>
                     </div>
                   ))}
                 </div>
