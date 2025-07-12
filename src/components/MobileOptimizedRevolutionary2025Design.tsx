@@ -67,18 +67,16 @@ const MobileAIVisualElement = ({ type, className = "" }: { type: string; classNa
   const elements = {
     neural: (
       <div className={`w-full h-full ${className} relative`}>
-        <div className="w-full h-full bg-gradient-to-br from-blue-400 to-purple-500 rounded-full shadow-lg shadow-blue-500/50" />
-        <div className="absolute inset-1 bg-gradient-to-br from-blue-600 to-purple-700 rounded-full opacity-80" />
-        <div className="absolute inset-2 border-2 border-white rounded-full animate-spin shadow-lg" 
+        <div className="w-full h-full bg-gradient-to-br from-blue-500 to-purple-600 rounded-full opacity-80" />
+        <div className="absolute inset-2 border-2 border-white rounded-full animate-spin" 
              style={{ animationDuration: '3s' }} />
-        <div className="absolute inset-3 bg-white rounded-full opacity-90 animate-pulse" />
       </div>
     ),
     quantum: (
       <div className={`relative ${className}`}>
-        <div className="w-full h-full bg-gradient-to-r from-cyan-300 to-blue-400 rounded-full shadow-lg shadow-cyan-400/50" />
-        <div className="absolute inset-1 bg-gradient-to-r from-purple-300 to-pink-400 rounded-full animate-pulse shadow-md" />
-        <div className="absolute inset-2 bg-gradient-to-r from-yellow-300 to-orange-400 rounded-full animate-bounce shadow-sm" style={{ animationDuration: '2s' }} />
+        <div className="w-full h-full bg-gradient-to-r from-cyan-200 to-blue-300 rounded-full shadow-lg shadow-cyan-300/60" />
+        <div className="absolute inset-1 bg-gradient-to-r from-purple-200 to-pink-300 rounded-full animate-pulse shadow-md" />
+        <div className="absolute inset-2 bg-gradient-to-r from-yellow-200 to-orange-300 rounded-full animate-bounce shadow-sm" style={{ animationDuration: '2s' }} />
         <div className="absolute inset-0 border-2 border-white rounded-full animate-spin shadow-lg" style={{ animationDuration: '3s' }} />
         <div className="absolute inset-3 border border-white/90 rounded-full animate-spin" style={{ animationDuration: '4s', animationDirection: 'reverse' }} />
         <div className="absolute inset-4 bg-white rounded-full opacity-95 animate-pulse" />
