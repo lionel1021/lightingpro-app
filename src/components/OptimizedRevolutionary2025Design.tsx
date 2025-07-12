@@ -17,15 +17,23 @@ const FramerMotion = dynamic(() => import('framer-motion').then(mod => ({ motion
   ssr: false
 });
 
-// 🎯 按需导入图标
-const Brain = dynamic(() => import('lucide-react/dist/esm/icons/brain'));
-const Atom = dynamic(() => import('lucide-react/dist/esm/icons/atom'));
-const Scan = dynamic(() => import('lucide-react/dist/esm/icons/scan'));
-const Layers = dynamic(() => import('lucide-react/dist/esm/icons/layers'));
-const Play = dynamic(() => import('lucide-react/dist/esm/icons/play'));
-const Pause = dynamic(() => import('lucide-react/dist/esm/icons/pause'));
-const Volume2 = dynamic(() => import('lucide-react/dist/esm/icons/volume-2'));
-const Maximize = dynamic(() => import('lucide-react/dist/esm/icons/maximize'));
+// 🎯 按需导入图标 - 修复动态导入
+const Brain = dynamic(() => import('lucide-react').then(mod => ({ default: mod.Brain })), {
+  loading: () => <div className="w-8 h-8 bg-blue-400/20 rounded animate-pulse" />
+});
+const Atom = dynamic(() => import('lucide-react').then(mod => ({ default: mod.Atom })), {
+  loading: () => <div className="w-8 h-8 bg-purple-400/20 rounded animate-pulse" />
+});
+const Scan = dynamic(() => import('lucide-react').then(mod => ({ default: mod.Scan })), {
+  loading: () => <div className="w-8 h-8 bg-green-400/20 rounded animate-pulse" />
+});
+const Layers = dynamic(() => import('lucide-react').then(mod => ({ default: mod.Layers })), {
+  loading: () => <div className="w-8 h-8 bg-orange-400/20 rounded animate-pulse" />
+});
+const Play = dynamic(() => import('lucide-react').then(mod => ({ default: mod.Play })));
+const Pause = dynamic(() => import('lucide-react').then(mod => ({ default: mod.Pause })));
+const Volume2 = dynamic(() => import('lucide-react').then(mod => ({ default: mod.Volume2 })));
+const Maximize = dynamic(() => import('lucide-react').then(mod => ({ default: mod.Maximize })));
 
 // 🌟 优化的神经网络粒子系统
 const OptimizedNeuralParticles = dynamic(() => {
@@ -159,28 +167,28 @@ export default function OptimizedRevolutionary2025Design() {
 
   const features = [
     {
-      icon: <Suspense fallback={<div className="w-8 h-8 bg-gray-400 rounded animate-pulse" />}><Brain className="w-8 h-8" /></Suspense>,
+      icon: <Brain className="w-8 h-8" />,
       title: 'Neural Network Recommendations',
       description: 'Deep learning algorithms analyze your lifestyle',
       stats: '99.2% Accuracy',
       color: 'from-blue-500 to-cyan-500'
     },
     {
-      icon: <Suspense fallback={<div className="w-8 h-8 bg-gray-400 rounded animate-pulse" />}><Atom className="w-8 h-8" /></Suspense>,
+      icon: <Atom className="w-8 h-8" />,
       title: 'Quantum Rendering Engine', 
       description: 'Real-time 3D lighting effects preview',
       stats: '60fps Smooth',
       color: 'from-purple-500 to-pink-500'
     },
     {
-      icon: <Suspense fallback={<div className="w-8 h-8 bg-gray-400 rounded animate-pulse" />}><Scan className="w-8 h-8" /></Suspense>,
+      icon: <Scan className="w-8 h-8" />,
       title: 'AR Space Scanning',
       description: 'One-click room scanning with smart layout suggestions', 
       stats: 'Millimeter Precision',
       color: 'from-green-500 to-teal-500'
     },
     {
-      icon: <Suspense fallback={<div className="w-8 h-8 bg-gray-400 rounded animate-pulse" />}><Layers className="w-8 h-8" /></Suspense>,
+      icon: <Layers className="w-8 h-8" />,
       title: 'Multi-Dimensional Analysis',
       description: 'Comprehensive optimization of lighting, color temperature, and energy consumption',
       stats: '7 Dimensions', 
@@ -214,19 +222,13 @@ export default function OptimizedRevolutionary2025Design() {
                 onClick={() => setIsPlaying(!isPlaying)}
                 className="p-2 rounded-lg hover:bg-white/10 transition-colors"
               >
-                <Suspense fallback={<div className="w-4 h-4 bg-gray-400 rounded" />}>
-                  {isPlaying ? <Pause className="w-4 h-4" /> : <Play className="w-4 h-4" />}
-                </Suspense>
+                {isPlaying ? <Pause className="w-4 h-4" /> : <Play className="w-4 h-4" />}
               </button>
               <button className="p-2 rounded-lg hover:bg-white/10 transition-colors">
-                <Suspense fallback={<div className="w-4 h-4 bg-gray-400 rounded" />}>
-                  <Volume2 className="w-4 h-4" />
-                </Suspense>
+                <Volume2 className="w-4 h-4" />
               </button>
               <button className="p-2 rounded-lg hover:bg-white/10 transition-colors">
-                <Suspense fallback={<div className="w-4 h-4 bg-gray-400 rounded" />}>
-                  <Maximize className="w-4 h-4" />
-                </Suspense>
+                <Maximize className="w-4 h-4" />
               </button>
             </div>
           </div>
