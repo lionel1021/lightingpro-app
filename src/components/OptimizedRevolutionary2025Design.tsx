@@ -108,12 +108,12 @@ const AIVisualElement = ({ type, className = "" }: { type: string; className?: s
     ),
     quantum: (
       <div className={`relative ${className}`}>
-        <div className="w-full h-full bg-gradient-to-r from-cyan-200 to-blue-300 rounded-full shadow-lg shadow-cyan-300/60" />
-        <div className="absolute inset-1 bg-gradient-to-r from-purple-200 to-pink-300 rounded-full animate-pulse shadow-md" />
-        <div className="absolute inset-2 bg-gradient-to-r from-yellow-200 to-orange-300 rounded-full animate-bounce shadow-sm" style={{ animationDuration: '2s' }} />
-        <div className="absolute inset-0 border-2 border-white rounded-full animate-spin shadow-lg" style={{ animationDuration: '3s' }} />
-        <div className="absolute inset-3 border border-white/90 rounded-full animate-spin" style={{ animationDuration: '4s', animationDirection: 'reverse' }} />
-        <div className="absolute inset-6 bg-white rounded-full opacity-95 animate-pulse" />
+        <div className="w-full h-full bg-gradient-to-r from-cyan-100 to-blue-200 rounded-full shadow-lg shadow-cyan-200/80" />
+        <div className="absolute inset-1 bg-gradient-to-r from-purple-100 to-pink-200 rounded-full animate-pulse shadow-md" />
+        <div className="absolute inset-2 bg-gradient-to-r from-yellow-100 to-orange-200 rounded-full animate-bounce shadow-sm" style={{ animationDuration: '2s' }} />
+        <div className="absolute inset-0 border-3 border-white rounded-full animate-spin shadow-lg" style={{ animationDuration: '3s' }} />
+        <div className="absolute inset-3 border-2 border-white rounded-full animate-spin" style={{ animationDuration: '4s', animationDirection: 'reverse' }} />
+        <div className="absolute inset-6 bg-white rounded-full animate-pulse" />
       </div>
     ),
     matrix: (
