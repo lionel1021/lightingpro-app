@@ -132,45 +132,32 @@ const FluidBackground = () => {
 const AIVisualElement = ({ type, className = "" }: { type: string; className?: string }) => {
   const elements = {
     neural: (
-      <svg viewBox="0 0 100 100" className={`w-full h-full ${className}`}>
-        <defs>
-          <linearGradient id="neural-gradient" x1="0%" y1="0%" x2="100%" y2="100%">
-            <stop offset="0%" stopColor="#667eea" />
-            <stop offset="100%" stopColor="#764ba2" />
-          </linearGradient>
-        </defs>
-        <motion.circle
-          cx="50"
-          cy="50"
-          r="30"
-          fill="url(#neural-gradient)"
-          initial={{ scale: 0 }}
-          animate={{ scale: 1 }}
-          transition={{ duration: 0.5 }}
-        />
-        <motion.circle
-          cx="50"
-          cy="50"
-          r="20"
-          fill="none"
-          stroke="#ffffff"
-          strokeWidth="2"
-          initial={{ pathLength: 0 }}
-          animate={{ pathLength: 1 }}
-          transition={{ duration: 1, delay: 0.5 }}
-        />
-      </svg>
+      <div className={`w-full h-full ${className} relative`}>
+        <div className="w-full h-full bg-gradient-to-br from-blue-500 to-purple-600 rounded-full opacity-80" />
+        <div className="absolute inset-2 border-2 border-white rounded-full animate-spin" 
+             style={{ animationDuration: '3s' }} />
+      </div>
     ),
     quantum: (
-      <motion.div
-        className={`relative ${className}`}
-        animate={{ rotate: 360 }}
-        transition={{ duration: 20, repeat: Infinity, ease: "linear" }}
-      >
-        <div className="w-full h-full bg-gradient-to-r from-cyan-400 to-blue-500 rounded-full opacity-20" />
-        <div className="absolute inset-2 bg-gradient-to-r from-purple-400 to-pink-500 rounded-full opacity-30" />
-        <div className="absolute inset-4 bg-gradient-to-r from-yellow-400 to-orange-500 rounded-full opacity-40" />
-      </motion.div>
+      <div className={`relative ${className}`}>
+        <div className="w-full h-full rounded-full" style={{
+          background: 'linear-gradient(45deg, #ecfeff, #67e8f9)',
+          boxShadow: '0 0 20px #67e8f9'
+        }} />
+        <div className="absolute inset-1 rounded-full animate-pulse" style={{
+          background: 'linear-gradient(45deg, #faf5ff, #d8b4fe)'
+        }} />
+        <div className="absolute inset-2 rounded-full animate-bounce" style={{
+          background: 'linear-gradient(45deg, #fefce8, #fde047)',
+          animationDuration: '2s'
+        }} />
+        <div className="absolute inset-0 border-4 border-white rounded-full animate-spin" style={{ animationDuration: '3s' }} />
+        <div className="absolute inset-3 border-2 border-white rounded-full animate-spin" style={{ 
+          animationDuration: '4s', 
+          animationDirection: 'reverse' 
+        }} />
+        <div className="absolute inset-6 bg-white rounded-full animate-pulse" />
+      </div>
     ),
     matrix: (
       <div className={`grid grid-cols-3 gap-1 ${className}`}>
