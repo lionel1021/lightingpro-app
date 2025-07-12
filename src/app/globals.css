@@ -257,4 +257,46 @@ body {
 .mobile-particle-13 { width: 1.6px; height: 1.6px; left: 80%; top: 55%; opacity: 0.4; animation-delay: 1.95s; }
 .mobile-particle-14 { width: 2.0px; height: 2.0px; left: 10%; top: 30%; opacity: 0.6; animation-delay: 2.1s; }
 
+/* Neural Analysis 文字布局优化 */
+.neural-text-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  text-align: center;
+  height: 100%;
+  padding: 0 0.25rem;
+}
+
+.neural-title {
+  font-size: 0.875rem;
+  font-weight: 600;
+  line-height: 1.2;
+  margin-bottom: 0.5rem;
+  color: white;
+  word-wrap: break-word;
+  hyphens: auto;
+}
+
+.neural-description {
+  font-size: 0.75rem;
+  line-height: 1.3;
+  color: rgba(255, 255, 255, 0.8);
+  word-wrap: break-word;
+  hyphens: auto;
+}
+
+/* 移动端文字优化 */
+@media (max-width: 768px) {
+  .neural-title {
+    font-size: 0.75rem;
+    line-height: 1.1;
+    margin-bottom: 0.25rem;
+  }
+  
+  .neural-description {
+    font-size: 0.625rem;
+    line-height: 1.2;
+  }
+}
+
 /* Force deploy at 2025年 7月12日 星期六 13时39分31秒 CST */

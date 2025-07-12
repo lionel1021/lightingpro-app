@@ -109,8 +109,8 @@ export default function FinalTest() {
                 </circle>
               </svg>
             </div>
-            <p className="text-white/80 text-sm">✅ 应该是神经网络结构</p>
-            <p className="text-green-400 text-xs mt-2">多层节点 + 连接线动画 + 数据流动</p>
+            <p className="text-white/80 text-sm">✅ 神经网络结构 - 已优化尺寸</p>
+            <p className="text-green-400 text-xs mt-2">紧凑清晰 + 与其他图标一致</p>
           </div>
 
           {/* Quantum Computing - 确认明亮版本 */}

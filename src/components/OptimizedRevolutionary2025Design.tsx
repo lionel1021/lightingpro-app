@@ -83,21 +83,21 @@ const FluidBackground = () => (
 const AIVisualElement = ({ type, className = "" }: { type: string; className?: string }) => {
   const elements = {
     neural: (
-      <div className={`w-full h-full ${className} flex items-center justify-center`}>
-        <svg viewBox="0 0 64 64" className="w-full h-full">
+      <div className={`w-full h-full ${className} flex items-center justify-center p-1`}>
+        <svg viewBox="0 0 48 48" className="w-11 h-11" style={{ filter: 'drop-shadow(0 0 4px rgba(96, 165, 250, 0.3))' }}>
           <defs>
             <linearGradient id="neuralNodeGradient" x1="0%" y1="0%" x2="100%" y2="100%">
-              <stop offset="0%" stopColor="#60a5fa" stopOpacity="0.9" />
-              <stop offset="50%" stopColor="#a855f7" stopOpacity="0.8" />
-              <stop offset="100%" stopColor="#ec4899" stopOpacity="0.9" />
+              <stop offset="0%" stopColor="#60a5fa" stopOpacity="1" />
+              <stop offset="50%" stopColor="#a855f7" stopOpacity="0.9" />
+              <stop offset="100%" stopColor="#ec4899" stopOpacity="1" />
             </linearGradient>
             <linearGradient id="neuralConnectionGradient" x1="0%" y1="0%" x2="100%" y2="0%">
-              <stop offset="0%" stopColor="#ffffff" stopOpacity="0.8" />
-              <stop offset="50%" stopColor="#60a5fa" stopOpacity="0.6" />
-              <stop offset="100%" stopColor="#ffffff" stopOpacity="0.8" />
+              <stop offset="0%" stopColor="#ffffff" stopOpacity="0.9" />
+              <stop offset="50%" stopColor="#60a5fa" stopOpacity="0.7" />
+              <stop offset="100%" stopColor="#ffffff" stopOpacity="0.9" />
             </linearGradient>
             <filter id="neuralGlow">
-              <feGaussianBlur stdDeviation="1.5" result="coloredBlur"/>
+              <feGaussianBlur stdDeviation="1" result="coloredBlur"/>
               <feMerge> 
                 <feMergeNode in="coloredBlur"/>
                 <feMergeNode in="SourceGraphic"/>
@@ -105,73 +105,71 @@ const AIVisualElement = ({ type, className = "" }: { type: string; className?: s
             </filter>
           </defs>
           
-          {/* Neural Network Connections */}
-          <g stroke="url(#neuralConnectionGradient)" strokeWidth="1.5" fill="none" opacity="0.7">
-            {/* Input Layer to Hidden Layer */}
-            <line x1="16" y1="20" x2="32" y2="24">
-              <animate attributeName="stroke-opacity" values="0.3;0.8;0.3" dur="2s" repeatCount="indefinite"/>
+          {/* Neural Network Connections - 优化清晰度 */}
+          <g stroke="url(#neuralConnectionGradient)" strokeWidth="1.2" fill="none" opacity="0.8">
+            {/* Input to Hidden Layer 1 */}
+            <line x1="8" y1="12" x2="20" y2="16">
+              <animate attributeName="stroke-opacity" values="0.4;0.9;0.4" dur="2s" repeatCount="indefinite"/>
             </line>
-            <line x1="16" y1="32" x2="32" y2="24">
-              <animate attributeName="stroke-opacity" values="0.5;0.9;0.5" dur="2.2s" repeatCount="indefinite"/>
+            <line x1="8" y1="24" x2="20" y2="16">
+              <animate attributeName="stroke-opacity" values="0.6;1;0.6" dur="2.2s" repeatCount="indefinite"/>
             </line>
-            <line x1="16" y1="44" x2="32" y2="24">
-              <animate attributeName="stroke-opacity" values="0.4;0.7;0.4" dur="1.8s" repeatCount="indefinite"/>
-            </line>
-            
-            <line x1="16" y1="20" x2="32" y2="40">
-              <animate attributeName="stroke-opacity" values="0.6;0.8;0.6" dur="2.4s" repeatCount="indefinite"/>
-            </line>
-            <line x1="16" y1="32" x2="32" y2="40">
-              <animate attributeName="stroke-opacity" values="0.3;0.9;0.3" dur="2s" repeatCount="indefinite"/>
-            </line>
-            <line x1="16" y1="44" x2="32" y2="40">
-              <animate attributeName="stroke-opacity" values="0.5;0.7;0.5" dur="2.6s" repeatCount="indefinite"/>
+            <line x1="8" y1="36" x2="20" y2="16">
+              <animate attributeName="stroke-opacity" values="0.5;0.8;0.5" dur="1.8s" repeatCount="indefinite"/>
             </line>
             
-            {/* Hidden Layer to Output Layer */}
-            <line x1="32" y1="24" x2="48" y2="32">
-              <animate attributeName="stroke-opacity" values="0.4;0.8;0.4" dur="1.9s" repeatCount="indefinite"/>
+            {/* Input to Hidden Layer 2 */}
+            <line x1="8" y1="12" x2="20" y2="32">
+              <animate attributeName="stroke-opacity" values="0.7;0.9;0.7" dur="2.4s" repeatCount="indefinite"/>
             </line>
-            <line x1="32" y1="40" x2="48" y2="32">
-              <animate attributeName="stroke-opacity" values="0.6;0.9;0.6" dur="2.1s" repeatCount="indefinite"/>
+            <line x1="8" y1="24" x2="20" y2="32">
+              <animate attributeName="stroke-opacity" values="0.4;1;0.4" dur="2s" repeatCount="indefinite"/>
+            </line>
+            <line x1="8" y1="36" x2="20" y2="32">
+              <animate attributeName="stroke-opacity" values="0.6;0.8;0.6" dur="2.6s" repeatCount="indefinite"/>
+            </line>
+            
+            {/* Hidden to Output */}
+            <line x1="20" y1="16" x2="32" y2="24">
+              <animate attributeName="stroke-opacity" values="0.5;0.9;0.5" dur="1.9s" repeatCount="indefinite"/>
+            </line>
+            <line x1="20" y1="32" x2="32" y2="24">
+              <animate attributeName="stroke-opacity" values="0.7;1;0.7" dur="2.1s" repeatCount="indefinite"/>
             </line>
           </g>
           
-          {/* Input Layer Nodes */}
-          <circle cx="16" cy="20" r="4" fill="url(#neuralNodeGradient)" filter="url(#neuralGlow)">
-            <animate attributeName="r" values="3;5;3" dur="2s" repeatCount="indefinite"/>
+          {/* Neural Nodes - 更清晰紧凑 */}
+          {/* Input Layer */}
+          <circle cx="8" cy="12" r="2.5" fill="url(#neuralNodeGradient)" filter="url(#neuralGlow)">
+            <animate attributeName="r" values="2;3;2" dur="2s" repeatCount="indefinite"/>
           </circle>
-          <circle cx="16" cy="32" r="4" fill="url(#neuralNodeGradient)" filter="url(#neuralGlow)">
-            <animate attributeName="r" values="3;5;3" dur="2.2s" repeatCount="indefinite"/>
+          <circle cx="8" cy="24" r="2.5" fill="url(#neuralNodeGradient)" filter="url(#neuralGlow)">
+            <animate attributeName="r" values="2;3;2" dur="2.2s" repeatCount="indefinite"/>
           </circle>
-          <circle cx="16" cy="44" r="4" fill="url(#neuralNodeGradient)" filter="url(#neuralGlow)">
-            <animate attributeName="r" values="3;5;3" dur="1.8s" repeatCount="indefinite"/>
-          </circle>
-          
-          {/* Hidden Layer Nodes */}
-          <circle cx="32" cy="24" r="5" fill="url(#neuralNodeGradient)" filter="url(#neuralGlow)">
-            <animate attributeName="r" values="4;6;4" dur="2.4s" repeatCount="indefinite"/>
-            <animate attributeName="opacity" values="0.7;1;0.7" dur="2.4s" repeatCount="indefinite"/>
-          </circle>
-          <circle cx="32" cy="40" r="5" fill="url(#neuralNodeGradient)" filter="url(#neuralGlow)">
-            <animate attributeName="r" values="4;6;4" dur="2.6s" repeatCount="indefinite"/>
-            <animate attributeName="opacity" values="0.7;1;0.7" dur="2.6s" repeatCount="indefinite"/>
+          <circle cx="8" cy="36" r="2.5" fill="url(#neuralNodeGradient)" filter="url(#neuralGlow)">
+            <animate attributeName="r" values="2;3;2" dur="1.8s" repeatCount="indefinite"/>
           </circle>
           
-          {/* Output Layer Node */}
-          <circle cx="48" cy="32" r="6" fill="url(#neuralNodeGradient)" filter="url(#neuralGlow)">
-            <animate attributeName="r" values="5;7;5" dur="2s" repeatCount="indefinite"/>
-            <animate attributeName="opacity" values="0.8;1;0.8" dur="2s" repeatCount="indefinite"/>
+          {/* Hidden Layer */}
+          <circle cx="20" cy="16" r="3" fill="url(#neuralNodeGradient)" filter="url(#neuralGlow)">
+            <animate attributeName="r" values="2.5;3.5;2.5" dur="2.4s" repeatCount="indefinite"/>
+            <animate attributeName="opacity" values="0.8;1;0.8" dur="2.4s" repeatCount="indefinite"/>
+          </circle>
+          <circle cx="20" cy="32" r="3" fill="url(#neuralNodeGradient)" filter="url(#neuralGlow)">
+            <animate attributeName="r" values="2.5;3.5;2.5" dur="2.6s" repeatCount="indefinite"/>
+            <animate attributeName="opacity" values="0.8;1;0.8" dur="2.6s" repeatCount="indefinite"/>
           </circle>
           
-          {/* Data Flow Indicators */}
-          <circle cx="12" cy="32" r="2" fill="#ffffff" opacity="0.8">
-            <animate attributeName="cx" values="12;52;12" dur="3s" repeatCount="indefinite"/>
-            <animate attributeName="opacity" values="0.8;0.3;0.8" dur="3s" repeatCount="indefinite"/>
+          {/* Output Layer */}
+          <circle cx="32" cy="24" r="3.5" fill="url(#neuralNodeGradient)" filter="url(#neuralGlow)">
+            <animate attributeName="r" values="3;4;3" dur="2s" repeatCount="indefinite"/>
+            <animate attributeName="opacity" values="0.9;1;0.9" dur="2s" repeatCount="indefinite"/>
           </circle>
-          <circle cx="12" cy="32" r="1.5" fill="#60a5fa" opacity="0.6">
-            <animate attributeName="cx" values="12;52;12" dur="3.2s" repeatCount="indefinite"/>
-            <animate attributeName="opacity" values="0.6;0.2;0.6" dur="3.2s" repeatCount="indefinite"/>
+          
+          {/* Data Flow - 更小更精确 */}
+          <circle cx="5" cy="24" r="1" fill="#ffffff" opacity="0.9">
+            <animate attributeName="cx" values="5;35;5" dur="3s" repeatCount="indefinite"/>
+            <animate attributeName="opacity" values="0.9;0.3;0.9" dur="3s" repeatCount="indefinite"/>
           </circle>
         </svg>
       </div>
@@ -374,11 +372,11 @@ export default function OptimizedRevolutionary2025Design() {
                       <div className="flex-shrink-0 mb-3">
                         <AIVisualElement type={['neural', 'quantum', 'matrix'][i]} className="w-16 h-16 mx-auto" />
                       </div>
-                      <div className="flex-grow flex flex-col justify-between text-center">
-                        <h3 className="text-base font-semibold mb-2 text-white leading-tight">
+                      <div className="neural-text-container">
+                        <h3 className="neural-title">
                           {['Neural Analysis', 'Quantum Computing', 'Matrix Optimization'][i]}
                         </h3>
-                        <p className="text-xs text-white/80 leading-relaxed px-1">
+                        <p className="neural-description">
                           {['Deep learning user preferences', 'Real-time lighting effects rendering', 'Multi-dimensional data analysis'][i]}
                         </p>
                       </div>

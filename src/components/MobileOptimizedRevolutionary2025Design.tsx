@@ -80,21 +80,21 @@ const MobileNeuralParticles = () => {
 const MobileAIVisualElement = ({ type, className = "" }: { type: string; className?: string }) => {
   const elements = {
     neural: (
-      <div className={`w-full h-full ${className} flex items-center justify-center`}>
-        <svg viewBox="0 0 64 64" className="w-full h-full">
+      <div className={`w-full h-full ${className} flex items-center justify-center p-0.5`}>
+        <svg viewBox="0 0 32 32" className="w-7 h-7" style={{ filter: 'drop-shadow(0 0 2px rgba(96, 165, 250, 0.4))' }}>
           <defs>
             <linearGradient id="mobileNeuralNodeGradient" x1="0%" y1="0%" x2="100%" y2="100%">
-              <stop offset="0%" stopColor="#60a5fa" stopOpacity="0.9" />
-              <stop offset="50%" stopColor="#a855f7" stopOpacity="0.8" />
-              <stop offset="100%" stopColor="#ec4899" stopOpacity="0.9" />
+              <stop offset="0%" stopColor="#60a5fa" stopOpacity="1" />
+              <stop offset="50%" stopColor="#a855f7" stopOpacity="0.9" />
+              <stop offset="100%" stopColor="#ec4899" stopOpacity="1" />
             </linearGradient>
             <linearGradient id="mobileNeuralConnectionGradient" x1="0%" y1="0%" x2="100%" y2="0%">
-              <stop offset="0%" stopColor="#ffffff" stopOpacity="0.7" />
-              <stop offset="50%" stopColor="#60a5fa" stopOpacity="0.5" />
-              <stop offset="100%" stopColor="#ffffff" stopOpacity="0.7" />
+              <stop offset="0%" stopColor="#ffffff" stopOpacity="0.8" />
+              <stop offset="50%" stopColor="#60a5fa" stopOpacity="0.6" />
+              <stop offset="100%" stopColor="#ffffff" stopOpacity="0.8" />
             </linearGradient>
             <filter id="mobileNeuralGlow">
-              <feGaussianBlur stdDeviation="1" result="coloredBlur"/>
+              <feGaussianBlur stdDeviation="0.8" result="coloredBlur"/>
               <feMerge> 
                 <feMergeNode in="coloredBlur"/>
                 <feMergeNode in="SourceGraphic"/>
@@ -102,67 +102,70 @@ const MobileAIVisualElement = ({ type, className = "" }: { type: string; classNa
             </filter>
           </defs>
           
-          {/* Neural Network Connections - Mobile Optimized */}
-          <g stroke="url(#mobileNeuralConnectionGradient)" strokeWidth="1" fill="none" opacity="0.6">
+          {/* Neural Network Connections - 移动端优化 */}
+          <g stroke="url(#mobileNeuralConnectionGradient)" strokeWidth="0.8" fill="none" opacity="0.7">
             {/* Input to Hidden */}
-            <line x1="18" y1="22" x2="32" y2="26">
-              <animate attributeName="stroke-opacity" values="0.3;0.7;0.3" dur="2s" repeatCount="indefinite"/>
+            <line x1="6" y1="8" x2="16" y2="12">
+              <animate attributeName="stroke-opacity" values="0.4;0.8;0.4" dur="2s" repeatCount="indefinite"/>
             </line>
-            <line x1="18" y1="32" x2="32" y2="26">
-              <animate attributeName="stroke-opacity" values="0.4;0.8;0.4" dur="2.2s" repeatCount="indefinite"/>
+            <line x1="6" y1="16" x2="16" y2="12">
+              <animate attributeName="stroke-opacity" values="0.5;0.9;0.5" dur="2.2s" repeatCount="indefinite"/>
             </line>
-            <line x1="18" y1="42" x2="32" y2="26">
-              <animate attributeName="stroke-opacity" values="0.3;0.6;0.3" dur="1.8s" repeatCount="indefinite"/>
+            <line x1="6" y1="24" x2="16" y2="12">
+              <animate attributeName="stroke-opacity" values="0.4;0.7;0.4" dur="1.8s" repeatCount="indefinite"/>
             </line>
             
-            <line x1="18" y1="22" x2="32" y2="38">
-              <animate attributeName="stroke-opacity" values="0.5;0.7;0.5" dur="2.4s" repeatCount="indefinite"/>
+            <line x1="6" y1="8" x2="16" y2="20">
+              <animate attributeName="stroke-opacity" values="0.6;0.8;0.6" dur="2.4s" repeatCount="indefinite"/>
             </line>
-            <line x1="18" y1="32" x2="32" y2="38">
-              <animate attributeName="stroke-opacity" values="0.3;0.8;0.3" dur="2s" repeatCount="indefinite"/>
+            <line x1="6" y1="16" x2="16" y2="20">
+              <animate attributeName="stroke-opacity" values="0.4;0.9;0.4" dur="2s" repeatCount="indefinite"/>
             </line>
-            <line x1="18" y1="42" x2="32" y2="38">
-              <animate attributeName="stroke-opacity" values="0.4;0.6;0.4" dur="2.6s" repeatCount="indefinite"/>
+            <line x1="6" y1="24" x2="16" y2="20">
+              <animate attributeName="stroke-opacity" values="0.5;0.7;0.5" dur="2.6s" repeatCount="indefinite"/>
             </line>
             
             {/* Hidden to Output */}
-            <line x1="32" y1="26" x2="46" y2="32">
-              <animate attributeName="stroke-opacity" values="0.4;0.7;0.4" dur="1.9s" repeatCount="indefinite"/>
+            <line x1="16" y1="12" x2="26" y2="16">
+              <animate attributeName="stroke-opacity" values="0.5;0.8;0.5" dur="1.9s" repeatCount="indefinite"/>
             </line>
-            <line x1="32" y1="38" x2="46" y2="32">
-              <animate attributeName="stroke-opacity" values="0.5;0.8;0.5" dur="2.1s" repeatCount="indefinite"/>
+            <line x1="16" y1="20" x2="26" y2="16">
+              <animate attributeName="stroke-opacity" values="0.6;0.9;0.6" dur="2.1s" repeatCount="indefinite"/>
             </line>
           </g>
           
-          {/* Neural Nodes - Mobile Optimized */}
-          <circle cx="18" cy="22" r="3" fill="url(#mobileNeuralNodeGradient)" filter="url(#mobileNeuralGlow)">
-            <animate attributeName="r" values="2.5;3.5;2.5" dur="2s" repeatCount="indefinite"/>
+          {/* Neural Nodes - 移动端紧凑版 */}
+          {/* Input Layer */}
+          <circle cx="6" cy="8" r="1.8" fill="url(#mobileNeuralNodeGradient)" filter="url(#mobileNeuralGlow)">
+            <animate attributeName="r" values="1.5;2;1.5" dur="2s" repeatCount="indefinite"/>
           </circle>
-          <circle cx="18" cy="32" r="3" fill="url(#mobileNeuralNodeGradient)" filter="url(#mobileNeuralGlow)">
-            <animate attributeName="r" values="2.5;3.5;2.5" dur="2.2s" repeatCount="indefinite"/>
+          <circle cx="6" cy="16" r="1.8" fill="url(#mobileNeuralNodeGradient)" filter="url(#mobileNeuralGlow)">
+            <animate attributeName="r" values="1.5;2;1.5" dur="2.2s" repeatCount="indefinite"/>
           </circle>
-          <circle cx="18" cy="42" r="3" fill="url(#mobileNeuralNodeGradient)" filter="url(#mobileNeuralGlow)">
-            <animate attributeName="r" values="2.5;3.5;2.5" dur="1.8s" repeatCount="indefinite"/>
-          </circle>
-          
-          <circle cx="32" cy="26" r="4" fill="url(#mobileNeuralNodeGradient)" filter="url(#mobileNeuralGlow)">
-            <animate attributeName="r" values="3;4.5;3" dur="2.4s" repeatCount="indefinite"/>
-            <animate attributeName="opacity" values="0.7;1;0.7" dur="2.4s" repeatCount="indefinite"/>
-          </circle>
-          <circle cx="32" cy="38" r="4" fill="url(#mobileNeuralNodeGradient)" filter="url(#mobileNeuralGlow)">
-            <animate attributeName="r" values="3;4.5;3" dur="2.6s" repeatCount="indefinite"/>
-            <animate attributeName="opacity" values="0.7;1;0.7" dur="2.6s" repeatCount="indefinite"/>
+          <circle cx="6" cy="24" r="1.8" fill="url(#mobileNeuralNodeGradient)" filter="url(#mobileNeuralGlow)">
+            <animate attributeName="r" values="1.5;2;1.5" dur="1.8s" repeatCount="indefinite"/>
           </circle>
           
-          <circle cx="46" cy="32" r="5" fill="url(#mobileNeuralNodeGradient)" filter="url(#mobileNeuralGlow)">
-            <animate attributeName="r" values="4;5.5;4" dur="2s" repeatCount="indefinite"/>
-            <animate attributeName="opacity" values="0.8;1;0.8" dur="2s" repeatCount="indefinite"/>
+          {/* Hidden Layer */}
+          <circle cx="16" cy="12" r="2.2" fill="url(#mobileNeuralNodeGradient)" filter="url(#mobileNeuralGlow)">
+            <animate attributeName="r" values="1.8;2.5;1.8" dur="2.4s" repeatCount="indefinite"/>
+            <animate attributeName="opacity" values="0.8;1;0.8" dur="2.4s" repeatCount="indefinite"/>
+          </circle>
+          <circle cx="16" cy="20" r="2.2" fill="url(#mobileNeuralNodeGradient)" filter="url(#mobileNeuralGlow)">
+            <animate attributeName="r" values="1.8;2.5;1.8" dur="2.6s" repeatCount="indefinite"/>
+            <animate attributeName="opacity" values="0.8;1;0.8" dur="2.6s" repeatCount="indefinite"/>
           </circle>
           
-          {/* Data Flow - Mobile */}
-          <circle cx="14" cy="32" r="1.5" fill="#ffffff" opacity="0.7">
-            <animate attributeName="cx" values="14;50;14" dur="3s" repeatCount="indefinite"/>
-            <animate attributeName="opacity" values="0.7;0.2;0.7" dur="3s" repeatCount="indefinite"/>
+          {/* Output Layer */}
+          <circle cx="26" cy="16" r="2.5" fill="url(#mobileNeuralNodeGradient)" filter="url(#mobileNeuralGlow)">
+            <animate attributeName="r" values="2;3;2" dur="2s" repeatCount="indefinite"/>
+            <animate attributeName="opacity" values="0.9;1;0.9" dur="2s" repeatCount="indefinite"/>
+          </circle>
+          
+          {/* Data Flow - 移动端简化 */}
+          <circle cx="4" cy="16" r="0.8" fill="#ffffff" opacity="0.8">
+            <animate attributeName="cx" values="4;28;4" dur="3s" repeatCount="indefinite"/>
+            <animate attributeName="opacity" values="0.8;0.3;0.8" dur="3s" repeatCount="indefinite"/>
           </circle>
         </svg>
       </div>
@@ -308,11 +311,11 @@ export default function MobileOptimizedRevolutionary2025Design() {
                       <div className="flex-shrink-0 mb-1">
                         <MobileAIVisualElement type={['neural', 'quantum', 'matrix'][i]} className="w-8 h-8 mx-auto" />
                       </div>
-                      <div className="flex-grow flex flex-col justify-between text-center">
-                        <h3 className="text-xs font-semibold mb-1 text-white leading-tight">
+                      <div className="neural-text-container">
+                        <h3 className="neural-title">
                           {feature.title}
                         </h3>
-                        <p className="text-xs text-white/80 leading-tight">
+                        <p className="neural-description">
                           {feature.description}
                         </p>
                       </div>
