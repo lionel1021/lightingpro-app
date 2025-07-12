@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>绕过缓存测试</title>
+    <style>
+        body {
+            background: black;
+            color: white;
+            font-family: Arial, sans-serif;
+            padding: 40px;
+            text-align: center;
+        }
+        .button {
+            background: linear-gradient(45deg, #60a5fa, #a855f7);
+            color: white;
+            padding: 15px 30px;
+            border: none;
+            border-radius: 10px;
+            font-size: 16px;
+            cursor: pointer;
+            margin: 10px;
+            display: inline-block;
+            text-decoration: none;
+        }
+        .button:hover {
+            transform: scale(1.05);
+        }
+        .info {
+            background: rgba(255,255,255,0.1);
+            padding: 20px;
+            border-radius: 10px;
+            margin: 20px 0;
+        }
+        .success {
+            background: rgba(34, 197, 94, 0.2);
+            border: 2px solid #22c55e;
+        }
+    </style>
+</head>
+<body>
+    <h1>🔄 绕过缓存访问主页</h1>
+    
+    <div class="info success">
+        <h2>✅ 网站已确认更新</h2>
+        <p>新测试页面 /test-new-icons 已成功显示最新内容</p>
+        <p>问题：主页被 Netlify Edge 缓存，显示旧版本</p>
+    </div>
+    
+    <div class="info">
+        <h3>🎯 解决方案：使用以下链接绕过缓存</h3>
+        <p>这些链接会强制获取最新版本</p>
+    </div>
+    
+    <div style="margin: 40px 0;">
+        <a href="https://lightingpro.netlify.app/?v=2025071214" class="button" target="_blank">
+            🚀 主页 + 版本参数
+        </a>
+        <br><br>
+        <a href="https://lightingpro.netlify.app/?t=1720776000" class="button" target="_blank">
+            🔥 主页 + 时间戳
+        </a>
+        <br><br>
+        <a href="https://lightingpro.netlify.app/?refresh=true" class="button" target="_blank">
+            ⚡ 主页 + 刷新参数
+        </a>
+    </div>
+    
+    <div class="info">
+        <h3>📋 预期效果：</h3>
+        <p>✅ <strong>Neural Analysis:</strong> 简洁的蓝紫圆形 + 白色旋转边框</p>
+        <p>✅ <strong>Quantum Computing:</strong> 超明亮的多层彩色圆形动画</p>
+        <p>✅ <strong>Matrix Optimization:</strong> 亮绿色9宫格依次脉冲</p>
+    </div>
+
+    <div class="info">
+        <h3>🔧 技术说明：</h3>
+        <p>缓存状态：<code>Netlify Edge fwd=stale</code></p>
+        <p>原因：Netlify Edge缓存仍在使用旧版本</p>
+        <p>解决：URL参数会绕过Edge缓存，获取最新版本</p>
+    </div>
+
+    <script>
+        // 自动打开第一个链接
+        setTimeout(() => {
+            window.open('https://lightingpro.netlify.app/?v=2025071214', '_blank');
+        }, 2000);
+    </script>
+</body>
+</html>
