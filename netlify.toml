@@ -26,6 +26,21 @@
     Referrer-Policy = "strict-origin-when-cross-origin"
     X-XSS-Protection = "1; mode=block"
     
+    # Content Security Policy - 严格CSP确保所有修复生效
+    Content-Security-Policy = '''
+      default-src 'self';
+      script-src 'self' 'unsafe-eval';
+      style-src 'self' 'unsafe-inline' https://fonts.googleapis.com;
+      font-src 'self' https://fonts.gstatic.com;
+      img-src 'self' data: https: blob:;
+      connect-src 'self' https:;
+      frame-src 'none';
+      object-src 'none';
+      base-uri 'self';
+      form-action 'self';
+      frame-ancestors 'none';
+    '''
+    
     # Performance headers
     X-DNS-Prefetch-Control = "on"
     
