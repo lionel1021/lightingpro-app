@@ -171,16 +171,36 @@ export default function MobileOptimizedRevolutionary2025Design() {
                 <span className="text-xs">Revolutionary 2025 Design</span>
               </div>
               
-              <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-6 leading-snug px-2">
-                <span className="block mb-2 bg-gradient-to-r from-blue-400 via-purple-400 to-pink-400 bg-clip-text text-transparent">
+              <h1 className="font-bold mb-6 px-4" style={{ 
+                fontSize: 'clamp(1.75rem, 8vw, 3rem)',
+                lineHeight: '1.2',
+                letterSpacing: '-0.02em'
+              }}>
+                <span className="block mb-3" style={{
+                  background: 'linear-gradient(135deg, #60a5fa 0%, #a855f7 50%, #ec4899 100%)',
+                  WebkitBackgroundClip: 'text',
+                  backgroundClip: 'text',
+                  WebkitTextFillColor: 'transparent',
+                  color: 'transparent'
+                }}>
                   Redefining
                 </span>
-                <span className="block bg-gradient-to-r from-yellow-300 via-orange-300 to-amber-300 bg-clip-text text-transparent">
+                <span className="block" style={{
+                  background: 'linear-gradient(135deg, #fbbf24 0%, #f59e0b 50%, #d97706 100%)',
+                  WebkitBackgroundClip: 'text',
+                  backgroundClip: 'text',
+                  WebkitTextFillColor: 'transparent',
+                  color: 'transparent'
+                }}>
                   Lighting Experience
                 </span>
               </h1>
               
-              <p className="text-sm sm:text-base md:text-lg text-gray-300 mb-8 max-w-xs sm:max-w-sm mx-auto leading-relaxed px-4">
+              <p className="text-gray-300 mb-8 mx-auto px-4" style={{
+                fontSize: 'clamp(0.875rem, 4vw, 1.125rem)',
+                lineHeight: '1.6',
+                maxWidth: 'min(90vw, 24rem)'
+              }}>
                 Neural network-powered intelligent lighting recommendation system
               </p>
               
@@ -241,10 +261,22 @@ export default function MobileOptimizedRevolutionary2025Design() {
         <section className="py-16">
           <div className="w-full">
             <div className="text-center mb-12 px-4">
-              <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold mb-6 leading-snug bg-gradient-to-r from-cyan-300 via-blue-300 to-indigo-300 bg-clip-text text-transparent">
+              <h2 className="font-bold mb-6" style={{
+                fontSize: 'clamp(1.5rem, 7vw, 2.5rem)',
+                lineHeight: '1.25',
+                background: 'linear-gradient(135deg, #67e8f9 0%, #60a5fa 50%, #6366f1 100%)',
+                WebkitBackgroundClip: 'text',
+                backgroundClip: 'text',
+                WebkitTextFillColor: 'transparent',
+                color: 'transparent'
+              }}>
                 Next-Gen Lighting<br className="sm:hidden" /> Technology
               </h2>
-              <p className="text-sm sm:text-base text-gray-400 max-w-xs sm:max-w-sm mx-auto leading-relaxed">
+              <p className="text-gray-400 mx-auto" style={{
+                fontSize: 'clamp(0.875rem, 3.5vw, 1rem)',
+                lineHeight: '1.6',
+                maxWidth: 'min(85vw, 22rem)'
+              }}>
                 Revolutionary lighting solutions integrating AI, AR, and IoT
               </p>
             </div>
@@ -297,10 +329,22 @@ export default function MobileOptimizedRevolutionary2025Design() {
         <section className="py-16 pb-24">
           <div className="w-full text-center">
             <div>
-              <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold mb-6 leading-snug bg-gradient-to-r from-green-300 via-emerald-300 to-teal-300 bg-clip-text text-transparent px-4">
+              <h2 className="font-bold mb-6 px-4" style={{
+                fontSize: 'clamp(1.5rem, 7vw, 2.5rem)',
+                lineHeight: '1.25',
+                background: 'linear-gradient(135deg, #86efac 0%, #10b981 50%, #059669 100%)',
+                WebkitBackgroundClip: 'text',
+                backgroundClip: 'text',
+                WebkitTextFillColor: 'transparent',
+                color: 'transparent'
+              }}>
                 Ready to Begin?
               </h2>
-              <p className="text-sm sm:text-base text-gray-400 mb-8 leading-relaxed max-w-xs sm:max-w-sm mx-auto px-4">
+              <p className="text-gray-400 mb-8 mx-auto px-4" style={{
+                fontSize: 'clamp(0.875rem, 3.5vw, 1rem)',
+                lineHeight: '1.6',
+                maxWidth: 'min(85vw, 22rem)'
+              }}>
                 Join the lighting revolution and experience unprecedented smart living
               </p>
               

@@ -103,6 +103,31 @@ export const CriticalCSSInline = () => (
     }
     .text-transparent { color: transparent; }
     
+    /* Mobile-first font size utilities with clamp() */
+    .text-clamp-base { font-size: clamp(1rem, 4vw, 1.25rem); }
+    .text-clamp-lg { font-size: clamp(1.125rem, 4.5vw, 1.5rem); }
+    .text-clamp-xl { font-size: clamp(1.25rem, 5vw, 2rem); }
+    .text-clamp-2xl { font-size: clamp(1.5rem, 6vw, 2.5rem); }
+    .text-clamp-3xl { font-size: clamp(1.75rem, 8vw, 3rem); }
+    .text-clamp-4xl { font-size: clamp(2rem, 10vw, 4rem); }
+    .text-clamp-5xl { font-size: clamp(2.25rem, 12vw, 5rem); }
+    
+    /* Enhanced gradient text rendering */
+    .gradient-text {
+      background: linear-gradient(135deg, #60a5fa 0%, #a855f7 50%, #ec4899 100%);
+      -webkit-background-clip: text;
+      background-clip: text;
+      -webkit-text-fill-color: transparent;
+      color: transparent;
+    }
+    
+    /* Force anti-aliasing for better mobile text rendering */
+    * {
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+      text-rendering: optimizeLegibility;
+    }
+    
     /* Essential colors */
     .text-gray-300 { color: #d1d5db; }
     .text-gray-400 { color: #9ca3af; }
@@ -136,6 +161,28 @@ export const CriticalCSSInline = () => (
       .sm\:max-w-sm { max-width: 24rem; }
       .sm\:px-4 { padding-left: 1rem; padding-right: 1rem; }
       .sm\:hidden { display: none; }
+    }
+    
+    /* Ensure proper viewport units support */
+    @supports (font-size: clamp(1rem, 4vw, 2rem)) {
+      .mobile-optimized-text {
+        font-size: clamp(1rem, 4vw, 2rem) !important;
+        line-height: 1.2 !important;
+      }
+    }
+    
+    /* Fallback for older browsers */
+    @supports not (font-size: clamp(1rem, 4vw, 2rem)) {
+      .mobile-optimized-text {
+        font-size: 1.5rem !important;
+        line-height: 1.2 !important;
+      }
+      
+      @media (max-width: 480px) {
+        .mobile-optimized-text {
+          font-size: 1.25rem !important;
+        }
+      }
     }
   `}</style>
 );

@@ -244,17 +244,36 @@ export default function OptimizedRevolutionary2025Design() {
                 <span className="text-sm">Revolutionary 2025 Design</span>
               </div>
               
-              <h1 className="text-6xl md:text-8xl font-bold mb-6 leading-tight">
-                <span className="bg-gradient-to-r from-blue-400 via-purple-400 to-pink-400 bg-clip-text text-transparent">
+              <h1 className="font-bold mb-6" style={{
+                fontSize: 'clamp(2rem, 10vw, 5rem)',
+                lineHeight: '1.1',
+                letterSpacing: '-0.025em'
+              }}>
+                <span className="block mb-2" style={{
+                  background: 'linear-gradient(135deg, #60a5fa 0%, #a855f7 50%, #ec4899 100%)',
+                  WebkitBackgroundClip: 'text',
+                  backgroundClip: 'text',
+                  WebkitTextFillColor: 'transparent',
+                  color: 'transparent'
+                }}>
                   Redefining
                 </span>
-                <br />
-                <span className="bg-gradient-to-r from-yellow-300 via-orange-300 to-amber-300 bg-clip-text text-transparent">
+                <span className="block" style={{
+                  background: 'linear-gradient(135deg, #fbbf24 0%, #f59e0b 50%, #d97706 100%)',
+                  WebkitBackgroundClip: 'text',
+                  backgroundClip: 'text',
+                  WebkitTextFillColor: 'transparent',
+                  color: 'transparent'
+                }}>
                   Lighting Experience
                 </span>
               </h1>
               
-              <p className="text-xl md:text-2xl text-gray-300 mb-8 max-w-3xl mx-auto leading-relaxed">
+              <p className="text-gray-300 mb-8 mx-auto" style={{
+                fontSize: 'clamp(1rem, 4vw, 1.5rem)',
+                lineHeight: '1.6',
+                maxWidth: 'min(90vw, 48rem)'
+              }}>
                 Neural network-powered intelligent lighting recommendation system that perfectly matches every ray of light to your lifestyle
               </p>
               
