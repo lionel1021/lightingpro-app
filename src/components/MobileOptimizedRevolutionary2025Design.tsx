@@ -67,18 +67,21 @@ const MobileAIVisualElement = ({ type, className = "" }: { type: string; classNa
   const elements = {
     neural: (
       <div className={`w-full h-full ${className} relative`}>
-        <div className="w-full h-full bg-gradient-to-br from-blue-500 to-purple-600 rounded-full opacity-80" />
-        <div className="absolute inset-2 border-2 border-white rounded-full animate-spin" 
+        <div className="w-full h-full bg-gradient-to-br from-blue-400 to-purple-500 rounded-full shadow-lg shadow-blue-500/50" />
+        <div className="absolute inset-1 bg-gradient-to-br from-blue-600 to-purple-700 rounded-full opacity-80" />
+        <div className="absolute inset-2 border-2 border-white rounded-full animate-spin shadow-lg" 
              style={{ animationDuration: '3s' }} />
+        <div className="absolute inset-3 bg-white rounded-full opacity-90 animate-pulse" />
       </div>
     ),
     quantum: (
       <div className={`relative ${className}`}>
-        <div className="w-full h-full bg-gradient-to-r from-cyan-400 to-blue-500 rounded-full" />
-        <div className="absolute inset-1 bg-gradient-to-r from-purple-400 to-pink-500 rounded-full animate-pulse" />
-        <div className="absolute inset-2 bg-gradient-to-r from-yellow-400 to-orange-500 rounded-full animate-bounce" style={{ animationDuration: '2s' }} />
-        <div className="absolute inset-0 border-2 border-white/60 rounded-full animate-spin" style={{ animationDuration: '3s' }} />
-        <div className="absolute inset-3 border border-white/40 rounded-full animate-spin" style={{ animationDuration: '4s', animationDirection: 'reverse' }} />
+        <div className="w-full h-full bg-gradient-to-r from-cyan-300 to-blue-400 rounded-full shadow-lg shadow-cyan-400/50" />
+        <div className="absolute inset-1 bg-gradient-to-r from-purple-300 to-pink-400 rounded-full animate-pulse shadow-md" />
+        <div className="absolute inset-2 bg-gradient-to-r from-yellow-300 to-orange-400 rounded-full animate-bounce shadow-sm" style={{ animationDuration: '2s' }} />
+        <div className="absolute inset-0 border-2 border-white rounded-full animate-spin shadow-lg" style={{ animationDuration: '3s' }} />
+        <div className="absolute inset-3 border border-white/90 rounded-full animate-spin" style={{ animationDuration: '4s', animationDirection: 'reverse' }} />
+        <div className="absolute inset-4 bg-white rounded-full opacity-95 animate-pulse" />
       </div>
     ),
     matrix: (
@@ -86,7 +89,7 @@ const MobileAIVisualElement = ({ type, className = "" }: { type: string; classNa
         {Array.from({ length: 9 }).map((_, i) => (
           <div
             key={i}
-            className="bg-green-400 rounded-sm animate-pulse"
+            className="bg-green-300 rounded-sm animate-pulse shadow-md shadow-green-400/50 border border-green-500"
             style={{ animationDelay: `${i * 200}ms` }}
           />
         ))}
