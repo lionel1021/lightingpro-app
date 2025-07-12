@@ -196,7 +196,7 @@ export default function MobileOptimizedRevolutionary2025Design() {
                 </span>
               </h1>
               
-              <p className="text-gray-300 mb-8 mx-auto px-4" style={{
+              <p className="text-white/90 mb-8 mx-auto px-4" style={{
                 fontSize: 'clamp(0.875rem, 4vw, 1.125rem)',
                 lineHeight: '1.6',
                 maxWidth: 'min(90vw, 24rem)'
@@ -231,7 +231,7 @@ export default function MobileOptimizedRevolutionary2025Design() {
                       <h3 className="text-xs sm:text-sm font-semibold mb-1 text-white leading-tight">
                         {feature.title}
                       </h3>
-                      <p className="text-xs text-gray-400 leading-tight">
+                      <p className="text-xs text-white/80 leading-tight">
                         {feature.description}
                       </p>
                     </div>
@@ -240,15 +240,15 @@ export default function MobileOptimizedRevolutionary2025Design() {
                 
                 <div className="text-center">
                   <div className="inline-flex items-center gap-3 bg-black/20 rounded-full px-4 py-2">
-                    <span className="text-xs text-gray-400">Real-time Data</span>
+                    <span className="text-xs text-white/70">Real-time Data</span>
                     <div className="flex items-center gap-1">
                       <div className="w-1.5 h-1.5 bg-green-400 rounded-full animate-pulse" />
-                      <span className="text-xs">99.2% Accuracy</span>
+                      <span className="text-xs text-white">99.2% Accuracy</span>
                     </div>
                     <div className="w-px h-3 bg-white/20" />
                     <div className="flex items-center gap-1">
                       <div className="w-1.5 h-1.5 bg-blue-400 rounded-full animate-pulse" />
-                      <span className="text-xs">1,247 Users Online</span>
+                      <span className="text-xs text-white">1,247 Users Online</span>
                     </div>
                   </div>
                 </div>
@@ -272,7 +272,7 @@ export default function MobileOptimizedRevolutionary2025Design() {
               }}>
                 Next-Gen Lighting<br className="sm:hidden" /> Technology
               </h2>
-              <p className="text-gray-400 mx-auto" style={{
+              <p className="text-white/80 mx-auto" style={{
                 fontSize: 'clamp(0.875rem, 3.5vw, 1rem)',
                 lineHeight: '1.6',
                 maxWidth: 'min(85vw, 22rem)'
@@ -314,7 +314,7 @@ export default function MobileOptimizedRevolutionary2025Design() {
                       {feature.icon}
                     </div>
                     <h3 className="text-base sm:text-lg font-semibold mb-2 text-white leading-snug">{feature.title}</h3>
-                    <p className="text-gray-300 text-xs sm:text-sm mb-3 leading-relaxed">{feature.description}</p>
+                    <p className="text-white/80 text-xs sm:text-sm mb-3 leading-relaxed">{feature.description}</p>
                     <div className="bg-black/20 rounded-full px-3 py-1 text-xs text-green-400 font-medium">
                       {feature.stats}
                     </div>
@@ -340,7 +340,7 @@ export default function MobileOptimizedRevolutionary2025Design() {
               }}>
                 Ready to Begin?
               </h2>
-              <p className="text-gray-400 mb-8 mx-auto px-4" style={{
+              <p className="text-white/80 mb-8 mx-auto px-4" style={{
                 fontSize: 'clamp(0.875rem, 3.5vw, 1rem)',
                 lineHeight: '1.6',
                 maxWidth: 'min(85vw, 22rem)'

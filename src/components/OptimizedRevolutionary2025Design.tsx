@@ -269,7 +269,7 @@ export default function OptimizedRevolutionary2025Design() {
                 </span>
               </h1>
               
-              <p className="text-gray-300 mb-8 mx-auto" style={{
+              <p className="text-white/90 mb-8 mx-auto" style={{
                 fontSize: 'clamp(1rem, 4vw, 1.5rem)',
                 lineHeight: '1.6',
                 maxWidth: 'min(90vw, 48rem)'
@@ -304,7 +304,7 @@ export default function OptimizedRevolutionary2025Design() {
                       <h3 className="text-lg font-semibold mb-2 text-white">
                         {['Neural Analysis', 'Quantum Computing', 'Matrix Optimization'][i]}
                       </h3>
-                      <p className="text-sm text-gray-400">
+                      <p className="text-sm text-white/80">
                         {['Deep learning user preferences', 'Real-time lighting effects rendering', 'Multi-dimensional data analysis'][i]}
                       </p>
                     </div>
@@ -313,15 +313,15 @@ export default function OptimizedRevolutionary2025Design() {
                 
                 <div className="text-center">
                   <div className="inline-flex items-center gap-4 bg-black/20 rounded-full px-6 py-3">
-                    <span className="text-sm text-gray-400">Real-time Data</span>
+                    <span className="text-sm text-white/70">Real-time Data</span>
                     <div className="flex items-center gap-2">
                       <div className="w-2 h-2 bg-green-400 rounded-full animate-pulse" />
-                      <span className="text-sm">99.2% Accuracy</span>
+                      <span className="text-sm text-white">99.2% Accuracy</span>
                     </div>
                     <div className="w-px h-4 bg-white/20" />
                     <div className="flex items-center gap-2">
                       <div className="w-2 h-2 bg-blue-400 rounded-full animate-pulse" />
-                      <span className="text-sm">1,247 Users Online</span>
+                      <span className="text-sm text-white">1,247 Users Online</span>
                     </div>
                   </div>
                 </div>
@@ -337,7 +337,7 @@ export default function OptimizedRevolutionary2025Design() {
               <h2 className="text-4xl md:text-6xl font-bold mb-8 leading-tight bg-gradient-to-r from-cyan-300 via-blue-300 to-indigo-300 bg-clip-text text-transparent">
                 Next-Gen Lighting Technology
               </h2>
-              <p className="text-xl text-gray-400 max-w-2xl mx-auto leading-relaxed">
+              <p className="text-xl text-white/80 max-w-2xl mx-auto leading-relaxed">
                 Revolutionary lighting solutions integrating AI, AR, and IoT to make smart lighting an integral part of your life
               </p>
             </div>
@@ -353,7 +353,7 @@ export default function OptimizedRevolutionary2025Design() {
                       {feature.icon}
                     </div>
                     <h3 className="text-xl font-semibold mb-4 text-white">{feature.title}</h3>
-                    <p className="text-gray-300 text-sm mb-6 flex-grow leading-relaxed">{feature.description}</p>
+                    <p className="text-white/80 text-sm mb-6 flex-grow leading-relaxed">{feature.description}</p>
                     <div className="bg-black/20 rounded-full px-4 py-2 text-xs text-green-400 font-medium">
                       {feature.stats}
                     </div>
@@ -371,7 +371,7 @@ export default function OptimizedRevolutionary2025Design() {
               <h2 className="text-4xl md:text-6xl font-bold mb-8 leading-tight bg-gradient-to-r from-green-300 via-emerald-300 to-teal-300 bg-clip-text text-transparent">
                 Ready to Begin?
               </h2>
-              <p className="text-xl text-gray-400 mb-10 leading-relaxed">
+              <p className="text-xl text-white/80 mb-10 leading-relaxed">
                 Join the lighting revolution and experience unprecedented smart living
               </p>
               
