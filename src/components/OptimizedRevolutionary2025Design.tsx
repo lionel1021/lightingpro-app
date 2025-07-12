@@ -8,7 +8,15 @@ import {
   Zap, 
   Eye,
   ArrowRight,
-  Download
+  Download,
+  Brain,
+  Atom,
+  Scan,
+  Layers,
+  Play,
+  Pause,
+  Volume2,
+  Maximize
 } from 'lucide-react';
 
 // 🚀 动态导入优化 - 只在需要时加载
@@ -17,23 +25,7 @@ const FramerMotion = dynamic(() => import('framer-motion').then(mod => ({ motion
   ssr: false
 });
 
-// 🎯 按需导入图标 - 修复动态导入
-const Brain = dynamic(() => import('lucide-react').then(mod => ({ default: mod.Brain })), {
-  loading: () => <div className="w-8 h-8 bg-blue-400/20 rounded animate-pulse" />
-});
-const Atom = dynamic(() => import('lucide-react').then(mod => ({ default: mod.Atom })), {
-  loading: () => <div className="w-8 h-8 bg-purple-400/20 rounded animate-pulse" />
-});
-const Scan = dynamic(() => import('lucide-react').then(mod => ({ default: mod.Scan })), {
-  loading: () => <div className="w-8 h-8 bg-green-400/20 rounded animate-pulse" />
-});
-const Layers = dynamic(() => import('lucide-react').then(mod => ({ default: mod.Layers })), {
-  loading: () => <div className="w-8 h-8 bg-orange-400/20 rounded animate-pulse" />
-});
-const Play = dynamic(() => import('lucide-react').then(mod => ({ default: mod.Play })));
-const Pause = dynamic(() => import('lucide-react').then(mod => ({ default: mod.Pause })));
-const Volume2 = dynamic(() => import('lucide-react').then(mod => ({ default: mod.Volume2 })));
-const Maximize = dynamic(() => import('lucide-react').then(mod => ({ default: mod.Maximize })));
+// 🎯 直接导入图标 - 确保可靠显示
 
 // 🌟 优化的神经网络粒子系统
 const OptimizedNeuralParticles = dynamic(() => {
@@ -167,28 +159,60 @@ export default function OptimizedRevolutionary2025Design() {
 
   const features = [
     {
-      icon: <Brain className="w-8 h-8" />,
+      icon: (
+        <div className="w-8 h-8 flex items-center justify-center">
+          {typeof Brain !== 'undefined' ? (
+            <Brain className="w-8 h-8 text-white" />
+          ) : (
+            <div className="w-8 h-8 text-white text-lg font-bold flex items-center justify-center">🧠</div>
+          )}
+        </div>
+      ),
       title: 'Neural Network Recommendations',
       description: 'Deep learning algorithms analyze your lifestyle',
       stats: '99.2% Accuracy',
       color: 'from-blue-500 to-cyan-500'
     },
     {
-      icon: <Atom className="w-8 h-8" />,
+      icon: (
+        <div className="w-8 h-8 flex items-center justify-center">
+          {typeof Atom !== 'undefined' ? (
+            <Atom className="w-8 h-8 text-white" />
+          ) : (
+            <div className="w-8 h-8 text-white text-lg font-bold flex items-center justify-center">⚛️</div>
+          )}
+        </div>
+      ),
       title: 'Quantum Rendering Engine', 
       description: 'Real-time 3D lighting effects preview',
       stats: '60fps Smooth',
       color: 'from-purple-500 to-pink-500'
     },
     {
-      icon: <Scan className="w-8 h-8" />,
+      icon: (
+        <div className="w-8 h-8 flex items-center justify-center">
+          {typeof Scan !== 'undefined' ? (
+            <Scan className="w-8 h-8 text-white" />
+          ) : (
+            <div className="w-8 h-8 text-white text-lg font-bold flex items-center justify-center">🔍</div>
+          )}
+        </div>
+      ),
       title: 'AR Space Scanning',
       description: 'One-click room scanning with smart layout suggestions', 
       stats: 'Millimeter Precision',
       color: 'from-green-500 to-teal-500'
     },
     {
-      icon: <Layers className="w-8 h-8" />,
+      icon: (
+        <div className="w-8 h-8 flex items-center justify-center">
+          {typeof Layers !== 'undefined' ? (
+            <Layers className="w-8 h-8 text-white" />
+          ) : (
+            <div className="w-8 h-8 text-white text-lg font-bold flex items-center justify-center">📊</div>
+          )}
+        </div>
+      ),
       title: 'Multi-Dimensional Analysis',
       description: 'Comprehensive optimization of lighting, color temperature, and energy consumption',
       stats: '7 Dimensions', 
@@ -222,13 +246,17 @@ export default function OptimizedRevolutionary2025Design() {
                 onClick={() => setIsPlaying(!isPlaying)}
                 className="p-2 rounded-lg hover:bg-white/10 transition-colors"
               >
-                {isPlaying ? <Pause className="w-4 h-4" /> : <Play className="w-4 h-4" />}
+                {isPlaying ? (
+                  typeof Pause !== 'undefined' ? <Pause className="w-4 h-4" /> : <span>⏸️</span>
+                ) : (
+                  typeof Play !== 'undefined' ? <Play className="w-4 h-4" /> : <span>▶️</span>
+                )}
               </button>
               <button className="p-2 rounded-lg hover:bg-white/10 transition-colors">
-                <Volume2 className="w-4 h-4" />
+                {typeof Volume2 !== 'undefined' ? <Volume2 className="w-4 h-4" /> : <span>🔊</span>}
               </button>
               <button className="p-2 rounded-lg hover:bg-white/10 transition-colors">
-                <Maximize className="w-4 h-4" />
+                {typeof Maximize !== 'undefined' ? <Maximize className="w-4 h-4" /> : <span>⛶</span>}
               </button>
             </div>
           </div>
