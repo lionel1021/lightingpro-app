@@ -58,12 +58,39 @@ export default function FixedHomepage() {
             <div className="relative max-w-4xl mx-auto animate-fade-in" style={{ animationDelay: '0.5s' }}>
               <div className="relative bg-gradient-to-br from-white/5 to-white/10 backdrop-blur-xl rounded-3xl p-8 border border-white/10">
                 <div className="grid grid-cols-3 gap-6 mb-8">
-                  {/* Neural Analysis - 简洁版本 */}
+                  {/* Neural Analysis - 超明亮版本 */}
                   <div className="bg-gradient-to-br from-blue-500/20 to-purple-500/20 rounded-2xl p-4 border border-white/10 hover:scale-105 transition-transform duration-300 flex flex-col h-48">
                     <div className="flex-shrink-0 mb-3">
                       <div className="w-16 h-16 mx-auto relative">
-                        <div className="w-full h-full bg-gradient-to-br from-blue-500 to-purple-600 rounded-full opacity-80" />
-                        <div className="absolute inset-2 border-2 border-white rounded-full animate-spin" style={{ animationDuration: '3s' }} />
+                        <div className="w-full h-full rounded-full" style={{
+                          background: 'linear-gradient(45deg, #ff0080, #00ff80, #8000ff)',
+                          boxShadow: '0 0 35px #ff0080, 0 0 70px #00ff80',
+                          filter: 'brightness(1.6) contrast(1.4)'
+                        }} />
+                        <div className="absolute inset-1 rounded-full animate-pulse" style={{
+                          background: 'linear-gradient(45deg, #ffffff, #ff0080, #00ff80)',
+                          boxShadow: '0 0 25px #ffffff'
+                        }} />
+                        <div className="absolute inset-2 rounded-full animate-spin" style={{
+                          background: 'linear-gradient(45deg, #8000ff, #ff4000, #00ff40)',
+                          animationDuration: '4s',
+                          boxShadow: '0 0 20px #8000ff'
+                        }} />
+                        <div className="absolute inset-0 border-4 border-white rounded-full animate-spin shadow-2xl" style={{ 
+                          animationDuration: '3s',
+                          boxShadow: '0 0 30px #ffffff'
+                        }} />
+                        <div className="absolute inset-3 border-2 border-pink-300 rounded-full animate-spin" style={{ 
+                          animationDuration: '5s', 
+                          animationDirection: 'reverse',
+                          boxShadow: '0 0 18px #ff0080'
+                        }} />
+                        <div className="absolute inset-6 bg-white rounded-full animate-pulse" style={{
+                          boxShadow: '0 0 12px #ffffff'
+                        }} />
+                        <div className="absolute inset-4 border border-green-300 rounded-full animate-pulse" style={{
+                          boxShadow: '0 0 15px #00ff80'
+                        }} />
                       </div>
                     </div>
                     <div className="flex-grow flex flex-col justify-between text-center">

@@ -67,9 +67,35 @@ const MobileAIVisualElement = ({ type, className = "" }: { type: string; classNa
   const elements = {
     neural: (
       <div className={`w-full h-full ${className} relative`}>
-        <div className="w-full h-full bg-gradient-to-br from-blue-500 to-purple-600 rounded-full opacity-80" />
-        <div className="absolute inset-2 border-2 border-white rounded-full animate-spin" 
-             style={{ animationDuration: '3s' }} />
+        <div className="w-full h-full rounded-full" style={{
+          background: 'linear-gradient(45deg, #ff0080, #00ff80, #8000ff)',
+          boxShadow: '0 0 25px #ff0080, 0 0 50px #00ff80',
+          filter: 'brightness(1.6) contrast(1.4)'
+        }} />
+        <div className="absolute inset-1 rounded-full animate-pulse" style={{
+          background: 'linear-gradient(45deg, #ffffff, #ff0080, #00ff80)',
+          boxShadow: '0 0 18px #ffffff'
+        }} />
+        <div className="absolute inset-2 rounded-full animate-spin" style={{
+          background: 'linear-gradient(45deg, #8000ff, #ff4000, #00ff40)',
+          animationDuration: '4s',
+          boxShadow: '0 0 15px #8000ff'
+        }} />
+        <div className="absolute inset-0 border-2 border-white rounded-full animate-spin shadow-lg" style={{ 
+          animationDuration: '3s',
+          boxShadow: '0 0 20px #ffffff'
+        }} />
+        <div className="absolute inset-3 border border-pink-300 rounded-full animate-spin" style={{ 
+          animationDuration: '5s', 
+          animationDirection: 'reverse',
+          boxShadow: '0 0 12px #ff0080'
+        }} />
+        <div className="absolute inset-4 bg-white rounded-full animate-pulse" style={{
+          boxShadow: '0 0 8px #ffffff'
+        }} />
+        <div className="absolute inset-3 border border-green-300 rounded-full animate-pulse" style={{
+          boxShadow: '0 0 10px #00ff80'
+        }} />
       </div>
     ),
     quantum: (
