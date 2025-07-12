@@ -81,22 +81,31 @@ export default function FixedHomepage() {
                     <div className="flex-shrink-0 mb-3">
                       <div className="w-16 h-16 mx-auto relative">
                         <div className="w-full h-full rounded-full" style={{
-                          background: 'linear-gradient(45deg, #ecfeff, #67e8f9)',
-                          boxShadow: '0 0 20px #67e8f9'
+                          background: 'linear-gradient(45deg, #00ffff, #ff00ff, #ffff00)',
+                          boxShadow: '0 0 30px #00ffff, 0 0 60px #ff00ff',
+                          filter: 'brightness(1.5) contrast(1.3)'
                         }} />
                         <div className="absolute inset-1 rounded-full animate-pulse" style={{
-                          background: 'linear-gradient(45deg, #faf5ff, #d8b4fe)'
+                          background: 'linear-gradient(45deg, #ffffff, #00ffff, #ff00ff)',
+                          boxShadow: '0 0 20px #ffffff'
                         }} />
                         <div className="absolute inset-2 rounded-full animate-bounce" style={{
-                          background: 'linear-gradient(45deg, #fefce8, #fde047)',
-                          animationDuration: '2s'
+                          background: 'linear-gradient(45deg, #ffff00, #ff0080, #00ff80)',
+                          animationDuration: '2s',
+                          boxShadow: '0 0 15px #ffff00'
                         }} />
-                        <div className="absolute inset-0 border-4 border-white rounded-full animate-spin" style={{ animationDuration: '3s' }} />
-                        <div className="absolute inset-3 border-2 border-white rounded-full animate-spin" style={{ 
+                        <div className="absolute inset-0 border-4 border-white rounded-full animate-spin shadow-2xl" style={{ 
+                          animationDuration: '3s',
+                          boxShadow: '0 0 25px #ffffff'
+                        }} />
+                        <div className="absolute inset-3 border-2 border-cyan-300 rounded-full animate-spin" style={{ 
                           animationDuration: '4s', 
-                          animationDirection: 'reverse' 
+                          animationDirection: 'reverse',
+                          boxShadow: '0 0 15px #67e8f9'
                         }} />
-                        <div className="absolute inset-6 bg-white rounded-full animate-pulse" />
+                        <div className="absolute inset-6 bg-white rounded-full animate-pulse" style={{
+                          boxShadow: '0 0 10px #ffffff'
+                        }} />
                       </div>
                     </div>
                     <div className="flex-grow flex flex-col justify-between text-center">

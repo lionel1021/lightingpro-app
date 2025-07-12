@@ -75,19 +75,31 @@ const MobileAIVisualElement = ({ type, className = "" }: { type: string; classNa
     quantum: (
       <div className={`relative ${className}`}>
         <div className="w-full h-full rounded-full" style={{
-          background: 'linear-gradient(45deg, #ecfeff, #67e8f9)',
-          boxShadow: '0 0 20px #67e8f9'
+          background: 'linear-gradient(45deg, #00ffff, #ff00ff, #ffff00)',
+          boxShadow: '0 0 20px #00ffff, 0 0 40px #ff00ff',
+          filter: 'brightness(1.5) contrast(1.3)'
         }} />
         <div className="absolute inset-1 rounded-full animate-pulse" style={{
-          background: 'linear-gradient(45deg, #faf5ff, #d8b4fe)'
+          background: 'linear-gradient(45deg, #ffffff, #00ffff, #ff00ff)',
+          boxShadow: '0 0 15px #ffffff'
         }} />
         <div className="absolute inset-2 rounded-full animate-bounce" style={{
-          background: 'linear-gradient(45deg, #fefce8, #fde047)',
-          animationDuration: '2s'
+          background: 'linear-gradient(45deg, #ffff00, #ff0080, #00ff80)',
+          animationDuration: '2s',
+          boxShadow: '0 0 10px #ffff00'
         }} />
-        <div className="absolute inset-0 border-2 border-white rounded-full animate-spin shadow-lg" style={{ animationDuration: '3s' }} />
-        <div className="absolute inset-3 border border-white rounded-full animate-spin" style={{ animationDuration: '4s', animationDirection: 'reverse' }} />
-        <div className="absolute inset-4 bg-white rounded-full animate-pulse" />
+        <div className="absolute inset-0 border-2 border-white rounded-full animate-spin shadow-lg" style={{ 
+          animationDuration: '3s',
+          boxShadow: '0 0 15px #ffffff'
+        }} />
+        <div className="absolute inset-3 border border-cyan-300 rounded-full animate-spin" style={{ 
+          animationDuration: '4s', 
+          animationDirection: 'reverse',
+          boxShadow: '0 0 10px #67e8f9'
+        }} />
+        <div className="absolute inset-4 bg-white rounded-full animate-pulse" style={{
+          boxShadow: '0 0 8px #ffffff'
+        }} />
       </div>
     ),
     matrix: (
