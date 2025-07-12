@@ -100,23 +100,41 @@ const FluidBackground = () => (
 const AIVisualElement = ({ type, className = "" }: { type: string; className?: string }) => {
   const elements = {
     neural: (
-      <div className={`w-full h-full ${className} relative`}>
-        <div className="w-full h-full rounded-full" style={{
-          background: 'linear-gradient(45deg, #ff0080, #00ff80, #8000ff)',
-          boxShadow: '0 0 25px #ff0080, 0 0 50px #00ff80',
-          filter: 'brightness(1.4) contrast(1.2)'
-        }} />
-        <div className="absolute inset-2 rounded-full animate-pulse" style={{
-          background: 'linear-gradient(45deg, #ffffff, #ff0080)',
-          boxShadow: '0 0 15px #ffffff'
-        }} />
-        <div className="absolute inset-4 bg-white rounded-full animate-pulse" style={{
-          boxShadow: '0 0 10px #ffffff'
-        }} />
-        <div className="absolute inset-1 border-2 border-white/50 rounded-full animate-spin" style={{ 
-          animationDuration: '3s',
-          borderStyle: 'dashed'
-        }} />
+      <div className={`w-full h-full ${className} flex items-center justify-center`}>
+        <svg viewBox="0 0 64 64" className="w-full h-full">
+          <defs>
+            <radialGradient id="neuralGradient" cx="50%" cy="50%" r="50%">
+              <stop offset="0%" stopColor="#ffffff" stopOpacity="0.9" />
+              <stop offset="30%" stopColor="#ff0080" stopOpacity="0.8" />
+              <stop offset="60%" stopColor="#00ff80" stopOpacity="0.7" />
+              <stop offset="100%" stopColor="#8000ff" stopOpacity="0.9" />
+            </radialGradient>
+            <filter id="neuralGlow">
+              <feGaussianBlur stdDeviation="2" result="coloredBlur"/>
+              <feMerge> 
+                <feMergeNode in="coloredBlur"/>
+                <feMergeNode in="SourceGraphic"/>
+              </feMerge>
+            </filter>
+          </defs>
+          
+          <circle cx="32" cy="32" r="30" fill="url(#neuralGradient)" filter="url(#neuralGlow)" opacity="0.9">
+            <animate attributeName="opacity" values="0.7;1;0.7" dur="2s" repeatCount="indefinite"/>
+          </circle>
+          
+          <circle cx="32" cy="32" r="20" fill="none" stroke="#ffffff" strokeWidth="2" strokeDasharray="4,2" opacity="0.8">
+            <animateTransform attributeName="transform" type="rotate" values="0 32 32;360 32 32" dur="3s" repeatCount="indefinite"/>
+          </circle>
+          
+          <circle cx="32" cy="32" r="12" fill="#ffffff" opacity="0.6">
+            <animate attributeName="r" values="8;15;8" dur="2.5s" repeatCount="indefinite"/>
+            <animate attributeName="opacity" values="0.4;0.8;0.4" dur="2.5s" repeatCount="indefinite"/>
+          </circle>
+          
+          <circle cx="32" cy="32" r="4" fill="#ff0080" opacity="0.9">
+            <animate attributeName="fill" values="#ff0080;#00ff80;#8000ff;#ff0080" dur="4s" repeatCount="indefinite"/>
+          </circle>
+        </svg>
       </div>
     ),
     quantum: (
