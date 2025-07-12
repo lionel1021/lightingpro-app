@@ -47,3 +47,28 @@ Read more: https://nextjs.org/docs/app/api-reference/config/next-config-js/allow
  GET /_next/static/chunks/webpack.js?v=1752280284753 404 in 124ms
  GET /_next/static/css/app/layout.css?v=1752280284753 404 in 126ms
  GET /_next/static/chunks/app/page.js 404 in 131ms
+ GET / 200 in 40ms
+ GET /_next/static/chunks/app/page.js 404 in 77ms
+ GET /_next/static/css/app/layout.css?v=1752280646265 404 in 62ms
+ GET /_next/static/chunks/app/error.js 404 in 150ms
+ GET /_next/static/chunks/app-pages-internals.js 404 in 152ms
+ GET /_next/static/chunks/main-app.js?v=1752280646265 404 in 154ms
+ GET /_next/static/chunks/webpack.js?v=1752280646265 404 in 156ms
+ GET /fonts/font.woff2 404 in 23ms
+ GET / 200 in 41ms
+ GET /_next/static/css/app/layout.css?v=1752280691601 404 in 71ms
+ GET /_next/static/chunks/webpack.js?v=1752280691601 404 in 93ms
+ GET /_next/static/chunks/main-app.js?v=1752280691601 404 in 39ms
+ GET /_next/static/chunks/app-pages-internals.js 404 in 118ms
+ GET /_next/static/chunks/app/page.js 404 in 117ms
+ GET /_next/static/chunks/app/error.js 404 in 119ms
+ GET / 200 in 38ms
+ GET /_next/static/chunks/webpack.js?v=1752280691856 404 in 93ms
+ GET /_next/static/css/app/layout.css?v=1752280691856 404 in 93ms
+ GET /_next/static/chunks/main-app.js?v=1752280691856 404 in 64ms
+ GET /_next/static/chunks/app-pages-internals.js 404 in 137ms
+ GET /_next/static/chunks/app/error.js 404 in 138ms
+ GET /_next/static/chunks/app/page.js 404 in 139ms
+ GET / 200 in 31ms
+ GET / 200 in 30ms
+[?25h

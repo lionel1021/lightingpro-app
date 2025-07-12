@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>🔧 Netlify状态监控</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        body {
+            background: linear-gradient(135deg, #0f172a, #1e293b);
+            color: #fff;
+            font-family: -apple-system, BlinkMacSystemFont, sans-serif;
+            margin: 0;
+            padding: 1rem;
+            min-height: 100vh;
+        }
+        .container {
+            max-width: 600px;
+            margin: 0 auto;
+            background: rgba(30, 41, 59, 0.9);
+            border-radius: 1rem;
+            padding: 2rem;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.4);
+        }
+        .title {
+            text-align: center;
+            color: #60a5fa;
+            font-size: 1.5rem;
+            font-weight: bold;
+            margin-bottom: 2rem;
+        }
+        .status-card {
+            background: #374151;
+            border-radius: 0.75rem;
+            padding: 1.5rem;
+            margin: 1rem 0;
+            border-left: 4px solid #ef4444;
+        }
+        .status-working {
+            border-left-color: #10b981;
+        }
+        .status-title {
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        .status-detail {
+            color: #d1d5db;
+            font-size: 0.9rem;
+            line-height: 1.4;
+        }
+        .test-button {
+            background: linear-gradient(135deg, #3b82f6, #8b5cf6);
+            color: white;
+            padding: 0.75rem 1.5rem;
+            border: none;
+            border-radius: 0.5rem;
+            font-weight: 600;
+            cursor: pointer;
+            margin: 0.5rem;
+            transition: all 0.3s ease;
+        }
+        .test-button:hover {
+            transform: translateY(-2px);
+        }
+        .url-test {
+            background: #1f2937;
+            padding: 1rem;
+            border-radius: 0.5rem;
+            margin: 1rem 0;
+            font-family: monospace;
+            font-size: 0.9rem;
+        }
+        .log {
+            background: #000;
+            color: #10b981;
+            padding: 1rem;
+            border-radius: 0.5rem;
+            font-family: monospace;
+            font-size: 0.8rem;
+            max-height: 200px;
+            overflow-y: auto;
+            margin: 1rem 0;
+        }
+        .indicator {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            margin-right: 0.5rem;
+        }
+        .red { background: #ef4444; }
+        .yellow { background: #fbbf24; animation: pulse 1s infinite; }
+        .green { background: #10b981; }
+        @keyframes pulse {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.5; }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1 class="title">🔧 Netlify主站状态监控</h1>
+        
+        <div class="status-card" id="main-status">
+            <div class="status-title">
+                <div class="indicator red" id="main-indicator"></div>
+                <span>主站访问状态</span>
+            </div>
+            <div class="status-detail">
+                正在检测 https://lightingpro.netlify.app 的访问状态...
+            </div>
+        </div>
+        
+        <div class="url-test">
+            <strong>目标URL:</strong> https://lightingpro.netlify.app<br>
+            <strong>最后检查:</strong> <span id="last-check">未检查</span><br>
+            <strong>响应时间:</strong> <span id="response-time">-</span>
+        </div>
+        
+        <div style="text-align: center; margin: 1rem 0;">
+            <button class="test-button" onclick="testMainSite()">🔄 重新检测</button>
+            <button class="test-button" onclick="window.open('https://lightingpro.netlify.app')">🌐 尝试访问</button>
+        </div>
+        
+        <div class="status-card">
+            <div class="status-title">
+                <span>🚀 立即可用的访问方案</span>
+            </div>
+            <div class="status-detail">
+                <strong>本地服务器:</strong> <a href="http://localhost:8888" style="color: #60a5fa;">http://localhost:8888</a><br>
+                <strong>局域网访问:</strong> <a href="http://192.168.31.98:8888" style="color: #60a5fa;">http://192.168.31.98:8888</a><br>
+                <strong>静态版本:</strong> <a href="backup-static.html" style="color: #60a5fa;">backup-static.html</a>
+            </div>
+        </div>
+        
+        <div class="log" id="status-log">
+            [INFO] 开始监控Netlify主站状态...<br>
+        </div>
+        
+        <div style="text-align: center; margin-top: 2rem; color: #9ca3af; font-size: 0.9rem;">
+            💡 如果主站持续无法访问，请使用上方备用方案<br>
+            🔧 所有方案都包含V3.0移动端字体修复
+        </div>
+    </div>
+
+    <script>
+        const statusLog = document.getElementById('status-log');
+        const mainIndicator = document.getElementById('main-indicator');
+        const mainStatus = document.getElementById('main-status');
+        const lastCheck = document.getElementById('last-check');
+        const responseTime = document.getElementById('response-time');
+        
+        function addLog(message) {
+            const timestamp = new Date().toLocaleTimeString();
+            statusLog.innerHTML += `[${timestamp}] ${message}<br>`;
+            statusLog.scrollTop = statusLog.scrollHeight;
+        }
+        
+        function updateStatus(isWorking, message, timing = null) {
+            if (isWorking) {
+                mainIndicator.className = 'indicator green';
+                mainStatus.className = 'status-card status-working';
+                addLog(`✅ ${message}`);
+            } else {
+                mainIndicator.className = 'indicator red';
+                mainStatus.className = 'status-card';
+                addLog(`❌ ${message}`);
+            }
+            
+            lastCheck.textContent = new Date().toLocaleString();
+            if (timing) {
+                responseTime.textContent = timing + 'ms';
+            }
+        }
+        
+        async function testMainSite() {
+            addLog('🔄 开始检测主站访问状态...');
+            mainIndicator.className = 'indicator yellow';
+            
+            const startTime = Date.now();
+            
+            try {
+                // 尝试访问主站API
+                const response = await fetch('https://lightingpro.netlify.app/api/health', {
+                    method: 'GET',
+                    mode: 'cors',
+                    cache: 'no-cache'
+                });
+                
+                const endTime = Date.now();
+                const timing = endTime - startTime;
+                
+                if (response.ok) {
+                    updateStatus(true, '主站API响应正常', timing);
+                    
+                    // 进一步测试主页
+                    try {
+                        const pageResponse = await fetch('https://lightingpro.netlify.app', {
+                            method: 'HEAD',
+                            mode: 'no-cors'
+                        });
+                        addLog('✅ 主页访问测试通过');
+                    } catch (pageError) {
+                        addLog('⚠️ 主页访问可能有问题，但API正常');
+                    }
+                } else {
+                    updateStatus(false, `主站响应异常: ${response.status}`, timing);
+                }
+            } catch (error) {
+                const endTime = Date.now();
+                const timing = endTime - startTime;
+                updateStatus(false, `连接失败: ${error.message}`, timing);
+                
+                // 尝试备用检测方法
+                addLog('🔄 尝试备用检测方法...');
+                try {
+                    const img = new Image();
+                    img.onload = () => addLog('✅ 图片资源可访问，可能是CORS限制');
+                    img.onerror = () => addLog('❌ 所有资源均无法访问');
+                    img.src = 'https://lightingpro.netlify.app/favicon.ico?' + Date.now();
+                } catch (imgError) {
+                    addLog('❌ 备用检测也失败');
+                }
+            }
+        }
+        
+        // 初始检测
+        testMainSite();
+        
+        // 定期检测
+        setInterval(testMainSite, 30000); // 每30秒检测一次
+    </script>
+</body>
+</html>

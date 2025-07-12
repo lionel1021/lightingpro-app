@@ -202,8 +202,8 @@ export const NonCriticalCSSLoader = () => {
       document.head.appendChild(link);
     };
 
-    // Load after critical render
-    requestIdleCallback ? requestIdleCallback(loadNonCriticalCSS) : setTimeout(loadNonCriticalCSS, 0);
+    // Load after critical render - simple setTimeout for maximum compatibility
+    setTimeout(loadNonCriticalCSS, 100);
   }, []);
 
   return null;

@@ -1,14 +1,11 @@
 'use client';
 
-import { CriticalCSSInline, NonCriticalCSSLoader } from '@/components/CriticalCSS';
 import PerformanceMonitor from '@/components/PerformanceMonitor';
 
-// 🎯 统一的移动端修复版本 - 无条件应用
+// 🎯 统一的移动端修复版本 - 无条件应用 - 简化版本
 export default function Home() {
   return (
     <>
-      <CriticalCSSInline />
-      <NonCriticalCSSLoader />
       <PerformanceMonitor />
       
       {/* 🔧 移动端优化的主页面 */}
