@@ -21,20 +21,42 @@ const NeuralParticles = () => {
   }>>([]);
   
   useEffect(() => {
-    // 🎯 根据设备性能调整粒子数量
+    // 🎯 根据设备性能调整粒子数量 - 使用预计算值避免CSP违规
     const isMobile = typeof window !== 'undefined' && window.innerWidth < 768;
     const isLowEnd = typeof window !== 'undefined' && 
       (window.navigator as any).hardwareConcurrency < 4;
     
     const particleCount = isMobile ? 15 : isLowEnd ? 25 : 50;
     
-    const newParticles = Array.from({ length: particleCount }, (_, i) => ({
-      id: i,
-      x: Math.random() * 100,
-      y: Math.random() * 100,
-      size: Math.random() * 3 + 1,
-      opacity: Math.random() * 0.5 + 0.3
-    }));
+    // 预计算的粒子位置和属性，避免Math.random()
+    const preCalculatedValues = [
+      { x: 23, y: 45, size: 2.1, opacity: 0.7 },
+      { x: 67, y: 12, size: 1.8, opacity: 0.5 },
+      { x: 89, y: 78, size: 3.2, opacity: 0.8 },
+      { x: 34, y: 56, size: 1.5, opacity: 0.6 },
+      { x: 78, y: 23, size: 2.8, opacity: 0.4 },
+      { x: 12, y: 89, size: 2.3, opacity: 0.7 },
+      { x: 56, y: 34, size: 1.9, opacity: 0.5 },
+      { x: 90, y: 67, size: 2.6, opacity: 0.8 },
+      { x: 45, y: 12, size: 1.7, opacity: 0.6 },
+      { x: 23, y: 78, size: 3.1, opacity: 0.4 },
+      { x: 67, y: 45, size: 2.4, opacity: 0.7 },
+      { x: 89, y: 23, size: 1.6, opacity: 0.5 },
+      { x: 34, y: 89, size: 2.9, opacity: 0.8 },
+      { x: 78, y: 56, size: 2.0, opacity: 0.6 },
+      { x: 12, y: 34, size: 2.7, opacity: 0.4 }
+    ];
+    
+    const newParticles = Array.from({ length: particleCount }, (_, i) => {
+      const base = preCalculatedValues[i % preCalculatedValues.length];
+      return {
+        id: i,
+        x: base.x,
+        y: base.y,
+        size: base.size,
+        opacity: base.opacity
+      };
+    });
     setParticles(newParticles);
   }, []);
 
@@ -43,15 +65,7 @@ const NeuralParticles = () => {
       {particles.map((particle, index) => (
         <div
           key={particle.id}
-          className="absolute bg-blue-400 rounded-full animate-float"
-          style={{
-            width: particle.size,
-            height: particle.size,
-            left: `${particle.x}%`,
-            top: `${particle.y}%`,
-            opacity: particle.opacity,
-            animationDelay: `${index * 0.1}s`
-          }}
+          className={`absolute bg-blue-400 rounded-full animate-float particle-${index}`}
         />
       ))}
     </div>
@@ -72,14 +86,18 @@ const AIVisualElement = ({ type, className = "" }: { type: string; className?: s
       <div className={`w-full h-full ${className} flex items-center justify-center`}>
         <svg viewBox="0 0 64 64" className="w-full h-full">
           <defs>
-            <radialGradient id="neuralGradient" cx="50%" cy="50%" r="50%">
-              <stop offset="0%" stopColor="#ffffff" stopOpacity="0.9" />
-              <stop offset="30%" stopColor="#ff0080" stopOpacity="0.8" />
-              <stop offset="60%" stopColor="#00ff80" stopOpacity="0.7" />
-              <stop offset="100%" stopColor="#8000ff" stopOpacity="0.9" />
-            </radialGradient>
+            <linearGradient id="neuralNodeGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+              <stop offset="0%" stopColor="#60a5fa" stopOpacity="0.9" />
+              <stop offset="50%" stopColor="#a855f7" stopOpacity="0.8" />
+              <stop offset="100%" stopColor="#ec4899" stopOpacity="0.9" />
+            </linearGradient>
+            <linearGradient id="neuralConnectionGradient" x1="0%" y1="0%" x2="100%" y2="0%">
+              <stop offset="0%" stopColor="#ffffff" stopOpacity="0.8" />
+              <stop offset="50%" stopColor="#60a5fa" stopOpacity="0.6" />
+              <stop offset="100%" stopColor="#ffffff" stopOpacity="0.8" />
+            </linearGradient>
             <filter id="neuralGlow">
-              <feGaussianBlur stdDeviation="2" result="coloredBlur"/>
+              <feGaussianBlur stdDeviation="1.5" result="coloredBlur"/>
               <feMerge> 
                 <feMergeNode in="coloredBlur"/>
                 <feMergeNode in="SourceGraphic"/>
@@ -87,53 +105,85 @@ const AIVisualElement = ({ type, className = "" }: { type: string; className?: s
             </filter>
           </defs>
           
-          <circle cx="32" cy="32" r="30" fill="url(#neuralGradient)" filter="url(#neuralGlow)" opacity="0.9">
-            <animate attributeName="opacity" values="0.7;1;0.7" dur="2s" repeatCount="indefinite"/>
+          {/* Neural Network Connections */}
+          <g stroke="url(#neuralConnectionGradient)" strokeWidth="1.5" fill="none" opacity="0.7">
+            {/* Input Layer to Hidden Layer */}
+            <line x1="16" y1="20" x2="32" y2="24">
+              <animate attributeName="stroke-opacity" values="0.3;0.8;0.3" dur="2s" repeatCount="indefinite"/>
+            </line>
+            <line x1="16" y1="32" x2="32" y2="24">
+              <animate attributeName="stroke-opacity" values="0.5;0.9;0.5" dur="2.2s" repeatCount="indefinite"/>
+            </line>
+            <line x1="16" y1="44" x2="32" y2="24">
+              <animate attributeName="stroke-opacity" values="0.4;0.7;0.4" dur="1.8s" repeatCount="indefinite"/>
+            </line>
+            
+            <line x1="16" y1="20" x2="32" y2="40">
+              <animate attributeName="stroke-opacity" values="0.6;0.8;0.6" dur="2.4s" repeatCount="indefinite"/>
+            </line>
+            <line x1="16" y1="32" x2="32" y2="40">
+              <animate attributeName="stroke-opacity" values="0.3;0.9;0.3" dur="2s" repeatCount="indefinite"/>
+            </line>
+            <line x1="16" y1="44" x2="32" y2="40">
+              <animate attributeName="stroke-opacity" values="0.5;0.7;0.5" dur="2.6s" repeatCount="indefinite"/>
+            </line>
+            
+            {/* Hidden Layer to Output Layer */}
+            <line x1="32" y1="24" x2="48" y2="32">
+              <animate attributeName="stroke-opacity" values="0.4;0.8;0.4" dur="1.9s" repeatCount="indefinite"/>
+            </line>
+            <line x1="32" y1="40" x2="48" y2="32">
+              <animate attributeName="stroke-opacity" values="0.6;0.9;0.6" dur="2.1s" repeatCount="indefinite"/>
+            </line>
+          </g>
+          
+          {/* Input Layer Nodes */}
+          <circle cx="16" cy="20" r="4" fill="url(#neuralNodeGradient)" filter="url(#neuralGlow)">
+            <animate attributeName="r" values="3;5;3" dur="2s" repeatCount="indefinite"/>
+          </circle>
+          <circle cx="16" cy="32" r="4" fill="url(#neuralNodeGradient)" filter="url(#neuralGlow)">
+            <animate attributeName="r" values="3;5;3" dur="2.2s" repeatCount="indefinite"/>
+          </circle>
+          <circle cx="16" cy="44" r="4" fill="url(#neuralNodeGradient)" filter="url(#neuralGlow)">
+            <animate attributeName="r" values="3;5;3" dur="1.8s" repeatCount="indefinite"/>
           </circle>
           
-          <circle cx="32" cy="32" r="20" fill="none" stroke="#ffffff" strokeWidth="2" strokeDasharray="4,2" opacity="0.8">
-            <animateTransform attributeName="transform" type="rotate" values="0 32 32;360 32 32" dur="3s" repeatCount="indefinite"/>
+          {/* Hidden Layer Nodes */}
+          <circle cx="32" cy="24" r="5" fill="url(#neuralNodeGradient)" filter="url(#neuralGlow)">
+            <animate attributeName="r" values="4;6;4" dur="2.4s" repeatCount="indefinite"/>
+            <animate attributeName="opacity" values="0.7;1;0.7" dur="2.4s" repeatCount="indefinite"/>
+          </circle>
+          <circle cx="32" cy="40" r="5" fill="url(#neuralNodeGradient)" filter="url(#neuralGlow)">
+            <animate attributeName="r" values="4;6;4" dur="2.6s" repeatCount="indefinite"/>
+            <animate attributeName="opacity" values="0.7;1;0.7" dur="2.6s" repeatCount="indefinite"/>
           </circle>
           
-          <circle cx="32" cy="32" r="12" fill="#ffffff" opacity="0.6">
-            <animate attributeName="r" values="8;15;8" dur="2.5s" repeatCount="indefinite"/>
-            <animate attributeName="opacity" values="0.4;0.8;0.4" dur="2.5s" repeatCount="indefinite"/>
+          {/* Output Layer Node */}
+          <circle cx="48" cy="32" r="6" fill="url(#neuralNodeGradient)" filter="url(#neuralGlow)">
+            <animate attributeName="r" values="5;7;5" dur="2s" repeatCount="indefinite"/>
+            <animate attributeName="opacity" values="0.8;1;0.8" dur="2s" repeatCount="indefinite"/>
           </circle>
           
-          <circle cx="32" cy="32" r="4" fill="#ff0080" opacity="0.9">
-            <animate attributeName="fill" values="#ff0080;#00ff80;#8000ff;#ff0080" dur="4s" repeatCount="indefinite"/>
+          {/* Data Flow Indicators */}
+          <circle cx="12" cy="32" r="2" fill="#ffffff" opacity="0.8">
+            <animate attributeName="cx" values="12;52;12" dur="3s" repeatCount="indefinite"/>
+            <animate attributeName="opacity" values="0.8;0.3;0.8" dur="3s" repeatCount="indefinite"/>
+          </circle>
+          <circle cx="12" cy="32" r="1.5" fill="#60a5fa" opacity="0.6">
+            <animate attributeName="cx" values="12;52;12" dur="3.2s" repeatCount="indefinite"/>
+            <animate attributeName="opacity" values="0.6;0.2;0.6" dur="3.2s" repeatCount="indefinite"/>
           </circle>
         </svg>
       </div>
     ),
     quantum: (
       <div className={`relative ${className}`}>
-        <div className="w-full h-full rounded-full" style={{
-          background: 'linear-gradient(45deg, #00ffff, #ff00ff, #ffff00)',
-          boxShadow: '0 0 30px #00ffff, 0 0 60px #ff00ff',
-          filter: 'brightness(1.5) contrast(1.3)'
-        }} />
-        <div className="absolute inset-1 rounded-full animate-pulse" style={{
-          background: 'linear-gradient(45deg, #ffffff, #00ffff, #ff00ff)',
-          boxShadow: '0 0 20px #ffffff'
-        }} />
-        <div className="absolute inset-2 rounded-full animate-bounce" style={{
-          background: 'linear-gradient(45deg, #ffff00, #ff0080, #00ff80)',
-          animationDuration: '2s',
-          boxShadow: '0 0 15px #ffff00'
-        }} />
-        <div className="absolute inset-0 border-4 border-white rounded-full animate-spin shadow-2xl" style={{ 
-          animationDuration: '3s',
-          boxShadow: '0 0 25px #ffffff'
-        }} />
-        <div className="absolute inset-3 border-2 border-cyan-300 rounded-full animate-spin" style={{ 
-          animationDuration: '4s', 
-          animationDirection: 'reverse',
-          boxShadow: '0 0 15px #67e8f9'
-        }} />
-        <div className="absolute inset-6 bg-white rounded-full animate-pulse" style={{
-          boxShadow: '0 0 10px #ffffff'
-        }} />
+        <div className="w-full h-full rounded-full quantum-base" />
+        <div className="absolute inset-1 rounded-full animate-pulse quantum-layer-1" />
+        <div className="absolute inset-2 rounded-full animate-bounce quantum-layer-2" />
+        <div className="absolute inset-0 border-4 border-white rounded-full animate-spin shadow-2xl quantum-border-1" />
+        <div className="absolute inset-3 border-2 border-cyan-300 rounded-full animate-spin quantum-border-2" />
+        <div className="absolute inset-6 bg-white rounded-full animate-pulse quantum-center" />
       </div>
     ),
     matrix: (
@@ -285,36 +335,16 @@ export default function OptimizedRevolutionary2025Design() {
                 <span className="text-sm">Revolutionary 2025 Design</span>
               </div>
               
-              <h1 className="font-bold mb-6" style={{
-                fontSize: 'clamp(2rem, 10vw, 5rem)',
-                lineHeight: '1.1',
-                letterSpacing: '-0.025em'
-              }}>
-                <span className="block mb-2" style={{
-                  background: 'linear-gradient(135deg, #60a5fa 0%, #a855f7 50%, #ec4899 100%)',
-                  WebkitBackgroundClip: 'text',
-                  backgroundClip: 'text',
-                  WebkitTextFillColor: 'transparent',
-                  color: 'transparent'
-                }}>
+              <h1 className="font-bold mb-6 hero-title">
+                <span className="block mb-2 text-gradient-blue-purple">
                   Redefining
                 </span>
-                <span className="block" style={{
-                  background: 'linear-gradient(135deg, #fbbf24 0%, #f59e0b 50%, #d97706 100%)',
-                  WebkitBackgroundClip: 'text',
-                  backgroundClip: 'text',
-                  WebkitTextFillColor: 'transparent',
-                  color: 'transparent'
-                }}>
+                <span className="block text-gradient-orange">
                   Lighting Experience
                 </span>
               </h1>
               
-              <p className="text-white/90 mb-8 mx-auto" style={{
-                fontSize: 'clamp(1rem, 4vw, 1.5rem)',
-                lineHeight: '1.6',
-                maxWidth: 'min(90vw, 48rem)'
-              }}>
+              <p className="text-white/90 mb-8 mx-auto hero-subtitle">
                 Neural network-powered intelligent lighting recommendation system that perfectly matches every ray of light to your lifestyle
               </p>
               

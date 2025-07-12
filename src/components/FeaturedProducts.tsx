@@ -73,14 +73,19 @@ const ProductCard = React.memo(({ product }: { product: typeof mockProducts[0] }
             alt={product.name}
             className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
             onError={(e) => {
-              // 如果图片加载失败，显示占位符
+              // 如果图片加载失败，显示占位符 - CSP兼容方式
               const target = e.target as HTMLImageElement;
               target.style.display = 'none';
-              target.parentElement!.innerHTML = `
-                <div class="w-full h-full flex items-center justify-center">
-                  <span class="text-4xl">💡</span>
-                </div>
-              `;
+              
+              // 创建占位符元素而不使用innerHTML
+              const placeholder = document.createElement('div');
+              placeholder.className = 'w-full h-full flex items-center justify-center';
+              const icon = document.createElement('span');
+              icon.className = 'text-4xl';
+              icon.textContent = '💡';
+              placeholder.appendChild(icon);
+              
+              target.parentElement!.appendChild(placeholder);
             }}
           />
         </div>

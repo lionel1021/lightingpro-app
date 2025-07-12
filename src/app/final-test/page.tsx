@@ -25,17 +25,21 @@ export default function FinalTest() {
           <div className="bg-gradient-to-br from-blue-500/20 to-purple-500/20 rounded-2xl p-6 border border-white/10">
             <h3 className="text-lg font-bold mb-4 text-yellow-400">Neural Analysis</h3>
             <div className="w-20 h-20 mx-auto mb-4 flex items-center justify-center">
-              {/* 最新的SVG版本 */}
+              {/* 最新的神经网络结构SVG */}
               <svg viewBox="0 0 64 64" className="w-full h-full">
                 <defs>
-                  <radialGradient id="testNeuralGradient" cx="50%" cy="50%" r="50%">
-                    <stop offset="0%" stopColor="#ffffff" stopOpacity="0.9" />
-                    <stop offset="30%" stopColor="#ff0080" stopOpacity="0.8" />
-                    <stop offset="60%" stopColor="#00ff80" stopOpacity="0.7" />
-                    <stop offset="100%" stopColor="#8000ff" stopOpacity="0.9" />
-                  </radialGradient>
+                  <linearGradient id="testNeuralNodeGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+                    <stop offset="0%" stopColor="#60a5fa" stopOpacity="0.9" />
+                    <stop offset="50%" stopColor="#a855f7" stopOpacity="0.8" />
+                    <stop offset="100%" stopColor="#ec4899" stopOpacity="0.9" />
+                  </linearGradient>
+                  <linearGradient id="testNeuralConnectionGradient" x1="0%" y1="0%" x2="100%" y2="0%">
+                    <stop offset="0%" stopColor="#ffffff" stopOpacity="0.8" />
+                    <stop offset="50%" stopColor="#60a5fa" stopOpacity="0.6" />
+                    <stop offset="100%" stopColor="#ffffff" stopOpacity="0.8" />
+                  </linearGradient>
                   <filter id="testNeuralGlow">
-                    <feGaussianBlur stdDeviation="2.5" result="coloredBlur"/>
+                    <feGaussianBlur stdDeviation="2" result="coloredBlur"/>
                     <feMerge> 
                       <feMergeNode in="coloredBlur"/>
                       <feMergeNode in="SourceGraphic"/>
@@ -43,26 +47,70 @@ export default function FinalTest() {
                   </filter>
                 </defs>
                 
-                <circle cx="32" cy="32" r="30" fill="url(#testNeuralGradient)" filter="url(#testNeuralGlow)" opacity="0.9">
-                  <animate attributeName="opacity" values="0.7;1;0.7" dur="2s" repeatCount="indefinite"/>
+                {/* Neural Network Connections */}
+                <g stroke="url(#testNeuralConnectionGradient)" strokeWidth="2" fill="none" opacity="0.7">
+                  <line x1="15" y1="18" x2="32" y2="22">
+                    <animate attributeName="stroke-opacity" values="0.3;0.8;0.3" dur="2s" repeatCount="indefinite"/>
+                  </line>
+                  <line x1="15" y1="32" x2="32" y2="22">
+                    <animate attributeName="stroke-opacity" values="0.5;0.9;0.5" dur="2.2s" repeatCount="indefinite"/>
+                  </line>
+                  <line x1="15" y1="46" x2="32" y2="22">
+                    <animate attributeName="stroke-opacity" values="0.4;0.7;0.4" dur="1.8s" repeatCount="indefinite"/>
+                  </line>
+                  <line x1="15" y1="18" x2="32" y2="42">
+                    <animate attributeName="stroke-opacity" values="0.6;0.8;0.6" dur="2.4s" repeatCount="indefinite"/>
+                  </line>
+                  <line x1="15" y1="32" x2="32" y2="42">
+                    <animate attributeName="stroke-opacity" values="0.3;0.9;0.3" dur="2s" repeatCount="indefinite"/>
+                  </line>
+                  <line x1="15" y1="46" x2="32" y2="42">
+                    <animate attributeName="stroke-opacity" values="0.5;0.7;0.5" dur="2.6s" repeatCount="indefinite"/>
+                  </line>
+                  <line x1="32" y1="22" x2="49" y2="32">
+                    <animate attributeName="stroke-opacity" values="0.4;0.8;0.4" dur="1.9s" repeatCount="indefinite"/>
+                  </line>
+                  <line x1="32" y1="42" x2="49" y2="32">
+                    <animate attributeName="stroke-opacity" values="0.6;0.9;0.6" dur="2.1s" repeatCount="indefinite"/>
+                  </line>
+                </g>
+                
+                {/* Neural Nodes */}
+                <circle cx="15" cy="18" r="5" fill="url(#testNeuralNodeGradient)" filter="url(#testNeuralGlow)">
+                  <animate attributeName="r" values="4;6;4" dur="2s" repeatCount="indefinite"/>
+                </circle>
+                <circle cx="15" cy="32" r="5" fill="url(#testNeuralNodeGradient)" filter="url(#testNeuralGlow)">
+                  <animate attributeName="r" values="4;6;4" dur="2.2s" repeatCount="indefinite"/>
+                </circle>
+                <circle cx="15" cy="46" r="5" fill="url(#testNeuralNodeGradient)" filter="url(#testNeuralGlow)">
+                  <animate attributeName="r" values="4;6;4" dur="1.8s" repeatCount="indefinite"/>
+                </circle>
+                <circle cx="32" cy="22" r="6" fill="url(#testNeuralNodeGradient)" filter="url(#testNeuralGlow)">
+                  <animate attributeName="r" values="5;7;5" dur="2.4s" repeatCount="indefinite"/>
+                  <animate attributeName="opacity" values="0.7;1;0.7" dur="2.4s" repeatCount="indefinite"/>
+                </circle>
+                <circle cx="32" cy="42" r="6" fill="url(#testNeuralNodeGradient)" filter="url(#testNeuralGlow)">
+                  <animate attributeName="r" values="5;7;5" dur="2.6s" repeatCount="indefinite"/>
+                  <animate attributeName="opacity" values="0.7;1;0.7" dur="2.6s" repeatCount="indefinite"/>
+                </circle>
+                <circle cx="49" cy="32" r="7" fill="url(#testNeuralNodeGradient)" filter="url(#testNeuralGlow)">
+                  <animate attributeName="r" values="6;8;6" dur="2s" repeatCount="indefinite"/>
+                  <animate attributeName="opacity" values="0.8;1;0.8" dur="2s" repeatCount="indefinite"/>
                 </circle>
                 
-                <circle cx="32" cy="32" r="20" fill="none" stroke="#ffffff" strokeWidth="2.5" strokeDasharray="4,2" opacity="0.8">
-                  <animateTransform attributeName="transform" type="rotate" values="0 32 32;360 32 32" dur="3s" repeatCount="indefinite"/>
+                {/* Data Flow Enhanced */}
+                <circle cx="10" cy="32" r="2.5" fill="#ffffff" opacity="0.8">
+                  <animate attributeName="cx" values="10;54;10" dur="3s" repeatCount="indefinite"/>
+                  <animate attributeName="opacity" values="0.8;0.3;0.8" dur="3s" repeatCount="indefinite"/>
                 </circle>
-                
-                <circle cx="32" cy="32" r="12" fill="#ffffff" opacity="0.6">
-                  <animate attributeName="r" values="8;16;8" dur="2.5s" repeatCount="indefinite"/>
-                  <animate attributeName="opacity" values="0.4;0.8;0.4" dur="2.5s" repeatCount="indefinite"/>
-                </circle>
-                
-                <circle cx="32" cy="32" r="5" fill="#ff0080" opacity="0.9">
-                  <animate attributeName="fill" values="#ff0080;#00ff80;#8000ff;#ff0080" dur="4s" repeatCount="indefinite"/>
+                <circle cx="10" cy="32" r="2" fill="#60a5fa" opacity="0.6">
+                  <animate attributeName="cx" values="10;54;10" dur="3.2s" repeatCount="indefinite"/>
+                  <animate attributeName="opacity" values="0.6;0.2;0.6" dur="3.2s" repeatCount="indefinite"/>
                 </circle>
               </svg>
             </div>
-            <p className="text-white/80 text-sm">✅ 应该是SVG版本</p>
-            <p className="text-green-400 text-xs mt-2">纯SVG渐变圆形 + 动画环 + 脉冲中心</p>
+            <p className="text-white/80 text-sm">✅ 应该是神经网络结构</p>
+            <p className="text-green-400 text-xs mt-2">多层节点 + 连接线动画 + 数据流动</p>
           </div>
 
           {/* Quantum Computing - 确认明亮版本 */}
@@ -70,32 +118,12 @@ export default function FinalTest() {
             <h3 className="text-lg font-bold mb-4 text-yellow-400">Quantum Computing</h3>
             <div className="w-20 h-20 mx-auto mb-4 relative">
               {/* 最新的超明亮版本 */}
-              <div className="w-full h-full rounded-full" style={{
-                background: 'linear-gradient(45deg, #00ffff, #ff00ff, #ffff00)',
-                boxShadow: '0 0 30px #00ffff, 0 0 60px #ff00ff',
-                filter: 'brightness(1.5) contrast(1.3)'
-              }}></div>
-              <div className="absolute inset-1 rounded-full animate-pulse" style={{
-                background: 'linear-gradient(45deg, #ffffff, #00ffff, #ff00ff)',
-                boxShadow: '0 0 20px #ffffff'
-              }}></div>
-              <div className="absolute inset-2 rounded-full animate-bounce" style={{
-                background: 'linear-gradient(45deg, #ffff00, #ff0080, #00ff80)',
-                animationDuration: '2s',
-                boxShadow: '0 0 15px #ffff00'
-              }}></div>
-              <div className="absolute inset-0 border-4 border-white rounded-full animate-spin shadow-2xl" style={{
-                animationDuration: '3s',
-                boxShadow: '0 0 25px #ffffff'
-              }}></div>
-              <div className="absolute inset-3 border-2 border-cyan-300 rounded-full animate-spin" style={{
-                animationDuration: '4s', 
-                animationDirection: 'reverse',
-                boxShadow: '0 0 15px #67e8f9'
-              }}></div>
-              <div className="absolute inset-6 bg-white rounded-full animate-pulse" style={{
-                boxShadow: '0 0 10px #ffffff'
-              }}></div>
+              <div className="w-full h-full rounded-full quantum-base"></div>
+              <div className="absolute inset-1 rounded-full animate-pulse quantum-layer-1"></div>
+              <div className="absolute inset-2 rounded-full animate-bounce quantum-layer-2"></div>
+              <div className="absolute inset-0 border-4 border-white rounded-full animate-spin shadow-2xl quantum-border-1"></div>
+              <div className="absolute inset-3 border-2 border-cyan-300 rounded-full animate-spin quantum-border-2"></div>
+              <div className="absolute inset-6 bg-white rounded-full animate-pulse quantum-center"></div>
             </div>
             <p className="text-white/80 text-sm">✅ 应该是超明亮版本</p>
             <p className="text-green-400 text-xs mt-2">多层彩色动画 + 发光效果</p>
@@ -124,7 +152,7 @@ export default function FinalTest() {
         <div className="bg-gradient-to-r from-green-600/20 to-blue-600/20 rounded-2xl p-6 border border-white/10 mb-8">
           <h2 className="text-xl font-bold mb-4">🎯 预期结果验证</h2>
           <div className="text-left space-y-2">
-            <p className="text-white/90">✅ Neural Analysis: 如果看到完整的SVG彩色圆形+动画效果 = 修复成功</p>
+            <p className="text-white/90">✅ Neural Analysis: 如果看到神经网络节点结构+连接线+数据流动 = 设计成功</p>
             <p className="text-white/90">✅ Quantum Computing: 如果看到超明亮的青色+品红+黄色多层动画 = 修复成功</p>
             <p className="text-white/90">✅ Matrix: 如果看到绿色9宫格依次脉冲 = 正常显示</p>
           </div>

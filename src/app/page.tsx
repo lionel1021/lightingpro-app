@@ -1,28 +1,8 @@
 'use client';
 
 import { useState, useEffect } from 'react';
-import dynamic from 'next/dynamic';
-
-// 🚀 动态导入优化组件
-const OptimizedRevolutionary2025Design = dynamic(() => import('@/components/OptimizedRevolutionary2025Design'), {
-  loading: () => <div className="min-h-screen bg-black flex items-center justify-center">
-    <div className="text-white text-center">
-      <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-blue-400 mx-auto mb-4"></div>
-      <p>Loading Revolutionary Design...</p>
-    </div>
-  </div>,
-  ssr: false
-});
-
-const MobileOptimizedRevolutionary2025Design = dynamic(() => import('@/components/MobileOptimizedRevolutionary2025Design'), {
-  loading: () => <div className="min-h-screen bg-black flex items-center justify-center">
-    <div className="text-white text-center">
-      <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-blue-400 mx-auto mb-3"></div>
-      <p className="text-sm">Loading Mobile Design...</p>
-    </div>
-  </div>,
-  ssr: false
-});
+import OptimizedRevolutionary2025Design from '@/components/OptimizedRevolutionary2025Design';
+import MobileOptimizedRevolutionary2025Design from '@/components/MobileOptimizedRevolutionary2025Design';
 
 // 🎯 智能设备检测和组件选择
 export default function Home() {

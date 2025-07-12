@@ -1,4 +1,5 @@
 import Head from 'next/head'
+import { ProductStructuredData, WebSiteStructuredData, OrganizationStructuredData } from './StructuredData'
 
 interface SEOHeadProps {
   title?: string
@@ -60,91 +61,53 @@ export function SEOHead({
       <meta name="twitter:description" content={description} />
       <meta name="twitter:image" content={image} />
 
+    </Head>
+  )
+}
+
+// 结构化数据组件（在layout中使用）
+export function StructuredDataComponents({ 
+  type, 
+  productData, 
+  description, 
+  image, 
+  canonicalUrl, 
+  siteTitle 
+}: {
+  type: string
+  productData?: any
+  description: string
+  image: string
+  canonicalUrl: string
+  siteTitle: string
+}) {
+  return (
+    <>
       {/* 产品结构化数据 */}
       {productData && (
-        <script
-          type="application/ld+json"
-          dangerouslySetInnerHTML={{
-            __html: JSON.stringify({
-              '@context': 'https://schema.org',
-              '@type': 'Product',
-              name: productData.name,
-              description: description,
-              brand: {
-                '@type': 'Brand',
-                name: productData.brand
-              },
-              category: productData.category,
-              offers: {
-                '@type': 'Offer',
-                price: productData.price,
-                priceCurrency: productData.currency,
-                availability: productData.availability === 'in stock' 
-                  ? 'https://schema.org/InStock' 
-                  : 'https://schema.org/OutOfStock',
-                url: canonicalUrl
-              },
-              aggregateRating: {
-                '@type': 'AggregateRating',
-                ratingValue: productData.rating,
-                reviewCount: productData.reviewCount,
-                bestRating: 5,
-                worstRating: 1
-              },
-              image: image
-            })
-          }}
+        <ProductStructuredData
+          productData={productData}
+          description={description}
+          image={image}
+          url={canonicalUrl}
         />
       )}
 
       {/* 网站结构化数据 */}
       {type === 'website' && (
-        <script
-          type="application/ld+json"
-          dangerouslySetInnerHTML={{
-            __html: JSON.stringify({
-              '@context': 'https://schema.org',
-              '@type': 'WebSite',
-              name: siteTitle,
-              description: description,
-              url: canonicalUrl,
-              potentialAction: {
-                '@type': 'SearchAction',
-                target: {
-                  '@type': 'EntryPoint',
-                  urlTemplate: `${canonicalUrl}/search?q={search_term_string}`
-                },
-                'query-input': 'required name=search_term_string'
-              }
-            })
-          }}
+        <WebSiteStructuredData
+          siteTitle={siteTitle}
+          description={description}
+          url={canonicalUrl}
         />
       )}
 
       {/* 组织结构化数据 */}
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{
-          __html: JSON.stringify({
-            '@context': 'https://schema.org',
-            '@type': 'Organization',
-            name: siteTitle,
-            description: 'AI-powered lighting recommendation platform',
-            url: canonicalUrl,
-            logo: `${canonicalUrl}/logo.png`,
-            sameAs: [
-              'https://twitter.com/lightingpro',
-              'https://facebook.com/lightingpro',
-              'https://instagram.com/lightingpro'
-            ],
-            contactPoint: {
-              '@type': 'ContactPoint',
-              contactType: 'customer service',
-              availableLanguage: ['English', 'Chinese', 'Spanish', 'French']
-            }
-          })
-        }}
+      <OrganizationStructuredData
+        siteTitle={siteTitle}
+        url={canonicalUrl}
       />
+    </>
 
       {/* PWA Meta 标签 */}
       <meta name="application-name" content={siteTitle} />
