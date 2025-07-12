@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>图标修改验证</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        @keyframes spin {
+            to { transform: rotate(360deg); }
+        }
+        @keyframes pulse {
+            0%, 100% { opacity: 1; }
+            50% { opacity: .5; }
+        }
+        @keyframes bounce {
+            0%, 100% { transform: translateY(-25%); animation-timing-function: cubic-bezier(0.8,0,1,1); }
+            50% { transform: none; animation-timing-function: cubic-bezier(0,0,0.2,1); }
+        }
+        .animate-spin { animation: spin 3s linear infinite; }
+        .animate-pulse { animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite; }
+        .animate-bounce { animation: bounce 2s infinite; }
+        .shadow-custom-cyan { box-shadow: 0 10px 25px rgba(103, 232, 249, 0.6); }
+        .shadow-custom-green { box-shadow: 0 4px 15px rgba(34, 197, 94, 0.5); }
+    </style>
+</head>
+<body class="bg-black text-white p-8 min-h-screen">
+    <div class="max-w-6xl mx-auto">
+        <h1 class="text-4xl font-bold mb-8 text-center">🔍 图标修改验证页面</h1>
+        
+        <div class="bg-red-600 text-white p-4 rounded-lg mb-8 text-center">
+            <h2 class="text-xl font-bold">⚠️ 如果这里的图标和线上不一样，说明修改成功了！</h2>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mb-12">
+            <!-- Neural Analysis - 简洁版本 -->
+            <div class="bg-gradient-to-br from-blue-500/20 to-purple-500/20 rounded-2xl p-6 border border-white/10 text-center">
+                <h3 class="text-lg font-semibold mb-4 text-yellow-400">Neural Analysis - 新版本</h3>
+                <div class="w-20 h-20 mx-auto mb-4 relative">
+                    <!-- 修改后：简洁版本 -->
+                    <div class="w-full h-full bg-gradient-to-br from-blue-500 to-purple-600 rounded-full opacity-80"></div>
+                    <div class="absolute inset-2 border-2 border-white rounded-full animate-spin"></div>
+                </div>
+                <p class="text-green-400 text-sm">✅ 简洁设计：蓝紫渐变 + 白色旋转边框</p>
+                <p class="text-white/60 text-xs mt-2">移除了复杂的多层效果</p>
+            </div>
+
+            <!-- Quantum Computing - 超明亮版本 -->
+            <div class="bg-gradient-to-br from-blue-500/20 to-purple-500/20 rounded-2xl p-6 border border-white/10 text-center">
+                <h3 class="text-lg font-semibold mb-4 text-yellow-400">Quantum Computing - 新版本</h3>
+                <div class="w-20 h-20 mx-auto mb-4 relative">
+                    <!-- 修改后：超明亮版本 -->
+                    <div class="w-full h-full bg-gradient-to-r from-cyan-200 to-blue-300 rounded-full shadow-custom-cyan"></div>
+                    <div class="absolute inset-1 bg-gradient-to-r from-purple-200 to-pink-300 rounded-full animate-pulse"></div>
+                    <div class="absolute inset-2 bg-gradient-to-r from-yellow-200 to-orange-300 rounded-full animate-bounce"></div>
+                    <div class="absolute inset-0 border-2 border-white rounded-full animate-spin"></div>
+                    <div class="absolute inset-3 border border-white/90 rounded-full animate-spin" style="animation-direction: reverse; animation-duration: 4s;"></div>
+                    <div class="absolute inset-6 bg-white rounded-full opacity-95 animate-pulse"></div>
+                </div>
+                <p class="text-green-400 text-sm">✅ 超明亮：cyan-200, purple-200, yellow-200</p>
+                <p class="text-white/60 text-xs mt-2">所有颜色提升到最亮等级</p>
+            </div>
+
+            <!-- Matrix Optimization - 保持不变 -->
+            <div class="bg-gradient-to-br from-blue-500/20 to-purple-500/20 rounded-2xl p-6 border border-white/10 text-center">
+                <h3 class="text-lg font-semibold mb-4 text-yellow-400">Matrix Optimization - 保持</h3>
+                <div class="w-20 h-20 mx-auto mb-4 grid grid-cols-3 gap-1">
+                    <div class="bg-green-300 rounded-sm animate-pulse shadow-custom-green border border-green-500" style="animation-delay: 0ms;"></div>
+                    <div class="bg-green-300 rounded-sm animate-pulse shadow-custom-green border border-green-500" style="animation-delay: 200ms;"></div>
+                    <div class="bg-green-300 rounded-sm animate-pulse shadow-custom-green border border-green-500" style="animation-delay: 400ms;"></div>
+                    <div class="bg-green-300 rounded-sm animate-pulse shadow-custom-green border border-green-500" style="animation-delay: 600ms;"></div>
+                    <div class="bg-green-300 rounded-sm animate-pulse shadow-custom-green border border-green-500" style="animation-delay: 800ms;"></div>
+                    <div class="bg-green-300 rounded-sm animate-pulse shadow-custom-green border border-green-500" style="animation-delay: 1000ms;"></div>
+                    <div class="bg-green-300 rounded-sm animate-pulse shadow-custom-green border border-green-500" style="animation-delay: 1200ms;"></div>
+                    <div class="bg-green-300 rounded-sm animate-pulse shadow-custom-green border border-green-500" style="animation-delay: 1400ms;"></div>
+                    <div class="bg-green-300 rounded-sm animate-pulse shadow-custom-green border border-green-500" style="animation-delay: 1600ms;"></div>
+                </div>
+                <p class="text-green-400 text-sm">✅ 保持当前高对比度设计</p>
+                <p class="text-white/60 text-xs mt-2">亮绿色9宫格依次脉冲</p>
+            </div>
+        </div>
+
+        <div class="bg-gradient-to-r from-purple-600/20 to-pink-600/20 rounded-2xl p-6 border border-white/10 text-center">
+            <h2 class="text-2xl font-bold mb-4">🔍 对比检查</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <div>
+                    <h3 class="text-lg font-semibold mb-3 text-yellow-400">如果修改成功，你应该看到：</h3>
+                    <ul class="text-left space-y-2">
+                        <li>✅ Neural Analysis: 简洁的蓝紫圆形 + 白色旋转边框</li>
+                        <li>✅ Quantum Computing: 非常明亮的彩色多层圆形</li>
+                        <li>✅ Matrix Optimization: 亮绿色9宫格脉冲</li>
+                    </ul>
+                </div>
+                <div>
+                    <h3 class="text-lg font-semibold mb-3 text-red-400">如果修改失败，你会看到：</h3>
+                    <ul class="text-left space-y-2">
+                        <li>❌ Neural Analysis: 复杂的多层效果 + 白色核心</li>
+                        <li>❌ Quantum Computing: 较暗的颜色 (300-400级别)</li>
+                        <li>❌ 图标整体偏暗或看不清</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="mt-8 text-center">
+            <a href="http://localhost:5000" target="_blank" class="bg-gradient-to-r from-blue-500 to-purple-500 text-white px-6 py-3 rounded-lg font-semibold inline-block mr-4 hover:scale-105 transition-transform">
+                🖥️ 查看本地开发版本
+            </a>
+            <a href="https://lightingpro.netlify.app" target="_blank" class="bg-gradient-to-r from-green-500 to-teal-500 text-white px-6 py-3 rounded-lg font-semibold inline-block hover:scale-105 transition-transform">
+                🌐 查看线上版本
+            </a>
+        </div>
+    </div>
+</body>
+</html>

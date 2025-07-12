@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>强制刷新页面</title>
+    <meta charset="UTF-8">
+    <style>
+        body {
+            background: black;
+            color: white;
+            font-family: Arial, sans-serif;
+            padding: 40px;
+            text-align: center;
+        }
+        .button {
+            background: linear-gradient(45deg, #60a5fa, #a855f7);
+            color: white;
+            padding: 15px 30px;
+            border: none;
+            border-radius: 10px;
+            font-size: 18px;
+            cursor: pointer;
+            margin: 10px;
+        }
+        .button:hover {
+            transform: scale(1.05);
+        }
+        .info {
+            background: rgba(255,255,255,0.1);
+            padding: 20px;
+            border-radius: 10px;
+            margin: 20px 0;
+        }
+    </style>
+</head>
+<body>
+    <h1>🔄 清除缓存查看最新效果</h1>
+    
+    <div class="info">
+        <h2>为什么看不到变化？</h2>
+        <p>浏览器可能缓存了旧版本的CSS和JS文件。</p>
+        <p>请使用以下方法清除缓存：</p>
+    </div>
+    
+    <h3>方法一：强制刷新</h3>
+    <p><strong>Mac:</strong> Cmd + Shift + R</p>
+    <p><strong>Windows:</strong> Ctrl + Shift + R</p>
+    
+    <h3>方法二：清除浏览器缓存</h3>
+    <p><strong>Chrome:</strong> Cmd/Ctrl + Shift + Delete</p>
+    <p>选择"缓存的图片和文件"并清除</p>
+    
+    <h3>方法三：使用隐私模式</h3>
+    <p><strong>Mac:</strong> Cmd + Shift + N</p>
+    <p><strong>Windows:</strong> Ctrl + Shift + N</p>
+    
+    <div style="margin: 40px 0;">
+        <button class="button" onclick="openTest()">🧪 打开本地测试页面</button>
+        <button class="button" onclick="openSite()">🌐 打开线上网站(强制刷新)</button>
+    </div>
+    
+    <div class="info">
+        <h3>预期效果：</h3>
+        <p>✅ <strong>Neural Analysis:</strong> 简洁的蓝紫圆形 + 白色旋转边框</p>
+        <p>✅ <strong>Quantum Computing:</strong> 超明亮的彩色多层圆形动画</p>
+        <p>✅ <strong>Matrix Optimization:</strong> 亮绿色9宫格依次脉冲</p>
+    </div>
+
+    <script>
+        function openTest() {
+            window.open('test-quantum-icon.html', '_blank');
+        }
+        
+        function openSite() {
+            // 添加时间戳强制刷新
+            const timestamp = new Date().getTime();
+            window.open(`https://lightingpro.netlify.app?t=${timestamp}`, '_blank');
+        }
+        
+        // 自动清除当前页面缓存
+        if ('caches' in window) {
+            caches.keys().then(names => {
+                names.forEach(name => {
+                    caches.delete(name);
+                });
+            });
+        }
+    </script>
+</body>
+</html>
