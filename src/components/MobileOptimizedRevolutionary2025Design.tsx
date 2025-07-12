@@ -284,21 +284,21 @@ export default function MobileOptimizedRevolutionary2025Design() {
             <div className="grid grid-cols-1 gap-4">
               {[
                 {
-                  icon: <Brain className="w-6 h-6" />,
+                  icon: <div className="w-6 h-6 text-xl flex items-center justify-center">🧠</div>,
                   title: 'Neural Network Recommendations',
                   description: 'Deep learning algorithms analyze your lifestyle',
                   stats: '99.2% Accuracy',
                   color: 'from-blue-500 to-cyan-500'
                 },
                 {
-                  icon: <Atom className="w-6 h-6" />,
+                  icon: <div className="w-6 h-6 text-xl flex items-center justify-center">⚛️</div>,
                   title: 'Quantum Rendering Engine', 
                   description: 'Real-time 3D lighting effects preview',
                   stats: '60fps Smooth',
                   color: 'from-purple-500 to-pink-500'
                 },
                 {
-                  icon: <Layers className="w-6 h-6" />,
+                  icon: <div className="w-6 h-6 text-xl flex items-center justify-center">📊</div>,
                   title: 'Multi-Dimensional Analysis',
                   description: 'Comprehensive optimization of lighting and energy',
                   stats: '7 Dimensions', 
