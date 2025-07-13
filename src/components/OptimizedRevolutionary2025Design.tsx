@@ -81,23 +81,30 @@ const FluidBackground = () => (
 
 // 🎨 轻量化AI视觉元素
 const AIVisualElement = ({ type, className = "" }: { type: string; className?: string }) => {
+  // 检测是否为大尺寸图标
+  const isLargeIcon = className.includes('w-16');
+  const iconSize = isLargeIcon ? 'w-16 h-16' : 'w-11 h-11';
+  const viewBoxSize = isLargeIcon ? '0 0 64 64' : '0 0 48 48';
+  const gridSize = isLargeIcon ? 'w-16 h-16' : 'w-11 h-11';
+  const quantumSize = isLargeIcon ? 'w-16 h-16' : 'w-11 h-11';
+  
   const elements = {
     neural: (
       <div className={`w-full h-full ${className} flex items-center justify-center p-1`}>
-        <svg viewBox="0 0 48 48" className="w-11 h-11" style={{ filter: 'drop-shadow(0 0 4px rgba(96, 165, 250, 0.3))' }}>
+        <svg viewBox={viewBoxSize} className={iconSize} style={{ filter: 'drop-shadow(0 0 4px rgba(96, 165, 250, 0.3))' }}>
           <defs>
-            <linearGradient id="neuralNodeGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+            <linearGradient id={`neuralNodeGradient${isLargeIcon ? 'Large' : ''}`} x1="0%" y1="0%" x2="100%" y2="100%">
               <stop offset="0%" stopColor="#60a5fa" stopOpacity="1" />
               <stop offset="50%" stopColor="#a855f7" stopOpacity="0.9" />
               <stop offset="100%" stopColor="#ec4899" stopOpacity="1" />
             </linearGradient>
-            <linearGradient id="neuralConnectionGradient" x1="0%" y1="0%" x2="100%" y2="0%">
+            <linearGradient id={`neuralConnectionGradient${isLargeIcon ? 'Large' : ''}`} x1="0%" y1="0%" x2="100%" y2="0%">
               <stop offset="0%" stopColor="#ffffff" stopOpacity="0.9" />
               <stop offset="50%" stopColor="#60a5fa" stopOpacity="0.7" />
               <stop offset="100%" stopColor="#ffffff" stopOpacity="0.9" />
             </linearGradient>
-            <filter id="neuralGlow">
-              <feGaussianBlur stdDeviation="1" result="coloredBlur"/>
+            <filter id={`neuralGlow${isLargeIcon ? 'Large' : ''}`}>
+              <feGaussianBlur stdDeviation={isLargeIcon ? "1.5" : "1"} result="coloredBlur"/>
               <feMerge> 
                 <feMergeNode in="coloredBlur"/>
                 <feMergeNode in="SourceGraphic"/>
@@ -105,70 +112,70 @@ const AIVisualElement = ({ type, className = "" }: { type: string; className?: s
             </filter>
           </defs>
           
-          {/* Neural Network Connections - 优化清晰度 */}
-          <g stroke="url(#neuralConnectionGradient)" strokeWidth="1.2" fill="none" opacity="0.8">
+          {/* Neural Network Connections */}
+          <g stroke={`url(#neuralConnectionGradient${isLargeIcon ? 'Large' : ''})`} strokeWidth={isLargeIcon ? "1.8" : "1.2"} fill="none" opacity="0.8">
             {/* Input to Hidden Layer 1 */}
-            <line x1="8" y1="12" x2="20" y2="16">
+            <line x1={isLargeIcon ? "12" : "8"} y1={isLargeIcon ? "16" : "12"} x2={isLargeIcon ? "28" : "20"} y2={isLargeIcon ? "22" : "16"}>
               <animate attributeName="stroke-opacity" values="0.4;0.9;0.4" dur="2s" repeatCount="indefinite"/>
             </line>
-            <line x1="8" y1="24" x2="20" y2="16">
+            <line x1={isLargeIcon ? "12" : "8"} y1={isLargeIcon ? "32" : "24"} x2={isLargeIcon ? "28" : "20"} y2={isLargeIcon ? "22" : "16"}>
               <animate attributeName="stroke-opacity" values="0.6;1;0.6" dur="2.2s" repeatCount="indefinite"/>
             </line>
-            <line x1="8" y1="36" x2="20" y2="16">
+            <line x1={isLargeIcon ? "12" : "8"} y1={isLargeIcon ? "48" : "36"} x2={isLargeIcon ? "28" : "20"} y2={isLargeIcon ? "22" : "16"}>
               <animate attributeName="stroke-opacity" values="0.5;0.8;0.5" dur="1.8s" repeatCount="indefinite"/>
             </line>
             
             {/* Input to Hidden Layer 2 */}
-            <line x1="8" y1="12" x2="20" y2="32">
+            <line x1={isLargeIcon ? "12" : "8"} y1={isLargeIcon ? "16" : "12"} x2={isLargeIcon ? "28" : "20"} y2={isLargeIcon ? "42" : "32"}>
               <animate attributeName="stroke-opacity" values="0.7;0.9;0.7" dur="2.4s" repeatCount="indefinite"/>
             </line>
-            <line x1="8" y1="24" x2="20" y2="32">
+            <line x1={isLargeIcon ? "12" : "8"} y1={isLargeIcon ? "32" : "24"} x2={isLargeIcon ? "28" : "20"} y2={isLargeIcon ? "42" : "32"}>
               <animate attributeName="stroke-opacity" values="0.4;1;0.4" dur="2s" repeatCount="indefinite"/>
             </line>
-            <line x1="8" y1="36" x2="20" y2="32">
+            <line x1={isLargeIcon ? "12" : "8"} y1={isLargeIcon ? "48" : "36"} x2={isLargeIcon ? "28" : "20"} y2={isLargeIcon ? "42" : "32"}>
               <animate attributeName="stroke-opacity" values="0.6;0.8;0.6" dur="2.6s" repeatCount="indefinite"/>
             </line>
             
             {/* Hidden to Output */}
-            <line x1="20" y1="16" x2="32" y2="24">
+            <line x1={isLargeIcon ? "28" : "20"} y1={isLargeIcon ? "22" : "16"} x2={isLargeIcon ? "44" : "32"} y2={isLargeIcon ? "32" : "24"}>
               <animate attributeName="stroke-opacity" values="0.5;0.9;0.5" dur="1.9s" repeatCount="indefinite"/>
             </line>
-            <line x1="20" y1="32" x2="32" y2="24">
+            <line x1={isLargeIcon ? "28" : "20"} y1={isLargeIcon ? "42" : "32"} x2={isLargeIcon ? "44" : "32"} y2={isLargeIcon ? "32" : "24"}>
               <animate attributeName="stroke-opacity" values="0.7;1;0.7" dur="2.1s" repeatCount="indefinite"/>
             </line>
           </g>
           
-          {/* Neural Nodes - 更清晰紧凑 */}
+          {/* Neural Nodes */}
           {/* Input Layer */}
-          <circle cx="8" cy="12" r="2.5" fill="url(#neuralNodeGradient)" filter="url(#neuralGlow)">
-            <animate attributeName="r" values="2;3;2" dur="2s" repeatCount="indefinite"/>
+          <circle cx={isLargeIcon ? "12" : "8"} cy={isLargeIcon ? "16" : "12"} r={isLargeIcon ? "3.5" : "2.5"} fill={`url(#neuralNodeGradient${isLargeIcon ? 'Large' : ''})`} filter={`url(#neuralGlow${isLargeIcon ? 'Large' : ''})`}>
+            <animate attributeName="r" values={isLargeIcon ? "3;4;3" : "2;3;2"} dur="2s" repeatCount="indefinite"/>
           </circle>
-          <circle cx="8" cy="24" r="2.5" fill="url(#neuralNodeGradient)" filter="url(#neuralGlow)">
-            <animate attributeName="r" values="2;3;2" dur="2.2s" repeatCount="indefinite"/>
+          <circle cx={isLargeIcon ? "12" : "8"} cy={isLargeIcon ? "32" : "24"} r={isLargeIcon ? "3.5" : "2.5"} fill={`url(#neuralNodeGradient${isLargeIcon ? 'Large' : ''})`} filter={`url(#neuralGlow${isLargeIcon ? 'Large' : ''})`}>
+            <animate attributeName="r" values={isLargeIcon ? "3;4;3" : "2;3;2"} dur="2.2s" repeatCount="indefinite"/>
           </circle>
-          <circle cx="8" cy="36" r="2.5" fill="url(#neuralNodeGradient)" filter="url(#neuralGlow)">
-            <animate attributeName="r" values="2;3;2" dur="1.8s" repeatCount="indefinite"/>
+          <circle cx={isLargeIcon ? "12" : "8"} cy={isLargeIcon ? "48" : "36"} r={isLargeIcon ? "3.5" : "2.5"} fill={`url(#neuralNodeGradient${isLargeIcon ? 'Large' : ''})`} filter={`url(#neuralGlow${isLargeIcon ? 'Large' : ''})`}>
+            <animate attributeName="r" values={isLargeIcon ? "3;4;3" : "2;3;2"} dur="1.8s" repeatCount="indefinite"/>
           </circle>
           
           {/* Hidden Layer */}
-          <circle cx="20" cy="16" r="3" fill="url(#neuralNodeGradient)" filter="url(#neuralGlow)">
-            <animate attributeName="r" values="2.5;3.5;2.5" dur="2.4s" repeatCount="indefinite"/>
+          <circle cx={isLargeIcon ? "28" : "20"} cy={isLargeIcon ? "22" : "16"} r={isLargeIcon ? "4" : "3"} fill={`url(#neuralNodeGradient${isLargeIcon ? 'Large' : ''})`} filter={`url(#neuralGlow${isLargeIcon ? 'Large' : ''})`}>
+            <animate attributeName="r" values={isLargeIcon ? "3.5;4.5;3.5" : "2.5;3.5;2.5"} dur="2.4s" repeatCount="indefinite"/>
             <animate attributeName="opacity" values="0.8;1;0.8" dur="2.4s" repeatCount="indefinite"/>
           </circle>
-          <circle cx="20" cy="32" r="3" fill="url(#neuralNodeGradient)" filter="url(#neuralGlow)">
-            <animate attributeName="r" values="2.5;3.5;2.5" dur="2.6s" repeatCount="indefinite"/>
+          <circle cx={isLargeIcon ? "28" : "20"} cy={isLargeIcon ? "42" : "32"} r={isLargeIcon ? "4" : "3"} fill={`url(#neuralNodeGradient${isLargeIcon ? 'Large' : ''})`} filter={`url(#neuralGlow${isLargeIcon ? 'Large' : ''})`}>
+            <animate attributeName="r" values={isLargeIcon ? "3.5;4.5;3.5" : "2.5;3.5;2.5"} dur="2.6s" repeatCount="indefinite"/>
             <animate attributeName="opacity" values="0.8;1;0.8" dur="2.6s" repeatCount="indefinite"/>
           </circle>
           
           {/* Output Layer */}
-          <circle cx="32" cy="24" r="3.5" fill="url(#neuralNodeGradient)" filter="url(#neuralGlow)">
-            <animate attributeName="r" values="3;4;3" dur="2s" repeatCount="indefinite"/>
+          <circle cx={isLargeIcon ? "44" : "32"} cy={isLargeIcon ? "32" : "24"} r={isLargeIcon ? "4.5" : "3.5"} fill={`url(#neuralNodeGradient${isLargeIcon ? 'Large' : ''})`} filter={`url(#neuralGlow${isLargeIcon ? 'Large' : ''})`}>
+            <animate attributeName="r" values={isLargeIcon ? "4;5;4" : "3;4;3"} dur="2s" repeatCount="indefinite"/>
             <animate attributeName="opacity" values="0.9;1;0.9" dur="2s" repeatCount="indefinite"/>
           </circle>
           
-          {/* Data Flow - 更小更精确 */}
-          <circle cx="5" cy="24" r="1" fill="#ffffff" opacity="0.9">
-            <animate attributeName="cx" values="5;35;5" dur="3s" repeatCount="indefinite"/>
+          {/* Data Flow */}
+          <circle cx={isLargeIcon ? "8" : "5"} cy={isLargeIcon ? "32" : "24"} r={isLargeIcon ? "1.5" : "1"} fill="#ffffff" opacity="0.9">
+            <animate attributeName="cx" values={isLargeIcon ? "8;48;8" : "5;35;5"} dur="3s" repeatCount="indefinite"/>
             <animate attributeName="opacity" values="0.9;0.3;0.9" dur="3s" repeatCount="indefinite"/>
           </circle>
         </svg>
@@ -176,7 +183,7 @@ const AIVisualElement = ({ type, className = "" }: { type: string; className?: s
     ),
     quantum: (
       <div className={`w-full h-full ${className} flex items-center justify-center p-1`}>
-        <div className="relative w-11 h-11" style={{ filter: 'drop-shadow(0 0 4px rgba(0, 255, 255, 0.3))' }}>
+        <div className={`relative ${quantumSize}`} style={{ filter: 'drop-shadow(0 0 4px rgba(0, 255, 255, 0.3))' }}>
           <div className="w-full h-full rounded-full quantum-base" />
           <div className="absolute inset-1 rounded-full animate-pulse quantum-layer-1" />
           <div className="absolute inset-2 rounded-full animate-bounce quantum-layer-2" />
@@ -188,7 +195,7 @@ const AIVisualElement = ({ type, className = "" }: { type: string; className?: s
     ),
     matrix: (
       <div className={`w-full h-full ${className} flex items-center justify-center p-1`}>
-        <div className="grid grid-cols-3 gap-1 w-11 h-11" style={{ filter: 'drop-shadow(0 0 4px rgba(34, 197, 94, 0.3))' }}>
+        <div className={`grid grid-cols-3 gap-1 ${gridSize}`} style={{ filter: 'drop-shadow(0 0 4px rgba(34, 197, 94, 0.3))' }}>
           {Array.from({ length: 9 }).map((_, i) => (
             <div
               key={i}
@@ -227,10 +234,8 @@ export default function OptimizedRevolutionary2025Design() {
   const features = [
     {
       icon: (
-        <div className="w-8 h-8 text-white flex items-center justify-center">
-          <svg viewBox="0 0 24 24" fill="currentColor" className="w-6 h-6">
-            <path d="M12 2C17.5 2 22 6.5 22 12S17.5 22 12 22 2 17.5 2 12 6.5 2 12 2M12 4C7.6 4 4 7.6 4 12S7.6 20 12 20 20 16.4 20 12 16.4 4 12 4M12 6C15.3 6 18 8.7 18 12S15.3 18 12 18 6 15.3 6 12 8.7 6 12 6Z"/>
-          </svg>
+        <div className="w-16 h-16 flex items-center justify-center">
+          <AIVisualElement type="neural" className="w-16 h-16" />
         </div>
       ),
       title: 'Neural Network Recommendations',
@@ -240,10 +245,8 @@ export default function OptimizedRevolutionary2025Design() {
     },
     {
       icon: (
-        <div className="w-8 h-8 text-white flex items-center justify-center">
-          <svg viewBox="0 0 24 24" fill="currentColor" className="w-6 h-6">
-            <path d="M12 8C13.1 8 14 8.9 14 10S13.1 12 12 12 10 11.1 10 10 10.9 8 12 8M12 6C9.8 6 8 7.8 8 10S9.8 14 12 14 16 12.2 16 10 14.2 6 12 6M6 10C6 13.3 8.7 16 12 16S18 13.3 18 10 15.3 4 12 4 6 6.7 6 10M4 10C4 5.6 7.6 2 12 2S20 5.6 20 10 16.4 18 12 18 4 14.4 4 10M12 18V22H8V20H16V22H12Z"/>
-          </svg>
+        <div className="w-16 h-16 flex items-center justify-center">
+          <AIVisualElement type="quantum" className="w-16 h-16" />
         </div>
       ),
       title: 'Quantum Rendering Engine', 
@@ -253,9 +256,87 @@ export default function OptimizedRevolutionary2025Design() {
     },
     {
       icon: (
-        <div className="w-8 h-8 text-white flex items-center justify-center">
-          <svg viewBox="0 0 24 24" fill="currentColor" className="w-6 h-6">
-            <path d="M15.5 14H20.5L22 15.5V20.5L20.5 22H15.5L14 20.5V15.5L15.5 14M19 19V17H17V19H19M9.5 14H14.5L16 15.5V20.5L14.5 22H9.5L8 20.5V15.5L9.5 14M13 19V17H11V19H13M3.5 14H8.5L10 15.5V20.5L8.5 22H3.5L2 20.5V15.5L3.5 14M7 19V17H5V19H7M9.5 8H14.5L16 9.5V14.5L14.5 16H9.5L8 14.5V9.5L9.5 8M13 13V11H11V13H13M15.5 2H20.5L22 3.5V8.5L20.5 10H15.5L14 8.5V3.5L15.5 2M19 7V5H17V7H19Z"/>
+        <div className="w-16 h-16 flex items-center justify-center">
+          <svg viewBox="0 0 48 48" className="w-16 h-16" style={{ filter: 'drop-shadow(0 0 4px rgba(34, 197, 94, 0.4))' }}>
+            <defs>
+              <linearGradient id="arScanGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+                <stop offset="0%" stopColor="#10b981" stopOpacity="1" />
+                <stop offset="50%" stopColor="#059669" stopOpacity="0.9" />
+                <stop offset="100%" stopColor="#047857" stopOpacity="1" />
+              </linearGradient>
+              <filter id="arScanGlow">
+                <feGaussianBlur stdDeviation="1.5" result="coloredBlur"/>
+                <feMerge> 
+                  <feMergeNode in="coloredBlur"/>
+                  <feMergeNode in="SourceGraphic"/>
+                </feMerge>
+              </filter>
+            </defs>
+            
+            {/* AR 扫描网格 */}
+            <g stroke="url(#arScanGradient)" strokeWidth="1.5" fill="none" opacity="0.8">
+              {/* 网格线 */}
+              <line x1="8" y1="8" x2="40" y2="8">
+                <animate attributeName="stroke-opacity" values="0.3;0.8;0.3" dur="2s" repeatCount="indefinite"/>
+              </line>
+              <line x1="8" y1="16" x2="40" y2="16">
+                <animate attributeName="stroke-opacity" values="0.4;0.9;0.4" dur="2.2s" repeatCount="indefinite"/>
+              </line>
+              <line x1="8" y1="24" x2="40" y2="24">
+                <animate attributeName="stroke-opacity" values="0.5;1;0.5" dur="1.8s" repeatCount="indefinite"/>
+              </line>
+              <line x1="8" y1="32" x2="40" y2="32">
+                <animate attributeName="stroke-opacity" values="0.4;0.8;0.4" dur="2.4s" repeatCount="indefinite"/>
+              </line>
+              <line x1="8" y1="40" x2="40" y2="40">
+                <animate attributeName="stroke-opacity" values="0.3;0.7;0.3" dur="2.6s" repeatCount="indefinite"/>
+              </line>
+              
+              {/* 垂直网格 */}
+              <line x1="8" y1="8" x2="8" y2="40">
+                <animate attributeName="stroke-opacity" values="0.4;0.9;0.4" dur="2.1s" repeatCount="indefinite"/>
+              </line>
+              <line x1="16" y1="8" x2="16" y2="40">
+                <animate attributeName="stroke-opacity" values="0.5;0.8;0.5" dur="1.9s" repeatCount="indefinite"/>
+              </line>
+              <line x1="24" y1="8" x2="24" y2="40">
+                <animate attributeName="stroke-opacity" values="0.6;1;0.6" dur="2.3s" repeatCount="indefinite"/>
+              </line>
+              <line x1="32" y1="8" x2="32" y2="40">
+                <animate attributeName="stroke-opacity" values="0.4;0.7;0.4" dur="2.5s" repeatCount="indefinite"/>
+              </line>
+              <line x1="40" y1="8" x2="40" y2="40">
+                <animate attributeName="stroke-opacity" values="0.3;0.8;0.3" dur="2.7s" repeatCount="indefinite"/>
+              </line>
+            </g>
+            
+            {/* AR 扫描点 */}
+            <circle cx="12" cy="12" r="2" fill="url(#arScanGradient)" filter="url(#arScanGlow)">
+              <animate attributeName="r" values="1.5;2.5;1.5" dur="2s" repeatCount="indefinite"/>
+              <animate attributeName="opacity" values="0.6;1;0.6" dur="2s" repeatCount="indefinite"/>
+            </circle>
+            <circle cx="24" cy="16" r="2" fill="url(#arScanGradient)" filter="url(#arScanGlow)">
+              <animate attributeName="r" values="1.5;2.5;1.5" dur="2.2s" repeatCount="indefinite"/>
+              <animate attributeName="opacity" values="0.7;1;0.7" dur="2.2s" repeatCount="indefinite"/>
+            </circle>
+            <circle cx="36" cy="20" r="2" fill="url(#arScanGradient)" filter="url(#arScanGlow)">
+              <animate attributeName="r" values="1.5;2.5;1.5" dur="1.8s" repeatCount="indefinite"/>
+              <animate attributeName="opacity" values="0.8;1;0.8" dur="1.8s" repeatCount="indefinite"/>
+            </circle>
+            <circle cx="16" cy="28" r="2" fill="url(#arScanGradient)" filter="url(#arScanGlow)">
+              <animate attributeName="r" values="1.5;2.5;1.5" dur="2.4s" repeatCount="indefinite"/>
+              <animate attributeName="opacity" values="0.5;1;0.5" dur="2.4s" repeatCount="indefinite"/>
+            </circle>
+            <circle cx="32" cy="36" r="2" fill="url(#arScanGradient)" filter="url(#arScanGlow)">
+              <animate attributeName="r" values="1.5;2.5;1.5" dur="2.6s" repeatCount="indefinite"/>
+              <animate attributeName="opacity" values="0.6;1;0.6" dur="2.6s" repeatCount="indefinite"/>
+            </circle>
+            
+            {/* 扫描波 */}
+            <circle cx="24" cy="24" r="5" fill="none" stroke="url(#arScanGradient)" strokeWidth="2" opacity="0.7">
+              <animate attributeName="r" values="5;20;5" dur="3s" repeatCount="indefinite"/>
+              <animate attributeName="stroke-opacity" values="0.7;0.1;0.7" dur="3s" repeatCount="indefinite"/>
+            </circle>
           </svg>
         </div>
       ),
@@ -266,10 +347,8 @@ export default function OptimizedRevolutionary2025Design() {
     },
     {
       icon: (
-        <div className="w-8 h-8 text-white flex items-center justify-center">
-          <svg viewBox="0 0 24 24" fill="currentColor" className="w-6 h-6">
-            <path d="M22 21H2V3H4V19H6V17H10V19H12V16H16V19H18V17H22V21M16 8H18V14H16V8M12 2H14V15H12V2M8 11H10V14H8V11M4 15H6V19H4V15Z"/>
-          </svg>
+        <div className="w-16 h-16 flex items-center justify-center">
+          <AIVisualElement type="matrix" className="w-16 h-16" />
         </div>
       ),
       title: 'Multi-Dimensional Analysis',
