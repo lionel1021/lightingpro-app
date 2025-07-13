@@ -285,18 +285,57 @@ body {
   hyphens: auto;
 }
 
-/* 移动端文字优化 */
+/* 移动端文字优化 - 增强一致性 */
 @media (max-width: 768px) {
   .neural-title {
     font-size: 0.75rem;
     line-height: 1.1;
     margin-bottom: 0.25rem;
+    text-align: center;
+    font-weight: 600;
   }
   
   .neural-description {
     font-size: 0.625rem;
     line-height: 1.2;
+    text-align: center;
+    word-break: break-word;
+    overflow-wrap: break-word;
+  }
+  
+  .neural-text-container {
+    padding: 0 0.125rem;
+    min-height: 3rem;
+    justify-content: center;
   }
 }
 
-/* Force deploy at 2025年 7月12日 星期六 13时39分31秒 CST */
+/* 桌面端文字优化 - 统一三个图标文字样式 */
+@media (min-width: 769px) {
+  .neural-title {
+    font-size: 0.875rem;
+    font-weight: 600;
+    line-height: 1.2;
+    margin-bottom: 0.5rem;
+    text-align: center;
+    color: white;
+  }
+  
+  .neural-description {
+    font-size: 0.75rem;
+    line-height: 1.3;
+    text-align: center;
+    color: rgba(255, 255, 255, 0.8);
+    word-break: break-word;
+    overflow-wrap: break-word;
+  }
+  
+  .neural-text-container {
+    padding: 0 0.5rem;
+    min-height: 4rem;
+    justify-content: center;
+    gap: 0.25rem;
+  }
+}
+
+/* Force deploy at 2025年 7月12日 星期六 13时41分15秒 CST */

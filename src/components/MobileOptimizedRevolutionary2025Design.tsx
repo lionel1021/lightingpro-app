@@ -171,24 +171,28 @@ const MobileAIVisualElement = ({ type, className = "" }: { type: string; classNa
       </div>
     ),
     quantum: (
-      <div className={`relative ${className}`}>
-        <div className="w-full h-full rounded-full mobile-quantum-base" />
-        <div className="absolute inset-1 rounded-full animate-pulse mobile-quantum-layer-1" />
-        <div className="absolute inset-2 rounded-full animate-bounce mobile-quantum-layer-2" />
-        <div className="absolute inset-0 border-2 border-white rounded-full animate-spin shadow-lg mobile-quantum-border-1" />
-        <div className="absolute inset-3 border border-cyan-300 rounded-full animate-spin mobile-quantum-border-2" />
-        <div className="absolute inset-4 bg-white rounded-full animate-pulse mobile-quantum-center" />
+      <div className={`w-full h-full ${className} flex items-center justify-center p-0.5`}>
+        <div className="relative w-7 h-7" style={{ filter: 'drop-shadow(0 0 2px rgba(0, 255, 255, 0.4))' }}>
+          <div className="w-full h-full rounded-full mobile-quantum-base" />
+          <div className="absolute inset-1 rounded-full animate-pulse mobile-quantum-layer-1" />
+          <div className="absolute inset-1.5 rounded-full animate-bounce mobile-quantum-layer-2" />
+          <div className="absolute inset-0 border-2 border-white rounded-full animate-spin shadow-lg mobile-quantum-border-1" />
+          <div className="absolute inset-2 border border-cyan-300 rounded-full animate-spin mobile-quantum-border-2" />
+          <div className="absolute inset-3 bg-white rounded-full animate-pulse mobile-quantum-center" />
+        </div>
       </div>
     ),
     matrix: (
-      <div className={`grid grid-cols-3 gap-1 ${className}`}>
-        {Array.from({ length: 9 }).map((_, i) => (
-          <div
-            key={i}
-            className="bg-green-300 rounded-sm animate-pulse shadow-md shadow-green-400/50 border border-green-500"
-            style={{ animationDelay: `${i * 200}ms` }}
-          />
-        ))}
+      <div className={`w-full h-full ${className} flex items-center justify-center p-0.5`}>
+        <div className="grid grid-cols-3 gap-0.5 w-7 h-7" style={{ filter: 'drop-shadow(0 0 2px rgba(34, 197, 94, 0.4))' }}>
+          {Array.from({ length: 9 }).map((_, i) => (
+            <div
+              key={i}
+              className="bg-green-300 rounded-sm animate-pulse shadow-md shadow-green-400/50 border border-green-500"
+              style={{ animationDelay: `${i * 200}ms` }}
+            />
+          ))}
+        </div>
       </div>
     )
   };
