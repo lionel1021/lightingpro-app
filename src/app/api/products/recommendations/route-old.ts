@@ -59,7 +59,7 @@ export async function GET(request: NextRequest) {
         // Get user interaction data if available
         const userId = questionnaireData.user_id
         let userFavorites: string[] = []
-        let userInteractions: any[] = []
+        const userInteractions: any[] = []
         
         if (userId) {
           const { data: favorites } = await supabase

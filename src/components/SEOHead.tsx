@@ -108,34 +108,6 @@ export function StructuredDataComponents({
         url={canonicalUrl}
       />
     </>
-
-      {/* PWA Meta 标签 */}
-      <meta name="application-name" content={siteTitle} />
-      <meta name="apple-mobile-web-app-capable" content="yes" />
-      <meta name="apple-mobile-web-app-status-bar-style" content="default" />
-      <meta name="apple-mobile-web-app-title" content={siteTitle} />
-      <meta name="format-detection" content="telephone=no" />
-      <meta name="mobile-web-app-capable" content="yes" />
-      <meta name="msapplication-config" content="/browserconfig.xml" />
-      <meta name="msapplication-TileColor" content="#2563eb" />
-      <meta name="msapplication-tap-highlight" content="no" />
-      <meta name="theme-color" content="#2563eb" />
-
-      {/* Favicon 和图标 */}
-      <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
-      <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
-      <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
-      <link rel="manifest" href="/manifest.json" />
-      <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#2563eb" />
-      <link rel="shortcut icon" href="/favicon.ico" />
-
-      {/* 预加载关键资源 */}
-      <link rel="dns-prefetch" href="//images.unsplash.com" />
-      <link rel="preconnect" href="https://images.unsplash.com" crossOrigin="anonymous" />
-      
-      {/* 性能优化 */}
-      <meta httpEquiv="x-dns-prefetch-control" content="on" />
-    </Head>
   )
 }
 

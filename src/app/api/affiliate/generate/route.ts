@@ -255,7 +255,7 @@ export async function GET(request: NextRequest) {
 
         if (!generatedUrl && product.affiliate_links) {
           const originalLinks = product.affiliate_links as Record<string, any>
-          let targetProvider = providerId || Object.keys(originalLinks)[0]
+          const targetProvider = providerId || Object.keys(originalLinks)[0]
 
           if (targetProvider && originalLinks[targetProvider]) {
             const sessionId = crypto.randomUUID()
