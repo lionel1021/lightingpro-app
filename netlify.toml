@@ -8,6 +8,7 @@
   # 🚀 Performance optimization flags
   NEXT_TELEMETRY_DISABLED = "1"
   ANALYZE = "false"
+  PUPPETEER_SKIP_DOWNLOAD = "true"
 
 [[plugins]]
   package = "@netlify/plugin-nextjs"
