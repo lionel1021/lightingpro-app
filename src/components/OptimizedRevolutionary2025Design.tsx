@@ -357,9 +357,9 @@ export default function OptimizedRevolutionary2025Design() {
                   <ArrowRight className="w-5 h-5" />
                 </button>
                 
-                <button className="bg-white/10 backdrop-blur-sm hover:bg-white/20 border border-white/20 text-white px-8 py-4 rounded-2xl font-semibold flex items-center gap-2 transition-all duration-300 hover:scale-105">
-                  <Eye className="w-5 h-5" />
-                  Watch Demo
+                <button className="bg-white/10 backdrop-blur-sm hover:bg-white/20 border border-white/20 px-8 py-4 rounded-2xl font-semibold flex items-center gap-2 transition-all duration-300 hover:scale-105">
+                  <Eye className="w-5 h-5 text-gradient-watch-demo" />
+                  <span className="text-gradient-watch-demo">Watch Demo</span>
                 </button>
               </div>
             </div>

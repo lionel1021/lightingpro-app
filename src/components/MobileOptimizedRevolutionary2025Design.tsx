@@ -296,9 +296,9 @@ export default function MobileOptimizedRevolutionary2025Design() {
                   <ArrowRight className="w-4 h-4" />
                 </button>
                 
-                <button className="bg-white/10 backdrop-blur-sm hover:bg-white/20 border border-white/20 text-white px-6 py-3 rounded-xl font-semibold flex items-center justify-center gap-2 transition-all duration-300 hover:scale-105">
-                  <Eye className="w-4 h-4" />
-                  Watch Demo
+                <button className="bg-white/10 backdrop-blur-sm hover:bg-white/20 border border-white/20 px-6 py-3 rounded-xl font-semibold flex items-center justify-center gap-2 transition-all duration-300 hover:scale-105">
+                  <Eye className="w-4 h-4 text-gradient-watch-demo" />
+                  <span className="text-gradient-watch-demo">Watch Demo</span>
                 </button>
               </div>
             </div>
