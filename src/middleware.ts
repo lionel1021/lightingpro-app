@@ -8,29 +8,15 @@ export function middleware(request: NextRequest) {
     return NextResponse.next();
   }
   
-  // 检查路径是否已包含语言前缀
-  const hasLocale = /^\/(?:zh|en)\b/.test(pathname);
+  // 添加安全头部
+  const response = NextResponse.next();
   
-  if (!hasLocale) {
-    // 从cookie获取用户偏好的语言，默认为中文
-    const cookieLocale = request.cookies.get('NEXT_LOCALE')?.value;
-    const locale = cookieLocale && ['zh', 'en'].includes(cookieLocale) ? cookieLocale : 'zh';
-    
-    const response = NextResponse.next();
-    
-    // 如果没有cookie或者cookie值不同，更新cookie
-    if (!cookieLocale || cookieLocale !== locale) {
-      response.cookies.set('NEXT_LOCALE', locale, {
-        path: '/',
-        maxAge: 31536000, // 1年
-        sameSite: 'strict'
-      });
-    }
-    
-    return response;
-  }
+  response.headers.set('X-Frame-Options', 'DENY');
+  response.headers.set('X-Content-Type-Options', 'nosniff');
+  response.headers.set('Referrer-Policy', 'strict-origin-when-cross-origin');
+  response.headers.set('X-XSS-Protection', '1; mode=block');
   
-  return NextResponse.next();
+  return response;
 }
 
 export const config = {
