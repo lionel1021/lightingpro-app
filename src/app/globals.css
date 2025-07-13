@@ -198,6 +198,15 @@ body {
   color: transparent;
 }
 
+.text-gradient-neural-subtitle {
+  background: linear-gradient(135deg, #e2e8f0 0%, #cbd5e1 25%, #94a3b8 50%, #64748b 75%, #475569 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  color: transparent;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
+}
+
 /* Responsive typography styles */
 .hero-title {
   font-size: clamp(2rem, 10vw, 5rem);
@@ -308,6 +317,17 @@ body {
     min-height: 3rem;
     justify-content: center;
   }
+  
+  /* 移动端副标题渐变增强 */
+  .text-gradient-neural-subtitle {
+    background: linear-gradient(135deg, #f1f5f9 0%, #e2e8f0 30%, #94a3b8 60%, #64748b 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    color: transparent;
+    text-shadow: 0 1px 3px rgba(0, 0, 0, 0.4);
+    font-weight: 500;
+  }
 }
 
 /* 桌面端文字优化 - 统一三个图标文字样式 */
@@ -336,6 +356,18 @@ body {
     justify-content: center;
     gap: 0.25rem;
   }
+  
+  /* 桌面端副标题渐变优化 */
+  .text-gradient-neural-subtitle {
+    background: linear-gradient(135deg, #ffffff 0%, #e2e8f0 20%, #cbd5e1 40%, #94a3b8 60%, #64748b 80%, #475569 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    color: transparent;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+    font-weight: 500;
+    letter-spacing: 0.025em;
+  }
 }
 
-/* Force deploy at 2025年 7月12日 星期六 13时41分15秒 CST */
+/* Force deploy at 2025年 7月13日 星期日 13时57分23秒 CST */

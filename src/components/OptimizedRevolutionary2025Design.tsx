@@ -346,7 +346,7 @@ export default function OptimizedRevolutionary2025Design() {
                 </span>
               </h1>
               
-              <p className="text-white/90 mb-8 mx-auto hero-subtitle">
+              <p className="text-gradient-neural-subtitle mb-8 mx-auto hero-subtitle font-medium">
                 Neural network-powered intelligent lighting recommendation system that perfectly matches every ray of light to your lifestyle
               </p>
               
