@@ -10,6 +10,8 @@ import ClientOnly from '@/components/ClientOnly'
 import Image from 'next/image'
 import Link from 'next/link'
 import { notFound } from 'next/navigation'
+import { ProductSEO, MobilePerformanceMeta } from '@/components/SEOOptimizer'
+import { MobilePerformanceMonitor } from '@/components/MobileOptimizations'
 
 interface ProductPageProps {
   params: Promise<{ id: string }>
@@ -41,9 +43,20 @@ export default async function ProductPage({ params }: ProductPageProps) {
     .slice(0, 3)
 
   return (
-    <div className="min-h-screen bg-gray-50">
-      {/* 导航栏 */}
-      <header className="bg-white shadow-sm sticky top-0 z-50">
+    <>
+      {/* SEO优化 */}
+      <ProductSEO 
+        product={product} 
+        images={product.image_urls || []}
+      />
+      <MobilePerformanceMeta />
+      
+      <div className="min-h-screen bg-gray-50">
+        {/* 移动端性能监控 */}
+        <MobilePerformanceMonitor />
+        
+        {/* 导航栏 */}
+        <header className="bg-white shadow-sm sticky top-0 z-50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex justify-between items-center h-16">
             <Link href="/" className="flex items-center gap-2">
@@ -357,5 +370,6 @@ export default async function ProductPage({ params }: ProductPageProps) {
         )}
       </div>
     </div>
+    </>
   )
 }

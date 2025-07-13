@@ -1,15 +1,16 @@
 {
-  "name": "LightingPro - AI-Powered Lighting Recommendations",
+  "name": "LightingPro - AI智能照明推荐系统",
   "short_name": "LightingPro",
-  "description": "Get personalized lighting recommendations based on your room type, style, and budget. Featuring 56+ curated products from premium brands.",
+  "description": "AI驱动的智能照明推荐平台，为您提供个性化的照明解决方案。支持离线浏览、实时推荐和移动端优化。",
   "start_url": "/",
   "display": "standalone",
-  "background_color": "#ffffff",
-  "theme_color": "#2563eb",
-  "orientation": "portrait",
+  "background_color": "#000000",
+  "theme_color": "#1e40af",
+  "orientation": "portrait-primary",
   "scope": "/",
-  "lang": "en-US",
-  "categories": ["shopping", "lifestyle", "home"],
+  "lang": "zh-CN",
+  "dir": "ltr",
+  "categories": ["shopping", "lifestyle", "utilities", "productivity"],
   "icons": [
     {
       "src": "/icons/icon-72x72.svg",
@@ -78,9 +79,9 @@
   ],
   "shortcuts": [
     {
-      "name": "Smart Recommendations",
-      "short_name": "Recommendations",
-      "description": "Get AI-powered lighting recommendations",
+      "name": "AI推荐",
+      "short_name": "推荐",
+      "description": "获取AI智能照明推荐",
       "url": "/questionnaire",
       "icons": [
         {
@@ -91,10 +92,10 @@
       ]
     },
     {
-      "name": "Product Search",
-      "short_name": "Search",
-      "description": "Search for lighting products",
-      "url": "/search",
+      "name": "产品浏览",
+      "short_name": "产品",
+      "description": "浏览照明产品",
+      "url": "/products",
       "icons": [
         {
           "src": "/icons/shortcut-search.svg",
@@ -104,9 +105,9 @@
       ]
     },
     {
-      "name": "My Favorites",
-      "short_name": "Favorites",
-      "description": "View your favorite products",
+      "name": "我的收藏",
+      "short_name": "收藏",
+      "description": "查看收藏的产品",
       "url": "/favorites",
       "icons": [
         {
@@ -117,6 +118,22 @@
       ]
     }
   ],
+  "protocol_handlers": [
+    {
+      "protocol": "web+lightingpro",
+      "url": "/handle?url=%s"
+    }
+  ],
+  "share_target": {
+    "action": "/share",
+    "method": "POST",
+    "params": {
+      "title": "title",
+      "text": "text",
+      "url": "url"
+    }
+  },
+  "prefer_related_applications": false,
   "edge_side_panel": {
     "preferred_width": 400
   },

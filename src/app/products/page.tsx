@@ -9,10 +9,14 @@ import { LightingProduct } from '@/lib/types';
 import { mockProducts } from '@/lib/mock-data';
 import { useCart } from '@/contexts/CartContext';
 import UserStatus from '@/components/UserStatus';
+import AdvancedProductSearch from '@/components/AdvancedProductSearch';
+import LoadingSpinner from '@/components/LoadingSpinner';
+import { MobilePerformanceMonitor, TouchOptimizedButton, MobileLazyImage, useMobileOptimization } from '@/components/MobileOptimizations';
 
-// Simple product card component
+// Mobile-optimized product card component
 function ProductCard({ product }: { product: LightingProduct }) {
   const { addToCart, favorites, toggleFavorite } = useCart();
+  const { performanceMode } = useMobileOptimization();
   const isFavorite = favorites.has(product.id);
 
   const handleAddToCart = () => {
@@ -29,11 +33,21 @@ function ProductCard({ product }: { product: LightingProduct }) {
         <div className="relative">
           <div className="aspect-square relative overflow-hidden rounded-t-lg bg-gradient-to-br from-blue-100 to-indigo-100">
             {product.image_urls && product.image_urls.length > 0 ? (
-              <img 
-                src={product.image_urls[0]} 
-                alt={product.name}
-                className="w-full h-full object-cover"
-              />
+              performanceMode === 'low-power' ? (
+                <div className="w-full h-full flex items-center justify-center bg-gradient-to-br from-blue-100 to-indigo-100">
+                  <span className="text-4xl">💡</span>
+                  <div className="absolute bottom-2 left-2 bg-orange-500 text-white text-xs px-2 py-1 rounded">
+                    省电模式
+                  </div>
+                </div>
+              ) : (
+                <MobileLazyImage 
+                  src={product.image_urls[0]} 
+                  alt={product.name}
+                  className="w-full h-full"
+                  placeholder="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjAwIiBoZWlnaHQ9IjIwMCIgdmlld0JveD0iMCAwIDIwMCAyMDAiIGZpbGw9Im5vbmUiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PHJlY3Qgd2lkdGg9IjIwMCIgaGVpZ2h0PSIyMDAiIGZpbGw9IiNmM2Y0ZjYiLz48dGV4dCB4PSI1MCUiIHk9IjUwJSIgZm9udC1zaXplPSI0MCIgdGV4dC1hbmNob3I9Im1pZGRsZSIgZHk9Ii4zZW0iPvCfkqE8L3RleHQ+PC9zdmc+"
+                />
+              )
             ) : (
               <div className="w-full h-full flex items-center justify-center">
                 <span className="text-4xl">💡</span>
@@ -47,16 +61,18 @@ function ProductCard({ product }: { product: LightingProduct }) {
             </Badge>
           )}
 
-          <button 
+          <TouchOptimizedButton
             onClick={handleToggleFavorite}
-            className={`absolute top-2 right-2 w-8 h-8 backdrop-blur-sm rounded-full flex items-center justify-center transition-colors ${
+            variant="ghost"
+            size="small"
+            className={`absolute top-2 right-2 w-10 h-10 backdrop-blur-sm rounded-full ${
               isFavorite 
                 ? 'bg-red-500 text-white hover:bg-red-600' 
                 : 'bg-white/80 text-gray-600 hover:bg-white'
             }`}
           >
             <Heart className={`w-4 h-4 ${isFavorite ? 'fill-current' : ''}`} />
-          </button>
+          </TouchOptimizedButton>
         </div>
 
         <div className="p-4">
@@ -92,19 +108,26 @@ function ProductCard({ product }: { product: LightingProduct }) {
             </div>
             
             <Link href={`/products/${product.id}`}>
-              <button className="text-blue-600 hover:text-blue-700 text-sm font-medium">
+              <TouchOptimizedButton
+                onClick={() => {}}
+                variant="ghost"
+                size="small"
+                className="text-blue-600 hover:text-blue-700 text-sm font-medium p-2"
+              >
                 查看详情
-              </button>
+              </TouchOptimizedButton>
             </Link>
           </div>
 
-          <button
+          <TouchOptimizedButton
             onClick={handleAddToCart}
-            className="w-full bg-blue-600 hover:bg-blue-700 text-white py-2 px-4 rounded-lg flex items-center justify-center gap-2 transition-colors"
+            variant="primary"
+            size="medium"
+            className="w-full"
           >
             <ShoppingCart className="w-4 h-4" />
             加入购物车
-          </button>
+          </TouchOptimizedButton>
         </div>
       </CardContent>
     </Card>
@@ -113,10 +136,14 @@ function ProductCard({ product }: { product: LightingProduct }) {
 
 export default function ProductsPage() {
   const [mounted, setMounted] = useState(false);
+  const [filteredProducts, setFilteredProducts] = useState<LightingProduct[]>(mockProducts);
+  const [isLoading, setIsLoading] = useState(true);
   const { totalItems } = useCart();
 
   useEffect(() => {
     setMounted(true);
+    // 模拟加载时间
+    setTimeout(() => setIsLoading(false), 800);
   }, []);
 
   // 避免hydration不匹配，在服务器端和客户端都显示相同内容
@@ -207,6 +234,9 @@ export default function ProductsPage() {
 
   return (
     <div className="min-h-screen bg-gray-50">
+      {/* Mobile Performance Monitor */}
+      <MobilePerformanceMonitor />
+      
       {/* Page Header */}
       <div className="bg-white shadow-sm border-b border-gray-200">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
@@ -225,6 +255,15 @@ export default function ProductsPage() {
               <p className="text-lg text-gray-600 max-w-2xl">
                 浏览我们精选的{mockProducts.length}款优质照明产品，从LED灯泡到智能照明系统
               </p>
+              
+              {/* 搜索和筛选 */}
+              <div className="mt-6">
+                <AdvancedProductSearch 
+                  products={mockProducts}
+                  onFilteredResults={setFilteredProducts}
+                  placeholder="搜索照明产品、品牌或类别..."
+                />
+              </div>
             </div>
             
             {/* User Status and Cart */}
@@ -249,11 +288,57 @@ export default function ProductsPage() {
 
       {/* Main Content */}
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-          {mockProducts.map((product) => (
-            <ProductCard key={product.id} product={product} />
-          ))}
-        </div>
+        {isLoading ? (
+          <div className="flex flex-col items-center justify-center py-16">
+            <LoadingSpinner size="lg" text="加载产品中..." variant="branded" />
+          </div>
+        ) : filteredProducts.length === 0 ? (
+          <div className="text-center py-16">
+            <div className="text-6xl mb-4">🔍</div>
+            <h3 className="text-xl font-semibold text-gray-900 mb-2">未找到相关产品</h3>
+            <p className="text-gray-600 mb-6">
+              请尝试调整搜索条件或筛选选项
+            </p>
+            <Link href="/questionnaire">
+              <button className="bg-blue-600 hover:bg-blue-700 text-white px-6 py-3 rounded-lg transition-colors">
+                获取AI推荐
+              </button>
+            </Link>
+          </div>
+        ) : (
+          <>
+            {/* 产品统计和视图选项 */}
+            <div className="flex items-center justify-between mb-6">
+              <div className="text-sm text-gray-600">
+                显示 {filteredProducts.length} 个产品，共 {mockProducts.length} 个
+              </div>
+              <div className="flex items-center space-x-2">
+                <span className="text-sm text-gray-600">视图:</span>
+                <button className="p-2 bg-blue-600 text-white rounded">
+                  <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
+                    <path d="M5 3a2 2 0 00-2 2v2a2 2 0 002 2h2a2 2 0 002-2V5a2 2 0 00-2-2H5zM5 11a2 2 0 00-2 2v2a2 2 0 002 2h2a2 2 0 002-2v-2a2 2 0 00-2-2H5zM11 5a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2V5zM11 13a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2v-2z" />
+                  </svg>
+                </button>
+              </div>
+            </div>
+
+            {/* 产品网格 */}
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+              {filteredProducts.map((product) => (
+                <ProductCard key={product.id} product={product} />
+              ))}
+            </div>
+
+            {/* 加载更多按钮 */}
+            {filteredProducts.length >= 12 && (
+              <div className="text-center mt-12">
+                <button className="bg-gray-200 hover:bg-gray-300 text-gray-800 px-8 py-3 rounded-lg transition-colors">
+                  加载更多产品
+                </button>
+              </div>
+            )}
+          </>
+        )}
       </div>
 
       {/* Page Bottom Info */}

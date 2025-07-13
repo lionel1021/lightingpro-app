@@ -3,6 +3,7 @@
 import { useState, useEffect } from 'react';
 import OptimizedRevolutionary2025Design from '@/components/OptimizedRevolutionary2025Design';
 import MobileOptimizedRevolutionary2025Design from '@/components/MobileOptimizedRevolutionary2025Design';
+import { SEOOptimizer, MobilePerformanceMeta } from '@/components/SEOOptimizer';
 
 // 🎯 智能设备检测和组件选择
 export default function Home() {
@@ -51,5 +52,11 @@ export default function Home() {
   }
 
   // 🎯 根据设备类型返回优化的组件
-  return isMobile ? <MobileOptimizedRevolutionary2025Design /> : <OptimizedRevolutionary2025Design />;
+  return (
+    <>
+      <SEOOptimizer />
+      <MobilePerformanceMeta />
+      {isMobile ? <MobileOptimizedRevolutionary2025Design /> : <OptimizedRevolutionary2025Design />}
+    </>
+  );
 }
