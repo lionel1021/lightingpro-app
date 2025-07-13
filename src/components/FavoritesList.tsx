@@ -1,6 +1,6 @@
 'use client'
 
-import React, { useState } from 'react'
+import React, { useState, useMemo } from 'react'
 import { 
   Heart, 
   Trash2, 
@@ -13,10 +13,9 @@ import {
   List,
   Search
 } from 'lucide-react'
-import { LightingProduct } from '@/lib/supabase'
-import { useFavorites } from '@/hooks/useFavorites'
-import FavoriteButton from './FavoriteButton'
-import AffiliateButton from './AffiliateButton'
+import { LightingProduct } from '@/lib/types'
+import { useCart } from '@/contexts/CartContext'
+import { mockProducts } from '@/lib/mock-data'
 
 interface FavoritesListProps {
   userId?: string
@@ -33,23 +32,28 @@ export const FavoritesList: React.FC<FavoritesListProps> = ({
   className = '',
   onProductSelect
 }) => {
-  const { favorites, loading, error, clearAllFavorites, getFavoriteCount } = useFavorites(userId)
+  const { favorites, toggleFavorite, addToCart } = useCart()
   const [searchQuery, setSearchQuery] = useState('')
   const [sortBy, setSortBy] = useState<SortOption>('addedAt')
   const [sortOrder, setSortOrder] = useState<SortOrder>('desc')
   const [viewMode, setViewMode] = useState<ViewMode>('grid')
   const [showFilters, setShowFilters] = useState(false)
 
+  // Get favorite products from mock data
+  const favoriteProducts = useMemo(() => {
+    return mockProducts.filter(product => favorites.has(product.id))
+  }, [favorites])
+
   // Filter and sort favorites
-  const filteredAndSortedFavorites = React.useMemo(() => {
-    let filtered = favorites
+  const filteredAndSortedFavorites = useMemo(() => {
+    let filtered = favoriteProducts
 
     // Apply search filter
     if (searchQuery) {
-      filtered = filtered.filter(fav => 
-        fav.product.name.toLowerCase().includes(searchQuery.toLowerCase()) ||
-        fav.product.brand.toLowerCase().includes(searchQuery.toLowerCase()) ||
-        fav.product.category.toLowerCase().includes(searchQuery.toLowerCase())
+      filtered = filtered.filter(product => 
+        product.name.toLowerCase().includes(searchQuery.toLowerCase()) ||
+        product.brand.toLowerCase().includes(searchQuery.toLowerCase()) ||
+        product.category.toLowerCase().includes(searchQuery.toLowerCase())
       )
     }
 
@@ -60,20 +64,21 @@ export const FavoritesList: React.FC<FavoritesListProps> = ({
 
       switch (sortBy) {
         case 'name':
-          aValue = a.product.name
-          bValue = b.product.name
+          aValue = a.name
+          bValue = b.name
           break
         case 'price':
-          aValue = a.product.price
-          bValue = b.product.price
+          aValue = a.price
+          bValue = b.price
           break
         case 'rating':
-          aValue = a.product.rating || 0
-          bValue = b.product.rating || 0
+          aValue = a.rating || 0
+          bValue = b.rating || 0
           break
         case 'addedAt':
-          aValue = new Date(a.addedAt)
-          bValue = new Date(b.addedAt)
+          // Since we don't have addedAt in our simple context, use id as fallback
+          aValue = a.id
+          bValue = b.id
           break
         default:
           return 0
@@ -87,11 +92,13 @@ export const FavoritesList: React.FC<FavoritesListProps> = ({
     })
 
     return filtered
-  }, [favorites, searchQuery, sortBy, sortOrder])
+  }, [favoriteProducts, searchQuery, sortBy, sortOrder])
 
-  const handleClearAll = async () => {
+  const handleClearAll = () => {
     if (window.confirm('确定要清空所有收藏吗？此操作不可撤销。')) {
-      await clearAllFavorites()
+      favoriteProducts.forEach(product => {
+        toggleFavorite(product.id)
+      })
     }
   }
 
@@ -104,30 +111,7 @@ export const FavoritesList: React.FC<FavoritesListProps> = ({
     }
   }
 
-  if (loading) {
-    return (
-      <div className={`bg-white rounded-lg shadow-sm border p-8 ${className}`}>
-        <div className="flex items-center justify-center">
-          <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-blue-600"></div>
-          <span className="ml-3 text-gray-600">加载收藏列表...</span>
-        </div>
-      </div>
-    )
-  }
-
-  if (error) {
-    return (
-      <div className={`bg-white rounded-lg shadow-sm border p-8 ${className}`}>
-        <div className="text-center text-red-600">
-          <Heart className="w-12 h-12 mx-auto mb-4 opacity-50" />
-          <h3 className="text-lg font-semibold mb-2">加载失败</h3>
-          <p className="text-sm">{error}</p>
-        </div>
-      </div>
-    )
-  }
-
-  if (favorites.length === 0) {
+  if (favoriteProducts.length === 0) {
     return (
       <div className={`bg-white rounded-lg shadow-sm border p-8 ${className}`}>
         <div className="text-center text-gray-500">
@@ -158,7 +142,7 @@ export const FavoritesList: React.FC<FavoritesListProps> = ({
             <div>
               <h2 className="text-xl font-semibold text-gray-900">我的收藏</h2>
               <p className="text-sm text-gray-600">
-                共 {getFavoriteCount()} 个收藏商品
+                共 {favoriteProducts.length} 个收藏商品
               </p>
             </div>
           </div>
@@ -258,38 +242,41 @@ export const FavoritesList: React.FC<FavoritesListProps> = ({
               ? 'grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6'
               : 'space-y-4'
           }>
-            {filteredAndSortedFavorites.map((favorite) => (
+            {filteredAndSortedFavorites.map((product) => (
               <div
-                key={favorite.id}
+                key={product.id}
                 className={`
                   group bg-white border border-gray-200 rounded-lg overflow-hidden 
                   hover:shadow-md transition-all duration-200 cursor-pointer
                   ${viewMode === 'list' ? 'flex' : ''}
                 `}
-                onClick={() => onProductSelect?.(favorite.product)}
+                onClick={() => onProductSelect?.(product)}
               >
                 <div className={`relative ${viewMode === 'list' ? 'w-48 flex-shrink-0' : ''}`}>
                   <img
-                    src={favorite.product.image_urls?.[0] || '/placeholder-product.png'}
-                    alt={favorite.product.name}
+                    src={product.image_urls?.[0] || '/placeholder-product.png'}
+                    alt={product.name}
                     className={`object-cover group-hover:scale-105 transition-transform duration-300 ${
                       viewMode === 'list' ? 'w-full h-32' : 'w-full h-48'
                     }`}
                   />
                   
                   <div className="absolute top-2 right-2">
-                    <FavoriteButton
-                      product={favorite.product}
-                      variant="icon-only"
-                      showText={false}
-                      userId={userId}
-                    />
+                    <button
+                      onClick={(e) => {
+                        e.stopPropagation()
+                        toggleFavorite(product.id)
+                      }}
+                      className="p-2 bg-white/80 backdrop-blur-sm rounded-full hover:bg-white transition-colors"
+                    >
+                      <Heart className="w-4 h-4 text-red-500 fill-current" />
+                    </button>
                   </div>
                   
-                  {favorite.product.rating && (
+                  {product.rating && (
                     <div className="absolute bottom-2 left-2 bg-white/90 backdrop-blur-sm rounded-full px-2 py-1 flex items-center space-x-1">
-                      <Heart className="w-3 h-3 text-yellow-500 fill-current" />
-                      <span className="text-xs font-medium">{favorite.product.rating}</span>
+                      <span className="text-yellow-500">⭐</span>
+                      <span className="text-xs font-medium">{product.rating}</span>
                     </div>
                   )}
                 </div>
@@ -297,21 +284,21 @@ export const FavoritesList: React.FC<FavoritesListProps> = ({
                 <div className={`p-4 ${viewMode === 'list' ? 'flex-1 flex flex-col justify-between' : ''}`}>
                   <div>
                     <h3 className="font-semibold text-gray-900 mb-1 group-hover:text-blue-600 transition-colors">
-                      {favorite.product.name}
+                      {product.name}
                     </h3>
-                    <p className="text-sm text-gray-600 mb-2">{favorite.product.brand}</p>
+                    <p className="text-sm text-gray-600 mb-2">{product.brand}</p>
                     <p className="text-xs text-gray-500 mb-3 line-clamp-2">
-                      {favorite.product.description}
+                      {product.description}
                     </p>
                   </div>
 
                   <div className={`flex items-center justify-between ${viewMode === 'list' ? 'mt-4' : ''}`}>
                     <div className="flex flex-col">
                       <span className="text-lg font-bold text-green-600">
-                        ¥{favorite.product.price.toFixed(2)}
+                        ¥{product.price.toFixed(2)}
                       </span>
                       <span className="text-xs text-gray-500">
-                        收藏于 {new Date(favorite.addedAt).toLocaleDateString()}
+                        已收藏
                       </span>
                     </div>
                     
@@ -319,20 +306,24 @@ export const FavoritesList: React.FC<FavoritesListProps> = ({
                       <button
                         onClick={(e) => {
                           e.stopPropagation()
-                          onProductSelect?.(favorite.product)
+                          addToCart(product)
+                        }}
+                        className="p-2 text-gray-600 hover:text-blue-600 hover:bg-blue-50 rounded-lg transition-colors"
+                        title="加入购物车"
+                      >
+                        <ShoppingCart className="w-4 h-4" />
+                      </button>
+                      
+                      <button
+                        onClick={(e) => {
+                          e.stopPropagation()
+                          onProductSelect?.(product)
                         }}
                         className="p-2 text-gray-600 hover:text-blue-600 hover:bg-blue-50 rounded-lg transition-colors"
                         title="查看详情"
                       >
                         <ExternalLink className="w-4 h-4" />
                       </button>
-                      
-                      <AffiliateButton
-                        product={favorite.product}
-                        variant="compact"
-                        showProvider={false}
-                        userId={userId}
-                      />
                     </div>
                   </div>
                 </div>

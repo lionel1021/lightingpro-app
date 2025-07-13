@@ -430,13 +430,19 @@ export default function OptimizedRevolutionary2025Design() {
               </p>
               
               <div className="flex flex-col sm:flex-row gap-4 justify-center">
-                <button className="bg-gradient-to-r from-blue-500 to-purple-500 hover:from-blue-600 hover:to-purple-600 text-white px-8 py-4 rounded-2xl font-semibold flex items-center gap-2 shadow-lg transition-all duration-300 hover:scale-105">
+                <button 
+                  onClick={() => window.location.href = '/questionnaire'}
+                  className="bg-gradient-to-r from-blue-500 to-purple-500 hover:from-blue-600 hover:to-purple-600 text-white px-8 py-4 rounded-2xl font-semibold flex items-center gap-2 shadow-lg transition-all duration-300 hover:scale-105"
+                >
                   <Zap className="w-5 h-5" />
                   Start AI Recommendations
                   <ArrowRight className="w-5 h-5" />
                 </button>
                 
-                <button className="bg-white/10 backdrop-blur-sm hover:bg-white/20 border border-white/20 px-8 py-4 rounded-2xl font-semibold flex items-center gap-2 transition-all duration-300 hover:scale-105">
+                <button 
+                  onClick={() => window.location.href = '/demo'}
+                  className="bg-white/10 backdrop-blur-sm hover:bg-white/20 border border-white/20 px-8 py-4 rounded-2xl font-semibold flex items-center gap-2 transition-all duration-300 hover:scale-105"
+                >
                   <Eye className="w-5 h-5 text-gradient-watch-demo" />
                   <span className="text-gradient-watch-demo">Watch Demo</span>
                 </button>
@@ -532,15 +538,21 @@ export default function OptimizedRevolutionary2025Design() {
               </p>
               
               <div className="flex flex-col sm:flex-row gap-4 justify-center">
-                <button className="bg-gradient-to-r from-blue-500 to-purple-500 hover:from-blue-600 hover:to-purple-600 text-white px-8 py-4 rounded-2xl font-semibold flex items-center gap-2 shadow-lg transition-all duration-300 hover:scale-105">
+                <button 
+                  onClick={() => window.location.href = '/questionnaire'}
+                  className="bg-gradient-to-r from-blue-500 to-purple-500 hover:from-blue-600 hover:to-purple-600 text-white px-8 py-4 rounded-2xl font-semibold flex items-center gap-2 shadow-lg transition-all duration-300 hover:scale-105"
+                >
                   <Zap className="w-5 h-5" />
                   Get Started
                   <ArrowRight className="w-5 h-5" />
                 </button>
                 
-                <button className="bg-white/10 backdrop-blur-sm hover:bg-white/20 border border-white/20 text-white px-8 py-4 rounded-2xl font-semibold flex items-center gap-2 transition-all duration-300 hover:scale-105">
+                <button 
+                  onClick={() => window.location.href = '/products'}
+                  className="bg-white/10 backdrop-blur-sm hover:bg-white/20 border border-white/20 text-white px-8 py-4 rounded-2xl font-semibold flex items-center gap-2 transition-all duration-300 hover:scale-105"
+                >
                   <Download className="w-5 h-5" />
-                  Download App
+                  Browse Products
                 </button>
               </div>
             </div>

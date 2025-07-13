@@ -3,13 +3,26 @@
 import React, { useState, useEffect } from 'react';
 import { Card, CardContent } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
-import { Star, Heart, ArrowLeft } from 'lucide-react';
+import { Star, Heart, ArrowLeft, ShoppingCart } from 'lucide-react';
 import Link from 'next/link';
 import { LightingProduct } from '@/lib/types';
 import { mockProducts } from '@/lib/mock-data';
+import { useCart } from '@/contexts/CartContext';
+import UserStatus from '@/components/UserStatus';
 
 // Simple product card component
 function ProductCard({ product }: { product: LightingProduct }) {
+  const { addToCart, favorites, toggleFavorite } = useCart();
+  const isFavorite = favorites.has(product.id);
+
+  const handleAddToCart = () => {
+    addToCart(product);
+  };
+
+  const handleToggleFavorite = () => {
+    toggleFavorite(product.id);
+  };
+
   return (
     <Card className="group hover:shadow-lg transition-shadow duration-200">
       <CardContent className="p-0">
@@ -34,8 +47,15 @@ function ProductCard({ product }: { product: LightingProduct }) {
             </Badge>
           )}
 
-          <button className="absolute top-2 right-2 w-8 h-8 bg-white/80 backdrop-blur-sm rounded-full flex items-center justify-center hover:bg-white transition-colors">
-            <Heart className="w-4 h-4 text-gray-600" />
+          <button 
+            onClick={handleToggleFavorite}
+            className={`absolute top-2 right-2 w-8 h-8 backdrop-blur-sm rounded-full flex items-center justify-center transition-colors ${
+              isFavorite 
+                ? 'bg-red-500 text-white hover:bg-red-600' 
+                : 'bg-white/80 text-gray-600 hover:bg-white'
+            }`}
+          >
+            <Heart className={`w-4 h-4 ${isFavorite ? 'fill-current' : ''}`} />
           </button>
         </div>
 
@@ -59,7 +79,7 @@ function ProductCard({ product }: { product: LightingProduct }) {
             <span className="text-sm text-gray-500">{product.category}</span>
           </div>
 
-          <div className="flex items-center justify-between">
+          <div className="flex items-center justify-between mb-3">
             <div className="flex items-baseline gap-2">
               <span className="text-lg font-bold text-gray-900">
                 ¥{product.price.toFixed(2)}
@@ -77,6 +97,14 @@ function ProductCard({ product }: { product: LightingProduct }) {
               </button>
             </Link>
           </div>
+
+          <button
+            onClick={handleAddToCart}
+            className="w-full bg-blue-600 hover:bg-blue-700 text-white py-2 px-4 rounded-lg flex items-center justify-center gap-2 transition-colors"
+          >
+            <ShoppingCart className="w-4 h-4" />
+            加入购物车
+          </button>
         </div>
       </CardContent>
     </Card>
@@ -85,6 +113,7 @@ function ProductCard({ product }: { product: LightingProduct }) {
 
 export default function ProductsPage() {
   const [mounted, setMounted] = useState(false);
+  const { totalItems } = useCart();
 
   useEffect(() => {
     setMounted(true);
@@ -196,6 +225,23 @@ export default function ProductsPage() {
               <p className="text-lg text-gray-600 max-w-2xl">
                 浏览我们精选的{mockProducts.length}款优质照明产品，从LED灯泡到智能照明系统
               </p>
+            </div>
+            
+            {/* User Status and Cart */}
+            <div className="flex items-center space-x-4">
+              <UserStatus />
+              <div className="relative">
+                <Link href="/cart">
+                  <button className="p-3 bg-blue-600 text-white rounded-full hover:bg-blue-700 transition-colors">
+                    <ShoppingCart className="w-6 h-6" />
+                    {totalItems > 0 && (
+                      <span className="absolute -top-2 -right-2 bg-red-500 text-white text-xs rounded-full w-6 h-6 flex items-center justify-center">
+                        {totalItems}
+                      </span>
+                    )}
+                  </button>
+                </Link>
+              </div>
             </div>
           </div>
         </div>

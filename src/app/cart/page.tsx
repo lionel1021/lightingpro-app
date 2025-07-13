@@ -1,6 +1,6 @@
 'use client'
 
-import { useCart } from '@/hooks/useCart'
+import { useCart } from '@/contexts/CartContext'
 import { Button } from '@/components/ui/button'
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card'
 import { Badge } from '@/components/ui/badge'
@@ -23,15 +23,15 @@ import Link from 'next/link'
 
 export default function CartPage() {
   const {
-    cart,
-    summary,
-    isLoading,
+    items,
+    totalItems,
+    totalPrice,
     updateQuantity,
     removeFromCart,
     clearCart
   } = useCart()
 
-  if (cart.length === 0) {
+  if (items.length === 0) {
     return (
       <div className="min-h-screen bg-gray-50">
         {/* 导航栏 */}
@@ -117,7 +117,7 @@ export default function CartPage() {
             </Link>
             <div className="flex items-center gap-4">
               <Badge variant="secondary" className="bg-blue-100 text-blue-800">
-                {summary.totalItems} 件商品
+                {totalItems} 件商品
               </Badge>
               <Link href="/">
                 <Button variant="outline" size="sm">
@@ -135,7 +135,7 @@ export default function CartPage() {
           <ShoppingCart className="w-8 h-8 text-blue-600" />
           <h1 className="text-3xl font-bold text-gray-900">购物车</h1>
           <Badge className="bg-blue-600 text-white">
-            {summary.totalItems} 件商品
+            {totalItems} 件商品
           </Badge>
         </div>
 
@@ -158,15 +158,15 @@ export default function CartPage() {
 
             {/* 商品列表 */}
             <div className="space-y-4">
-              {cart.map((item) => (
+              {items.map((item) => (
                 <Card key={item.id} className="p-6">
                   <div className="flex gap-6">
                     {/* 商品图片 */}
                     <div className="w-24 h-24 relative rounded-lg overflow-hidden bg-gray-100 flex-shrink-0">
-                      {item.product.image_urls && item.product.image_urls[0] ? (
+                      {item.image_urls && item.image_urls[0] ? (
                         <Image
-                          src={item.product.image_urls[0]}
-                          alt={item.product.name}
+                          src={item.image_urls[0]}
+                          alt={item.name}
                           fill
                           className="object-cover"
                         />
@@ -182,13 +182,13 @@ export default function CartPage() {
                       <div className="flex justify-between items-start mb-2">
                         <div>
                           <div className="text-sm text-blue-600 font-medium">
-                            {item.product.brand?.name}
+                            {item.brand}
                           </div>
                           <Link 
-                            href={`/products/${item.product.id}`}
+                            href={`/products/${item.id}`}
                             className="text-lg font-semibold text-gray-900 hover:text-blue-600 transition-colors"
                           >
-                            {item.product.name}
+                            {item.name}
                           </Link>
                         </div>
                         <Button
@@ -203,7 +203,7 @@ export default function CartPage() {
 
                       {/* 商品特性 */}
                       <div className="flex flex-wrap gap-1 mb-3">
-                        {item.product.features?.slice(0, 2).map((feature, index) => (
+                        {item.features?.slice(0, 2).map((feature, index) => (
                           <Badge key={index} variant="secondary" className="text-xs">
                             {feature}
                           </Badge>
@@ -214,13 +214,8 @@ export default function CartPage() {
                       <div className="flex justify-between items-center">
                         <div className="flex items-center gap-2">
                           <span className="text-xl font-bold text-red-600">
-                            ¥{item.product.price}
+                            ¥{item.price}
                           </span>
-                          {item.product.original_price && item.product.original_price > item.product.price && (
-                            <span className="text-sm text-gray-500 line-through">
-                              ¥{item.product.original_price}
-                            </span>
-                          )}
                         </div>
 
                         {/* 数量控制 */}
@@ -251,7 +246,7 @@ export default function CartPage() {
                       <div className="mt-3 text-right">
                         <span className="text-sm text-gray-600">小计: </span>
                         <span className="text-lg font-bold text-gray-900">
-                          ¥{(item.product.price * item.quantity).toFixed(2)}
+                          ¥{(item.price * item.quantity).toFixed(2)}
                         </span>
                       </div>
                     </div>
@@ -273,42 +268,30 @@ export default function CartPage() {
               <CardContent className="space-y-4">
                 <div className="flex justify-between items-center">
                   <span className="text-gray-600">商品总价</span>
-                  <span className="font-medium">¥{summary.totalPrice.toFixed(2)}</span>
+                  <span className="font-medium">¥{totalPrice.toFixed(2)}</span>
                 </div>
-
-                {summary.totalSavings > 0 && (
-                  <div className="flex justify-between items-center text-green-600">
-                    <span>优惠金额</span>
-                    <span className="font-medium">-¥{summary.totalSavings.toFixed(2)}</span>
-                  </div>
-                )}
 
                 <div className="flex justify-between items-center">
                   <span className="text-gray-600">运费</span>
-                  <span className={`font-medium ${summary.estimatedShipping === 0 ? 'text-green-600' : ''}`}>
-                    {summary.estimatedShipping === 0 ? '免运费' : `¥${summary.estimatedShipping.toFixed(2)}`}
+                  <span className={`font-medium ${totalPrice >= 199 ? 'text-green-600' : ''}`}>
+                    {totalPrice >= 199 ? '免运费' : '¥15.00'}
                   </span>
-                </div>
-
-                <div className="flex justify-between items-center text-sm text-gray-500">
-                  <span>税费</span>
-                  <span>¥{summary.estimatedTax.toFixed(2)}</span>
                 </div>
 
                 <Separator />
 
                 <div className="flex justify-between items-center text-lg font-bold">
                   <span>总计</span>
-                  <span className="text-red-600">¥{summary.finalTotal.toFixed(2)}</span>
+                  <span className="text-red-600">¥{(totalPrice + (totalPrice >= 199 ? 0 : 15)).toFixed(2)}</span>
                 </div>
 
                 {/* 免运费提示 */}
-                {summary.totalPrice < 199 && (
+                {totalPrice < 199 && (
                   <div className="bg-yellow-50 border border-yellow-200 rounded-lg p-3">
                     <div className="flex items-center gap-2 text-yellow-800">
                       <Truck className="w-4 h-4" />
                       <span className="text-sm">
-                        再购买 ¥{(199 - summary.totalPrice).toFixed(2)} 即可免运费
+                        再购买 ¥{(199 - totalPrice).toFixed(2)} 即可免运费
                       </span>
                     </div>
                   </div>
@@ -319,10 +302,9 @@ export default function CartPage() {
                   <Button 
                     className="w-full bg-blue-600 hover:bg-blue-700" 
                     size="lg"
-                    disabled={isLoading}
                   >
                     <CreditCard className="w-5 h-5 mr-2" />
-                    立即结算 ({summary.totalItems}件)
+                    立即结算 ({totalItems}件)
                   </Button>
                   
                   <Link href="/questionnaire" className="block">

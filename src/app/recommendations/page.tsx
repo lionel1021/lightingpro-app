@@ -5,9 +5,11 @@ import { useState, useEffect, Suspense } from 'react'
 import { LightingProduct } from '@/lib/supabase'
 import { Button } from '@/components/ui/button'
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card'
-import { Lightbulb, Star, Heart, ExternalLink, Filter } from 'lucide-react'
+import { Lightbulb, Star, Heart, ExternalLink, Filter, ShoppingCart } from 'lucide-react'
 import Link from 'next/link'
 import { formatPrice } from '@/lib/utils'
+import { useCart } from '@/contexts/CartContext'
+import UserStatus from '@/components/UserStatus'
 
 // interface RecommendationData {
 //   products: LightingProduct[]
@@ -75,9 +77,9 @@ const mockProducts: LightingProduct[] = [
 function RecommendationsContent() {
   const searchParams = useSearchParams()
   const [products, setProducts] = useState<LightingProduct[]>([])
-  const [favorites, setFavorites] = useState<Set<string>>(new Set())
   const [isLoading, setIsLoading] = useState(true)
   const [sortBy, setSortBy] = useState<'match' | 'price' | 'rating'>('match')
+  const { addToCart, favorites, toggleFavorite, totalItems } = useCart()
 
   // Get questionnaire answers from URL params
   const answers = {
@@ -104,16 +106,8 @@ function RecommendationsContent() {
     fetchRecommendations()
   }, [])
 
-  const toggleFavorite = (productId: string) => {
-    setFavorites(prev => {
-      const newFavorites = new Set(prev)
-      if (newFavorites.has(productId)) {
-        newFavorites.delete(productId)
-      } else {
-        newFavorites.add(productId)
-      }
-      return newFavorites
-    })
+  const handleAddToCart = (product: LightingProduct) => {
+    addToCart(product)
   }
 
   const sortedProducts = [...products].sort((a, b) => {
@@ -161,9 +155,24 @@ function RecommendationsContent() {
               <Lightbulb className="h-8 w-8 text-blue-600" />
               <h1 className="text-xl font-bold text-gray-900">LightingPro</h1>
             </Link>
-            <Link href="/questionnaire">
-              <Button variant="outline">Retake Quiz</Button>
-            </Link>
+            <div className="flex items-center gap-4">
+              <UserStatus />
+              <div className="relative">
+                <Link href="/cart">
+                  <button className="p-2 bg-blue-600 text-white rounded-full hover:bg-blue-700 transition-colors">
+                    <ShoppingCart className="w-5 h-5" />
+                    {totalItems > 0 && (
+                      <span className="absolute -top-2 -right-2 bg-red-500 text-white text-xs rounded-full w-5 h-5 flex items-center justify-center">
+                        {totalItems}
+                      </span>
+                    )}
+                  </button>
+                </Link>
+              </div>
+              <Link href="/questionnaire">
+                <Button variant="outline">重新测试</Button>
+              </Link>
+            </div>
           </div>
         </div>
       </header>
@@ -222,7 +231,7 @@ function RecommendationsContent() {
                       : 'bg-white text-gray-500 hover:text-red-500'
                   }`}
                 >
-                  <Heart className="h-4 w-4" />
+                  <Heart className={`h-4 w-4 ${favorites.has(product.id) ? 'fill-current' : ''}`} />
                 </button>
                 {index === 0 && (
                   <div className="absolute top-4 left-4 bg-blue-600 text-white px-2 py-1 rounded text-xs font-semibold">
@@ -279,12 +288,19 @@ function RecommendationsContent() {
                 </div>
                 
                 <div className="space-y-2">
+                  <Button 
+                    onClick={() => handleAddToCart(product)}
+                    className="w-full flex items-center justify-center gap-2 bg-blue-600 hover:bg-blue-700"
+                  >
+                    <ShoppingCart className="h-4 w-4" />
+                    <span>加入购物车</span>
+                  </Button>
                   {Object.entries(product.affiliateLinks).map(([platform]) => (
                     <Button 
                       key={platform}
                       onClick={() => handlePurchaseClick(product, platform)}
                       className="w-full flex items-center justify-between"
-                      variant={platform === 'amazon' ? 'default' : 'outline'}
+                      variant="outline"
                     >
                       <span>Buy on {platform.charAt(0).toUpperCase() + platform.slice(1)}</span>
                       <ExternalLink className="h-4 w-4" />
